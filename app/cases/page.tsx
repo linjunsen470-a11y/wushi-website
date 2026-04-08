@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { CheckCircle2, MapPin, Users, Calendar, Award } from 'lucide-react';
+import { Sparkles, Maximize, Video, MapPin, Users, Calendar, Award } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SubpageHero from '@/components/SubpageHero';
@@ -46,32 +46,41 @@ export default function CasesPage() {
           </div>
         }
       />
-      <section className="bg-surface section-space">
-        <div className="shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-6">
-            <span className="page-eyebrow text-secondary">案例说明</span>
+      <section className="bg-surface section-space overflow-hidden">
+        <div className="shell grid gap-16 lg:grid-cols-[1fr_1fr] items-center">
+          <div className="space-y-8">
+            <span className="page-eyebrow text-secondary">项目解析</span>
             <h2 className="page-section-title">
-              用真实项目，
+              用实地项目交付，
               <br />
-              帮助判断是否适合自己的活动
+              让最终呈现效果有据可依
             </h2>
-            <p className="body-copy text-on-surface-variant">
-              从场地类型、现场气氛到节目强度，真实案例能更直观地告诉您最终效果，
-              <br className="hidden md:block" />
-              而不是只靠想象。
+            <p className="body-copy text-on-surface-variant leading-loose">
+              我们深知每一个活动的独特性。通过对过往案例的复盘与归纳，您可以从空间利用率、视觉冲击力及流程配合度等多个维度，精准预估演出的实地效果，从而降低沟通成本与执行风险。
             </p>
           </div>
-          <div className="grid gap-4 rounded-[2.5rem] bg-surface-container-low p-8 md:p-10 lg:grid-cols-2">
-            {featured.metrics.map((metric) => (
-              <div key={metric} className="group flex items-start gap-4 rounded-[1.8rem] bg-surface p-6 shadow-sm transition-all hover:shadow-md">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                  <CheckCircle2 size={20} />
+          
+          <div className="relative flex flex-col gap-6 md:gap-8 lg:pl-12">
+            {[
+              { text: featured.metrics[0], icon: Sparkles, offset: 'lg:translate-x-0' },
+              { text: featured.metrics[1], icon: Maximize, offset: 'lg:translate-x-16' },
+              { text: featured.metrics[2], icon: Video, offset: 'lg:translate-x-8' },
+            ].map((metric, idx) => (
+              <div 
+                key={idx} 
+                className={`editorial-card hover-lift flex items-center gap-6 group transition-all duration-500 ${metric.offset} max-w-md w-full`}
+              >
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-secondary/5 text-secondary ring-1 ring-secondary/20 transition-all duration-500 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white group-hover:ring-secondary">
+                  <metric.icon size={26} strokeWidth={1.5} />
                 </div>
-                <p className="text-[0.95rem] font-medium leading-[1.6] text-on-surface-variant">
-                  {metric}
+                <p className="font-headline text-[1.1rem] font-extrabold tracking-tight text-on-surface">
+                  {metric.text}
                 </p>
               </div>
             ))}
+            
+            {/* Background Decorative Element */}
+            <div className="absolute -left-8 top-12 bottom-12 hidden w-px bg-gradient-to-b from-transparent via-secondary/30 to-transparent lg:block" />
           </div>
         </div>
       </section>

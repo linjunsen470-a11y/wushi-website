@@ -136,7 +136,7 @@ export const caseStudies = [
     image: ifcOpening,
     description:
       '围绕开场、采青、合影等关键环节完成整段演出，让现场既有热烈气氛，也有适合拍照和传播的精彩画面。',
-    metrics: ['现场聚客效果明显', '适合大空间开业活动', '画面大气，适合宣传使用'],
+    metrics: ['场景化高频聚客能力', '空间适配与高动态调度', '高品质宣发影像输出'],
   },
   {
     title: '品牌年会舞台节目',
@@ -147,7 +147,7 @@ export const caseStudies = [
     image: corporateAnnual,
     description:
       '配合主舞台和灯光大屏完成年会开场，让节目既有正式感，也能迅速把全场氛围带起来。',
-    metrics: ['适合灯光舞台环境', '队形完整，节奏流畅', '方便串联主持与流程'],
+    metrics: ['专业灯光舞美适配', '标准化流程衔接控制', '舞台仪式感极致呈现'],
   },
   {
     title: '婚宴双狮迎宾',
@@ -158,7 +158,7 @@ export const caseStudies = [
     image: weddingBanquet,
     description:
       '从迎宾到合影都围绕喜庆氛围展开，让婚礼现场更热闹，也让新人和宾客留下更有记忆点的照片与视频。',
-    metrics: ['喜庆氛围强', '合影效果突出', '适合婚礼流程衔接'],
+    metrics: ['中式礼仪氛围营造', '高光时刻全景留念', '婚礼全流程定制配合'],
   },
   {
     title: '高桩竞技展示',
@@ -169,7 +169,7 @@ export const caseStudies = [
     image: redHighJong,
     description:
       '通过高桩动作形成更强的视觉冲击，适合需要大场面效果、远距离观赏和高传播度的活动现场。',
-    metrics: ['视觉冲击力强', '适合户外大场地', '容易形成传播亮点'],
+    metrics: ['高空竞技视觉冲击', '跨场域空间覆盖能力', '社交媒体高传播亮点'],
   },
 ];
 
