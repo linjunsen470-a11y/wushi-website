@@ -58,12 +58,36 @@
     @apply mb-4 inline-block font-headline text-xs font-bold uppercase tracking-[0.32em] text-secondary;
   }
 
+  .page-eyebrow {
+    @apply inline-flex items-center rounded-full border border-current/10 px-4 py-2 font-headline text-[0.72rem] font-black tracking-[0.18em];
+  }
+
   .display-title {
-    @apply font-headline text-5xl font-black uppercase tracking-tight md:text-7xl lg:text-9xl leading-[0.85]!;
+    @apply font-headline text-5xl font-black uppercase tracking-[-0.03em] md:text-7xl lg:text-9xl leading-[0.94]!;
+  }
+
+  .page-hero-title {
+    font-family: var(--font-headline), ui-sans-serif, system-ui;
+    font-size: clamp(3rem, 5.5vw, 5.9rem);
+    font-weight: 900;
+    line-height: 1.06;
+    letter-spacing: -0.022em;
   }
 
   .section-title {
-    @apply font-headline text-3xl font-black uppercase tracking-tight md:text-6xl;
+    @apply font-headline text-3xl font-black uppercase tracking-[-0.025em] leading-[1.08] md:text-6xl;
+  }
+
+  .page-section-title {
+    font-family: var(--font-headline), ui-sans-serif, system-ui;
+    font-size: clamp(2.3rem, 4vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+
+  .page-lead {
+    @apply max-w-2xl text-[1.02rem] leading-8 md:text-[1.15rem];
   }
 
   .editorial-card {
@@ -88,5 +112,17 @@
 
   .watermark {
     @apply pointer-events-none select-none font-headline text-[7rem] font-black uppercase leading-none text-primary/[0.04] md:text-[14rem];
+  }
+
+  .hero-chip {
+    @apply rounded-full border px-4 py-2 font-headline text-xs font-black tracking-[0.12em];
+  }
+
+  .hero-panel {
+    @apply rounded-[2rem] border p-6 md:p-7;
+  }
+
+  .hero-stat {
+    @apply rounded-[1.4rem] border border-current/10 px-5 py-4;
   }
 }

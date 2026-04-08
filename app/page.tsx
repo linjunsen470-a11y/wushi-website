@@ -71,33 +71,33 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className="relative z-10 max-w-4xl pb-6 md:pb-10"
+            className="relative z-10 max-w-[62rem] pb-8 md:pb-12"
           >
             <span className="section-eyebrow text-secondary-fixed mb-6 block">—— 中国大陆专业商演舞狮服务</span>
-            <h1 className="font-headline text-[3.4rem] font-black leading-[0.92] tracking-[-0.05em] text-white md:text-[4.8rem] lg:text-[5.8rem]">
+            <h1 className="page-hero-title text-white">
               赋能开业盛典
               <br />
               <span className="text-secondary-fixed">构筑非凡气场</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/78 md:text-[1.35rem]">
+            <p className="page-lead mt-10 max-w-[36rem] text-white/76 md:text-[1.12rem]">
               {brand.name} 致力为高标准的商业活动提供最具现场感染力的醒狮演艺。不仅是传统技艺的展示，更是品牌价值的深度传播，让每一个关键时刻都熠熠生辉。
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-11 flex flex-wrap gap-3">
               {heroPillars.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/12 bg-black/18 px-4 py-2 text-sm font-medium tracking-[0.08em] text-white/80 backdrop-blur-md"
+                  className="rounded-full border border-white/10 bg-black/16 px-4 py-1.5 text-[0.82rem] font-medium tracking-[0.12em] text-white/74 backdrop-blur-md"
                 >
                   {item}
                 </span>
               ))}
             </div>
             <div className="mt-12 flex flex-wrap gap-4">
-              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-primary px-8 py-4 font-headline text-sm font-black tracking-[0.18em] text-white shadow-[0_20px_60px_rgba(163,0,17,0.38)] transition-all hover:-translate-y-1 hover:bg-primary-container">
+              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-primary px-7 py-3.5 font-headline text-[0.82rem] font-black tracking-[0.16em] text-white shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-all hover:-translate-y-1 hover:bg-primary-container">
                 <span className="relative z-10">获取专业方案报价</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
-              <Link href="/media" className="rounded-full border border-white/18 bg-white/6 px-8 py-4 font-headline text-sm font-black tracking-[0.18em] text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-on-surface">
+              <Link href="/media" className="rounded-full border border-white/16 bg-white/6 px-7 py-3.5 font-headline text-[0.82rem] font-black tracking-[0.16em] text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-on-surface">
                 浏览实拍案例库
               </Link>
             </div>
@@ -163,7 +163,7 @@ export default function HomePage() {
               <h2 className="section-title">适配不同维度的商业庆典需求</h2>
             </div>
             <div className="h-px flex-1 bg-outline-variant/30 mx-8 hidden lg:block" />
-            <p className="max-w-md text-lg text-on-surface-variant leading-relaxed">
+            <p className="max-w-lg text-[1.05rem] leading-[1.9] text-on-surface-variant">
               聚焦核心项目场景，将舞狮传统艺术与现代商业叙事完美结合。
             </p>
           </motion.div>
@@ -183,8 +183,8 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="p-10">
-                  <h3 className="font-headline text-3xl font-black text-on-surface">{service.title}</h3>
-                  <p className="mt-4 text-base leading-relaxed text-on-surface-variant">{service.description}</p>
+                  <h3 className="font-headline text-3xl font-black leading-[1.08] tracking-[-0.02em] text-on-surface">{service.title}</h3>
+                  <p className="mt-4 text-[1.02rem] leading-[1.85] text-on-surface-variant">{service.description}</p>
                   <div className="mt-8 flex flex-wrap gap-3">
                     {service.points.map((point: string) => (
                       <span key={point} className="px-3 py-1 bg-surface-container text-xs font-bold text-secondary rounded-full border border-secondary/10">
@@ -211,8 +211,8 @@ export default function HomePage() {
                 <div className="editorial-card !p-12 relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700" />
                   <span className="section-eyebrow">传播价值</span>
-                  <h2 className="section-title !text-4xl">{homepageSections.media.title}</h2>
-                  <p className="mt-6 text-lg leading-relaxed text-on-surface-variant">{homepageSections.media.text}</p>
+                  <h2 className="section-title !text-4xl !leading-[1.08]">{homepageSections.media.title}</h2>
+                  <p className="mt-6 text-[1.05rem] leading-[1.9] text-on-surface-variant">{homepageSections.media.text}</p>
                 </div>
                 <div className="relative flex-1 min-h-[250px] overflow-hidden rounded-[2.5rem] premium-shadow">
                   <Image src={homepageSections.media.imageB} alt="现场观众与舞台" fill sizes="(min-width: 1024px) 20vw, 100vw" className="object-cover" />
@@ -254,8 +254,8 @@ export default function HomePage() {
                 transition={{ ...transitionBase, delay: 0.2 }}
                 className="rounded-[3rem] bg-white/10 backdrop-blur-xl p-12 border border-white/12 shadow-2xl"
               >
-                <h3 className="font-headline text-4xl font-black text-secondary-fixed">{homepageSections.craft.title}</h3>
-                <p className="mt-6 text-lg leading-relaxed text-white/80">{homepageSections.craft.text}</p>
+                <h3 className="font-headline text-4xl font-black leading-[1.08] tracking-[-0.02em] text-secondary-fixed">{homepageSections.craft.title}</h3>
+                <p className="mt-6 text-[1.05rem] leading-[1.9] text-white/80">{homepageSections.craft.text}</p>
               </motion.div>
               <div className="grid gap-6 grid-cols-2">
                 <motion.div {...fadeInProps} transition={{ ...transitionBase, delay: 0.3 }} className="relative aspect-square overflow-hidden rounded-[2.5rem]">
