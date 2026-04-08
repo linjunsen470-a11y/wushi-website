@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import {
   brand,
+  homeShowcase,
   homepageSections,
   mixedGallery,
   serviceCards,
@@ -32,11 +33,15 @@ const growthPages = [
   },
 ];
 
+const heroPillars = ['开业庆典', '商演活动', '品牌发布', '婚礼宴会'];
+
+const transitionBase = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
+
 const fadeInProps = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  transition: transitionBase,
 };
 
 export default function HomePage() {
@@ -44,29 +49,29 @@ export default function HomePage() {
     <main className="min-h-screen">
       <Navbar />
 
-      <header className="relative min-h-screen overflow-hidden">
-        {/* Abstract Background Elements */}
-        <div className="absolute top-[-10%] right-[-10%] h-[50%] w-[50%] rounded-full bg-primary/20 blur-[120px]" />
-        
+      <header className="relative min-h-screen overflow-hidden bg-[#140d0b] text-white">
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="h-full w-full object-cover brightness-[0.45]"
+            className="h-full w-full object-cover brightness-[0.34] saturate-[0.8]"
           >
             <source src="/assets/videos/lion-dance-bank-opening-red-carpet.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(26,23,16,0.8)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(20,13,11,0.92)_0%,rgba(20,13,11,0.76)_44%,rgba(20,13,11,0.42)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,219,112,0.16),transparent_34%),radial-gradient(circle_at_78%_26%,rgba(163,0,17,0.32),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_28%)]" />
+          <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:clamp(44px,6vw,72px)_clamp(44px,6vw,72px)]" />
         </div>
 
-        <div className="shell relative flex min-h-screen flex-col justify-center pt-20">
+        <div className="shell relative grid min-h-screen items-center gap-12 pt-24 pb-16 md:pt-32 md:pb-20 lg:grid-cols-[minmax(0,1.02fr)_minmax(380px,0.98fr)] lg:gap-10">
+          <div className="contents">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className="max-w-4xl"
+            className="relative z-10 max-w-3xl"
           >
             <span className="section-eyebrow text-secondary-fixed mb-6 block">—— 中国大陆专业商演舞狮服务</span>
             <h1 className="display-title text-white">
@@ -77,12 +82,22 @@ export default function HomePage() {
             <p className="mt-8 max-w-2xl text-xl leading-relaxed text-white/80 md:text-2xl">
               {brand.name} 致力为高标准的商业活动提供最具现场感染力的醒狮演艺。不仅是传统技艺的展示，更是品牌价值的深度传播，让每一个关键时刻都熠熠生辉。
             </p>
-            <div className="mt-12 flex flex-wrap gap-5">
-              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-primary px-10 py-5 font-headline text-base font-black tracking-widest text-white transition-all hover:scale-105 hover:bg-primary-container shadow-2xl">
+            <div className="mt-8 flex flex-wrap gap-3">
+              {heroPillars.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/12 bg-black/18 px-4 py-2 text-sm font-medium tracking-[0.08em] text-white/80 backdrop-blur-md"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="mt-12 flex flex-wrap gap-4">
+              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-primary px-8 py-4 font-headline text-sm font-black tracking-[0.18em] text-white shadow-[0_20px_60px_rgba(163,0,17,0.38)] transition-all hover:-translate-y-1 hover:bg-primary-container">
                 <span className="relative z-10">获取专业方案报价</span>
-                <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform group-hover:translate-x-0" />
+                <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
-              <Link href="/media" className="rounded-full border border-white/30 px-10 py-5 font-headline text-base font-black tracking-widest text-white backdrop-blur-md transition-all hover:bg-white hover:text-on-surface">
+              <Link href="/media" className="rounded-full border border-white/18 bg-white/6 px-8 py-4 font-headline text-sm font-black tracking-[0.18em] text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-on-surface">
                 浏览实拍案例库
               </Link>
             </div>
@@ -92,9 +107,35 @@ export default function HomePage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="absolute bottom-12 right-8 hidden lg:block"
+            className="relative hidden lg:block"
           >
-            <div className="editorial-card max-w-md">
+            <div className="relative isolate max-w-[32rem] overflow-hidden rounded-[2.75rem] border border-white/12 bg-black/28 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.34)] backdrop-blur-xl">
+              <Image
+                src={homeShowcase.hero}
+                alt="舞狮开业现场实拍"
+                fill
+                sizes="(min-width: 1024px) 36vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,13,11,0.12)_0%,rgba(20,13,11,0.24)_34%,rgba(20,13,11,0.92)_100%)]" />
+              <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/24 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.28em] text-white/70 backdrop-blur-md">
+                Real Project Footage
+              </div>
+              <div className="absolute -left-8 bottom-8 w-[42%] rounded-[1.8rem] border border-white/12 bg-[#1c130f]/80 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem]">
+                  <Image
+                    src={homeShowcase.secondary}
+                    alt="舞狮观众现场"
+                    fill
+                    sizes="220px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="mt-3 text-[0.72rem] font-bold uppercase tracking-[0.24em] text-secondary-fixed/90">
+                  Audience Pull
+                </div>
+              </div>
+              <div className="relative z-10 mt-48">
               <p className="section-eyebrow">高效执行标准</p>
               <div className="space-y-6">
                 {workflowSteps.slice(0, 3).map((step, index) => (
@@ -130,7 +171,7 @@ export default function HomePage() {
               <motion.article 
                 key={service.title} 
                 {...fadeInProps}
-                transition={{ ...fadeInProps.transition, delay: idx * 0.15 }}
+                transition={{ ...transitionBase, delay: idx * 0.15 }}
                 className="hover-lift overflow-hidden rounded-[2.5rem] bg-surface-container-low"
               >
                 <div className="relative aspect-[5/4]">
@@ -208,17 +249,17 @@ export default function HomePage() {
             <div className="grid gap-10 md:col-span-4">
               <motion.div 
                 {...fadeInProps}
-                transition={{ delay: 0.2 }}
+                transition={{ ...transitionBase, delay: 0.2 }}
                 className="rounded-[3rem] bg-white/10 backdrop-blur-xl p-12 border border-white/12 shadow-2xl"
               >
                 <h3 className="font-headline text-4xl font-black text-secondary-fixed">{homepageSections.craft.title}</h3>
                 <p className="mt-6 text-lg leading-relaxed text-white/80">{homepageSections.craft.text}</p>
               </motion.div>
               <div className="grid gap-6 grid-cols-2">
-                <motion.div {...fadeInProps} transition={{ delay: 0.3 }} className="relative aspect-square overflow-hidden rounded-[2.5rem]">
+                <motion.div {...fadeInProps} transition={{ ...transitionBase, delay: 0.3 }} className="relative aspect-square overflow-hidden rounded-[2.5rem]">
                   <Image src={homepageSections.craft.imageB} alt="高桩表演" fill sizes="15vw" className="object-cover" />
                 </motion.div>
-                <motion.div {...fadeInProps} transition={{ delay: 0.4 }} className="relative aspect-square overflow-hidden rounded-[2.5rem]">
+                <motion.div {...fadeInProps} transition={{ ...transitionBase, delay: 0.4 }} className="relative aspect-square overflow-hidden rounded-[2.5rem]">
                   <Image src={homepageSections.craft.imageC} alt="狮头细节" fill sizes="15vw" className="object-cover" />
                 </motion.div>
               </div>
@@ -230,7 +271,7 @@ export default function HomePage() {
               <motion.div
                 key={index}
                 {...fadeInProps}
-                transition={{ delay: index * 0.1 }}
+                transition={{ ...transitionBase, delay: index * 0.1 }}
                 className={`relative aspect-[3/4] overflow-hidden rounded-[2.5rem] ${index % 2 === 1 ? 'md:translate-y-12' : ''} premium-shadow`}
               >
                 <Image src={image} alt={`训练场景 ${index + 1}`} fill sizes="(min-width: 1024px) 20vw, 100vw" className="object-cover" />
@@ -255,7 +296,7 @@ export default function HomePage() {
               <motion.div 
                 key={item.href}
                 {...fadeInProps}
-                transition={{ delay: idx * 0.2 }}
+                transition={{ ...transitionBase, delay: idx * 0.2 }}
               >
                 <Link href={item.href} className="editorial-card group block h-full border border-transparent hover:border-primary/20 transition-all">
                   <div className="h-14 w-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500 mb-8">
@@ -288,7 +329,7 @@ export default function HomePage() {
               <motion.div
                 key={index}
                 {...fadeInProps}
-                transition={{ delay: index * 0.1 }}
+                transition={{ ...transitionBase, delay: index * 0.1 }}
                 className="relative overflow-hidden rounded-[2.5rem] break-inside-avoid shadow-xl hover-lift group"
               >
                 <Image src={image} alt={`现场图 ${index + 1}`} className="w-full h-auto transition-transform duration-700 group-hover:scale-105" />
@@ -311,7 +352,7 @@ export default function HomePage() {
               <motion.div 
                 key={stat.label} 
                 {...fadeInProps}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ ...transitionBase, delay: idx * 0.1 }}
                 className="glass-panel rounded-[2.5rem] p-10 relative overflow-hidden group"
               >
                 <div className="absolute top-0 left-0 w-2 h-full bg-secondary scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-500" />

@@ -6,12 +6,17 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { brand, primaryNavLinks, utilityNavLinks } from '@/lib/site-data';
+import { brand, primaryNavLinks } from '@/lib/site-data';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mobileNavLinks = [
+    { label: '首页', href: '/' },
+    ...primaryNavLinks.map(({ label, href }) => ({ label, href })),
+    { label: '联系我们', href: '/contact' },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -20,6 +25,13 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const closeMenu = () => setIsOpen(false);
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
@@ -83,7 +95,13 @@ export default function Navbar() {
         <button
           type="button"
           aria-label={isOpen ? '关闭菜单' : '打开菜单'}
-          className="rounded-full p-2 text-primary md:hidden"
+          aria-expanded={isOpen}
+          className={cn(
+            'rounded-full border p-2.5 shadow-[0_10px_30px_rgba(30,27,19,0.08)] md:hidden',
+            isOpen
+              ? 'border-primary bg-primary text-white'
+              : 'border-outline-variant/30 bg-white/85 text-primary backdrop-blur-md'
+          )}
           onClick={() => setIsOpen((value) => !value)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,51 +109,36 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="border-t border-outline-variant/20 bg-surface md:hidden">
-          <div className="shell py-6">
-            <div className="rounded-[1.5rem] bg-surface-container-low p-5">
-              <p className="font-headline text-xs font-black tracking-[0.28em] text-secondary">网站入口</p>
-              <div className="mt-5 space-y-3">
-                {utilityNavLinks.map((link) => (
+        <div className="border-t border-outline-variant/15 bg-[rgba(255,248,239,0.94)] backdrop-blur-2xl md:hidden">
+          <div className="shell pb-6 pt-4">
+            <div className="rounded-[2rem] border border-[#eadcc9] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,241,230,0.96))] p-4 shadow-[0_28px_70px_rgba(30,27,19,0.12)]">
+              <div className="grid gap-3">
+                {mobileNavLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={closeMenu}
                     className={cn(
-                      'flex items-center justify-between rounded-2xl border px-4 py-4',
+                      'rounded-[1.35rem] border px-5 py-4 font-headline text-[1.15rem] font-black tracking-[0.08em]',
                       isActive(link.href)
-                        ? 'border-secondary/40 bg-secondary/10 text-primary'
-                        : 'border-outline-variant/20 bg-surface text-on-surface'
+                        ? 'border-primary bg-primary text-white shadow-[0_16px_32px_rgba(163,0,17,0.2)]'
+                        : 'border-[#e7d9c6] bg-white/72 text-on-surface hover:border-primary/35 hover:bg-white'
                     )}
                   >
-                    <div>
-                      <div className="font-headline text-lg font-black tracking-[0.12em]">{link.label}</div>
-                      <div className="mt-1 text-sm text-on-surface-variant">{link.description}</div>
-                    </div>
+                    {link.label}
                   </Link>
                 ))}
               </div>
-            </div>
 
-            <div className="mt-5 rounded-[1.5rem] bg-[#17120f] p-5 text-white">
-              <p className="font-headline text-xs font-black tracking-[0.28em] text-secondary-fixed">核心页面</p>
-              <div className="mt-5 grid gap-3">
-                {primaryNavLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={closeMenu}
-                    className={cn(
-                      'rounded-2xl border px-4 py-4',
-                      isActive(link.href)
-                        ? 'border-secondary-fixed/60 bg-white/10 text-white'
-                        : 'border-white/10 bg-white/4 text-white/90'
-                    )}
-                  >
-                    <div className="font-headline text-lg font-black tracking-[0.12em]">{link.label}</div>
-                    <div className="mt-1 text-sm text-white/65">{link.description}</div>
-                  </Link>
-                ))}
+              <div className="mt-4 rounded-[1.35rem] bg-[#221c16] px-5 py-4 text-white">
+                <p className="font-headline text-base font-black tracking-[0.08em]">舞狮堂 WUSHI</p>
+                <Link
+                  href="/contact"
+                  onClick={closeMenu}
+                  className="mt-3 inline-flex rounded-full bg-white px-4 py-2 font-headline text-sm font-black tracking-[0.12em] text-[#221c16]"
+                >
+                  立即咨询
+                </Link>
               </div>
             </div>
           </div>
