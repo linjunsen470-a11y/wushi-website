@@ -51,35 +51,35 @@ export default function HomePage() {
 
       <header className="relative min-h-screen overflow-hidden bg-[#140d0b] text-white">
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover brightness-[0.34] saturate-[0.8]"
-          >
-            <source src="/assets/videos/lion-dance-bank-opening-red-carpet.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(20,13,11,0.92)_0%,rgba(20,13,11,0.76)_44%,rgba(20,13,11,0.42)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,219,112,0.16),transparent_34%),radial-gradient(circle_at_78%_26%,rgba(163,0,17,0.32),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_28%)]" />
+          <Image
+            src={homeShowcase.hero}
+            alt="舞狮开业现场"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,13,11,0.22)_0%,rgba(20,13,11,0.54)_30%,rgba(20,13,11,0.86)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,13,11,0.8)_0%,rgba(20,13,11,0.42)_42%,rgba(20,13,11,0.72)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,219,112,0.16),transparent_34%),radial-gradient(circle_at_78%_18%,rgba(163,0,17,0.3),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.18),transparent_32%)]" />
           <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:clamp(44px,6vw,72px)_clamp(44px,6vw,72px)]" />
         </div>
 
-        <div className="shell relative grid min-h-screen items-center gap-12 pt-24 pb-16 md:pt-32 md:pb-20 lg:grid-cols-[minmax(0,1.02fr)_minmax(380px,0.98fr)] lg:gap-10">
-          <div className="contents">
+        <div className="shell relative flex min-h-screen items-end pt-28 pb-14 md:pt-32 md:pb-20">
+          <div className="w-full">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className="relative z-10 max-w-3xl"
+            className="relative z-10 max-w-4xl pb-6 md:pb-10"
           >
             <span className="section-eyebrow text-secondary-fixed mb-6 block">—— 中国大陆专业商演舞狮服务</span>
-            <h1 className="display-title text-white">
+            <h1 className="font-headline text-[3.4rem] font-black leading-[0.92] tracking-[-0.05em] text-white md:text-[4.8rem] lg:text-[5.8rem]">
               赋能开业盛典
               <br />
               <span className="text-secondary-fixed">构筑非凡气场</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-xl leading-relaxed text-white/80 md:text-2xl">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/78 md:text-[1.35rem]">
               {brand.name} 致力为高标准的商业活动提供最具现场感染力的醒狮演艺。不仅是传统技艺的展示，更是品牌价值的深度传播，让每一个关键时刻都熠熠生辉。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -107,7 +107,7 @@ export default function HomePage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="relative hidden lg:block"
+            className="hidden"
           >
             <div className="relative isolate max-w-[32rem] overflow-hidden rounded-[2.75rem] border border-white/12 bg-black/28 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.34)] backdrop-blur-xl">
               <Image
@@ -135,21 +135,23 @@ export default function HomePage() {
                   Audience Pull
                 </div>
               </div>
-              <div className="relative z-10 mt-48">
+              <div className="relative z-10 mt-48 rounded-[2rem] border border-white/10 bg-black/28 p-6 backdrop-blur-xl">
               <p className="section-eyebrow">高效执行标准</p>
-              <div className="space-y-6">
+              <div className="mt-5 space-y-4">
                 {workflowSteps.slice(0, 3).map((step, index) => (
-                  <div key={step.title} className="flex gap-4">
-                    <div className="font-headline text-2xl font-black text-primary/30">0{index + 1}</div>
+                  <div key={step.title} className="grid grid-cols-[auto_1fr] gap-4 border-b border-white/8 pb-4 last:border-b-0 last:pb-0">
+                    <div className="font-headline text-2xl font-black text-secondary-fixed/88">0{index + 1}</div>
                     <div>
-                      <h2 className="font-headline text-lg font-black text-on-surface">{step.title}</h2>
-                      <p className="mt-1 text-sm leading-relaxed text-on-surface-variant line-clamp-2">{step.text}</p>
+                      <h2 className="font-headline text-lg font-black text-white">{step.title}</h2>
+                      <p className="mt-1 text-sm leading-relaxed text-white/68 line-clamp-2">{step.text}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
           </motion.div>
+          </div>
         </div>
       </header>
 
