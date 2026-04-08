@@ -1,0 +1,70 @@
+# dependencies
+/node_modules
+/.pnpm-store
+
+# next.js
+/.next/
+/out/
+
+# assets
+/assets/
+
+# production
+/build
+/dist
+
+# testing
+/coverage
+/.playwright-mcp/
+/test-results/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+.env
+.env.development
+.env.test
+.env.production
+
+# Keep .env.example
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+# next-env.d.ts # usually kept in git but can be ignored if preferred, Next.js regenerates it
+
+# IDEs and editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+
+# Logs
+logs
+*.log
+
+# Caches
+.turbo
+.cache
+.npm

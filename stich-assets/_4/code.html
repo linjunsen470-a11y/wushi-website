@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#735c00",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#fbf3e4",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#ffc8c2",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "surface": "#fff8ef",
+                    "on-surface-variant": "#5a403e",
+                    "primary-fixed-dim": "#ffb4ac",
+                    "surface-dim": "#e1d9cb",
+                    "on-surface": "#1e1b13",
+                    "outline-variant": "#e2beba",
+                    "on-background": "#1e1b13",
+                    "background": "#fff8ef",
+                    "inverse-surface": "#343026",
+                    "on-tertiary-container": "#d7d5d4",
+                    "surface-container": "#f5edde",
+                    "secondary-container": "#fed65b",
+                    "surface-container-highest": "#e9e2d3",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#ffb4ac",
+                    "surface-tint": "#b52424",
+                    "outline": "#8e706d",
+                    "surface-container-high": "#efe7d9",
+                    "on-secondary-fixed": "#241a00",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "tertiary-container": "#5d5c5c",
+                    "on-primary-fixed-variant": "#92030f",
+                    "tertiary-fixed": "#e5e2e1",
+                    "primary": "#8f000d",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdad6",
+                    "primary-container": "#b22222",
+                    "inverse-on-surface": "#f8f0e1",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-variant": "#e9e2d3",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#ffe088",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#fff8ef",
+                    "on-primary-fixed": "#410003",
+                    "on-secondary-container": "#745c00",
+                    "tertiary": "#454544"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ink-silk-gradient {
+        background: radial-gradient(circle at center, #8f000d 0%, #b22222 100%);
+      }
+      .calligraphy-bg {
+        font-family: serif;
+        opacity: 0.03;
+        pointer-events: none;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#FDF5E6]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 max-w-full">
+<div class="text-2xl font-black tracking-tighter text-[#8f000d] font-headline uppercase">
+            The Kinetic Pulse
+        </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-stone-600 font-medium pb-1 hover:text-[#8f000d] transition-colors duration-300" href="#">Performance</a>
+<a class="text-stone-600 font-medium pb-1 hover:text-[#8f000d] transition-colors duration-300" href="#">Workshops</a>
+<a class="text-[#8f000d] border-b-2 border-[#735c00] pb-1 font-headline uppercase tracking-tight" href="#">Workflow</a>
+<a class="text-stone-600 font-medium pb-1 hover:text-[#8f000d] transition-colors duration-300" href="#">About</a>
+<a class="text-stone-600 font-medium pb-1 hover:text-[#8f000d] transition-colors duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 font-headline uppercase text-sm tracking-widest scale-100 hover:scale-105 transition-transform duration-200">
+            Book Now
+        </button>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[614px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-tertiary-container">
+<img alt="Cinematic close-up of a traditional red and gold lion dance head with intricate silk details and expressive eyes" class="w-full h-full object-cover opacity-60" data-alt="cinematic close-up of a traditional red and gold lion dance head with intricate silk details and expressive eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApwuCExw4urj6WfvlVxPXxwD6wDkofj07HOqU3mnNvVtTHdEgDQsqW45g48SvijI1Zljtr_oLYWt6ET8ANV5ve5HKX_Om5jhdJbbeFCpHV4JuA6yqJU7F9iUt6ehULLUSGYGP54VPN0B_YOXPsZN4YyV5Hc0iBnpLxgAVhFfDi8hIvtcCJKQa1etekOQvnr2SArk6Kokb5dz65Tn5xt2Ix9SkguNM-OoKQFG-2sRxeXPt2cUKresGCXKLpzQEB1jwft0ydG5H6fNE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-6 max-w-5xl">
+<span class="font-headline uppercase tracking-[0.4em] text-secondary mb-4 block text-sm">Systematic Artistry</span>
+<h1 class="font-headline text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6">
+                    Standardized Excellence.<br/>
+<span class="text-primary italic">Transparent Process.</span>
+</h1>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg md:text-xl font-light">
+                    Every performance is an engineered masterpiece of tradition and logistical precision.
+                </p>
+</div>
+<!-- Calligraphy Watermark -->
+<div class="absolute right-[-5%] top-[10%] calligraphy-bg text-[20rem] font-serif select-none rotate-12">
+                龍
+            </div>
+</section>
+<!-- Step-by-Step Collaboration Flow -->
+<section class="py-24 px-8 bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-outline-variant/20 pb-8">
+<div class="max-w-2xl">
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-4">Collaboration Flow</h2>
+<p class="text-on-surface-variant">A seamless transition from initial inquiry to the final pulse of the drum.</p>
+</div>
+<div class="hidden md:block font-headline text-stone-300 text-6xl font-black italic">01—06</div>
+</div>
+<!-- Horizontal Flow for Web / Vertical for Mobile -->
+<div class="grid grid-cols-1 md:grid-cols-6 gap-8 relative">
+<!-- Inquiry -->
+<div class="group">
+<div class="mb-6 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="edit_note">edit_note</span>
+<h3 class="font-headline text-xl font-extrabold uppercase tracking-tight mb-2">Inquiry</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Submit your event details via our digital portal for immediate logistical screening.</p>
+</div>
+<div class="h-1 bg-surface-container-highest w-full group-hover:bg-primary transition-colors duration-500"></div>
+</div>
+<!-- Consultation -->
+<div class="group">
+<div class="mb-6 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="forum">forum</span>
+<h3 class="font-headline text-xl font-extrabold uppercase tracking-tight mb-2">Consultation</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Creative strategy session to align performance themes with your brand identity.</p>
+</div>
+<div class="h-1 bg-surface-container-highest w-full group-hover:bg-primary transition-colors duration-500"></div>
+</div>
+<!-- Contract -->
+<div class="group">
+<div class="mb-6 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="gavel">gavel</span>
+<h3 class="font-headline text-xl font-extrabold uppercase tracking-tight mb-2">Contract</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Securing dates with transparent SLA agreements and comprehensive insurance coverage.</p>
+</div>
+<div class="h-1 bg-surface-container-highest w-full group-hover:bg-primary transition-colors duration-500"></div>
+</div>
+<!-- Rehearsal -->
+<div class="group">
+<div class="mb-6 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="rebase">rebase</span>
+<h3 class="font-headline text-xl font-extrabold uppercase tracking-tight mb-2">Rehearsal</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Rigorous technical walkthroughs and spatial choreography tailored to your venue.</p>
+</div>
+<div class="h-1 bg-surface-container-highest w-full group-hover:bg-primary transition-colors duration-500"></div>
+</div>
+<!-- Performance -->
+<div class="group">
+<div class="mb-6 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="bolt">bolt</span>
+<h3 class="font-headline text-xl font-extrabold uppercase tracking-tight mb-2">Performance</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">The peak event: High-energy execution managed by our on-site technical leads.</p>
+</div>
+<div class="h-1 bg-surface-container-highest w-full group-hover:bg-primary transition-colors duration-500"></div>
+</div>
+<!-- Follow-up -->
+<div class="group">
+<div class="mb-6 overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="reviews">reviews</span>
+<h3 class="font-headline text-xl font-extrabold uppercase tracking-tight mb-2">Follow-up</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Post-event review and delivery of professional media assets if requested.</p>
+</div>
+<div class="h-1 bg-surface-container-highest w-full group-hover:bg-primary transition-colors duration-500"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Safety & Compliance Bento Grid -->
+<section class="py-24 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-12 lg:col-span-4 bg-primary p-12 text-on-primary flex flex-col justify-between">
+<div>
+<h2 class="font-headline text-4xl font-black uppercase leading-none mb-6">Safety is Not Negotiable.</h2>
+<p class="font-light opacity-80">Our performers are professional athletes trained in high-stakes spatial awareness.</p>
+</div>
+<div class="mt-12">
+<span class="material-symbols-outlined text-6xl opacity-20" data-icon="shield_with_heart">shield_with_heart</span>
+</div>
+</div>
+<div class="md:col-span-6 lg:col-span-4 bg-surface-container-lowest p-8 flex flex-col justify-between">
+<div class="mb-8">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4" data-icon="assured_workload">assured_workload</span>
+<h3 class="font-headline text-xl font-bold mb-3">Comprehensive Insurance</h3>
+<p class="text-on-surface-variant text-sm">Full public liability insurance covering performers, guests, and property up to $10M.</p>
+</div>
+<img alt="Professional document with a fountain pen symbolizing formal contracts and safety compliance" class="w-full h-32 object-cover" data-alt="professional document with a fountain pen symbolizing formal contracts and safety compliance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEHZFHMX7EcLVE9Lt2sF3tz7RoEQ8ed0or0I3McNDcxD0nEzrummubQel7M_h2ifnDq4Uw3BfnnsMafynvlbpsPwUR3TkgZ4j7qscN6lxVHR5liqXZEAsGIA_qZM9YM7B5OFEUlQkhNzTp28utd_BJK3nZrZ8abeO5KEQhhxtkNq3V6L770xd570jM1kfmni0vsLF_yM6bSDd4wCJ1At2Bodea-DyzMQkSvz-iiUa8lyO3hUwP_ixwaTB0CvneA3pMpkL2XK7vR3s"/>
+</div>
+<div class="md:col-span-6 lg:col-span-4 bg-surface-container-lowest p-8">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4" data-icon="construction">construction</span>
+<h3 class="font-headline text-xl font-bold mb-3">Equipment Maintenance</h3>
+<p class="text-on-surface-variant text-sm mb-6">Weekly stress tests on poles (Jongs), costumes, and pyrotechnics to ensure structural integrity during stunts.</p>
+<div class="flex gap-2">
+<div class="h-1 bg-secondary flex-1"></div>
+<div class="h-1 bg-secondary flex-1"></div>
+<div class="h-1 bg-secondary/20 flex-1"></div>
+</div>
+</div>
+<div class="md:col-span-12 lg:col-span-8 bg-surface-container-highest p-8 md:p-12">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<h3 class="font-headline text-2xl font-bold mb-4">Public Safety Protocols</h3>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span>Perimeter management for crowd safety during high-pole performances.</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span>Fire-retardant treated costumes and props for indoor settings.</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span>Emergency first-aid trained leads on-site for every booking.</span>
+</li>
+</ul>
+</div>
+<div class="relative overflow-hidden group">
+<img alt="High-intensity lion dance performance on vertical poles showing balance and athleticism" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="high-intensity lion dance performance on vertical poles showing balance and athleticism" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChh44qQVCm0OjqdiDkvI8ssAqCyl6cdhZT12v60FJjHnS7zLI-LiuyRurTHH1H8XVJXvihcJF_gfq8rhVvUwVYfe7YzGm5z_br5yDfF2KZFqXnbLy0yL24eAEOZYa6hixqSdoxvrXDWzwSd3-jO_Q7X_r_RnqeykTWUjtekQ5Cxqag977PgUOwejUONLFFVUG4QWHtsUY2i4YqNveh-LxHC0e2GIUc7Ksq9VqRm82Q9JSa1V7_gEO37EpQZ3sj_N5oNB80plAeXWM"/>
+</div>
+</div>
+</div>
+<div class="md:col-span-12 lg:col-span-4 bg-[#1e1b13] p-12 text-on-tertiary-container relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline text-2xl font-bold mb-4 text-white">Global Accreditation</h3>
+<p class="text-sm opacity-60 leading-relaxed">Member of the International Dragon &amp; Lion Dance Federation. Certified by local safety authorities.</p>
+</div>
+<div class="absolute bottom-[-20%] right-[-10%] opacity-10">
+<span class="material-symbols-outlined text-[15rem]" data-icon="verified">verified</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 px-8 bg-surface">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl md:text-5xl font-black mb-6">Clarifying the Pulse.</h2>
+<p class="text-on-surface-variant">Frequently asked questions about our logistics and performance standards.</p>
+</div>
+<div class="space-y-6">
+<!-- Pricing Factors -->
+<details class="group bg-surface-container-low border-b border-transparent open:bg-surface-container" open="">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<h3 class="font-headline text-xl font-bold">What factors influence the performance pricing?</h3>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-6 pb-8 pt-2">
+<p class="text-on-surface-variant leading-relaxed mb-4">Pricing is calculated based on four core technical pillars:</p>
+<div class="grid md:grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-lowest">
+<p class="font-bold text-xs uppercase tracking-widest text-secondary mb-1">Scale</p>
+<p class="text-sm">Number of lions and musicians required.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest">
+<p class="font-bold text-xs uppercase tracking-widest text-secondary mb-1">Complexity</p>
+<p class="text-sm">Difficulty of stunts (Jong/High-Pole) and duration.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest">
+<p class="font-bold text-xs uppercase tracking-widest text-secondary mb-1">Geography</p>
+<p class="text-sm">Travel logistics and site accessibility.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest">
+<p class="font-bold text-xs uppercase tracking-widest text-secondary mb-1">Customization</p>
+<p class="text-sm">LED integration, specific colors, or logo props.</p>
+</div>
+</div>
+</div>
+</details>
+<!-- Booking Timeframe -->
+<details class="group bg-surface-container-low border-b border-transparent open:bg-surface-container">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<h3 class="font-headline text-xl font-bold">What is the recommended booking timeframe?</h3>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-6 pb-8 pt-2">
+<p class="text-on-surface-variant leading-relaxed">For major corporate events and weddings, we recommend booking <strong class="text-primary">3-6 months in advance</strong>. For Lunar New Year festivities, availability often reaches capacity 8-10 months prior. Last-minute inquiries are subject to artist availability.</p>
+</div>
+</details>
+<!-- Customization Options -->
+<details class="group bg-surface-container-low border-b border-transparent open:bg-surface-container">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<h3 class="font-headline text-xl font-bold">How can we customize the performance?</h3>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-6 pb-8 pt-2">
+<p class="text-on-surface-variant leading-relaxed mb-4">We bridge tradition with modern branding through several avenues:</p>
+<ul class="space-y-2 text-sm">
+<li class="flex items-center gap-2 italic text-secondary">• LED Lion Costumes for nighttime or club environments.</li>
+<li class="flex items-center gap-2 italic text-secondary">• Custom-printed banners or "Cheng" items featuring your corporate logo.</li>
+<li class="flex items-center gap-2 italic text-secondary">• Music sets blended with contemporary tracks for a hybrid experience.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-8">
+<div class="max-w-7xl mx-auto relative ink-silk-gradient p-12 md:p-24 overflow-hidden">
+<div class="relative z-10 flex flex-col items-center text-center">
+<h2 class="font-headline text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">
+                        Ignite Your Next Event.
+                    </h2>
+<p class="text-on-primary-container max-w-xl mb-12 text-lg">
+                        Ready to integrate the pulse of tradition into your modern space? Let's engineer a performance that transcends expectations.
+                    </p>
+<button class="bg-secondary text-white px-12 py-5 font-headline uppercase text-lg tracking-widest hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-300 scale-100 hover:scale-105">
+                        Get Your Personalized Quote
+                    </button>
+</div>
+<!-- Background Texture -->
+<div class="absolute inset-0 opacity-10 pointer-events-none flex items-center justify-center">
+<span class="material-symbols-outlined text-[30rem]" data-icon="pulse">pulse_alert</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-stone-100 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 font-['Manrope'] text-sm tracking-wide">
+<div class="text-lg font-black text-[#8f000d]">
+            The Kinetic Pulse
+        </div>
+<div class="text-stone-500 text-center md:text-left">
+            © 2024 The Kinetic Pulse Lion Dance. All Rights Reserved.
+        </div>
+<div class="flex space-x-6">
+<a class="text-stone-500 hover:text-[#8f000d] transition-all" href="#">Privacy Policy</a>
+<a class="text-stone-500 hover:text-[#8f000d] transition-all" href="#">Terms of Service</a>
+<a class="text-stone-500 hover:text-[#8f000d] transition-all" href="#">FAQ</a>
+<a class="text-stone-500 hover:text-[#8f000d] transition-all" href="#">Gallery</a>
+</div>
+</footer>
+</body></html>
