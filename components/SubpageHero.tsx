@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Image, { type StaticImageData } from 'next/image';
 import { cn } from '@/lib/utils';
 
 type SubpageHeroProps = {
@@ -7,8 +8,9 @@ type SubpageHeroProps = {
   description: ReactNode;
   chips?: string[];
   actions?: ReactNode;
-  panel: ReactNode;
-  variant?: 'light' | 'dark' | 'media';
+  panel?: ReactNode;
+  variant?: 'light' | 'dark' | 'media' | 'full';
+  bgImage?: StaticImageData | string;
 };
 
 export default function SubpageHero({
@@ -19,17 +21,26 @@ export default function SubpageHero({
   actions,
   panel,
   variant = 'light',
+  bgImage,
 }: SubpageHeroProps) {
-  const isDark = variant === 'dark';
+  const isDark = variant === 'dark' || variant === 'full';
+  const isFull = variant === 'full';
   const isMedia = variant === 'media';
 
   return (
     <header
       className={cn(
         'relative overflow-hidden',
-        isDark ? 'bg-[#17120f] text-white' : 'bg-surface text-on-surface'
+        isFull ? 'bg-black text-white' : isDark ? 'bg-[#17120f] text-white' : 'bg-surface text-on-surface'
       )}
     >
+      {isFull && bgImage && (
+        <div className="absolute inset-0 z-0">
+          <Image src={bgImage} alt="" fill priority className="object-cover" />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        </div>
+      )}
       <div
         className={cn(
           'absolute inset-0',
@@ -48,20 +59,25 @@ export default function SubpageHero({
         )}
       />
 
-      <div className="shell relative grid min-h-[clamp(34rem,72vh,46rem)] gap-10 py-16 md:py-20 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:items-end lg:gap-14">
+      <div
+        className={cn(
+          'shell relative grid min-h-[clamp(36rem,74vh,48rem)] gap-10 py-20 md:py-24 lg:items-end lg:gap-16 lg:py-24',
+          isFull ? 'lg:grid-cols-1' : 'lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]'
+        )}
+      >
         <div className="max-w-4xl">
           <span className={cn('page-eyebrow', isDark ? 'text-secondary-fixed' : 'text-secondary')}>
             {eyebrow}
           </span>
-          <h1 className={cn('page-hero-title mt-4', isDark ? 'text-white' : 'text-primary')}>
+          <h1 className={cn('page-hero-title mt-5 md:mt-6', isDark ? 'text-white' : 'text-primary')}>
             {title}
           </h1>
-          <p className={cn('page-lead mt-7', isDark ? 'text-white/78' : 'text-on-surface-variant')}>
+          <p className={cn('page-lead mt-7 md:mt-8', isDark ? 'text-white/78' : 'text-on-surface-variant')}>
             {description}
           </p>
 
           {chips.length > 0 ? (
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3 md:mt-9 md:gap-3.5">
               {chips.map((chip) => (
                 <span
                   key={chip}
@@ -80,19 +96,21 @@ export default function SubpageHero({
             </div>
           ) : null}
 
-          {actions ? <div className="mt-9 flex flex-wrap gap-4">{actions}</div> : null}
+          {actions ? <div className="mt-10 flex flex-wrap gap-4 md:mt-11">{actions}</div> : null}
         </div>
-
-        <div
-          className={cn(
-            'hero-panel',
-            isDark
-              ? 'border-white/10 bg-white/6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.28)]'
-              : 'border-[#eadcca] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,241,230,0.96))] text-on-surface shadow-[0_24px_70px_rgba(30,27,19,0.12)]'
-          )}
-        >
-          {panel}
-        </div>
+        
+        {!isFull && panel && (
+          <div
+            className={cn(
+              'hero-panel',
+              isDark
+                ? 'border-white/10 bg-white/6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.28)]'
+                : 'border-[#eadcca] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,241,230,0.96))] text-on-surface shadow-[0_24px_70px_rgba(30,27,19,0.12)]'
+            )}
+          >
+            {panel}
+          </div>
+        )}
       </div>
     </header>
   );

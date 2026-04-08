@@ -31,7 +31,9 @@
   }
 
   body {
-    @apply bg-surface text-on-surface font-body antialiased;
+    @apply bg-surface font-body text-[16px] leading-[1.7] text-on-surface antialiased;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
   }
 
   a,
@@ -55,43 +57,78 @@
   }
 
   .section-eyebrow {
-    @apply mb-4 inline-block font-headline text-xs font-bold uppercase tracking-[0.32em] text-secondary;
+    @apply mb-4 inline-block font-headline text-[0.72rem] font-extrabold tracking-[0.22em] text-secondary;
   }
 
   .page-eyebrow {
-    @apply inline-flex items-center rounded-full border border-current/10 px-4 py-2 font-headline text-[0.72rem] font-black tracking-[0.18em];
+    @apply inline-flex items-center rounded-full border border-current/10 px-4 py-2 font-headline text-[0.72rem] font-extrabold tracking-[0.14em] leading-none;
   }
 
   .display-title {
-    @apply font-headline text-5xl font-black uppercase tracking-[-0.03em] md:text-7xl lg:text-9xl leading-[0.94]!;
+    @apply font-headline text-5xl font-black tracking-[-0.035em] leading-[0.96]! md:text-7xl lg:text-9xl;
   }
 
   .page-hero-title {
     font-family: var(--font-headline), ui-sans-serif, system-ui;
-    font-size: clamp(3rem, 5.5vw, 5.9rem);
+    font-size: clamp(2.85rem, 5.2vw, 5.35rem);
     font-weight: 900;
-    line-height: 1.06;
-    letter-spacing: -0.022em;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    @apply max-w-[46rem];
   }
 
   .section-title {
-    @apply font-headline text-3xl font-black uppercase tracking-[-0.025em] leading-[1.08] md:text-6xl;
+    font-family: var(--font-headline), ui-sans-serif, system-ui;
+    font-size: clamp(2.05rem, 4vw, 3.95rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    @apply max-w-[42rem];
   }
 
   .page-section-title {
     font-family: var(--font-headline), ui-sans-serif, system-ui;
-    font-size: clamp(2.3rem, 4vw, 4.5rem);
+    font-size: clamp(2rem, 3.4vw, 3.6rem);
     font-weight: 900;
-    line-height: 1.06;
-    letter-spacing: -0.03em;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    @apply max-w-[42rem];
   }
 
   .page-lead {
-    @apply max-w-2xl text-[1.02rem] leading-8 md:text-[1.15rem];
+    @apply max-w-[42rem] text-[1.02rem] leading-[1.85] md:text-[1.12rem];
+  }
+
+  .body-copy {
+    @apply max-w-[42rem] text-[0.98rem] leading-[1.8] md:text-[1.04rem];
+  }
+
+  .nav-link {
+    @apply border-b-2 pb-1.5 font-headline text-[0.84rem] font-bold tracking-[0.14em] leading-none;
+  }
+
+  .mobile-nav-link {
+    @apply rounded-[1.35rem] border px-5 py-4 font-headline text-[1.02rem] font-extrabold tracking-[0.06em] leading-none;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-primary px-6 py-3.5 font-headline text-[0.82rem] font-extrabold tracking-[0.14em] leading-none text-white;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border px-6 py-3.5 font-headline text-[0.82rem] font-extrabold tracking-[0.14em] leading-none;
+  }
+
+  .field-label {
+    @apply font-headline text-[0.72rem] font-extrabold tracking-[0.14em] text-secondary;
+  }
+
+  .field-control {
+    @apply mt-3 w-full border-0 border-b border-outline-variant/40 bg-transparent px-0 py-3 text-[1rem] leading-7 text-on-surface focus:border-secondary focus:outline-none md:text-[1.06rem];
   }
 
   .editorial-card {
-    @apply rounded-[2rem] bg-white/95 p-10 shadow-[0_32px_80px_rgba(30,27,19,0.08)] backdrop-blur-xl border border-white/20;
+    @apply rounded-[2rem] border border-white/20 bg-white/95 px-6 py-7 shadow-[0_32px_80px_rgba(30,27,19,0.08)] backdrop-blur-xl md:px-8 md:py-9 lg:p-10;
   }
 
   .glass-panel {
@@ -115,14 +152,38 @@
   }
 
   .hero-chip {
-    @apply rounded-full border px-4 py-2 font-headline text-xs font-black tracking-[0.12em];
+    @apply rounded-full border px-4 py-2 font-headline text-[0.76rem] font-bold tracking-[0.08em] leading-none;
   }
 
   .hero-panel {
-    @apply rounded-[2rem] border p-6 md:p-7;
+    @apply rounded-[2rem] border p-6 md:p-7 lg:p-8;
   }
 
   .hero-stat {
-    @apply rounded-[1.4rem] border border-current/10 px-5 py-4;
+    @apply rounded-[1.4rem] border border-current/10 px-5 py-4 md:px-6 md:py-5;
+  }
+
+  .section-space {
+    @apply py-20 md:py-24 lg:py-28;
+  }
+
+  .section-space-lg {
+    @apply py-24 md:py-32 lg:py-36;
+  }
+
+  .section-stack {
+    @apply space-y-4 md:space-y-5;
+  }
+
+  .section-intro {
+    @apply mb-12 md:mb-14 lg:mb-16;
+  }
+
+  .content-stack {
+    @apply space-y-6 md:space-y-8;
+  }
+
+  .card-grid-gap {
+    @apply gap-6 md:gap-8 lg:gap-10;
   }
 }

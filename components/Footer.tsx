@@ -1,4 +1,4 @@
-﻿import Image from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { brand, contactPanel, footerLinks } from '@/lib/site-data';
 
@@ -15,7 +15,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="max-w-md text-base leading-7 text-white/68">
-            以真实演出经验服务开业庆典、商演活动、婚礼宴会、节庆项目与城市活动，让舞狮从现场节目升级为可成交、可传播、可复用的商业内容。
+            服务开业庆典、商演活动、婚礼宴会、节庆项目与城市活动，用真实现场效果和真实案例，帮助您更安心地做出选择。
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="shell flex flex-col gap-3 py-5 text-sm text-white/40 md:flex-row md:items-center md:justify-between">
           <p>© 2026 {brand.name}. All rights reserved.</p>
-          <p>面向中国大陆地区的舞狮商业演出与活动服务网站。</p>
+          <p>中国大陆地区舞狮商业演出与活动服务网站。</p>
         </div>
       </div>
     </footer>

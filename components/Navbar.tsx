@@ -62,7 +62,7 @@ export default function Navbar() {
           <Link
             href="/"
             className={cn(
-              'border-b-2 pb-1 font-headline text-sm font-bold tracking-[0.18em]',
+              'nav-link',
               isActive('/')
                 ? 'border-secondary text-primary'
                 : 'border-transparent text-on-surface-variant hover:text-primary'
@@ -75,7 +75,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                'border-b-2 pb-1 font-headline text-sm font-bold tracking-[0.18em]',
+                'nav-link',
                 isActive(link.href)
                   ? 'border-secondary text-primary'
                   : 'border-transparent text-on-surface-variant hover:text-primary'
@@ -86,7 +86,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            className="rounded-md bg-primary px-5 py-3 font-headline text-xs font-black tracking-[0.22em] text-white hover:scale-[1.02] hover:bg-primary-container"
+            className="button-primary rounded-md px-5 py-3 hover:scale-[1.02] hover:bg-primary-container"
           >
             联系我们
           </Link>
@@ -119,7 +119,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={closeMenu}
                     className={cn(
-                      'rounded-[1.35rem] border px-5 py-4 font-headline text-[1.15rem] font-black tracking-[0.08em]',
+                      'mobile-nav-link',
                       isActive(link.href)
                         ? 'border-primary bg-primary text-white shadow-[0_16px_32px_rgba(163,0,17,0.2)]'
                         : 'border-[#e7d9c6] bg-white/72 text-on-surface hover:border-primary/35 hover:bg-white'
@@ -135,7 +135,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={closeMenu}
-                  className="mt-3 inline-flex rounded-full bg-white px-4 py-2 font-headline text-sm font-black tracking-[0.12em] text-[#221c16]"
+                  className="button-secondary mt-3 border-white bg-white px-4 py-2 text-[0.8rem] text-[#221c16]"
                 >
                   立即咨询
                 </Link>

@@ -8,28 +8,30 @@ export default function SolutionsPage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-
       <SubpageHero
         eyebrow="场景方案"
         title={
           <>
-            按活动场景
+            不同活动场景，
             <br />
-            而不是按节目名词来卖
+            适合不同演出方式
           </>
         }
-        description="这页是专门给甲方看的。客户通常不会先问“你们有几种舞狮”，而会先问“我的商场开业、婚礼宴会、品牌活动，到底适不适合做、该怎么做”。"
-        chips={['商场开业', '品牌活动', '婚礼宴会', '节庆事件']}
+        description={
+          <>
+            如果您已经知道活动类型，但还不确定该怎么安排舞狮，
+            <br className="hidden md:block" />
+            这一页可以帮您更快找到合适方向。
+          </>
+        }
+        chips={['商场开业', '品牌活动', '婚礼宴会', '节庆活动']}
         panel={
           <div className="space-y-4">
             <div>
-              <p className="page-eyebrow text-secondary">四类核心场景</p>
+              <p className="page-eyebrow text-secondary">四类常见场景</p>
               <div className="mt-4 grid gap-3">
                 {solutionPlaybooks.map((playbook, index) => (
-                  <div
-                    key={playbook.title}
-                    className="rounded-[1.3rem] border border-[#e4d5c1] bg-white/70 px-5 py-4"
-                  >
+                  <div key={playbook.title} className="rounded-[1.3rem] border border-[#e4d5c1] bg-white/70 px-5 py-4">
                     <div className="flex items-start justify-between gap-4">
                       <p className="font-headline text-lg font-black text-on-surface">{playbook.title}</p>
                       <span className="font-headline text-sm font-black text-primary/35">0{index + 1}</span>
@@ -42,30 +44,24 @@ export default function SolutionsPage() {
           </div>
         }
       />
-
-      <section className="bg-surface-container-low py-24">
+      <section className="bg-surface-container-low section-space">
         <div className="shell space-y-16">
           {solutionPlaybooks.map((playbook, index) => (
             <article key={playbook.title} className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
-                  <Image
-                    src={playbook.image}
-                    alt={playbook.title}
-                    fill
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    className="object-cover"
-                  />
+                  <Image src={playbook.image} alt={playbook.title} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
                 </div>
               </div>
               <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                <span className="page-eyebrow text-secondary">Solution Playbook</span>
+                <span className="page-eyebrow text-secondary">Scene Guide</span>
                 <h2 className="page-section-title mt-4">{playbook.title}</h2>
-                <p className="mt-5 text-lg leading-8 text-on-surface-variant">{playbook.summary}</p>
-
+                <p className="body-copy mt-5 !text-lg !leading-[1.75] text-on-surface-variant">
+                  {playbook.summary}
+                </p>
                 <div className="mt-8 grid gap-6 md:grid-cols-2">
                   <div className="rounded-[1.5rem] bg-surface p-6">
-                    <h3 className="font-headline text-lg font-black text-on-surface">适合什么场景</h3>
+                    <h3 className="font-headline text-lg font-black text-on-surface">适合什么情况？</h3>
                     <ul className="mt-4 space-y-2 text-sm leading-6 text-on-surface-variant">
                       {playbook.fit.map((item) => (
                         <li key={item}>• {item}</li>
@@ -73,7 +69,7 @@ export default function SolutionsPage() {
                     </ul>
                   </div>
                   <div className="rounded-[1.5rem] bg-surface p-6">
-                    <h3 className="font-headline text-lg font-black text-on-surface">常见交付内容</h3>
+                    <h3 className="font-headline text-lg font-black text-on-surface">通常包含什么？</h3>
                     <ul className="mt-4 space-y-2 text-sm leading-6 text-on-surface-variant">
                       {playbook.deliverables.map((item) => (
                         <li key={item}>• {item}</li>
@@ -86,16 +82,16 @@ export default function SolutionsPage() {
           ))}
         </div>
       </section>
-
-      <section className="bg-surface py-24">
+      <section className="bg-surface section-space">
         <div className="shell text-center">
-          <span className="page-eyebrow text-secondary">为什么这页重要</span>
-          <h2 className="page-section-title mx-auto mt-4 max-w-4xl">
-            它让客户更快判断“这是不是适合我的活动”，比抽象服务介绍更容易转化。
+          <span className="page-eyebrow text-secondary">快速判断</span>
+          <h2 className="page-section-title mx-auto mt-4">
+            选对形式，比单纯“有舞狮”更重要。
+            <br />
+            适合的方案，才能真正让活动效果更好。
           </h2>
         </div>
       </section>
-
       <Footer />
     </main>
   );
