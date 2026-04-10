@@ -2,7 +2,7 @@
 
 @theme {
   --font-headline: var(--font-headline), ui-sans-serif, system-ui;
-  --font-body: var(--font-body), ui-sans-serif, system-ui;
+  --font-body: var(--font-chinese), var(--font-body-latin), system-ui, sans-serif;
 
   /* Premium Traditional Palette */
   --color-primary: #a30011; /* Slightly brighter, more vibrant red */
@@ -31,9 +31,10 @@
   }
 
   body {
-    @apply bg-surface font-body text-[16px] leading-[1.7] text-on-surface antialiased;
+    @apply bg-surface font-body text-[17px] leading-[1.85] text-on-surface antialiased;
     font-feature-settings: "liga" 1, "kern" 1;
     text-rendering: optimizeLegibility;
+    letter-spacing: 0.012em;
   }
 
   a,
@@ -96,11 +97,11 @@
   }
 
   .page-lead {
-    @apply max-w-[42rem] text-[1.02rem] leading-[1.85] md:text-[1.12rem];
+    @apply max-w-[46rem] text-[1.1rem] leading-[1.95] tracking-[0.015em] md:text-[1.18rem];
   }
 
   .body-copy {
-    @apply max-w-[42rem] text-[0.98rem] leading-[1.8] md:text-[1.04rem];
+    @apply max-w-[44rem] text-[1rem] leading-[1.88] tracking-[0.012em] md:text-[1.08rem];
   }
 
   .nav-link {
@@ -144,11 +145,11 @@
   }
 
   .ghost-border {
-    border: 1px solid color-mix(in srgb, var(--color-outline-variant) 35%, transparent);
+    border: 1px solid rgba(216, 184, 181, 0.35);
   }
 
   .watermark {
-    @apply pointer-events-none select-none font-headline text-[7rem] font-black uppercase leading-none text-primary/[0.04] md:text-[14rem];
+    @apply pointer-events-none select-none font-headline text-[7rem] font-black uppercase leading-none text-primary/[0.03] md:text-[14rem];
   }
 
   .hero-chip {
@@ -172,15 +173,15 @@
   }
 
   .section-stack {
-    @apply space-y-4 md:space-y-5;
+    @apply space-y-6 md:space-y-8;
   }
 
   .section-intro {
-    @apply mb-12 md:mb-14 lg:mb-16;
+    @apply mb-14 md:mb-16 lg:mb-20;
   }
 
   .content-stack {
-    @apply space-y-6 md:space-y-8;
+    @apply space-y-8 md:space-y-10;
   }
 
   .card-grid-gap {

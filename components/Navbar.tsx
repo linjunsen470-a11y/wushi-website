@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -36,6 +36,8 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
+  const ariaLabel = isOpen ? '关闭菜单' : '打开菜单';
+
   return (
     <nav
       className={cn(
@@ -47,12 +49,12 @@ export default function Navbar() {
     >
       <div className="shell flex items-center justify-between gap-6 py-4">
         <Link href="/" className="flex items-center gap-3" onClick={closeMenu}>
-          <Image src={brand.logoRed} alt={brand.name} className="h-10 w-10 object-contain" priority />
+          <Image src={brand.logoRed} alt={brand.name} className="h-16 w-16 object-contain" priority />
           <div>
-            <div className="font-headline text-lg font-black uppercase tracking-tight text-primary md:text-xl">
+            <div className="font-headline text-xl font-black uppercase tracking-tight text-primary md:text-2xl">
               {brand.name}
             </div>
-            <div className="hidden text-[11px] tracking-[0.18em] text-on-surface-variant md:block">
+            <div className="hidden text-[12px] tracking-[0.18em] text-on-surface-variant md:block">
               {brand.tagline}
             </div>
           </div>
@@ -94,8 +96,8 @@ export default function Navbar() {
 
         <button
           type="button"
-          aria-label={isOpen ? '关闭菜单' : '打开菜单'}
           aria-expanded={isOpen}
+          aria-label={ariaLabel}
           className={cn(
             'rounded-full border p-2.5 shadow-[0_10px_30px_rgba(30,27,19,0.08)] md:hidden',
             isOpen
@@ -131,7 +133,7 @@ export default function Navbar() {
               </div>
 
               <div className="mt-4 rounded-[1.35rem] bg-[#221c16] px-5 py-4 text-white">
-                <p className="font-headline text-base font-black tracking-[0.08em]">舞狮堂 WUSHI</p>
+                <p className="font-headline text-base font-black tracking-[0.08em]">鑫龙堂舞狮</p>
                 <Link
                   href="/contact"
                   onClick={closeMenu}
