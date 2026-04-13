@@ -7,8 +7,9 @@
 /out/
 
 # assets
-# Track images but ignore large video files
+# Track images but ignore large video files and the archive
 /assets/videos/
+/assets/archive/
 *.mp4
 *.mov
 *.webm
