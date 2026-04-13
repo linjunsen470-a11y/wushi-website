@@ -7,8 +7,12 @@
 /out/
 
 # assets
-/assets/
-
+# Track images but ignore large video files
+/assets/videos/
+*.mp4
+*.mov
+*.webm
+*.avi
 # production
 /build
 /dist

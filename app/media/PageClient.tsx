@@ -16,7 +16,6 @@ const subtleFadeProps = {
 
 export default function MediaPage() {
   const featured = mediaVideos[0];
-  const restVideos = mediaVideos.slice(1);
 
   return (
     <main className="min-h-screen">
@@ -41,13 +40,13 @@ export default function MediaPage() {
         chips={['真实实录', '多场景覆盖', '现场气氛还原', featured.category]}
         panel={
           <div className="space-y-6">
-            <div className="overflow-hidden rounded-[2rem] bg-black shadow-2xl border border-white/10 ring-1 ring-white/5">
-              <iframe 
-                className="aspect-video w-full border-none" 
-                src={`//player.bilibili.com/player.html?bvid=${featured.bvid}&page=1&high_quality=1&danmaku=0`} 
-                scrolling="no" 
-                allowFullScreen 
+            <div className="overflow-hidden rounded-[2rem] bg-black shadow-2xl border border-white/10 ring-1 ring-white/5 relative group">
+              <img
+                src={featured.poster.src}
+                alt="实战影像"
+                className="aspect-video w-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {mediaHighlights.slice(0, 2).map((item) => (
@@ -61,42 +60,6 @@ export default function MediaPage() {
         }
       />
 
-      <section className="bg-surface-container-low py-32">
-        <div className="shell grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <motion.div 
-            {...subtleFadeProps}
-            className="overflow-hidden rounded-[3rem] bg-black premium-shadow border border-white/5"
-          >
-            <iframe 
-              className="aspect-video w-full border-none" 
-              src={`//player.bilibili.com/player.html?bvid=${featured.bvid}&page=1&high_quality=1&danmaku=0`} 
-              scrolling="no" 
-              allowFullScreen 
-            />
-          </motion.div>
-          <motion.div 
-            {...subtleFadeProps}
-            transition={{ delay: 0.2 }}
-            className="editorial-card !p-12"
-          >
-            <span className="section-eyebrow text-secondary">重点案例实录</span>
-            <h2 className="page-section-title mt-6 !text-4xl">{featured.title}</h2>
-            <div className="mt-4 flex items-center gap-3">
-              <span className="h-1 w-10 bg-primary" />
-              <p className="text-xs uppercase tracking-[0.25em] font-black text-secondary">{featured.category}</p>
-            </div>
-            <p className="body-copy mt-8 text-lg text-on-surface-variant font-medium leading-relaxed">{featured.description}</p>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2">
-              {mediaHighlights.map((item) => (
-                <div key={item.title} className="rounded-2xl bg-surface-container-low p-6 border border-outline-variant/20">
-                  <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-on-surface-variant font-medium">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       <section className="bg-surface py-32">
         <div className="shell">
@@ -104,9 +67,9 @@ export default function MediaPage() {
             <div className="max-w-2xl">
               <span className="section-eyebrow text-secondary">视频库</span>
               <h2 className="page-section-title mt-6">
-                不同场景下的真实演出录像，
+                真实演出录像
                 <br />
-                见证鑫龙堂的专业交付
+                见证专业交付
               </h2>
             </div>
             <div className="flex flex-wrap gap-3 text-[10px] font-black tracking-[0.15em] text-on-surface-variant uppercase">
@@ -116,19 +79,19 @@ export default function MediaPage() {
             </div>
           </motion.div>
           <div className="grid gap-12 lg:grid-cols-2">
-            {restVideos.map((video, idx) => (
-              <motion.article 
-                key={video.bvid} 
+            {mediaVideos.map((video, idx) => (
+              <motion.article
+                key={video.bvid}
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: idx * 0.1 }}
                 className="overflow-hidden rounded-[3rem] bg-surface-container-low premium-shadow group"
               >
                 <div className="overflow-hidden bg-black aspect-video relative">
-                  <iframe 
-                    className="w-full h-full border-none transition-transform duration-700 group-hover:scale-105" 
-                    src={`//player.bilibili.com/player.html?bvid=${video.bvid}&page=1&high_quality=1&danmaku=0`} 
-                    scrolling="no" 
-                    allowFullScreen 
+                  <iframe
+                    className="w-full h-full border-none transition-transform duration-700 group-hover:scale-105"
+                    src={`//player.bilibili.com/player.html?bvid=${video.bvid}&page=1&high_quality=1&danmaku=0&autoplay=0`}
+                    scrolling="no"
+                    allowFullScreen
                   />
                 </div>
                 <div className="p-10">
