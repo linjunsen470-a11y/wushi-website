@@ -42,12 +42,11 @@ export default function MediaPage() {
         panel={
           <div className="space-y-6">
             <div className="overflow-hidden rounded-[2rem] bg-black shadow-2xl border border-white/10 ring-1 ring-white/5">
-              <video 
-                controls 
-                preload="metadata" 
-                poster={featured.poster.src} 
-                className="aspect-video w-full object-cover" 
-                src={`/api/video?file=${encodeURIComponent(featured.fileName)}`} 
+              <iframe 
+                className="aspect-video w-full border-none" 
+                src={`//player.bilibili.com/player.html?bvid=${featured.bvid}&page=1&high_quality=1&danmaku=0`} 
+                scrolling="no" 
+                allowFullScreen 
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -68,12 +67,11 @@ export default function MediaPage() {
             {...subtleFadeProps}
             className="overflow-hidden rounded-[3rem] bg-black premium-shadow border border-white/5"
           >
-            <video 
-              controls 
-              preload="metadata" 
-              poster={featured.poster.src} 
-              className="aspect-video w-full object-cover" 
-              src={`/api/video?file=${encodeURIComponent(featured.fileName)}`} 
+            <iframe 
+              className="aspect-video w-full border-none" 
+              src={`//player.bilibili.com/player.html?bvid=${featured.bvid}&page=1&high_quality=1&danmaku=0`} 
+              scrolling="no" 
+              allowFullScreen 
             />
           </motion.div>
           <motion.div 
@@ -120,18 +118,17 @@ export default function MediaPage() {
           <div className="grid gap-12 lg:grid-cols-2">
             {restVideos.map((video, idx) => (
               <motion.article 
-                key={video.fileName} 
+                key={video.bvid} 
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: idx * 0.1 }}
                 className="overflow-hidden rounded-[3rem] bg-surface-container-low premium-shadow group"
               >
                 <div className="overflow-hidden bg-black aspect-video relative">
-                  <video 
-                    controls 
-                    preload="metadata" 
-                    poster={video.poster.src} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                    src={`/api/video?file=${encodeURIComponent(video.fileName)}`} 
+                  <iframe 
+                    className="w-full h-full border-none transition-transform duration-700 group-hover:scale-105" 
+                    src={`//player.bilibili.com/player.html?bvid=${video.bvid}&page=1&high_quality=1&danmaku=0`} 
+                    scrolling="no" 
+                    allowFullScreen 
                   />
                 </div>
                 <div className="p-10">

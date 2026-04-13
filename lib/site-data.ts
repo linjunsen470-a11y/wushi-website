@@ -320,46 +320,32 @@ export const mixedGallery = [
 
 export const mediaVideos = [
   {
-    title: '平安银行开业红毯',
+    title: '来毕棚沟看非遗演出咯！',
+    category: '户外实景',
+    bvid: 'BV1KYQcB3EJx',
+    poster: snowShow,
+    description: '毕棚沟非遗实景演出实录，展现复杂气候环境下的稳定高质量表演标准与控场能力。',
+  },
+  {
+    title: '百团大战，一鼓作气！',
+    category: '大型演艺',
+    bvid: 'BV1J4QwBPENM',
+    poster: teamFormation,
+    description: '大编制团队震撼开场，鼓点统一规整，体现专业队伍的凝聚力与气场表现力。',
+  },
+  {
+    title: '这样的开业现场，不爱都难！',
     category: '开业庆典',
-    fileName: 'lion-dance-bank-opening-red-carpet.mp4',
+    bvid: 'BV1ABDLB3Ej7',
     poster: redCarpet,
-    description: '直观展示开场步法、红毯动线及迎宾礼仪。',
+    description: '生动的互动环节与现场气氛带动，配合商户开业流程，聚拢现场极高的人气与氛围。',
   },
   {
-    title: '尼依格罗宴会舞台',
-    category: '宴会舞台',
-    fileName: 'lion-dance-banquet-fire-stage-closeup.mp4',
-    poster: weddingBanquet,
-    description: '适合感受舞台表现、环节配合及灯光氛围。',
-  },
-  {
-    title: '海尔年会高桩节目',
-    category: '品牌发布',
-    fileName: 'lion-dance-haier-launch-jong-stage.mp4',
-    poster: redHighJong,
-    description: '展示顶尖高桩功底及大型活动控场能力。',
-  },
-  {
-    title: '三峡博物馆开馆',
-    category: '场馆启幕',
-    fileName: 'lion-dance-museum-opening-jong-stage.mp4',
-    poster: museumOpening,
-    description: '正式大型展示，看到整体仪式的庄重感。',
-  },
-  {
-    title: '九街 LED 夜场舞狮',
-    category: '夜场活动',
-    fileName: 'led-lion-dance-night-red-blue.mp4',
-    poster: indoorStageLineup,
-    description: '发光舞狮，适合更潮、更有氛围的时尚活动。',
-  },
-  {
-    title: '万象城舞台竞技',
+    title: '爱一生，爱一人！',
     category: '婚礼宴会',
-    fileName: 'lion-dance-wedding-banquet-jong-stage.mp4',
-    poster: wandaStage,
-    description: '舞台竞技展示，互动性极强，炒热全场。',
+    bvid: 'BV1FzQMBnEgb',
+    poster: weddingBanquet,
+    description: '喜宴舞台定制化表演与互动，卡点准确且寓意吉祥，深得新人及现场宾客的喜爱。',
   },
 ];
 
