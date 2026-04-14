@@ -73,3 +73,6 @@ logs
 .turbo
 .cache
 .npm
+
+#stitch assets
+stich-assets/*
