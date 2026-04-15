@@ -28,7 +28,7 @@ const formSchema = z.object({
   projectType: z.string().min(1, '请选择活动类型'),
   preferredContactMethod: z.enum(['wechat', 'phone']),
   name: z.string().min(2, '请输入您的称呼'),
-  contact: z.string().min(5, '请输入您的手机号或微信号'),
+  contact: z.string().min(5, '请输入手机号或微信号'),
   eventDate: z.string().optional(),
   venue: z.string().optional(),
   message: z.string().optional(),
@@ -57,6 +57,10 @@ export default function ContactPage() {
     },
   });
 
+  const phoneChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'phone');
+  const wechatChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'wechat');
+  const wechatQrImage = wechatChannel?.qrFocusImage ?? wechatChannel?.qrImage;
+
   const onSubmit = async (data: FormData) => {
     setSubmitStatus('submitting');
 
@@ -81,9 +85,6 @@ export default function ContactPage() {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const phoneChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'phone');
-  const wechatChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'wechat');
-
   return (
     <main className="min-h-screen bg-surface">
       <Navbar />
@@ -94,50 +95,55 @@ export default function ContactPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-12"
+            className="space-y-10"
           >
             <div className="max-w-3xl">
               <span className="section-eyebrow text-secondary">快速咨询</span>
               <h1 className="page-hero-title mt-6 text-on-surface !leading-[1.08] tracking-tight">
-                先确认档期与预算，
+                先确认档期、预算和场地，
                 <br />
                 再决定怎么做方案
               </h1>
-              <p className="page-lead mt-8 text-on-surface-variant font-medium leading-relaxed">
-                对商业活动来说，最快的方式不是先填很多信息，而是先把时间、场地和大致要求说清楚。我们优先建议直接电话或加微信沟通，表单放在后面作为补充入口。
+              <p className="page-lead mt-8 font-medium leading-relaxed text-on-surface-variant">
+                商业活动最有效率的方式，不是先填很多信息，而是先把时间、场地和大致需求说清楚。电话和微信是主入口，
+                看完真实案例后再补充表单，会更快进入可执行阶段。
               </p>
             </div>
 
-            <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
               {phoneChannel ? (
                 <a
                   href={phoneChannel.href}
-                  className="rounded-[1.6rem] bg-primary px-6 py-6 text-white shadow-[0_24px_60px_rgba(163,0,17,0.22)] transition-transform hover:-translate-y-1"
+                  className="rounded-[1.45rem] bg-primary px-6 py-6 text-white shadow-[0_24px_60px_rgba(163,0,17,0.22)] transition-transform hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-white/16">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[0.95rem] bg-white/16">
                       <Phone size={22} />
                     </div>
                     <div>
                       <p className="text-[11px] font-black tracking-[0.18em] text-white/68">优先入口</p>
                       <h2 className="mt-2 font-headline text-2xl font-black tracking-tight">{phoneChannel.label}</h2>
                       <p className="mt-2 font-headline text-3xl font-black tracking-tight">{phoneChannel.value}</p>
-                      <p className="mt-3 max-w-md text-sm leading-7 text-white/78">{phoneChannel.description}</p>
+                      <p className="mt-3 max-w-md text-sm leading-7 text-white/80">{phoneChannel.description}</p>
                     </div>
                   </div>
                 </a>
               ) : null}
 
-              {wechatChannel?.qrImage ? (
-                <div className="rounded-[1.6rem] border border-outline-variant/20 bg-surface-container-low px-6 py-6">
+              {wechatChannel && wechatQrImage ? (
+                <div className="rounded-[1.45rem] border border-outline-variant/20 bg-surface-container-low px-6 py-6">
                   <div className="flex items-start gap-4">
-                    <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-[1rem] border border-white bg-white p-2">
-                      <Image src={wechatChannel.qrImage} alt="微信二维码" fill sizes="96px" className="object-contain p-1" />
+                    <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-[1rem] border border-white bg-white p-2 shadow-sm">
+                      <Image src={wechatQrImage} alt="微信二维码" fill sizes="112px" className="object-contain p-1" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">优先入口</p>
-                      <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">{wechatChannel.label}</h2>
-                      <p className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">{wechatChannel.value}</p>
+                      <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
+                        {wechatChannel.label}
+                      </h2>
+                      <p className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
+                        {wechatChannel.value}
+                      </p>
                       <p className="mt-3 text-sm leading-7 text-on-surface-variant">{wechatChannel.description}</p>
                       <button
                         onClick={() => handleCopy(wechatChannel.value, wechatChannel.id)}
@@ -157,15 +163,15 @@ export default function ContactPage() {
               ) : null}
             </div>
 
-            <div className="rounded-[1.6rem] border border-outline-variant/15 bg-white px-6 py-6 shadow-sm">
+            <div className="rounded-[1.45rem] border border-outline-variant/15 bg-white px-6 py-6 shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-6">
                 <div className="max-w-2xl">
-                  <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">平台内容入口</p>
+                  <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">先看真实案例</p>
                   <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                    想先看真实案例，再决定是否咨询
+                    抖音看视频，小红书看图文
                   </h2>
                   <p className="mt-3 text-base leading-8 text-on-surface-variant">
-                    抖音和小红书不作为主要咨询入口，更适合作为内容预览区。先看现场视频和案例图，再回来确认微信或电话，会更高效。
+                    这两个入口不承担主咨询转化，只负责帮你快速判断现场气氛、执行细节和整体风格。确认方向后，再回到微信或电话会更高效。
                   </p>
                 </div>
 
@@ -184,18 +190,25 @@ export default function ContactPage() {
                       key={channel.id}
                       className="rounded-[1.2rem] border border-outline-variant/15 bg-surface-container-low px-5 py-5"
                     >
-                      <div className="flex items-start gap-4">
-                        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[0.95rem] border border-white bg-white p-2">
-                          <Image src={channel.qrImage} alt={`${channel.label}二维码`} fill sizes="80px" className="object-contain p-1" />
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                        <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-[1rem] border border-white bg-white p-2 shadow-sm">
+                          <Image
+                            src={channel.qrFocusImage ?? channel.qrImage}
+                            alt={`${channel.label}二维码`}
+                            fill
+                            sizes="112px"
+                            className="object-contain p-1"
+                          />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-[0.85rem] bg-white text-on-surface">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-[0.8rem] bg-white text-on-surface">
                               <Icon size={15} />
                             </div>
                             <p className="font-headline text-lg font-black text-on-surface">{channel.label}</p>
                           </div>
                           <p className="mt-3 text-sm leading-6 text-on-surface-variant">{channel.description}</p>
+                          <p className="mt-2 text-xs leading-6 text-on-surface-variant/80">{channel.helperText}</p>
                           <button
                             onClick={() => handleCopy(channel.value, channel.id)}
                             className={cn(
@@ -206,7 +219,7 @@ export default function ContactPage() {
                             )}
                           >
                             {copiedId === channel.id ? <Check size={13} /> : <Copy size={13} />}
-                            <span>{copiedId === channel.id ? '已复制平台 ID' : `复制 ${channel.label}号 ${channel.value}`}</span>
+                            <span>{copiedId === channel.id ? '已复制平台 ID' : `复制${channel.label}号`}</span>
                           </button>
                         </div>
                       </div>
@@ -217,26 +230,26 @@ export default function ContactPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-[1.2rem] bg-white px-5 py-5 shadow-sm border border-outline-variant/10">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] bg-primary/5 text-primary">
+              <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
                   <Phone size={20} />
                 </div>
                 <p className="mt-4 font-headline text-lg font-black text-on-surface">优先电话</p>
                 <p className="mt-2 text-sm leading-6 text-on-surface-variant">适合快速确认档期、预算范围与场地限制。</p>
               </div>
-              <div className="rounded-[1.2rem] bg-white px-5 py-5 shadow-sm border border-outline-variant/10">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] bg-primary/5 text-primary">
+              <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
                   <MessageCircle size={20} />
                 </div>
                 <p className="mt-4 font-headline text-lg font-black text-on-surface">微信跟进</p>
                 <p className="mt-2 text-sm leading-6 text-on-surface-variant">适合补充时间、场地图、流程单和报价细节。</p>
               </div>
-              <div className="rounded-[1.2rem] bg-white px-5 py-5 shadow-sm border border-outline-variant/10">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] bg-primary/5 text-primary">
+              <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
                   <Mail size={20} />
                 </div>
                 <p className="mt-4 font-headline text-lg font-black text-on-surface">表单补充</p>
-                <p className="mt-2 text-sm leading-6 text-on-surface-variant">不方便即时沟通时再留表单，我们会按偏好方式联系。</p>
+                <p className="mt-2 text-sm leading-6 text-on-surface-variant">不方便即时沟通时，再留表单，我们会按偏好方式联系。</p>
               </div>
             </div>
           </motion.div>
@@ -245,11 +258,13 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="premium-shadow overflow-hidden rounded-[1.8rem] border border-outline-variant/10 bg-white"
+            className="premium-shadow overflow-hidden rounded-[1.6rem] border border-outline-variant/10 bg-white"
           >
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
               <p className="text-[11px] font-black tracking-[0.18em] text-primary">补充入口</p>
-              <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">不方便直接沟通时，再留表单</h2>
+              <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
+                不方便直接沟通时，再留表单
+              </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
                 只留核心信息即可，我们会按您选择的方式尽快联系。
               </p>
@@ -261,7 +276,7 @@ export default function ContactPage() {
                   <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
                   <select
                     {...register('projectType')}
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 appearance-none"
+                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   >
                     <option value="">请选择...</option>
@@ -278,7 +293,7 @@ export default function ContactPage() {
                   <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">希望怎么联系</label>
                   <select
                     {...register('preferredContactMethod')}
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 appearance-none"
+                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   >
                     <option value="wechat">优先微信</option>

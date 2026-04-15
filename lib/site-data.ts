@@ -1,8 +1,11 @@
 import logoRed from '@/assets/logo-red.png';
 import logoYellow from '@/assets/logo-yellow.png';
 import wechatQr from '@/assets/wechat-qr.jpg';
+import wechatQrFocus from '@/assets/wechat-qr-focus.jpg';
 import douyinQr from '@/assets/douyin-qr.jpg';
+import douyinQrFocus from '@/assets/douyin-qr-focus.jpg';
 import xhsQr from '@/assets/xhs-qr.jpg';
+import xhsQrFocus from '@/assets/xhs-qr-focus.jpg';
 
 import heroOpening from '@/assets/photos/lion-dance-mall-opening-couplets-lineup.jpg';
 import heroAudience from '@/assets/photos/lion-dance-opening-ceremony-audience-wide.jpg';
@@ -312,6 +315,7 @@ export const contactPanel = {
       value: '18983662830',
       action: 'copy',
       qrImage: wechatQr,
+      qrFocusImage: wechatQrFocus,
       description: '扫码加微信，方便发送活动时间、场地图和流程要求。',
       helperText: '扫码加微信后，可继续沟通方案与报价。',
     },
@@ -323,6 +327,7 @@ export const contactPanel = {
       value: '2137895537',
       action: 'copy',
       qrImage: douyinQr,
+      qrFocusImage: douyinQrFocus,
       description: '先看真实演出视频，再决定是否进一步咨询。',
       helperText: '复制抖音号或扫码，查看最新实战内容。',
     },
@@ -332,6 +337,7 @@ export const contactPanel = {
       value: '4751220581',
       action: 'copy',
       qrImage: xhsQr,
+      qrFocusImage: xhsQrFocus,
       description: '适合看案例图、现场细节和风格呈现。',
       helperText: '复制小红书号或扫码，获取更多案例参考。',
     },
