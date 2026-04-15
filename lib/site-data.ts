@@ -1,11 +1,11 @@
 import logoRed from '@/assets/logo-red.png';
 import logoYellow from '@/assets/logo-yellow.png';
 import wechatQr from '@/assets/wechat-qr.jpg';
-import wechatQrFocus from '@/assets/wechat-qr-focus.jpg';
+import wechatQrFocus from '@/assets/wechat-qr-focus.png';
 import douyinQr from '@/assets/douyin-qr.jpg';
-import douyinQrFocus from '@/assets/douyin-qr-focus.jpg';
+import douyinQrFocus from '@/assets/douyin-qr-focus.png';
 import xhsQr from '@/assets/xhs-qr.jpg';
-import xhsQrFocus from '@/assets/xhs-qr-focus.jpg';
+import xhsQrFocus from '@/assets/xhs-qr-focus.png';
 
 import heroOpening from '@/assets/photos/lion-dance-mall-opening-couplets-lineup.jpg';
 import heroAudience from '@/assets/photos/lion-dance-opening-ceremony-audience-wide.jpg';

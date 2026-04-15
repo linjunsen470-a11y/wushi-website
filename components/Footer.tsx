@@ -60,12 +60,7 @@ export default function Footer() {
               </div>
             </a>
 
-            <div className="rounded-[0.95rem] border border-white/10 bg-white/4 px-4 py-3">
-              <p className="text-[11px] font-black tracking-[0.16em] text-white/45">平台内容</p>
-              <p className="mt-2 text-sm leading-6 text-white/68">
-                抖音 {contactPanel.supportChannels[0]?.value} / 小红书 {contactPanel.supportChannels[1]?.value}
-              </p>
-            </div>
+
           </div>
         </div>
       </div>
