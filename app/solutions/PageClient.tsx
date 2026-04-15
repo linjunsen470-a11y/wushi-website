@@ -59,7 +59,7 @@ export default function SolutionsPage() {
               className="grid gap-16 lg:grid-cols-2 lg:items-center"
             >
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[3rem] premium-shadow border border-outline-variant/10 group">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[2.25rem] premium-shadow border border-outline-variant/10 group">
                   <Image src={playbook.image} alt={playbook.title} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/5" />
                 </div>
@@ -72,7 +72,7 @@ export default function SolutionsPage() {
                   {playbook.summary}
                 </p>
                 <div className="mt-12 grid gap-8 md:grid-cols-2">
-                  <div className="rounded-[2rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
+                  <div className="rounded-[1.5rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
                     <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">适配场景</h3>
                     <ul className="mt-5 space-y-4">
                       {playbook.fit.map((item) => (
@@ -83,7 +83,7 @@ export default function SolutionsPage() {
                       ))}
                     </ul>
                   </div>
-                  <div className="rounded-[2rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
+                  <div className="rounded-[1.5rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
                     <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">包含内容</h3>
                     <ul className="mt-5 space-y-4">
                       {playbook.deliverables.map((item) => (

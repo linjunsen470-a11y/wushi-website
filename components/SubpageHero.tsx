@@ -113,7 +113,7 @@ export default function SubpageHero({
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className={cn(
-              'hero-panel !rounded-[2.5rem]',
+              'hero-panel !rounded-[2rem]',
               isDark
                 ? 'border-white/10 bg-white/6 text-white shadow-[0_32px_100px_rgba(0,0,0,0.3)] backdrop-blur-md'
                 : 'border-outline-variant/30 bg-white/95 text-on-surface shadow-[0_32px_100px_rgba(30,27,19,0.12)] backdrop-blur-md'

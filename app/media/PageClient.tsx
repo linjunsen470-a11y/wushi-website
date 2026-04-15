@@ -41,7 +41,7 @@ export default function MediaPage() {
         chips={['真实实录', '多场景覆盖', '现场气氛还原', featured.category]}
         panel={
           <div className="space-y-6">
-            <div className="overflow-hidden rounded-[2rem] bg-black shadow-2xl border border-white/10 ring-1 ring-white/5 relative group">
+            <div className="overflow-hidden rounded-[1.6rem] bg-black shadow-2xl border border-white/10 ring-1 ring-white/5 relative group">
               <Image
                 src={featured.poster}
                 alt="实战影像"
@@ -87,7 +87,7 @@ export default function MediaPage() {
                 key={video.bvid}
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: idx * 0.1 }}
-                className="overflow-hidden rounded-[3rem] bg-surface-container-low premium-shadow group"
+                className="overflow-hidden rounded-[2.25rem] bg-surface-container-low premium-shadow group"
               >
                 <div className="overflow-hidden bg-black aspect-video relative">
                   <iframe

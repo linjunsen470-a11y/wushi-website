@@ -1,155 +1,98 @@
-# CMS Platform Analysis for Mainland China
+# 大陆部署场景下的 CMS 选型分析
 
-## Recommendation
+更新时间：`2026-04-15`
 
-For this `Next.js 16` project, if the CMS needs to work well in mainland China and should be easy to use with visual editing, the recommended order is:
+## 当前结论
 
-1. `Strapi 5` self-hosted
-2. `Payload CMS` self-hosted
-3. `Directus` self-hosted
+对于这个以内容展示和线索转化为核心的 `Next.js 16` 项目，如果后续要接入 CMS，并且要求：
 
-The main reason is operational practicality in mainland China. Self-hosted CMS platforms are generally a better fit for domestic deployment because network access, response speed, login stability, and compliance control are easier to manage than with overseas SaaS-first platforms.
+- 能在中国大陆稳定访问
+- 可自托管
+- 内容编辑门槛不要太高
+- 最好支持预览或可视化编辑
 
-## Best Fit: Strapi 5
+建议优先级如下：
 
-`Strapi 5` is the best default choice if the goal is to launch efficiently and keep the editing experience friendly for non-technical users.
+1. `Strapi 5`
+2. `Payload CMS`
+3. `Directus`
 
-Why it fits:
+## 1. Strapi 5
 
-- It is open source and can be self-hosted on mainland cloud infrastructure.
-- It has an official preview workflow.
-- It now offers `Live Preview` for in-context editing.
-- Its admin panel is relatively approachable for content editors.
-- The ecosystem and adoption are mature enough for common website content scenarios.
+最适合“要尽快上线，同时让非技术人员也能较顺手编辑内容”的团队。
 
-Tradeoffs:
+优点：
 
-- Advanced visual editing is not as deep as Sanity's presentation model.
-- Some higher-end preview features are tied to commercial plans.
-- Complex block-based page builders are possible, but usually need more schema design effort.
+- 可自托管，适配国内云环境更灵活
+- 后台相对成熟，内容编辑学习成本较低
+- 有预览工作流，适合营销站内容管理
 
-Official references:
+缺点：
 
-- [Strapi Live Preview](https://strapi.io/features/live-preview)
-- [Introducing Live Preview, Client Library and a smoother content editing experience](https://strapi.io/blog/introducing-live-preview-client-library)
-- [Strapi Docs](https://docs.strapi.io/)
+- 深度可视化编辑能力不如 Sanity 一类的展示模型
+- 复杂页面搭建器通常仍需额外 schema 设计
 
-## Strong Developer-Oriented Option: Payload CMS
+适用场景：
 
-`Payload CMS` is the strongest alternative if developer experience and Next.js integration matter more than editor familiarity.
+- 团队中运营或内容人员需要频繁修改文案、案例、FAQ、视频链接
+- 希望前后端职责边界更清晰
 
-Why it fits:
+## 2. Payload CMS
 
-- It is open source and self-hostable.
-- It supports `Live Preview`.
-- It works very naturally with modern Next.js projects.
-- Content models are code-defined, which gives strong control and versioning.
-- It is well suited to teams that want frontend and CMS behavior closely integrated.
+更适合前端主导、重视 Next.js 深度集成和代码可控性的团队。
 
-Tradeoffs:
+优点：
 
-- It is usually more developer-centric than Strapi.
-- Non-technical editors may need more onboarding.
-- Initial architecture decisions matter more because it gives you more flexibility.
+- 与现代 Next.js 项目协同自然
+- 内容模型代码化，版本控制更清晰
+- 可自托管，扩展性强
 
-Official references:
+缺点：
 
-- [Payload Live Preview](https://payloadcms.com/docs/live-preview)
-- [What is Payload](https://payloadcms.com/docs/getting-started/what-is-payload)
-- [Payload Deployment](https://payloadcms.com/docs/production/deployment)
+- 对内容编辑人员不如 Strapi 友好
+- 初始架构设计成本更高
 
-## Acceptable but Not First Choice: Directus
+适用场景：
 
-`Directus` is also viable and supports live preview plus self-hosting, but for this project it is not the first recommendation.
+- 团队以开发为主，愿意用工程化方式管理内容结构
+- 未来可能把案例、FAQ、视频展示、SEO 元数据完全纳入统一数据层
 
-Why it may work:
+## 3. Directus
 
-- It is self-hostable.
-- It supports preview workflows.
-- It is good when content management overlaps heavily with structured operational data.
+可以用，但对这个项目不是首选。
 
-Why it ranks lower here:
+优点：
 
-- It often feels more like a data platform than a website-first editorial platform.
-- For a marketing or brand website, the editing model is usually less direct than Strapi.
-- For a Next.js content site, it is less often the simplest path to a clean editor workflow.
+- 自托管成熟
+- 对结构化数据管理能力强
 
-Official references:
+缺点：
 
-- [Directus Live Preview with Next.js](https://docs.directus.io/guides/headless-cms/live-preview/nextjs)
-- [Directus Self-Hosted Quickstart](https://docs.directus.io/self-hosted/quickstart)
-- [Directus Pricing - Self-Hosted](https://directus.io/pricing/self-hosted)
+- 更像数据平台，不是天然的网站编辑平台
+- 对品牌官网场景来说，编辑体验通常没有前两者直接
 
-## Why Sanity and Contentful Are Not the First Recommendation
+## 不建议直接优先的方向
 
-`Sanity` and `Contentful` both have strong visual editing capabilities. If the only criterion were editing power, they would be serious candidates.
+- 强 SaaS 依赖、海外节点为主的 CMS 平台
+- 对中国大陆访问与登录稳定性不可控的平台
 
-However, for mainland China they are not the best default recommendation because they are more dependent on overseas SaaS infrastructure.
+原因很直接：
 
-### Sanity
+- 后台加载速度
+- 账号登录稳定性
+- 内容预览一致性
+- 合规与网络可控性
 
-Strengths:
+## 对本仓库的建议
 
-- Excellent visual editing and presentation tooling
-- Very strong content modeling
-- High-quality developer experience
+当前仓库仍然是“文件内内容驱动”模式，核心文案集中在 [`lib/site-data.ts`](/D:/work/wushi-website/lib/site-data.ts:1)。
 
-Main concern for this project:
+如果未来接 CMS，建议第一批迁移的内容是：
 
-- The platform depends on Sanity-hosted services such as the Content Lake and related APIs.
-- Official system requirements indicate network access to Sanity domains is required.
+1. 首页服务模块
+2. 真实案例
+3. FAQ
+4. 联系方式与社媒信息
+5. SEO 元数据
 
-Official references:
-
-- [Sanity Visual Editing Overview](https://www.sanity.io/docs/visual-editing-reference-overview)
-- [Sanity Studio Deployment](https://www.sanity.io/docs/studio/deployment)
-- [Sanity Studio System Requirements](https://www.sanity.io/docs/studio/system-requirements)
-
-### Contentful
-
-Strengths:
-
-- Mature enterprise CMS
-- Good editorial workflows
-- Live preview capabilities
-
-Main concern for this project:
-
-- It is strongly SaaS-oriented.
-- Official data residency materials emphasize US and EU regional models rather than mainland China deployment.
-
-Official references:
-
-- [Contentful Live Preview](https://www.contentful.com/help/live-preview/)
-- [Contentful EU Data Residency FAQ](https://www.contentful.com/faq/eu-data-residency/)
-
-## Practical Recommendation for This Project
-
-Choose `Strapi 5 self-hosted` if the priority is:
-
-- easier editor onboarding
-- smoother mainland China deployment
-- good enough visual preview
-- faster delivery with lower operational risk
-
-Choose `Payload CMS` if the priority is:
-
-- tighter integration with `Next.js`
-- developer-controlled content modeling
-- long-term flexibility
-- willingness to accept a slightly heavier initial implementation
-
-## Final Recommendation
-
-For this specific project, the best overall choice is:
-
-`Strapi 5 self-hosted`
-
-It is the best balance of:
-
-- mainland China deployment practicality
-- ease of use
-- visual editing capability
-- team adoption risk
-
-If later the project evolves toward a more code-centric, composable, deeply customized content architecture, `Payload CMS` would be the strongest upgrade path.
+这样可以优先解决“频繁改动内容必须改代码”的问题，而不必一开始就做复杂页面搭建器。

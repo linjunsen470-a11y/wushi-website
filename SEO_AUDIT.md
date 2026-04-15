@@ -1,321 +1,115 @@
-﻿# SEO Audit
+# SEO 审计记录
 
-## Scope
+更新时间：`2026-04-15`
 
-This audit reviews the current `Next.js 16` website with a focus on:
+## 审计范围
 
-- image alternative text quality
-- technical SEO gaps
-- metadata completeness
-- internal linking issues
-- content language consistency
+本次审计针对当前 `Next.js 16` 官网的以下方面：
 
-## Overall Conclusion
+- 页面级 metadata
+- `robots` / `sitemap`
+- 结构化数据
+- 图片 `alt`
+- 内链结构
+- 中文语义一致性
 
-The current site has a usable structural foundation, but the SEO implementation is still incomplete.
+## 当前结论
 
-The most important issues are:
+与仓库中更早的审计结论相比，站点的基础 SEO 已经不是“缺失状态”，而是“基础已具备，但质量仍需收紧”的状态。
 
-1. broken internal links in the footer
-2. no page-level metadata strategy
-3. no sitemap or robots configuration
-4. many weak or generic image `alt` texts
-5. mixed Chinese and English content in key SEO areas
-6. no structured data
+已经具备的项：
 
-## Findings
+- 页面级 `metadata`
+- `app/robots.ts`
+- `app/sitemap.ts`
+- `JsonLd` 结构化数据输出
+- 清晰的主导航与页面信息架构
 
-### 1. Broken Internal Links
+当前最需要关注的仍然是内容质量和真实性，而不是单纯的文件缺失。
 
-Severity: High
+## 当前主要问题
 
-The footer renders links to pages that do not currently exist.
+### 1. 结构化数据字段仍需校正
 
-Relevant files:
+严重级别：高
 
-- [components/Footer.tsx](/D:/work/wushi-website/components/Footer.tsx#L27)
-- [lib/site-data.ts](/D:/work/wushi-website/lib/site-data.ts#L199)
+相关文件：
 
-Problem routes:
+- [components/JsonLd.tsx](/D:/work/wushi-website/components/JsonLd.tsx:1)
 
-- `/media`
-- `/solutions`
-- `/faq`
+问题：
 
-Why this matters:
+- `logo` 指向值需要确认公开资源真实可用
+- `priceRange` 表达异常，当前值不可直接对外使用
+- 地址与服务范围字段有进一步规范空间
 
-- creates site-wide dead links
-- weakens crawl quality
-- wastes internal link authority
-- harms user trust and navigation quality
+建议：
 
-Recommended fix:
+- 只保留已经确认真实无误的字段
+- 对价格区间、服务半径这类易失真字段谨慎输出
 
-- remove these links until the pages exist
-- or implement the missing routes immediately
+### 2. 首页核心标题区域仍需持续关注可读性
 
-### 2. Metadata Is Only Defined Globally
+严重级别：中
 
-Severity: High
+相关文件：
 
-The site currently defines only one global `title` and `description`.
+- [app/page.tsx](/D:/work/wushi-website/app/page.tsx:1)
 
-Relevant file:
+问题：
 
-- [app/layout.tsx](/D:/work/wushi-website/app/layout.tsx#L17)
+- Hero 背景图细节较多，前导小字容易在部分屏幕环境下对比不足
 
-Current issue:
+现状：
 
-- homepage, services, cases, about, and contact all inherit the same metadata
-- there are no page-specific `title`, `description`, `canonical`, `openGraph`, or `twitter` settings
+- 当前已改为“左侧细竖线 + 浅米色文字 + 阴影”的弱强调样式
 
-Why this matters:
+建议：
 
-- pages compete with duplicated metadata
-- search engines get weak relevance signals
-- click-through rate may suffer because snippets are not tailored
-- social sharing previews are under-specified
+- 后续结合真实设备继续观察
+- 若仍存在问题，优先通过位置与背景明暗管理解决，而不是继续堆叠装饰底色
 
-Recommended fix:
+### 3. 图片替代文本仍有继续提升空间
 
-- add per-page `metadata` or `generateMetadata`
-- define unique titles and descriptions for:
-  - homepage
-  - services
-  - cases
-  - about
-  - contact
-- add canonical URLs
-- add Open Graph and Twitter metadata
+严重级别：中
 
-### 3. Missing `robots` and `sitemap`
+虽然项目已使用大量本地真实图片，但部分 `alt` 仍可从“描述图片”提升到“描述场景价值”。
 
-Severity: High
+建议方向：
 
-There is currently no `robots.ts`, `sitemap.ts`, or other metadata file for crawl guidance.
+- 写清活动类型
+- 写清场景
+- 写清主体动作
 
-Observed from current app structure:
+示例：
 
-- no `app/robots.ts`
-- no `app/sitemap.ts`
+- 不够好：`现场图片 1`
+- 更好：`商场开业舞狮队列与观众围观现场`
 
-Why this matters:
+### 4. 仓库元信息仍有模板遗留
 
-- search engines receive no explicit crawl guidance
-- sitemap discovery is weaker
-- technical SEO baseline is incomplete
+严重级别：中
 
-Recommended fix:
+相关文件：
 
-- add `app/robots.ts`
-- add `app/sitemap.ts`
-- if needed later, add `manifest.json` and richer metadata files
+- [README.md](/D:/work/wushi-website/README.md:1)
+- [package.json](/D:/work/wushi-website/package.json:1)
+- [.env.example](/D:/work/wushi-website/.env.example:1)
 
-### 4. Many Image `alt` Texts Are Too Generic
+说明：
 
-Severity: Medium
+- `README` 已更新
+- 但 `package.json` 名称和 `.env.example` 注释仍需后续清理到位
 
-Some image alternative texts are acceptable, especially where they reuse a meaningful content title. But many are generic, placeholder-like, or too vague to help accessibility or image SEO.
+## 已完成项
 
-Examples of weak `alt` text:
+- 页面级 metadata 已存在
+- `robots.ts` 与 `sitemap.ts` 已存在
+- 旧版“缺少这些文件”的结论已不再适用
 
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L22) `Lion dance opening ceremony`
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L118) `Audience and stage`
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L123) `Red carpet ceremony`
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L151) `High jong`
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L154) `Blue lion stance`
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L166) `Training scene 1`
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L190) `Gallery 1`
-- [app/about/page.tsx](/D:/work/wushi-website/app/about/page.tsx#L33) `Opening ceremony story image`
-- [app/about/page.tsx](/D:/work/wushi-website/app/about/page.tsx#L82) `Lion head closeup`
-- [app/about/page.tsx](/D:/work/wushi-website/app/about/page.tsx#L86) `High jong stage`
-- [app/contact/page.tsx](/D:/work/wushi-website/app/contact/page.tsx#L124) `Contact inquiry stage`
+## 下一步建议
 
-Why this matters:
-
-- weak accessibility value
-- poor keyword relevance for image search
-- does not explain the actual business context of the image
-
-Better direction:
-
-- describe the actual visual scene and business context
-- include relevant Chinese service intent where natural
-- examples:
-  - `商场开业醒狮表演现场`
-  - `婚宴双狮迎宾舞台合影`
-  - `高桩醒狮动作特写`
-  - `品牌开业红毯醒狮队列`
-
-### 5. Decorative Images Are Not Clearly Treated as Decorative
-
-Severity: Medium
-
-Some gallery and atmosphere images appear to be decorative or low-information, but they still use generic text such as `Gallery 1` or `Training scene 1`.
-
-Relevant examples:
-
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L166)
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L190)
-
-Why this matters:
-
-- screen reader output becomes noisy
-- generic `alt` is worse than empty `alt` for decorative images
-
-Recommended fix:
-
-- if an image conveys unique information, write a meaningful `alt`
-- if it is purely decorative, use `alt=""`
-
-### 6. Language Mismatch Between Site Language and `alt` Text
-
-Severity: Medium
-
-The document language is Chinese, but many image `alt` texts are written in English.
-
-Relevant file:
-
-- [app/layout.tsx](/D:/work/wushi-website/app/layout.tsx#L24)
-
-Examples:
-
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L22)
-- [app/about/page.tsx](/D:/work/wushi-website/app/about/page.tsx#L33)
-
-Why this matters:
-
-- weakens Chinese-language semantic consistency
-- reduces alignment with likely Chinese search queries
-- is less natural for accessibility in a Chinese-language site
-
-Recommended fix:
-
-- prefer Chinese `alt` text for Chinese audience pages
-- keep terminology consistent with target search intent
-
-### 7. Key On-Page Copy Is Mixed Between Chinese and English
-
-Severity: Medium
-
-Important headings and labels on key pages are still partly English.
-
-Examples:
-
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L27)
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L53)
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L177)
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L200)
-- [app/contact/page.tsx](/D:/work/wushi-website/app/contact/page.tsx#L13)
-- [app/contact/page.tsx](/D:/work/wushi-website/app/contact/page.tsx#L28)
-
-Why this matters:
-
-- dilutes Chinese keyword targeting
-- makes page intent less clear for local search
-- weakens consistency across title, headings, body copy, and `alt`
-
-Recommended fix:
-
-- localize key navigational and conversion content into Chinese
-- use bilingual text only where it supports branding rather than replacing search intent
-
-### 8. No Structured Data
-
-Severity: Medium
-
-There is currently no JSON-LD visible in the app for:
-
-- `Organization`
-- `LocalBusiness`
-- `Service`
-- `FAQPage`
-- `BreadcrumbList`
-
-Why this matters:
-
-- weakens machine-readable context for search engines and AI systems
-- misses eligibility for richer search understanding
-- does not fully communicate service business intent
-
-Recommended fix:
-
-- add `Organization` or `LocalBusiness` globally
-- add `Service` schema for services page
-- add `FAQPage` schema for FAQ sections
-- add breadcrumb schema where appropriate
-
-## Image Alt Text Assessment
-
-### What Is Reasonable
-
-These patterns are generally acceptable:
-
-- image `alt` that matches a meaningful card title
-- image `alt` that clearly reflects the content block it supports
-
-Examples:
-
-- [app/page.tsx](/D:/work/wushi-website/app/page.tsx#L85)
-- [app/about/page.tsx](/D:/work/wushi-website/app/about/page.tsx#L58)
-
-These are not perfect, but they are at least content-related.
-
-### What Is Not Reasonable
-
-These patterns should be revised:
-
-- numbered placeholders like `Gallery 1`
-- vague phrases like `Audience and stage`
-- generic narrative labels like `Opening ceremony story image`
-- English-only scene names on a Chinese-language commercial site
-
-## Recommended Priority Order
-
-### Priority 1
-
-- remove or fix broken footer links
-- add page-specific metadata
-- add `robots.ts`
-- add `sitemap.ts`
-
-### Priority 2
-
-- rewrite image `alt` text in Chinese
-- distinguish informative images from decorative images
-- localize key English headings and conversion copy
-
-### Priority 3
-
-- add Open Graph and Twitter metadata
-- add structured data
-- strengthen canonical and sharing strategy
-
-## Suggested Next Implementation Batch
-
-The most valuable first implementation batch would be:
-
-1. fix footer dead links
-2. add page metadata for all existing routes
-3. add `app/robots.ts`
-4. add `app/sitemap.ts`
-5. rewrite weak image `alt` text
-6. add JSON-LD for organization and services
-
-## Final Assessment
-
-The site is visually strong and already has solid content blocks, but the current SEO layer is still at an early stage.
-
-The image `alt` text is only partially reasonable:
-
-- some title-based `alt` text is acceptable
-- many other `alt` texts are too generic, too English-heavy, or purely placeholder-like
-
-The main SEO weaknesses are not only the image `alt` text. The more important issues are:
-
-- missing page-level metadata
-- missing crawl files
-- broken internal links
-- missing structured data
-
-These issues are all fixable without changing the overall design direction of the website.
+1. 校正 `JsonLd`
+2. 继续收紧首页 Hero 文案与背景的对比策略
+3. 做一轮图片 `alt` 与页面标题的中文语义统一
+4. 清理模板遗留元信息，避免影响后续 SEO 维护

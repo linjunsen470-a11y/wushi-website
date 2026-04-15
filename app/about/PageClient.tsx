@@ -66,10 +66,10 @@ export default function AboutPage() {
             transition={{ duration: 1.2 }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-[0_32px_80px_rgba(35,24,15,0.15)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_32px_80px_rgba(35,24,15,0.15)]">
               <Image src={aboutGallery.story} alt="舞狮团队演出现场" fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
-            <div className="absolute inset-x-8 bottom-8 rounded-[2rem] bg-black/60 px-8 py-6 text-white backdrop-blur-md border border-white/10">
+            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-black/60 px-8 py-6 text-white backdrop-blur-md border border-white/10">
               <p className="font-headline text-2xl font-black tracking-tight leading-tight">让每一次重要环节，都成为现场的焦点</p>
             </div>
           </motion.div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                 key={item.title}
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: index * 0.15 }}
-                className={`hover-lift overflow-hidden rounded-[2.5rem] bg-white premium-shadow ${index === 1 ? 'md:translate-y-12' : ''}`}
+                className={`hover-lift overflow-hidden rounded-[2rem] bg-white premium-shadow ${index === 1 ? 'md:translate-y-12' : ''}`}
               >
                 <div className="relative aspect-[4/5]">
                   <Image src={item.image} alt={item.title} fill placeholder="blur" sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover" />
@@ -130,7 +130,7 @@ export default function AboutPage() {
                 key={member.name}
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: idx * 0.1 }}
-                className="group relative overflow-hidden rounded-[2.5rem] bg-surface-container shadow-sm border border-outline-variant/10"
+                className="group relative overflow-hidden rounded-[2rem] bg-surface-container shadow-sm border border-outline-variant/10"
               >
                 <div className="relative aspect-[1/1] overflow-hidden">
                   <Image src={member.image} alt={member.name} fill placeholder="blur" sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -166,11 +166,11 @@ export default function AboutPage() {
             </p>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
-            <motion.div {...subtleFadeProps} className="relative min-h-[300px] overflow-hidden rounded-[2.5rem] md:min-h-[500px] premium-shadow border border-white/5">
+            <motion.div {...subtleFadeProps} className="relative min-h-[300px] overflow-hidden rounded-[2rem] md:min-h-[500px] premium-shadow border border-white/5">
               <Image src={aboutGallery.materialA} alt="狮头细节" fill placeholder="blur" sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover" />
             </motion.div>
             <div className="grid gap-8">
-              <motion.div {...subtleFadeProps} transition={{ delay: 0.2 }} className="relative min-h-[240px] overflow-hidden rounded-[2.5rem] premium-shadow border border-white/5">
+              <motion.div {...subtleFadeProps} transition={{ delay: 0.2 }} className="relative min-h-[240px] overflow-hidden rounded-[2rem] premium-shadow border border-white/5">
                 <Image src={aboutGallery.materialB} alt="高桩表演" fill placeholder="blur" sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover" />
               </motion.div>
               <div className="grid gap-6 grid-cols-3">

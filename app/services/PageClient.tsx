@@ -63,7 +63,7 @@ export default function ServicesPage() {
                 {...subtleFadeProps}
                 className={index % 2 === 1 ? 'lg:order-2' : ''}
               >
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[3rem] premium-shadow border border-outline-variant/10 group">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] premium-shadow border border-outline-variant/10 group">
                   <Image src={service.image} alt={service.title} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/5" />
                 </div>
@@ -110,7 +110,7 @@ export default function ServicesPage() {
                 key={step.title} 
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: index * 0.1 }}
-                className="rounded-[2.5rem] border border-white/5 bg-white/5 p-10 hover:bg-white/10 transition-colors group"
+                className="rounded-[2rem] border border-white/5 bg-white/5 p-10 hover:bg-white/10 transition-colors group"
               >
                 <div className="font-headline text-5xl font-black text-secondary-fixed/30 group-hover:text-secondary-fixed/50 transition-colors tracking-tighter">0{index + 1}</div>
                 <h3 className="mt-6 font-headline text-2xl font-black text-white tracking-tight">{step.title}</h3>
@@ -138,7 +138,7 @@ export default function ServicesPage() {
                 open={index === 0} 
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: index * 0.1 }}
-                className="group overflow-hidden rounded-[2rem] bg-surface-container-low border border-transparent transition-all duration-300 open:bg-white open:border-outline-variant/30 open:premium-shadow"
+                className="group overflow-hidden rounded-[1.6rem] bg-surface-container-low border border-transparent transition-all duration-300 open:bg-white open:border-outline-variant/30 open:premium-shadow"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between px-10 py-8 font-headline text-xl font-black text-on-surface hover:text-primary transition-colors">
                   <span>{item.question}</span>

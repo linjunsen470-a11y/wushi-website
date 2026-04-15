@@ -165,7 +165,7 @@ export default function HomePage() {
                 key={service.title}
                 {...fadeInProps}
                 transition={{ ...transitionBase, delay: idx * 0.15 }}
-                className="hover-lift overflow-hidden rounded-[2.5rem] bg-surface-container-low"
+                className="hover-lift overflow-hidden rounded-[2rem] bg-surface-container-low"
               >
                 <div className="relative aspect-[5/4]">
                   <Image
@@ -204,7 +204,7 @@ export default function HomePage() {
         <div className="shell">
           <motion.div {...fadeInProps} className="grid items-center gap-16 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="grid gap-10 md:grid-cols-2">
-              <div className="group premium-shadow relative aspect-[3/4] overflow-hidden rounded-[3rem]">
+              <div className="group premium-shadow relative aspect-[3/4] overflow-hidden rounded-[2.25rem]">
                 <Image
                   src={homepageSections.media.imageA}
                   alt={homepageSections.media.title}
@@ -221,7 +221,7 @@ export default function HomePage() {
                   <h2 className="section-title !text-4xl !leading-[1.1]">{homepageSections.media.title}</h2>
                   <p className="body-copy mt-6 text-on-surface-variant font-medium leading-relaxed">{homepageSections.media.text}</p>
                 </div>
-                <div className="premium-shadow relative min-h-[250px] flex-1 overflow-hidden rounded-[2.5rem]">
+                <div className="premium-shadow relative min-h-[250px] flex-1 overflow-hidden rounded-[2rem]">
                   <Image
                     src={homepageSections.media.imageB}
                     alt="舞狮现场观众与舞台"
@@ -233,7 +233,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="premium-shadow relative aspect-[4/5] overflow-hidden rounded-[3.5rem] lg:h-[700px] lg:aspect-auto">
+            <div className="premium-shadow relative aspect-[4/5] overflow-hidden rounded-[2.25rem] lg:h-[700px] lg:aspect-auto">
               <Image
                 src={homepageSections.media.imageC}
                 alt="活动红毯舞狮现场"
@@ -272,7 +272,7 @@ export default function HomePage() {
           <div className="grid gap-10 md:grid-cols-12">
             <motion.div
               {...fadeInProps}
-              className="premium-shadow relative h-[400px] overflow-hidden rounded-[3rem] md:col-span-8 md:h-auto"
+              className="premium-shadow relative h-[400px] overflow-hidden rounded-[2.25rem] md:col-span-8 md:h-auto"
             >
               <Image
                 src={homepageSections.craft.imageA}
@@ -286,7 +286,7 @@ export default function HomePage() {
               <motion.div
                 {...fadeInProps}
                 transition={{ ...transitionBase, delay: 0.2 }}
-                className="rounded-[3rem] border border-white/12 bg-white/10 p-12 shadow-2xl backdrop-blur-xl"
+                className="rounded-[2.25rem] border border-white/12 bg-white/10 p-12 shadow-2xl backdrop-blur-xl"
               >
                 <h3 className="font-headline text-4xl font-black leading-[1.1] tracking-tight text-secondary-fixed">
                   {homepageSections.craft.title}
@@ -297,7 +297,7 @@ export default function HomePage() {
                 <motion.div
                   {...fadeInProps}
                   transition={{ ...transitionBase, delay: 0.3 }}
-                  className="relative aspect-square overflow-hidden rounded-[2.5rem]"
+                  className="relative aspect-square overflow-hidden rounded-[2rem]"
                 >
                   <Image
                     src={homepageSections.craft.imageB}
@@ -310,7 +310,7 @@ export default function HomePage() {
                 <motion.div
                   {...fadeInProps}
                   transition={{ ...transitionBase, delay: 0.4 }}
-                  className="relative aspect-square overflow-hidden rounded-[2.5rem]"
+                  className="relative aspect-square overflow-hidden rounded-[2rem]"
                 >
                   <Image
                     src={homepageSections.craft.imageC}
@@ -378,7 +378,7 @@ export default function HomePage() {
                 key={index}
                 {...fadeInProps}
                 transition={{ ...transitionBase, delay: index * 0.1 }}
-                className="hover-lift group relative break-inside-avoid overflow-hidden rounded-[2.5rem] shadow-xl border border-outline-variant/10"
+                className="hover-lift group relative break-inside-avoid overflow-hidden rounded-[2rem] shadow-xl border border-outline-variant/10"
               >
                 <Image
                   src={image}
@@ -409,7 +409,7 @@ export default function HomePage() {
                 key={stat.label}
                 {...fadeInProps}
                 transition={{ ...transitionBase, delay: idx * 0.1 }}
-                className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10"
+                className="glass-panel group relative overflow-hidden rounded-[2rem] p-10"
               >
                 <div className="absolute top-0 left-0 h-full w-1 origin-top scale-y-0 bg-secondary transition-transform duration-500 group-hover:scale-y-100" />
                 <div className="font-headline text-7xl font-black text-secondary-fixed tracking-tight">{stat.value}</div>

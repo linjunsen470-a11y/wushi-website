@@ -80,7 +80,7 @@ export default function FaqPage() {
                 key={section.title} 
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: index * 0.1 }}
-                className="rounded-[3rem] bg-white p-10 md:p-14 premium-shadow border border-outline-variant/10"
+                className="rounded-[2.25rem] bg-white p-10 md:p-14 premium-shadow border border-outline-variant/10"
               >
                 <div className="mb-10 flex items-center gap-6">
                   <span className="font-headline text-5xl font-black text-primary/10 tracking-tighter">0{index + 1}</span>

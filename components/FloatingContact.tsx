@@ -34,7 +34,7 @@ export default function FloatingContact() {
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
-            className="mb-2 w-72 overflow-hidden rounded-[2.5rem] border border-[#eadcc9] bg-white p-6 shadow-[0_32px_80px_rgba(30,27,19,0.2)] backdrop-blur-xl"
+            className="mb-2 w-72 overflow-hidden rounded-[2rem] border border-[#eadcc9] bg-white p-6 shadow-[0_32px_80px_rgba(30,27,19,0.2)] backdrop-blur-xl"
           >
             <div className="flex items-center justify-between mb-5 px-1">
               <span className="font-headline text-xs font-black tracking-[0.2em] text-[#221c16] uppercase">各平台咨询</span>

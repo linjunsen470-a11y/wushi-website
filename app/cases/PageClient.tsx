@@ -111,7 +111,7 @@ export default function CasesPage() {
                 key={item.title} 
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: idx * 0.1 }}
-                className="hover-lift overflow-hidden rounded-[3rem] bg-white premium-shadow border border-outline-variant/10"
+                className="hover-lift overflow-hidden rounded-[2.25rem] bg-white premium-shadow border border-outline-variant/10"
               >
                 <div className="relative aspect-[16/9] group overflow-hidden">
                   <Image src={item.image} alt={item.title} fill placeholder="blur" sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
@@ -148,7 +148,7 @@ export default function CasesPage() {
               key={stat.label} 
               {...subtleFadeProps}
               transition={{ delay: idx * 0.1 }}
-              className="glass-panel rounded-[2.5rem] p-10 text-center relative overflow-hidden group border border-white/5"
+              className="glass-panel rounded-[2rem] p-10 text-center relative overflow-hidden group border border-white/5"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
               <div className="font-headline text-6xl font-black text-secondary-fixed tracking-tighter">{stat.value}</div>

@@ -128,10 +128,10 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-[3rem] bg-surface-container-low p-10 border border-outline-variant/10">
+            <div className="rounded-[2.25rem] bg-surface-container-low p-10 border border-outline-variant/10">
               <div className="grid gap-8 md:grid-cols-3">
                 <div className="flex flex-col items-center text-center">
-                  <div className="relative h-44 w-full overflow-hidden rounded-3xl premium-shadow border border-white bg-white p-4">
+                  <div className="relative h-44 w-full overflow-hidden rounded-[1.75rem] premium-shadow border border-white bg-white p-4">
                     <Image src={contactPanel.wechatQr} alt="微信二维码" fill sizes="200px" className="object-contain p-2" />
                   </div>
                   <div className="mt-5">
@@ -141,7 +141,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex flex-col items-center text-center">
-                  <div className="relative h-44 w-full overflow-hidden rounded-3xl premium-shadow border border-zinc-800 bg-zinc-900 group">
+                  <div className="relative h-44 w-full overflow-hidden rounded-[1.75rem] premium-shadow border border-zinc-800 bg-zinc-900 group">
                     <Image src={contactPanel.douyinQr} alt="抖音二维码" fill sizes="200px" className="object-contain p-4" />
                   </div>
                   <div className="mt-5 w-full">
@@ -165,7 +165,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex flex-col items-center text-center">
-                  <div className="relative h-44 w-full overflow-hidden rounded-3xl premium-shadow border border-white bg-white">
+                  <div className="relative h-44 w-full overflow-hidden rounded-[1.75rem] premium-shadow border border-white bg-white">
                     <Image src={contactPanel.xhsQr} alt="小红书二维码" fill sizes="200px" className="object-contain p-4" />
                   </div>
                   <div className="mt-5 w-full">
@@ -195,7 +195,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="premium-shadow overflow-hidden rounded-[3.5rem] bg-white border border-outline-variant/5"
+            className="premium-shadow overflow-hidden rounded-[2.25rem] bg-white border border-outline-variant/5"
           >
             <div className="bg-primary/5 px-10 py-8 border-b border-primary/10">
               <h2 className="font-headline text-2xl font-black text-on-surface tracking-tight">提交您的活动需求</h2>
