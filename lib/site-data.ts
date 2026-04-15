@@ -292,15 +292,50 @@ export const homepageSections = {
 export const contactPanel = {
   phone: '18983662830',
   email: 'service@cqwushi.com',
-  wechatQr,
-  douyinQr,
-  douyinId: '2137895537',
-  xhsQr,
-  xhsId: '4751220581',
   wechatId: '18983662830',
   responseTime: '工作时段优先 1 小时内响应，复杂项目当天内反馈档期与建议配置。',
   address: '总部位于重庆，核心服务重庆主城及西南区域，可承接商场开业、品牌快闪、年会晚宴等高规格项目。',
   image: charityBowing,
+  primaryChannels: [
+    {
+      id: 'phone',
+      label: '电话沟通',
+      value: '18983662830',
+      href: 'tel:18983662830',
+      action: 'call',
+      description: '适合直接确认档期、预算范围和场地条件。',
+      helperText: '优先建议直接电话沟通，信息确认最快。',
+    },
+    {
+      id: 'wechat',
+      label: '微信咨询',
+      value: '18983662830',
+      action: 'copy',
+      qrImage: wechatQr,
+      description: '扫码加微信，方便发送活动时间、场地图和流程要求。',
+      helperText: '扫码加微信后，可继续沟通方案与报价。',
+    },
+  ],
+  supportChannels: [
+    {
+      id: 'douyin',
+      label: '抖音',
+      value: '2137895537',
+      action: 'copy',
+      qrImage: douyinQr,
+      description: '先看真实演出视频，再决定是否进一步咨询。',
+      helperText: '复制抖音号或扫码，查看最新实战内容。',
+    },
+    {
+      id: 'xhs',
+      label: '小红书',
+      value: '4751220581',
+      action: 'copy',
+      qrImage: xhsQr,
+      description: '适合看案例图、现场细节和风格呈现。',
+      helperText: '复制小红书号或扫码，获取更多案例参考。',
+    },
+  ],
 };
 
 export const socialLinks = [
