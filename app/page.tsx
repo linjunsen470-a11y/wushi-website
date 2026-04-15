@@ -62,8 +62,8 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,13,11,0.22)_0%,rgba(20,13,11,0.54)_30%,rgba(20,13,11,0.86)_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,13,11,0.8)_0%,rgba(20,13,11,0.42)_42%,rgba(20,13,11,0.72)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,13,11,0.12)_0%,rgba(20,13,11,0.24)_30%,rgba(20,13,11,0.64)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,13,11,0.6)_0%,rgba(20,13,11,0.1)_42%,rgba(20,13,11,0.5)_100%)]" />
           <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:clamp(44px,6vw,72px)_clamp(44px,6vw,72px)]" />
         </div>
 
@@ -75,15 +75,15 @@ export default function HomePage() {
               transition={{ duration: 1, ease: 'easeOut' }}
               className="relative z-10 max-w-[62rem]"
             >
-              <span className="section-eyebrow text-secondary-fixed mb-6 block">
+              <span className="section-eyebrow text-secondary-fixed mb-6 block drop-shadow-sm">
                 重庆本地专业舞狮演出团队
               </span>
-              <h1 className="page-hero-title text-white">
+              <h1 className="page-hero-title text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
                 让重要场合，
                 <br />
                 不仅热闹而且出众
               </h1>
-              <p className="page-lead mt-10 text-white/76 md:text-[1.12rem]">
+              <p className="page-lead mt-10 text-white/94 md:text-[1.12rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 {brand.name} 专注服务商场开业、品牌路演及高规格婚宴。我们不仅提供精彩的演出，更重视现场的流程配合、仪式感以及适合拍照传播的精彩瞬间。
               </p>
               <div className="mt-11 flex flex-wrap gap-3">

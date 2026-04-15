@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { Phone, Mail, MapPin, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Phone, Mail, MapPin, CheckCircle2, AlertCircle, Loader2, Copy, Check } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -11,6 +11,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { contactPanel } from '@/lib/site-data';
 import { submitContactForm } from '@/app/actions/contact';
+import { cn } from '@/lib/utils';
 
 const formSchema = z.object({
   projectType: z.string().min(1, '请选择活动类型'),
@@ -25,6 +26,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const {
     register,
@@ -49,6 +51,12 @@ export default function ContactPage() {
     } catch (error) {
       setSubmitStatus('error');
     }
+  };
+
+  const handleCopy = (id: string, platform: string) => {
+    navigator.clipboard.writeText(id);
+    setCopiedId(platform);
+    setTimeout(() => setCopiedId(null), 2000);
   };
 
   return (
@@ -116,10 +124,10 @@ export default function ContactPage() {
             </div>
 
             <div className="rounded-[3rem] bg-surface-container-low p-10 border border-outline-variant/10">
-              <div className="grid gap-10 md:grid-cols-3">
+              <div className="grid gap-8 md:grid-cols-3">
                 <div className="flex flex-col items-center text-center">
-                  <div className="relative h-40 w-40 overflow-hidden rounded-3xl premium-shadow border-4 border-white bg-white">
-                    <Image src={contactPanel.wechatQr} alt="微信二维码" fill sizes="160px" className="object-cover" />
+                  <div className="relative h-44 w-full overflow-hidden rounded-3xl premium-shadow border border-white bg-white p-4">
+                    <Image src={contactPanel.wechatQr} alt="微信二维码" fill sizes="200px" className="object-contain p-2" />
                   </div>
                   <div className="mt-5">
                     <p className="font-headline text-lg font-black text-on-surface tracking-tight">微信咨询</p>
@@ -128,28 +136,50 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex flex-col items-center text-center">
-                  <div className="relative h-40 w-40 overflow-hidden rounded-3xl premium-shadow border-4 border-white bg-white group">
-                    {/* Douyin Crop: Include circular QR and the name below it */}
-                    <div className="absolute inset-0 scale-[1.1] -translate-y-4">
-                      <Image src={contactPanel.douyinQr} alt="抖音二维码" fill sizes="160px" className="object-contain" />
-                    </div>
+                  <div className="relative h-44 w-full overflow-hidden rounded-3xl premium-shadow border border-zinc-800 bg-zinc-900 group">
+                    <Image src={contactPanel.douyinQr} alt="抖音二维码" fill sizes="200px" className="object-contain p-4" />
                   </div>
-                  <div className="mt-5">
+                  <div className="mt-5 w-full">
                     <p className="font-headline text-lg font-black text-on-surface tracking-tight">抖音主页</p>
-                    <p className="mt-2 text-[11px] leading-relaxed text-on-surface-variant font-bold">关注看实战现场精彩视频</p>
+                    <button 
+                      onClick={() => handleCopy(contactPanel.douyinId, 'douyin')}
+                      className={cn(
+                        "mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border transition-all text-[10px] font-bold",
+                        copiedId === 'douyin' 
+                          ? "bg-green-50 border-green-200 text-green-600" 
+                          : "bg-white border-outline-variant/30 text-zinc-600 hover:border-zinc-300"
+                      )}
+                    >
+                      {copiedId === 'douyin' ? (
+                        <><Check size={12} /> 已复制 ID</>
+                      ) : (
+                        <><Copy size={12} /> 抖音号: {contactPanel.douyinId}</>
+                      )}
+                    </button>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center text-center">
-                  <div className="relative h-40 w-40 overflow-hidden rounded-3xl premium-shadow border-4 border-white bg-white">
-                    {/* XHS Crop: Include account info at top and QR at bottom right */}
-                    <div className="absolute inset-0 scale-[1.05]">
-                       <Image src={contactPanel.xhsQr} alt="小红书二维码" fill sizes="160px" className="object-contain" />
-                    </div>
+                  <div className="relative h-44 w-full overflow-hidden rounded-3xl premium-shadow border border-white bg-white">
+                    <Image src={contactPanel.xhsQr} alt="小红书二维码" fill sizes="200px" className="object-contain p-4" />
                   </div>
-                  <div className="mt-5">
+                  <div className="mt-5 w-full">
                     <p className="font-headline text-lg font-black text-on-surface tracking-tight">小红书名片</p>
-                    <p className="mt-2 text-[11px] leading-relaxed text-on-surface-variant font-bold">查看更多商业项目落地图</p>
+                    <button 
+                      onClick={() => handleCopy(contactPanel.xhsId, 'xhs')}
+                      className={cn(
+                        "mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border transition-all text-[10px] font-bold",
+                        copiedId === 'xhs' 
+                          ? "bg-green-50 border-green-200 text-green-600" 
+                          : "bg-white border-outline-variant/30 text-rose-600 hover:border-rose-200"
+                      )}
+                    >
+                      {copiedId === 'xhs' ? (
+                        <><Check size={12} /> 已复制 ID</>
+                      ) : (
+                        <><Copy size={12} /> 小红书: {contactPanel.xhsId}</>
+                      )}
+                    </button>
                   </div>
                 </div>
               </div>

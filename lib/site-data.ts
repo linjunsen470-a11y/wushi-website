@@ -279,7 +279,9 @@ export const contactPanel = {
   email: 'service@cqwushi.com',
   wechatQr,
   douyinQr,
+  douyinId: '2137895537',
   xhsQr,
+  xhsId: '4751220581',
   address: '总部位于重庆，核心服务重庆及西南区域，承接各类高规格舞狮演艺项目。',
   image: charityBowing,
 };
