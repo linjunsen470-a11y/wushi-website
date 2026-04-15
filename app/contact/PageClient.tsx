@@ -133,7 +133,7 @@ export default function ContactPage() {
                 <div className="rounded-[1.45rem] border border-outline-variant/20 bg-surface-container-low px-6 py-6">
                   <div className="flex items-start gap-4">
                     <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-[1rem] border border-white bg-white p-2 shadow-sm">
-                      <Image src={wechatQrImage} alt="微信二维码" fill sizes="112px" className="object-contain p-1" />
+                      <Image src={wechatQrImage} alt={wechatChannel.qrAlt || '微信二维码'} fill sizes="112px" className="object-contain p-1" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">微信沟通</p>
@@ -193,7 +193,7 @@ export default function ContactPage() {
                         <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-[1rem] border border-white bg-white p-2 shadow-sm">
                           <Image
                             src={channel.qrFocusImage ?? channel.qrImage}
-                            alt={`${channel.label}二维码`}
+                            alt={channel.qrAlt || `${channel.label}二维码`}
                             fill
                             sizes="112px"
                             className="object-contain p-1"

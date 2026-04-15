@@ -64,7 +64,7 @@ export default function ServicesPage() {
                 className={index % 2 === 1 ? 'lg:order-2' : ''}
               >
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] premium-shadow border border-outline-variant/10 group">
-                  <Image src={service.image} alt={service.title} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                  <Image src={service.image} alt={service.altText || service.title} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/5" />
                 </div>
               </motion.div>

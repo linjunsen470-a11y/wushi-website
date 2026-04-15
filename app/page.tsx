@@ -13,6 +13,7 @@ import {
   homeShowcase,
   homepageSections,
   mixedGallery,
+  mixedGalleryAlt,
   proofPoints,
   responsePromises,
   serviceCards,
@@ -57,7 +58,7 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src={homeShowcase.hero}
-            alt="舞狮开业演出现场"
+            alt={homeShowcase.heroAlt || "舞狮开业演出现场"}
             fill
             priority
             placeholder="blur"
@@ -170,7 +171,7 @@ export default function HomePage() {
                 <div className="relative aspect-[5/4]">
                   <Image
                     src={service.image}
-                    alt={service.title}
+                    alt={service.altText || service.title}
                     fill
                     placeholder="blur"
                     sizes="(min-width: 1024px) 30vw, 100vw"
@@ -207,7 +208,7 @@ export default function HomePage() {
               <div className="group premium-shadow relative aspect-[3/4] overflow-hidden rounded-[2.25rem]">
                 <Image
                   src={homepageSections.media.imageA}
-                  alt={homepageSections.media.title}
+                  alt={homepageSections.media.imageAAlt}
                   fill
                   placeholder="blur"
                   sizes="(min-width: 1024px) 40vw, 100vw"
@@ -224,7 +225,7 @@ export default function HomePage() {
                 <div className="premium-shadow relative min-h-[250px] flex-1 overflow-hidden rounded-[2rem]">
                   <Image
                     src={homepageSections.media.imageB}
-                    alt="舞狮现场观众与舞台"
+                    alt={homepageSections.media.imageBAlt}
                     fill
                     placeholder="blur"
                     sizes="(min-width: 1024px) 20vw, 100vw"
@@ -236,7 +237,7 @@ export default function HomePage() {
             <div className="premium-shadow relative aspect-[4/5] overflow-hidden rounded-[2.25rem] lg:h-[700px] lg:aspect-auto">
               <Image
                 src={homepageSections.media.imageC}
-                alt="活动红毯舞狮现场"
+                alt={homepageSections.media.imageCAlt}
                 fill
                 placeholder="blur"
                 sizes="(min-width: 1024px) 30vw, 100vw"
@@ -276,7 +277,7 @@ export default function HomePage() {
             >
               <Image
                 src={homepageSections.craft.imageA}
-                alt={homepageSections.craft.title}
+                alt={homepageSections.craft.imageAAlt}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -301,7 +302,7 @@ export default function HomePage() {
                 >
                   <Image
                     src={homepageSections.craft.imageB}
-                    alt="高桩表演"
+                    alt={homepageSections.craft.imageBAlt}
                     fill
                     sizes="15vw"
                     className="object-cover"
@@ -314,7 +315,7 @@ export default function HomePage() {
                 >
                   <Image
                     src={homepageSections.craft.imageC}
-                    alt="狮头细节"
+                    alt={homepageSections.craft.imageCAlt}
                     fill
                     sizes="15vw"
                     className="object-cover"
@@ -382,7 +383,7 @@ export default function HomePage() {
               >
                 <Image
                   src={image}
-                  alt={`现场图片 ${index + 1}`}
+                  alt={mixedGalleryAlt[index] || `现场图片 ${index + 1}`}
                   className="h-auto w-full transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />

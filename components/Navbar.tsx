@@ -49,7 +49,7 @@ export default function Navbar() {
     >
       <div className="shell flex items-center justify-between gap-6 py-4">
         <Link href="/" className="flex items-center gap-3" onClick={closeMenu}>
-          <Image src={brand.logoRed} alt={brand.name} className="h-16 w-16 object-contain" priority />
+          <Image src={brand.logoRed} alt={brand.logoAlt} className="h-16 w-16 object-contain" priority />
           <div>
             <div className="font-headline text-xl font-black uppercase tracking-tight text-primary md:text-2xl">
               {brand.name}

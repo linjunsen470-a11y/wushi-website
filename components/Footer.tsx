@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="shell grid gap-10 py-12 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:items-start">
         <div className="space-y-5">
           <div className="flex items-center gap-3">
-            <Image src={brand.logoYellow} alt={brand.name} className="h-16 w-16 object-contain" />
+            <Image src={brand.logoYellow} alt={brand.logoAlt} className="h-16 w-16 object-contain" />
             <div>
               <div className="font-headline text-2xl font-black tracking-tight">{brand.name}</div>
               <p className="text-sm text-white/45">{brand.tagline}</p>

@@ -67,7 +67,7 @@ export default function AboutPage() {
             className="relative"
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_32px_80px_rgba(35,24,15,0.15)]">
-              <Image src={aboutGallery.story} alt="舞狮团队演出现场" fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+              <Image src={aboutGallery.story} alt={aboutGallery.storyAlt || '重庆舞狮团队表演实景'} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
             <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-black/60 px-8 py-6 text-white backdrop-blur-md border border-white/10">
               <p className="font-headline text-2xl font-black tracking-tight leading-tight">让每一次重要环节，都成为现场的焦点</p>
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 className={`hover-lift overflow-hidden rounded-[2rem] bg-white premium-shadow ${index === 1 ? 'md:translate-y-12' : ''}`}
               >
                 <div className="relative aspect-[4/5]">
-                  <Image src={item.image} alt={item.title} fill placeholder="blur" sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover" />
+                  <Image src={item.image} alt={item.altText || item.title} fill placeholder="blur" sizes="(min-width: 1024px) 30vw, 100vw" className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 <div className="p-10">
@@ -133,7 +133,7 @@ export default function AboutPage() {
                 className="group relative overflow-hidden rounded-[2rem] bg-surface-container shadow-sm border border-outline-variant/10"
               >
                 <div className="relative aspect-[1/1] overflow-hidden">
-                  <Image src={member.image} alt={member.name} fill placeholder="blur" sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <Image src={member.image} alt={member.altText || member.name} fill placeholder="blur" sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
                 </div>
                 <div className="p-10">
@@ -167,16 +167,20 @@ export default function AboutPage() {
           </motion.div>
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
             <motion.div {...subtleFadeProps} className="relative min-h-[300px] overflow-hidden rounded-[2rem] md:min-h-[500px] premium-shadow border border-white/5">
-              <Image src={aboutGallery.materialA} alt="狮头细节" fill placeholder="blur" sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover" />
+              <Image src={aboutGallery.materialA} alt={aboutGallery.materialAAlt || '优质手工醒狮狮头近景'} fill placeholder="blur" sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover" />
             </motion.div>
             <div className="grid gap-8">
               <motion.div {...subtleFadeProps} transition={{ delay: 0.2 }} className="relative min-h-[240px] overflow-hidden rounded-[2rem] premium-shadow border border-white/5">
-                <Image src={aboutGallery.materialB} alt="高桩表演" fill placeholder="blur" sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover" />
+                <Image src={aboutGallery.materialB} alt={aboutGallery.materialBAlt || '高难度高桩特技表演抓拍'} fill placeholder="blur" sizes="(min-width: 1024px) 25vw, 100vw" className="object-cover" />
               </motion.div>
               <div className="grid gap-6 grid-cols-3">
-                {[aboutGallery.portraitA, aboutGallery.portraitB, aboutGallery.portraitC].map((img, i) => (
+                {[
+                  { img: aboutGallery.portraitA, alt: aboutGallery.portraitAAlt },
+                  { img: aboutGallery.portraitB, alt: aboutGallery.portraitBAlt },
+                  { img: aboutGallery.portraitC, alt: aboutGallery.portraitCAlt },
+                ].map(({ img, alt }, i) => (
                   <motion.div key={i} {...subtleFadeProps} transition={{ delay: 0.3 + i * 0.1 }} className="relative aspect-square overflow-hidden rounded-[1.75rem] border border-white/5">
-                    <Image src={img} alt={`材质近景 ${i + 1}`} fill placeholder="blur" sizes="15vw" className="object-cover" />
+                    <Image src={img} alt={alt || `重庆舞狮现场素材图${i + 1}`} fill placeholder="blur" sizes="15vw" className="object-cover" />
                   </motion.div>
                 ))}
               </div>

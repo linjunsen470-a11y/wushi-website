@@ -114,7 +114,7 @@ export default function CasesPage() {
                 className="hover-lift overflow-hidden rounded-[2.25rem] bg-white premium-shadow border border-outline-variant/10"
               >
                 <div className="relative aspect-[16/9] group overflow-hidden">
-                  <Image src={item.image} alt={item.title} fill placeholder="blur" sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                  <Image src={item.image} alt={item.altText || item.title} fill placeholder="blur" sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute inset-x-6 bottom-6 flex justify-end">
                     <span className="glass-panel px-4 py-2 rounded-full text-[10px] font-black text-on-surface uppercase tracking-widest">{item.location}</span>
                   </div>
