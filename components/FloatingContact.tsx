@@ -28,18 +28,11 @@ export default function FloatingContact() {
         <div className="flex flex-col gap-3 md:hidden">
           <Link
             href="/contact"
-            className="flex h-14 w-14 items-center justify-center rounded-[1.05rem] border border-primary/15 bg-white/95 text-primary shadow-[0_18px_36px_rgba(30,27,19,0.16)] backdrop-blur-md transition-colors hover:border-primary hover:bg-primary hover:text-white"
+            className="flex h-14 w-14 items-center justify-center rounded-[1.05rem] bg-primary text-white shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-colors hover:bg-primary-container"
             aria-label="前往联系页"
           >
             <MessageCircle size={22} />
           </Link>
-          <a
-            href={`tel:${contactPanel.phone.replace(/\s+/g, '')}`}
-            className="flex h-14 w-14 items-center justify-center rounded-[1.05rem] bg-primary text-white shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-colors hover:bg-primary-container"
-            aria-label="直接拨打电话"
-          >
-            <Phone size={22} />
-          </a>
         </div>
 
         <div className="hidden flex-col gap-3 md:flex">
@@ -123,31 +116,18 @@ export default function FloatingContact() {
             whileTap={{ scale: 0.96 }}
             onClick={() => setShowPopup((value) => !value)}
             className={cn(
-              'group relative flex h-14 w-14 items-center justify-center rounded-[1.05rem] border transition-all duration-300 shadow-lg',
+              'group relative flex h-14 w-14 items-center justify-center rounded-[1.05rem] shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-all duration-300',
               showPopup
-                ? 'border-primary bg-primary text-white'
-                : 'border-primary/15 bg-white/95 text-primary backdrop-blur-md hover:border-primary hover:bg-primary hover:text-white'
+                ? 'bg-primary-container text-white'
+                : 'bg-primary text-white hover:bg-primary-container'
             )}
-            aria-label="查看咨询方式"
+            aria-label="联系我们"
           >
             <MessageCircle size={22} />
             <span className="absolute right-full mr-4 hidden whitespace-nowrap rounded-lg border border-outline-variant/35 bg-surface-container-highest px-4 py-2 text-xs font-black tracking-widest text-on-surface shadow-xl opacity-0 transition-opacity group-hover:opacity-100 xl:block">
-              咨询
+              联系我们
             </span>
           </motion.button>
-
-          <motion.a
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            href={`tel:${contactPanel.phone.replace(/\s+/g, '')}`}
-            className="group relative flex h-14 w-14 items-center justify-center rounded-[1.05rem] bg-primary text-white shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-colors hover:bg-primary-container"
-            aria-label="直接拨打电话"
-          >
-            <Phone size={22} />
-            <span className="absolute right-full mr-4 hidden whitespace-nowrap rounded-lg border border-outline-variant/35 bg-surface-container-highest px-4 py-2 text-xs font-black tracking-widest text-on-surface shadow-xl opacity-0 transition-opacity group-hover:opacity-100 xl:block">
-              电话
-            </span>
-          </motion.a>
         </div>
       </div>
     </div>
