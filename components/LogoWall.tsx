@@ -22,7 +22,7 @@ export default function LogoWall() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05, duration: 0.5 }}
-              className="flex items-center justify-center p-8 rounded-2xl bg-surface-container-low border border-outline-variant/20 hover:border-primary/20 transition-all group"
+              className="flex items-center justify-center p-8 rounded-[1.1rem] bg-surface-container-low border border-outline-variant/20 hover:border-primary/20 transition-all group"
             >
               <span className="font-headline text-lg font-black text-on-surface/40 group-hover:text-primary/60 transition-colors tracking-tight text-center">
                 {partner}
@@ -34,7 +34,7 @@ export default function LogoWall() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: partnerLogos.length * 0.05, duration: 0.5 }}
-            className="flex items-center justify-center p-8 rounded-2xl bg-primary/5 border border-dashed border-primary/20"
+            className="flex items-center justify-center p-8 rounded-[1.1rem] bg-primary/5 border border-dashed border-primary/20"
           >
             <span className="font-headline text-sm font-black text-primary/60 tracking-tight">等众多商业地产及品牌</span>
           </motion.div>

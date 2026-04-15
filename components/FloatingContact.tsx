@@ -47,7 +47,7 @@ export default function FloatingContact() {
               </button>
             </div>
 
-            <div className="flex gap-1 mb-5 p-1 bg-surface-container-low rounded-2xl border border-outline-variant/10">
+            <div className="flex gap-1 mb-5 p-1 bg-surface-container-low rounded-[1rem] border border-outline-variant/10">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -56,7 +56,7 @@ export default function FloatingContact() {
                     setCopied(false);
                   }}
                   className={cn(
-                    'flex-1 flex flex-col items-center gap-1.5 py-2.5 rounded-xl transition-all h-[52px]',
+                    'flex-1 flex flex-col items-center gap-1.5 py-2.5 rounded-[0.9rem] transition-all h-[52px]',
                     activeTab === tab.id 
                       ? 'bg-white shadow-sm border border-outline-variant/20 text-primary' 
                       : 'text-on-surface-variant/60 hover:text-on-surface hover:bg-white/50'
@@ -68,7 +68,7 @@ export default function FloatingContact() {
               ))}
             </div>
 
-            <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-outline-variant/10 shadow-inner bg-surface-container-highest">
+            <div className="relative aspect-square w-full rounded-[1rem] overflow-hidden border border-outline-variant/10 shadow-inner bg-surface-container-highest">
               <AnimatePresence mode="wait">
                 {activeTab === 'wechat' && (
                   <motion.div
@@ -117,7 +117,7 @@ export default function FloatingContact() {
                 <button
                   onClick={() => handleCopy(activeTab === 'douyin' ? contactPanel.douyinId : contactPanel.xhsId)}
                   className={cn(
-                    "w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border transition-all text-[11px] font-bold",
+                    "w-full flex items-center justify-center gap-2 py-2.5 rounded-[0.9rem] border transition-all text-[11px] font-bold",
                     copied 
                       ? "bg-green-50 border-green-200 text-green-600" 
                       : "bg-surface-container-low border-outline-variant/20 text-on-surface hover:bg-surface-container-high"

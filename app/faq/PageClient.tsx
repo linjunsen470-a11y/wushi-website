@@ -37,7 +37,7 @@ export default function FaqPage() {
         chips={['报价透明', '准备清单', '执行标准', '安心保障']}
         panel={
           <div className="space-y-6">
-            <div className="rounded-2xl bg-secondary/5 p-8 border border-secondary/10">
+            <div className="rounded-[1rem] bg-secondary/5 p-8 border border-secondary/10">
               <span className="section-eyebrow text-secondary uppercase">咨询建议</span>
               <h4 className="mt-3 font-headline text-lg font-black text-on-surface">咨询准备清单</h4>
               <ul className="mt-4 space-y-3">
@@ -66,7 +66,7 @@ export default function FaqPage() {
             </p>
             <ul className="mt-8 space-y-4">
               {prepChecklist.map((item) => (
-                <li key={item} className="flex gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+                <li key={item} className="flex gap-4 p-4 rounded-[0.9rem] bg-surface-container-low border border-outline-variant/20">
                   <span className="text-secondary font-black text-xs mt-1">✓</span>
                   <span className="text-sm font-bold text-on-surface">{item}</span>
                 </li>
@@ -91,7 +91,7 @@ export default function FaqPage() {
                     <details 
                       key={item.question} 
                       open={itemIndex === 0} 
-                      className="group overflow-hidden rounded-2xl border border-outline-variant/30 transition-all duration-300 open:border-primary/20 open:bg-primary/[0.02]"
+                      className="group overflow-hidden rounded-[1rem] border border-outline-variant/30 transition-all duration-300 open:border-primary/20 open:bg-primary/[0.02]"
                     >
                       <summary className="flex cursor-pointer list-none items-center justify-between px-8 py-6 font-headline text-lg font-black text-on-surface hover:bg-surface-container-low group-open:hover:bg-transparent">
                         <span>{item.question}</span>

@@ -115,7 +115,7 @@ export default function HomePage() {
               </div>
               <div className="mt-10 grid gap-3 text-sm text-white/78 md:max-w-3xl md:grid-cols-3">
                 {responsePromises.map((item) => (
-                  <div key={item} className="rounded-2xl border border-white/10 bg-black/18 px-4 py-3 backdrop-blur-md">
+                  <div key={item} className="rounded-[1rem] border border-white/10 bg-black/18 px-4 py-3 backdrop-blur-md">
                     {item}
                   </div>
                 ))}
@@ -187,7 +187,7 @@ export default function HomePage() {
                     {service.points.map((point: string) => (
                       <span
                         key={point}
-                        className="rounded-xl border border-secondary/10 bg-surface-container px-3.5 py-1.5 text-xs font-bold text-secondary"
+                        className="rounded-[0.85rem] border border-secondary/10 bg-surface-container px-3.5 py-1.5 text-xs font-bold text-secondary"
                       >
                         {point}
                       </span>
@@ -347,7 +347,7 @@ export default function HomePage() {
                   href={item.href}
                   className="editorial-card group block h-full border border-transparent transition-all hover:border-primary/20"
                 >
-                  <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary transition-colors duration-500 group-hover:bg-primary group-hover:text-white">
+                  <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-[1rem] bg-primary/5 text-primary transition-colors duration-500 group-hover:bg-primary group-hover:text-white">
                     <div className="h-6 w-6 rounded-full border-2 border-current" />
                   </div>
                   <h3 className="font-headline text-3xl font-black text-on-surface tracking-tight">{item.title}</h3>

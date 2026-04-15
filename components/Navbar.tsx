@@ -88,7 +88,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            className="button-primary rounded-md px-5 py-3 hover:scale-[1.02] hover:bg-primary-container"
+            className="button-primary !rounded-[0.95rem] px-5 py-3 hover:scale-[1.02] hover:bg-primary-container"
           >
             联系我们
           </Link>
@@ -99,7 +99,7 @@ export default function Navbar() {
           aria-expanded={isOpen}
           aria-label={ariaLabel}
           className={cn(
-            'rounded-full border p-2.5 shadow-[0_10px_30px_rgba(30,27,19,0.08)] md:hidden',
+            'rounded-[1rem] border p-2.5 shadow-[0_10px_30px_rgba(30,27,19,0.08)] md:hidden',
             isOpen
               ? 'border-primary bg-primary text-white'
               : 'border-outline-variant/30 bg-white/85 text-primary backdrop-blur-md'
@@ -132,7 +132,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="mt-4 rounded-[1.35rem] bg-[#221c16] px-5 py-4 text-white">
+              <div className="mt-4 rounded-[1.1rem] bg-[#221c16] px-5 py-4 text-white">
                 <p className="font-headline text-base font-black tracking-[0.08em]">鑫龙堂舞狮</p>
                 <Link
                   href="/contact"

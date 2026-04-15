@@ -91,7 +91,7 @@ export default function ContactPage() {
 
             <div className="space-y-8">
               <div className="editorial-card !p-8 flex items-start gap-6 group hover:border-primary/20 transition-all">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                   <Phone size={24} />
                 </div>
                 <div>
@@ -103,7 +103,7 @@ export default function ContactPage() {
               </div>
 
               <div className="editorial-card !p-8 flex items-start gap-6 group hover:border-primary/20 transition-all">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                   <Mail size={24} />
                 </div>
                 <div>
@@ -115,7 +115,7 @@ export default function ContactPage() {
               </div>
 
               <div className="editorial-card !p-8 flex items-start gap-6 group hover:border-primary/20 transition-all">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
                   <MapPin size={24} />
                 </div>
                 <div>
@@ -149,7 +149,7 @@ export default function ContactPage() {
                     <button
                       onClick={() => handleCopy(contactPanel.douyinId, 'douyin')}
                       className={cn(
-                        'mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border transition-all text-[10px] font-bold',
+                        'mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-[0.9rem] border transition-all text-[10px] font-bold',
                         copiedId === 'douyin'
                           ? 'bg-green-50 border-green-200 text-green-600'
                           : 'bg-white border-outline-variant/30 text-zinc-600 hover:border-zinc-300'
@@ -173,7 +173,7 @@ export default function ContactPage() {
                     <button
                       onClick={() => handleCopy(contactPanel.xhsId, 'xhs')}
                       className={cn(
-                        'mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border transition-all text-[10px] font-bold',
+                        'mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-[0.9rem] border transition-all text-[10px] font-bold',
                         copiedId === 'xhs'
                           ? 'bg-green-50 border-green-200 text-green-600'
                           : 'bg-white border-outline-variant/30 text-rose-600 hover:border-rose-200'
@@ -208,7 +208,7 @@ export default function ContactPage() {
                   <label className="text-xs font-black uppercase tracking-widest text-on-surface/60 ml-1">活动类型</label>
                   <select
                     {...register('projectType')}
-                    className="w-full rounded-2xl border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 appearance-none"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 appearance-none"
                     disabled={submitStatus === 'submitting'}
                   >
                     <option value="">请选择...</option>
@@ -225,7 +225,7 @@ export default function ContactPage() {
                   <label className="text-xs font-black uppercase tracking-widest text-on-surface/60 ml-1">希望怎么联系</label>
                   <select
                     {...register('preferredContactMethod')}
-                    className="w-full rounded-2xl border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 appearance-none"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 appearance-none"
                     disabled={submitStatus === 'submitting'}
                   >
                     <option value="wechat">优先微信</option>
@@ -241,7 +241,7 @@ export default function ContactPage() {
                     type="text"
                     {...register('name')}
                     placeholder="例如：陈先生"
-                    className="w-full rounded-2xl border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   />
                   {errors.name && <p className="text-xs font-bold text-primary mt-1 ml-1">{errors.name.message}</p>}
@@ -253,7 +253,7 @@ export default function ContactPage() {
                     type="text"
                     {...register('contact')}
                     placeholder="方便我们及时回复您"
-                    className="w-full rounded-2xl border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   />
                   {errors.contact && <p className="text-xs font-bold text-primary mt-1 ml-1">{errors.contact.message}</p>}
@@ -266,7 +266,7 @@ export default function ContactPage() {
                   <input
                     type="date"
                     {...register('eventDate')}
-                    className="w-full rounded-2xl border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   />
                 </div>
@@ -277,7 +277,7 @@ export default function ContactPage() {
                     type="text"
                     {...register('venue')}
                     placeholder="例如：渝中区 解放碑英利广场，未定也可以先留空"
-                    className="w-full rounded-2xl border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   />
                 </div>
@@ -289,7 +289,7 @@ export default function ContactPage() {
                   {...register('message')}
                   rows={4}
                   placeholder="如有特殊流程、场地限制、预算区间或拍摄需求，请在这里说明。"
-                  className="w-full rounded-2xl border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 resize-none"
+                  className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50 resize-none"
                   disabled={submitStatus === 'submitting'}
                 />
               </div>
@@ -302,7 +302,7 @@ export default function ContactPage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="flex items-center justify-center gap-3 rounded-2xl bg-green-50 p-6 text-green-700 border border-green-100"
+                      className="flex items-center justify-center gap-3 rounded-[1rem] bg-green-50 p-6 text-green-700 border border-green-100"
                     >
                       <CheckCircle2 size={24} />
                       <p className="font-bold">需求提交成功！我们会按您选择的方式尽快联系。</p>
@@ -313,7 +313,7 @@ export default function ContactPage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="flex items-center justify-center gap-3 rounded-2xl bg-red-50 p-6 text-red-700 border border-red-100"
+                      className="flex items-center justify-center gap-3 rounded-[1rem] bg-red-50 p-6 text-red-700 border border-red-100"
                     >
                       <AlertCircle size={24} />
                       <p className="font-bold">提交失败，请稍后重试或直接电话联系。</p>
