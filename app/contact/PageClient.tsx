@@ -98,15 +98,14 @@ export default function ContactPage() {
             className="space-y-10"
           >
             <div className="max-w-3xl">
-              <span className="section-eyebrow text-secondary">快速咨询</span>
+              <span className="section-eyebrow text-secondary">联系我们</span>
               <h1 className="page-hero-title mt-6 text-on-surface !leading-[1.08] tracking-tight">
-                先确认档期、预算和场地，
+                获取专属您的
                 <br />
-                再决定怎么做方案
+                专业舞狮演出方案
               </h1>
               <p className="page-lead mt-8 font-medium leading-relaxed text-on-surface-variant">
-                商业活动最有效率的方式，不是先填很多信息，而是先把时间、场地和大致需求说清楚。电话和微信是主入口，
-                看完真实案例后再补充表单，会更快进入可执行阶段。
+                立足重庆，辐射西南。我们深知每场商业活动都至关重要。无论是商场开业、品牌商演还是喜宴庆典，请告诉我们您的时间、场地与大致需求，我们将第一时间为您核对档期并提供报价与执行建议。
               </p>
             </div>
 
@@ -121,7 +120,7 @@ export default function ContactPage() {
                       <Phone size={22} />
                     </div>
                     <div>
-                      <p className="text-[11px] font-black tracking-[0.18em] text-white/68">优先入口</p>
+                      <p className="text-[11px] font-black tracking-[0.18em] text-white/68">快速咨询</p>
                       <h2 className="mt-2 font-headline text-2xl font-black tracking-tight">{phoneChannel.label}</h2>
                       <p className="mt-2 font-headline text-3xl font-black tracking-tight">{phoneChannel.value}</p>
                       <p className="mt-3 max-w-md text-sm leading-7 text-white/80">{phoneChannel.description}</p>
@@ -137,7 +136,7 @@ export default function ContactPage() {
                       <Image src={wechatQrImage} alt="微信二维码" fill sizes="112px" className="object-contain p-1" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">优先入口</p>
+                      <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">微信沟通</p>
                       <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
                         {wechatChannel.label}
                       </h2>
@@ -166,12 +165,12 @@ export default function ContactPage() {
             <div className="rounded-[1.45rem] border border-outline-variant/15 bg-white px-6 py-6 shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-6">
                 <div className="max-w-2xl">
-                  <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">先看真实案例</p>
+                  <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">关注各大平台</p>
                   <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                    抖音看视频，小红书看图文
+                    了解我们的过往案例与现场实力
                   </h2>
                   <p className="mt-3 text-base leading-8 text-on-surface-variant">
-                    这两个入口不承担主咨询转化，只负责帮你快速判断现场气氛、执行细节和整体风格。确认方向后，再回到微信或电话会更高效。
+                    欢迎关注我们的抖音与小红书账号，查看更多真实演出现场的高清视频与图文记录，直观感受鑫龙堂带来的热烈氛围与专业标准。
                   </p>
                 </div>
 
@@ -234,22 +233,22 @@ export default function ContactPage() {
                 <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
                   <Phone size={20} />
                 </div>
-                <p className="mt-4 font-headline text-lg font-black text-on-surface">优先电话</p>
-                <p className="mt-2 text-sm leading-6 text-on-surface-variant">适合快速确认档期、预算范围与场地限制。</p>
+                <p className="mt-4 font-headline text-lg font-black text-on-surface">一对一电话</p>
+                <p className="mt-2 text-sm leading-6 text-on-surface-variant">高效沟通，快速为您评估活动档期及费用范围。</p>
               </div>
               <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
                 <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
                   <MessageCircle size={20} />
                 </div>
-                <p className="mt-4 font-headline text-lg font-black text-on-surface">微信跟进</p>
-                <p className="mt-2 text-sm leading-6 text-on-surface-variant">适合补充时间、场地图、流程单和报价细节。</p>
+                <p className="mt-4 font-headline text-lg font-black text-on-surface">项目对接</p>
+                <p className="mt-2 text-sm leading-6 text-on-surface-variant">添加微信发送场地照片及要求，细化执行方案。</p>
               </div>
               <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
                 <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
                   <Mail size={20} />
                 </div>
-                <p className="mt-4 font-headline text-lg font-black text-on-surface">表单补充</p>
-                <p className="mt-2 text-sm leading-6 text-on-surface-variant">不方便即时沟通时，再留表单，我们会按偏好方式联系。</p>
+                <p className="mt-4 font-headline text-lg font-black text-on-surface">需求登记</p>
+                <p className="mt-2 text-sm leading-6 text-on-surface-variant">提交您的活动初步计划，我们将安排专人主动与您联系。</p>
               </div>
             </div>
           </motion.div>
@@ -261,12 +260,12 @@ export default function ContactPage() {
             className="premium-shadow overflow-hidden rounded-[1.6rem] border border-outline-variant/10 bg-white"
           >
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
-              <p className="text-[11px] font-black tracking-[0.18em] text-primary">补充入口</p>
+              <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线留言</p>
               <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                不方便直接沟通时，再留表单
+                提交活动需求
               </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                只留核心信息即可，我们会按您选择的方式尽快联系。
+                留下您的活动信息与联系方式，我们的专家团队将尽快为您提供项目方案与报价建议。
               </p>
             </div>
 

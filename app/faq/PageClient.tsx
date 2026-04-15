@@ -19,19 +19,19 @@ export default function FaqPage() {
     <main className="min-h-screen">
       <Navbar />
       <SubpageHero
-        eyebrow="预订指南与常见问题 —— FAQ"
+        eyebrow="疑问解答中心 / FAQ"
         title={
           <>
-            提前了解执行细节，
+            透明服务流程标准，
             <br />
-            让咨询更高效
+            打消您的前期顾虑
           </>
         }
         description={
           <>
-            在咨询前，您可以先了解一下关于报价、准备工作及执行细节的常见问题，这样我们的沟通会更高效。
+            在这里，我们为您整理了关于活动报价、前期筹备及落地执行的所有核心信息。
             <br className="hidden md:block" />
-            让您在预订时心里更有底。
+            以最清晰的沟通标准，为您提供安心的商业合作保障。
           </>
         }
         chips={['报价透明', '准备清单', '执行标准', '安心保障']}
@@ -59,10 +59,10 @@ export default function FaqPage() {
             {...subtleFadeProps}
             className="editorial-card h-fit !p-12 sticky top-32"
           >
-            <span className="section-eyebrow text-secondary">咨询小贴士</span>
-            <h2 className="page-section-title mt-4 !text-3xl">咨询前准备</h2>
+            <span className="section-eyebrow text-secondary">业务评估指南</span>
+            <h2 className="page-section-title mt-4 !text-3xl">专属方案筹备要素</h2>
             <p className="mt-6 text-on-surface-variant leading-relaxed font-medium">
-              提前确认以下关键信息，可以帮我们更好评估您的活动需求，大幅缩短您的沟通流程：
+              明确以下核心活动信息，能够协助我们的专家团队为您迅速匹配最适合的表演编制与精准报价方案：
             </p>
             <ul className="mt-8 space-y-4">
               {prepChecklist.map((item) => (

@@ -21,19 +21,19 @@ import {
 
 const growthPages = [
   {
-    title: '看视频',
+    title: '视频案例',
     href: '/media',
-    text: '直接看以往真实演出视频，更快判断现场气氛、配合质量和整体完成度。',
+    text: '观看过往真实演出现场，直观感受热烈气氛、高质量配合与视觉呈现。',
   },
   {
     title: '场景方案',
     href: '/solutions',
-    text: '按照开业、商演、婚礼、节庆等不同场景，找到更适合您活动的配置。',
+    text: '涵盖商场开业、品牌路演、喜宴等多元化场景，提供定制级专业配置。',
   },
   {
     title: '预订指南',
     href: '/faq',
-    text: '提前了解报价范围及预订细节，咨询更高效，决策更轻松。',
+    text: '了解服务流程、报价参考与执行细节，让您的前期规划更清晰可控。',
   },
 ];
 
@@ -81,12 +81,12 @@ export default function HomePage() {
                 重庆本地商业活动舞狮执行团队
               </span>
               <h1 className="page-hero-title text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-                商场开业、品牌活动，
+                西南地区专业舞狮，
                 <br />
-                更快落到可执行方案
+                为您的商业活动赋能
               </h1>
               <p className="page-lead mt-10 text-white/94 md:text-[1.12rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                {brand.name} 专注服务商场开业、品牌路演、企业晚宴等商业活动。重点不是只把场面做热闹，而是把进场、卡点、流程配合和镜头素材一起做稳。
+                {brand.name} 深耕重庆本地市场，专注承接商场开业、品牌路演、企业晚宴等高规格商业活动。以高标准的场控、精准的卡点与热烈的现场氛围，确保每一场演出完美交付。
               </p>
               <div className="mt-11 flex flex-wrap gap-3">
                 {heroPillars.map((item) => (
@@ -330,8 +330,8 @@ export default function HomePage() {
         <div className="shell">
           <motion.div {...fadeInProps} className="section-intro grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
             <div className="max-w-xl">
-              <span className="section-eyebrow text-secondary">更多了解</span>
-              <h2 className="section-title">看视频、挑方案、领报价，一次看清楚</h2>
+              <span className="section-eyebrow text-secondary">服务特色</span>
+              <h2 className="section-title">全方位了解我们强悍的专业服务体系</h2>
             </div>
             <div className="hidden h-px w-full bg-outline-variant/30 lg:block" />
           </motion.div>

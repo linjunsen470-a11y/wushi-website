@@ -306,8 +306,8 @@ export const contactPanel = {
       value: '18983662830',
       href: 'tel:18983662830',
       action: 'call',
-      description: '适合直接确认档期、预算范围和场地条件。',
-      helperText: '优先建议直接电话沟通，信息确认最快。',
+      description: '1对1专业解答，提供实时档期查询与初步报价参考。',
+      helperText: '推荐通过电话直接沟通，响应最快。',
     },
     {
       id: 'wechat',
@@ -316,8 +316,8 @@ export const contactPanel = {
       action: 'copy',
       qrImage: wechatQr,
       qrFocusImage: wechatQrFocus,
-      description: '扫码加微信，方便发送活动时间、场地图和流程要求。',
-      helperText: '扫码加微信后，可继续沟通方案与报价。',
+      description: '专业执行团队对接，快速定制详细方案与活动流程单。',
+      helperText: '添加微信，获取详细案例资料与报价明细。',
     },
   ],
   supportChannels: [
@@ -328,8 +328,8 @@ export const contactPanel = {
       action: 'copy',
       qrImage: douyinQr,
       qrFocusImage: douyinQrFocus,
-      description: '先看真实演出视频，再决定是否进一步咨询。',
-      helperText: '复制抖音号或扫码，查看最新实战内容。',
+      description: '沉浸式感受热烈现场，观看最新商演路演实录。',
+      helperText: '分享活动现场，让更多人感受醒狮魅力。',
     },
     {
       id: 'xhs',
@@ -338,8 +338,8 @@ export const contactPanel = {
       action: 'copy',
       qrImage: xhsQr,
       qrFocusImage: xhsQrFocus,
-      description: '适合看案例图、现场细节和风格呈现。',
-      helperText: '复制小红书号或扫码，获取更多案例参考。',
+      description: '浏览精简图文案例，获取创意活动灵感与搭配参考。',
+      helperText: '海量活动布置模板，直观展示多元项目类型。',
     },
   ],
 };
@@ -488,9 +488,9 @@ export const faqSections = [
           '正式活动我们都会提前 1 小时左右到达现场，完成候场及最后一遍流程核对。',
       },
       {
-        question: '衣服会很烂很旧吗？',
+        question: '演出服装与道具的新旧程度如何？',
         answer:
-          '完全不会。我们深知商业演出的门面重要性，所有狮头和演出服都会定期清理更换，保证上镜效果极佳。',
+          '我们执行极高的重资产管理标准。所有舞狮装备都会定期进入深度清洁与折旧更换流程，确保呈现完美的镜头拍摄要求，现场视觉零瑕疵。',
       },
     ],
   },

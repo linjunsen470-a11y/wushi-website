@@ -41,16 +41,16 @@ export default function MediaPage() {
         variant="media"
         title={
           <>
-            重庆本地真实演出影像，
+            重庆本地商演实录，
             <br />
-            先看内容，再决定如何咨询
+            见证实战交付水准
           </>
         }
         description={
           <>
-            这里先看真实落地的视频和平台入口，不拿网络样片充数。
+            所有视频均为鑫龙堂团队的真实演出记录，绝不套用任何网络样片。
             <br className="hidden md:block" />
-            你可以先判断现场气氛、执行节奏和镜头效果，再回到微信或电话继续沟通。
+            通过高清视频，您可以直观感受活动现场的热烈氛围与完美的镜头视觉张力。
           </>
         }
         chips={['真实实录', '视频为主', '平台补充', featured.category]}
@@ -87,9 +87,9 @@ export default function MediaPage() {
             <div className="max-w-2xl">
               <span className="section-eyebrow text-secondary">视频案例</span>
               <h2 className="page-section-title mt-6">
-                先看真实演出视频，
+                沉浸式影像档案，
                 <br />
-                再判断执行水准
+                展示每一次高光时刻
               </h2>
             </div>
             <div className="flex flex-wrap gap-3 text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant">
@@ -143,10 +143,10 @@ export default function MediaPage() {
       <section className="bg-[#fbf7f0] py-24">
         <div className="shell">
           <motion.div {...subtleFadeProps} className="mb-12 max-w-3xl">
-            <span className="section-eyebrow text-secondary">更多真实内容入口</span>
-            <h2 className="page-section-title mt-6">抖音看视频，小红书看图文</h2>
+            <span className="section-eyebrow text-secondary">官方自媒体门户</span>
+            <h2 className="page-section-title mt-6">随时解锁海量现场最新素材</h2>
             <p className="mt-5 text-lg font-medium leading-8 text-on-surface-variant">
-              这两个入口继续保留，但不再像咨询方式并列出现。这里更适合先做内容预览，判断是否符合你的活动气质和执行要求。
+              欢迎访问我们的抖音与小红书官方主页。我们将持续更新未加修饰的高清图文及现场实拍，为您策划完美活动提供最具参考价值的创意与灵感。
             </p>
           </motion.div>
 
@@ -179,7 +179,7 @@ export default function MediaPage() {
                         <div>
                           <p className="font-headline text-xl font-black text-on-surface">{channel.label}</p>
                           <p className="mt-1 text-sm text-on-surface-variant">
-                            {channel.id === 'douyin' ? '偏视频案例入口' : '偏图文案例入口'}
+                            {channel.id === 'douyin' ? '全景现场视频直击' : '高颜图文素材参考'}
                           </p>
                         </div>
                       </div>
