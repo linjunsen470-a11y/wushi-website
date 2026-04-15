@@ -69,23 +69,38 @@ export const partnerLogos = [
   '重庆万象城', '重庆 IFS', '北城天街', '融创茂', '尼依格罗', '万达广场', '大悦城', '金辉广场', '来福士'
 ];
 
+export const proofPoints = [
+  {
+    title: '商业活动经验足',
+    text: '长期服务商场、品牌活动、酒店宴会与城市庆典，熟悉甲方审批、进场和彩排节奏。',
+  },
+  {
+    title: '沟通响应更直接',
+    text: '支持微信和电话快速沟通，需求明确后可尽快给出建议配置、档期反馈与报价范围。',
+  },
+  {
+    title: '现场交付有标准',
+    text: '提前确认动线、卡点、层高和机位需求，尽量把演出风险前置消化。',
+  },
+];
+
 export const testimonials = [
   {
-    content: '我是帮客户筹办开业活动的，鑫龙堂的配合度非常高。不仅演得精彩，最重要的是现场流程衔接得特别稳，不乱套，帮我们省了很多心。',
+    content: '我是帮客户筹办开业活动的，鑫龙堂配合度非常高。最关键的是流程衔接稳、现场不卡壳，商场方和品牌方都觉得省心。',
     author: '陈女士',
-    role: '知名品牌活动策划人',
+    role: '品牌活动策划人 / 商场开业项目',
     avatar: pinkCloseup
   },
   {
-    content: '新店开业请了鑫龙堂。师傅们提前一个多小时就到了，狮头和衣服看起来都很新，很有排面。现场的人气一下就带起来了，推荐。',
+    content: '新店开业请了鑫龙堂，团队提前到场，服装和狮头都很新，现场排面和人气一下就起来了，适合要效果也要效率的活动。',
     author: '王先生',
-    role: '餐饮店主 (大学城门店)',
+    role: '连锁餐饮门店负责人 / 开业活动',
     avatar: teamFormation
   },
   {
-    content: '非常专业。我们是室内舞台演出，对灯光和卡点要求高，鑫龙堂的动作和鼓点踩得特别准，视频拍出来效果非常好。',
+    content: '我们是室内舞台演出，对灯光、卡点和镜头效果要求高。鑫龙堂动作和鼓点都很准，拍出来的视频素材也能直接用。',
     author: '李经理',
-    role: '重庆某大型商场企划部',
+    role: '大型商业体企划部 / 年度盛典项目',
     avatar: corporateAnnual
   }
 ];
@@ -161,7 +176,7 @@ export const faqItems = [
   {
     question: '报价大概是多少？',
     answer:
-      '受人数规模、演出项目（是否需要高桩）、活动城市等影响，均价通常在 1500 - 3000 元人民币左右。具体请联系我们获取实时报价单。',
+      '受人数规模、演出项目（是否需要高桩）、活动城市与配套环节影响，常规项目可先给您报价范围，明确需求后再出具体方案。',
   },
   {
     question: '需要提前多久预订？',
@@ -184,19 +199,19 @@ export const caseStudies = [
     category: '商场周年庆',
     image: ifcOpening,
     description:
-      '在密闭的中庭空间内高效转场演出，高质量完成采青环节，为商场聚客并提供了极佳的自媒体传播素材。',
-    metrics: ['人流量瞬时翻倍', '配合商场流程', '高清原片交付'],
+      '在密闭中庭空间完成开场、采青与围观聚客节奏衔接，兼顾商场流程、安全距离与拍摄画面。',
+    metrics: ['中庭快闪式聚客', '采青环节顺畅落地', '可直接复用现场宣传素材'],
   },
   {
-    title: ' Haier 海尔年度盛典',
+    title: 'Haier 海尔年度盛典',
     client: '海尔智家',
     location: '南岸区 谢菲尔德酒店',
     date: '2024.12',
     category: '企业年会',
     image: corporateAnnual,
     description:
-      '配合舞台灯光与大屏进行定制化表演，卡点精准，节奏稳健，极大地提升了年会现场的仪式感与感官震撼。',
-    metrics: ['无缝衔接大厅环节', '定制鼓点配合', '零失误交付'],
+      '配合舞台灯光与大屏做定制化登场，满足酒店内场节奏、主持人口播与正式流程的精准卡点。',
+    metrics: ['年会开场无缝衔接', '鼓点与灯光同步配合', '室内舞台稳定交付'],
   },
   {
     title: '精品酒店中式婚礼',
@@ -206,8 +221,8 @@ export const caseStudies = [
     category: '婚礼宴会',
     image: weddingBanquet,
     description:
-      '双狮迎宾与舞台敬酒环节配合，注重与宾客及新人的互动，在喜庆热烈的氛围中融入传统礼仪，深受欢迎。',
-    metrics: ['深受宾客欢迎', '氛围感十足', '互动性强'],
+      '双狮迎宾与主舞台环节结合，兼顾长辈观感、新人互动与现场合影效果，氛围热烈但不抢主流程。',
+    metrics: ['迎宾与主流程自然融合', '宾客互动和合影效果强', '喜庆氛围稳定拉满'],
   },
   {
     title: '融创茂户外高桩展示',
@@ -217,8 +232,8 @@ export const caseStudies = [
     category: '品牌发布',
     image: redHighJong,
     description:
-      '顶尖高桩实力展示，通过连续的高难度动作，在户外开阔空间形成了极强的视觉记忆点，吸引万人驻足。',
-    metrics: ['核心地段驻足', '感官刺激强', '社交媒体讨论度高'],
+      '以高桩项目制造远距离可见的视觉记忆点，适合户外品牌发布、节点营销和短视频传播取材。',
+    metrics: ['户外核心点位吸睛', '高桩动作形成记忆点', '短视频传播素材充足'],
   },
 ];
 
@@ -282,14 +297,16 @@ export const contactPanel = {
   douyinId: '2137895537',
   xhsQr,
   xhsId: '4751220581',
-  address: '总部位于重庆，核心服务重庆及西南区域，承接各类高规格舞狮演艺项目。',
+  wechatId: '18983662830',
+  responseTime: '工作时段优先 1 小时内响应，复杂项目当天内反馈档期与建议配置。',
+  address: '总部位于重庆，核心服务重庆主城及西南区域，可承接商场开业、品牌快闪、年会晚宴等高规格项目。',
   image: charityBowing,
 };
 
 export const socialLinks = [
-  { label: '抖音', icon: 'douyin', href: 'https://www.douyin.com/user/YOUR_ACCOUNT_ID' },
-  { label: '小红书', icon: 'xiaohongshu', href: 'https://www.xiaohongshu.com/user/YOUR_ACCOUNT_ID' },
-  { label: '微信视频号', icon: 'wechat', href: '#' },
+  { label: '抖音号', icon: 'douyin', href: null, value: '2137895537' },
+  { label: '小红书号', icon: 'xiaohongshu', href: null, value: '4751220581' },
+  { label: '微信', icon: 'wechat', href: null, value: '18983662830' },
 ];
 
 export const footerLinks = [
@@ -308,6 +325,12 @@ export const stats = [
   { value: '1000+', label: '场次执行经验' },
   { value: '专业', label: '高桩实力保障' },
   { value: '标准', label: '现场服务流程' },
+];
+
+export const responsePromises = [
+  '优先微信或电话直连，减少反复表单沟通',
+  '需求明确后可快速反馈档期与建议配置',
+  '支持按商场、品牌、年会、庆典场景给出方案方向',
 ];
 
 export const mixedGallery = [

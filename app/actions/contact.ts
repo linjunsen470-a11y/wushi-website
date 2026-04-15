@@ -7,10 +7,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const contactFormSchema = z.object({
   projectType: z.string().min(1, '请选择项目类型'),
-  eventDate: z.string().min(1, '请选择活动日期'),
+  preferredContactMethod: z.enum(['wechat', 'phone']),
   name: z.string().min(1, '请输入您的称呼'),
   contact: z.string().min(1, '请输入联系方式（手机或微信）'),
-  venue: z.string().min(1, '请输入活动城市及场地'),
+  eventDate: z.string().optional(),
+  venue: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -24,13 +25,14 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
     };
   }
 
-  const { projectType, eventDate, name, contact, venue, message } = validatedFields.data;
+  const { projectType, preferredContactMethod, eventDate, name, contact, venue, message } = validatedFields.data;
+  const preferredContactLabel = preferredContactMethod === 'wechat' ? '优先微信' : '优先电话';
 
   try {
     const { error } = await resend.emails.send({
       from: process.env.LEAD_FROM_EMAIL || 'Wushi Leads <onboarding@resend.dev>',
       to: [process.env.LEAD_TO_EMAIL || 'service@cqwushi.com'],
-      subject: `[新商机] ${name} - ${projectType} (${venue})`,
+      subject: `[新商机] ${name} - ${projectType}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -59,8 +61,12 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
                   <div class="value">${projectType}</div>
                 </div>
                 <div class="field">
+                  <span class="label">优先联系</span>
+                  <div class="value">${preferredContactLabel}</div>
+                </div>
+                <div class="field">
                   <span class="label">活动日期</span>
-                  <div class="value">${eventDate}</div>
+                  <div class="value">${eventDate || '待定'}</div>
                 </div>
                 <div class="divider"></div>
                 <div class="field">
@@ -73,7 +79,7 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
                 </div>
                 <div class="field">
                   <span class="label">活动地点</span>
-                  <div class="value">${venue}</div>
+                  <div class="value">${venue || '待定'}</div>
                 </div>
                 <div class="divider"></div>
                 <div class="field">

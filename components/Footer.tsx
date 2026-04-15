@@ -38,6 +38,7 @@ export default function Footer() {
           </h3>
           <div className="space-y-3 text-white/70 mb-8">
             <p>{contactPanel.phone}</p>
+            <p>微信: {contactPanel.wechatId}</p>
             <p>{contactPanel.email}</p>
             <p>{contactPanel.address}</p>
           </div>
@@ -47,15 +48,12 @@ export default function Footer() {
           </h3>
           <div className="flex flex-wrap gap-4 text-sm">
             {socialLinks.map((link) => (
-              <a
+              <span
                 key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-secondary-fixed border-b border-transparent hover:border-secondary-fixed transition-all"
+                className="text-white/70 border-b border-transparent"
               >
-                {link.label}
-              </a>
+                {link.label}: {link.value}
+              </span>
             ))}
           </div>
         </div>

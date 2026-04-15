@@ -22,13 +22,13 @@ export default function ContactCTA() {
           >
             <span className="section-eyebrow text-secondary">即刻开启专业合作</span>
             <h2 className="mt-8 font-headline text-4xl font-black leading-tight tracking-tight text-on-surface md:text-5xl lg:text-6xl">
-              让您的活动现场，
+              让商业活动现场，
               <br />
-              不仅热闹，更显专业见地
+              更快进入可执行状态
             </h2>
             <p className="body-copy mx-auto mt-10 text-lg leading-relaxed text-on-surface-variant md:text-xl">
-              无论是开业庆典、商演路演还是私人宴会，{brand.name} 团队都将以行业标杆级的标准，
-              为您打造极具视觉冲击力与仪式感的精彩瞬间。
+              无论是商场开业、品牌路演还是企业晚宴，{brand.name} 团队都优先通过微信或电话直接沟通，
+              更快确认场地条件、档期与建议配置。
             </p>
             
             <div className="mt-14 flex flex-wrap justify-center gap-6">
@@ -36,14 +36,14 @@ export default function ContactCTA() {
                 href="/contact"
                 className="button-primary group relative overflow-hidden px-10 py-5 text-lg shadow-[0_20px_50px_rgba(163,0,17,0.24)] transition-all hover:-translate-y-1 hover:bg-primary-container"
               >
-                <span className="relative z-10">立即咨询报价</span>
+                <span className="relative z-10">加微信 / 电话沟通</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/10 transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
               <Link
-                href="/cases"
+                href="/media"
                 className="button-secondary border-primary/20 bg-white/60 px-10 py-5 text-lg text-on-surface backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white"
               >
-                查看更多真实案例
+                先看真实视频案例
               </Link>
             </div>
           </motion.div>

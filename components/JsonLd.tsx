@@ -47,10 +47,6 @@ export default function JsonLd() {
         'closes': '22:00',
       },
     ],
-    'sameAs': [
-      'https://www.douyin.com/user/YOUR_ACCOUNT_ID',
-      'https://www.xiaohongshu.com/user/YOUR_ACCOUNT_ID',
-    ],
   };
 
   return (

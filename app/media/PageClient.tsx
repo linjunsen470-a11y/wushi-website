@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -41,9 +42,11 @@ export default function MediaPage() {
         panel={
           <div className="space-y-6">
             <div className="overflow-hidden rounded-[2rem] bg-black shadow-2xl border border-white/10 ring-1 ring-white/5 relative group">
-              <img
-                src={featured.poster.src}
+              <Image
+                src={featured.poster}
                 alt="实战影像"
+                placeholder="blur"
+                sizes="(min-width: 1024px) 33vw, 100vw"
                 className="aspect-video w-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />

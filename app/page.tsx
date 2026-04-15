@@ -13,6 +13,8 @@ import {
   homeShowcase,
   homepageSections,
   mixedGallery,
+  proofPoints,
+  responsePromises,
   serviceCards,
   stats,
 } from '@/lib/site-data';
@@ -35,7 +37,7 @@ const growthPages = [
   },
 ];
 
-const heroPillars = ['开业庆典', '品牌路演', '酒店宴会', '婚礼喜事'];
+const heroPillars = ['商场开业', '品牌路演', '企业晚宴', '重庆本地执行'];
 
 const transitionBase = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
@@ -75,16 +77,16 @@ export default function HomePage() {
               transition={{ duration: 1, ease: 'easeOut' }}
               className="relative z-10 max-w-[62rem]"
             >
-              <span className="section-eyebrow text-secondary-fixed mb-6 block drop-shadow-sm">
-                重庆本地专业舞狮演出团队
+              <span className="mb-6 inline-flex items-center border-l-2 border-[#caa66a] pl-3 text-[0.78rem] font-semibold tracking-[0.18em] text-[#efe3cf] drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
+                重庆本地商业活动舞狮执行团队
               </span>
               <h1 className="page-hero-title text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-                让重要场合，
+                商场开业、品牌活动，
                 <br />
-                不仅热闹而且出众
+                更快落到可执行方案
               </h1>
               <p className="page-lead mt-10 text-white/94 md:text-[1.12rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                {brand.name} 专注服务商场开业、品牌路演及高规格婚宴。我们不仅提供精彩的演出，更重视现场的流程配合、仪式感以及适合拍照传播的精彩瞬间。
+                {brand.name} 专注服务商场开业、品牌路演、企业晚宴等商业活动。重点不是只把场面做热闹，而是把进场、卡点、流程配合和镜头素材一起做稳。
               </p>
               <div className="mt-11 flex flex-wrap gap-3">
                 {heroPillars.map((item) => (
@@ -101,15 +103,22 @@ export default function HomePage() {
                   href="/contact"
                   className="button-primary group relative overflow-hidden px-8 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-all hover:-translate-y-1 hover:bg-primary-container"
                 >
-                  <span className="relative z-10">获取方案与实时报价</span>
+                  <span className="relative z-10">加微信 / 电话拿方案</span>
                   <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />
                 </Link>
                 <Link
-                  href="/media"
+                  href="/cases"
                   className="button-secondary border-white/16 bg-white/6 px-8 text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-on-surface"
                 >
-                  看真实演出视频
+                  看真实落地案例
                 </Link>
+              </div>
+              <div className="mt-10 grid gap-3 text-sm text-white/78 md:max-w-3xl md:grid-cols-3">
+                {responsePromises.map((item) => (
+                  <div key={item} className="rounded-2xl border border-white/10 bg-black/18 px-4 py-3 backdrop-blur-md">
+                    {item}
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -118,19 +127,35 @@ export default function HomePage() {
 
       <LogoWall />
 
+      <section className="bg-surface-container-low py-14">
+        <div className="shell grid gap-6 lg:grid-cols-3">
+          {proofPoints.map((item, idx) => (
+            <motion.article
+              key={item.title}
+              {...fadeInProps}
+              transition={{ ...transitionBase, delay: idx * 0.1 }}
+              className="editorial-card !p-8"
+            >
+              <p className="font-headline text-2xl font-black tracking-tight text-on-surface">{item.title}</p>
+              <p className="mt-4 text-base leading-relaxed text-on-surface-variant font-medium">{item.text}</p>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
       <section className="bg-surface section-space-lg leading-none">
         <div className="shell">
           <motion.div {...fadeInProps} className="section-intro flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <span className="section-eyebrow text-secondary">服务项目</span>
               <h2 className="section-title">
-                我们的演出
+                我们能承接的演出
                 <br />
-                能覆盖哪些活动？
+                与典型商业场景
               </h2>
             </div>
             <p className="body-copy text-on-surface-variant max-w-xl">
-              无论是需要正式的剪彩开营、商场巡游聚拢人气，还是在酒店宴会厅呈现高标准的舞台节目，鑫龙堂均有对应的成熟执行方案。
+              无论是需要正式剪彩与点睛、品牌活动中的聚客互动，还是企业宴会中的开场与压轴节目，鑫龙堂都有成熟执行经验。
             </p>
           </motion.div>
 
