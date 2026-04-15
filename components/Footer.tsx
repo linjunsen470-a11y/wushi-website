@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, MessageCircle, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { brand, contactPanel, footerLinks } from '@/lib/site-data';
 
 export default function Footer() {
@@ -42,20 +42,10 @@ export default function Footer() {
                 <Phone size={16} />
               </div>
               <div>
-                <p className="text-[11px] font-black tracking-[0.16em] text-white/45">电话</p>
+                <p className="text-[11px] font-black tracking-[0.16em] text-white/45">电话 / 微信 (同号)</p>
                 <p className="font-headline text-lg font-black">{contactPanel.phone}</p>
               </div>
             </a>
-
-            <div className="flex items-center gap-3 rounded-[0.95rem] border border-white/10 bg-white/5 px-4 py-3 text-white/88">
-              <div className="flex h-9 w-9 items-center justify-center rounded-[0.8rem] bg-white/10 text-secondary-fixed">
-                <MessageCircle size={16} />
-              </div>
-              <div>
-                <p className="text-[11px] font-black tracking-[0.16em] text-white/45">微信</p>
-                <p className="font-headline text-lg font-black">{contactPanel.wechatId}</p>
-              </div>
-            </div>
 
             <a
               href={`mailto:${contactPanel.email}`}
