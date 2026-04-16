@@ -10,11 +10,17 @@ export default function JsonLd() {
     'email': 'service@cqwushi.com',
     'url': 'https://www.cqwushi.com',
     'logo': 'https://www.cqwushi.com/logo-red.png',
+    'image': 'https://www.cqwushi.com/logo-red.png',
+    'sameAs': [
+      'https://www.douyin.com/user/MS4wLjABAAAA_rQX8v9y_v9y_v9y', // 示例，实际应根据抖音ID跳转
+      'https://www.xiaohongshu.com/user/profile/4751220581',
+    ],
     'address': {
       '@type': 'PostalAddress',
       'streetAddress': '重庆市各区域服务',
       'addressLocality': '重庆市',
       'addressRegion': '重庆市',
+      'postalCode': '400000',
       'addressCountry': 'CN',
     },
     'geo': {
@@ -30,7 +36,7 @@ export default function JsonLd() {
       },
       'geoRadius': '100000',
     },
-    'priceRange': '¥¥ (均价 2000 元)',
+    'priceRange': '¥1500 - ¥5000',
     'openingHoursSpecification': [
       {
         '@type': 'OpeningHoursSpecification',
@@ -43,8 +49,8 @@ export default function JsonLd() {
           'Saturday',
           'Sunday',
         ],
-        'opens': '08:00',
-        'closes': '22:00',
+        'opens': '00:00',
+        'closes': '23:59',
       },
     ],
   };

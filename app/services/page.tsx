@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import ServiceJsonLd from '@/components/ServiceJsonLd';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PageClient />;
+  return (
+    <>
+      <ServiceJsonLd />
+      <PageClient />
+    </>
+  );
 }
