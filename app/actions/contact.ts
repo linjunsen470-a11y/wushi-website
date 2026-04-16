@@ -15,6 +15,15 @@ const contactFormSchema = z.object({
   message: z.string().optional(),
 });
 
+function escapeHtml(str: string) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 export async function submitContactForm(data: z.infer<typeof contactFormSchema>) {
   const validatedFields = contactFormSchema.safeParse(data);
 
@@ -26,13 +35,21 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
   }
 
   const { projectType, preferredContactMethod, eventDate, name, contact, venue, message } = validatedFields.data;
+  
+  // Clean inputs for email display
+  const cleanName = escapeHtml(name);
+  const cleanContact = escapeHtml(contact);
+  const cleanVenue = venue ? escapeHtml(venue) : '';
+  const cleanMessage = message ? escapeHtml(message) : '';
+  const cleanEventDate = eventDate ? escapeHtml(eventDate) : '';
+
   const preferredContactLabel = preferredContactMethod === 'wechat' ? '优先微信' : '优先电话';
 
   try {
     const { error } = await resend.emails.send({
       from: process.env.LEAD_FROM_EMAIL || 'Wushi Leads <onboarding@resend.dev>',
       to: [process.env.LEAD_TO_EMAIL || 'service@cqwushi.com'],
-      subject: `[新商机] ${name} - ${projectType}`,
+      subject: `[新商机] ${cleanName} - ${projectType}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -66,25 +83,25 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
                 </div>
                 <div class="field">
                   <span class="label">活动日期</span>
-                  <div class="value">${eventDate || '待定'}</div>
+                  <div class="value">${cleanEventDate || '待定'}</div>
                 </div>
                 <div class="divider"></div>
                 <div class="field">
                   <span class="label">客户称呼</span>
-                  <div class="value">${name}</div>
+                  <div class="value">${cleanName}</div>
                 </div>
                 <div class="field">
                   <span class="label">联系方式</span>
-                  <div class="value">${contact}</div>
+                  <div class="value">${cleanContact}</div>
                 </div>
                 <div class="field">
                   <span class="label">活动地点</span>
-                  <div class="value">${venue || '待定'}</div>
+                  <div class="value">${cleanVenue || '待定'}</div>
                 </div>
                 <div class="divider"></div>
                 <div class="field">
                   <span class="label">更多细节备注</span>
-                  <div class="value" style="white-space: pre-wrap;">${message || '（未提供）'}</div>
+                  <div class="value" style="white-space: pre-wrap;">${cleanMessage || '（未提供）'}</div>
                 </div>
               </div>
               <div class="footer">

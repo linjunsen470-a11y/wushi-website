@@ -113,12 +113,14 @@ export default function MediaPage() {
                 className="group overflow-hidden rounded-[2rem] bg-surface-container-low premium-shadow"
               >
                 <div className="relative aspect-video overflow-hidden bg-black">
-                  <iframe
-                    className="h-full w-full border-none transition-transform duration-700 group-hover:scale-105"
-                    src={`//player.bilibili.com/player.html?bvid=${video.bvid}&page=1&high_quality=1&danmaku=0&autoplay=0`}
-                    scrolling="no"
-                    allowFullScreen
-                  />
+                    <iframe
+                      title={video.title}
+                      className="h-full w-full border-none transition-transform duration-700 group-hover:scale-105"
+                      src={`//player.bilibili.com/player.html?bvid=${video.bvid}&page=1&high_quality=1&danmaku=0&autoplay=0`}
+                      scrolling="no"
+                      allowFullScreen
+                      loading="lazy"
+                    />
                 </div>
                 <div className="p-10">
                   <div className="flex items-center gap-3">

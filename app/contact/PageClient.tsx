@@ -272,8 +272,9 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 p-8 md:p-10">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                  <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
+                  <label htmlFor="project-type" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
                   <select
+                    id="project-type"
                     {...register('projectType')}
                     className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
@@ -289,8 +290,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">希望怎么联系</label>
+                  <label htmlFor="preferred-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">希望怎么联系</label>
                   <select
+                    id="preferred-contact"
                     {...register('preferredContactMethod')}
                     className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
@@ -303,8 +305,9 @@ export default function ContactPage() {
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                  <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">您的称呼</label>
+                  <label htmlFor="user-name" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">您的称呼</label>
                   <input
+                    id="user-name"
                     type="text"
                     {...register('name')}
                     placeholder="例如：陈先生"
@@ -315,8 +318,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">联系电话 / 微信</label>
+                  <label htmlFor="user-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">联系电话 / 微信</label>
                   <input
+                    id="user-contact"
                     type="text"
                     {...register('contact')}
                     placeholder="方便我们及时联系您"
@@ -329,8 +333,9 @@ export default function ContactPage() {
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                  <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动日期（可选）</label>
+                  <label htmlFor="event-date" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动日期（可选）</label>
                   <input
+                    id="event-date"
                     type="date"
                     {...register('eventDate')}
                     className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
@@ -339,8 +344,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动地点（可选）</label>
+                  <label htmlFor="event-venue" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动地点（可选）</label>
                   <input
+                    id="event-venue"
                     type="text"
                     {...register('venue')}
                     placeholder="例如：渝中区某商场中庭"
@@ -351,8 +357,9 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="ml-1 text-xs font-black tracking-widest text-on-surface/60">备注说明（可选）</label>
+                <label htmlFor="event-message" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">备注说明（可选）</label>
                 <textarea
+                  id="event-message"
                   {...register('message')}
                   rows={5}
                   placeholder="如有流程要求、场地限制、预算范围或拍摄需求，请在这里说明。"

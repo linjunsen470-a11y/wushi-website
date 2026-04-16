@@ -141,7 +141,7 @@ export default function CasesPage() {
       </section>
 
       <section className="bg-[#1a1714] py-32 text-white relative">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5" />
+        <div className="absolute inset-0 bg-[url('/patterns/carbon-fibre.png')] opacity-5" />
         <div className="shell relative z-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:items-center">
           {stats.map((stat, idx) => (
             <motion.div 

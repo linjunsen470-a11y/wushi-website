@@ -68,7 +68,12 @@ export default function Footer() {
       <div className="border-t border-white/8">
         <div className="shell flex flex-col gap-2 py-4 text-sm text-white/38 md:flex-row md:items-center md:justify-between">
           <p>© 2026 {brand.name}. All rights reserved.</p>
-          <p>重庆本地专业舞狮演艺服务平台</p>
+          <div className="flex flex-col items-center gap-2 md:flex-row md:items-end md:gap-6">
+            <p>重庆本地专业舞狮演艺服务平台</p>
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" className="text-white/25 hover:text-white/45 transition-colors">
+              渝ICP备XXXXXXXX号
+            </a>
+          </div>
         </div>
       </div>
     </footer>
