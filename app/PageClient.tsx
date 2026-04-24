@@ -12,8 +12,7 @@ import {
   brand,
   homeShowcase,
   homepageSections,
-  mixedGallery,
-  mixedGalleryAlt,
+  galleryItems,
   proofPoints,
   responsePromises,
   serviceCards,
@@ -374,7 +373,7 @@ export default function PageClient() {
             </p>
           </motion.div>
           <div className="columns-1 gap-8 space-y-8 sm:columns-2 lg:columns-3">
-            {mixedGallery.slice(0, 6).map((image, index) => (
+            {galleryItems.slice(0, 6).map((item, index) => (
               <motion.div
                 key={index}
                 {...fadeInProps}
@@ -382,8 +381,8 @@ export default function PageClient() {
                 className="hover-lift group relative break-inside-avoid overflow-hidden rounded-[2rem] shadow-xl border border-outline-variant/10"
               >
                 <Image
-                  src={image}
-                  alt={mixedGalleryAlt[index] || `现场图片 ${index + 1}`}
+                  src={item.src}
+                  alt={item.alt}
                   className="h-auto w-full transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />

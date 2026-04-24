@@ -12,8 +12,8 @@ export default function JsonLd() {
     'logo': 'https://www.cqwushi.com/logo-red.png',
     'image': 'https://www.cqwushi.com/logo-red.png',
     'sameAs': [
-      'https://www.douyin.com/user/MS4wLjABAAAA_rQX8v9y_v9y_v9y', // 示例，实际应根据抖音ID跳转
-      'https://www.xiaohongshu.com/user/profile/4751220581',
+      'https://v.douyin.com/bQWHTYtaQVc/',
+      'https://www.xiaohongshu.com/user/profile/623419540000000010005cb3?xhsshare=userQrCode',
     ],
     'address': {
       '@type': 'PostalAddress',

@@ -1,11 +1,27 @@
 import { defineConfig } from "eslint/config";
 import next from "eslint-config-next";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import unusedImports from "eslint-plugin-unused-imports";
+import security from "eslint-plugin-security";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export default defineConfig([{
-    extends: [...next],
-}]);
+export default defineConfig([
+    ...next,
+    {
+        plugins: {
+            "unused-imports": unusedImports,
+            "security": security,
+        },
+        rules: {
+            "no-unused-vars": "off",
+            "unused-imports/no-unused-imports": "error",
+            "unused-imports/no-unused-vars": [
+                "warn",
+                { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+            ],
+            "security/detect-object-injection": "warn",
+            "security/detect-non-literal-require": "error",
+            "jsx-a11y/alt-text": "error",
+            "jsx-a11y/aria-props": "error",
+            "jsx-a11y/role-has-required-aria-props": "error",
+        },
+    }
+]);

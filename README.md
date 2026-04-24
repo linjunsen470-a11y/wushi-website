@@ -76,10 +76,10 @@ pnpm clean    # 清理 .next
 
 ## 内容与设计说明
 
-- 站点文案、导航、案例、FAQ、团队信息主要集中在 [`lib/site-data.ts`](/D:/work/wushi-website/lib/site-data.ts:1)
-- 全局视觉基础在 [`app/globals.css`](/D:/work/wushi-website/app/globals.css:1)
-- 首页 Hero 位于 [`app/page.tsx`](/D:/work/wushi-website/app/page.tsx:1)
-- 结构化数据输出位于 [`components/JsonLd.tsx`](/D:/work/wushi-website/components/JsonLd.tsx:1)
+- 站点文案、导航、案例、FAQ、团队信息主要集中在 [`lib/site-data.ts`](./lib/site-data.ts)
+- 全局视觉基础在 [`app/globals.css`](./app/globals.css)
+- 首页 Hero 位于 [`app/page.tsx`](./app/page.tsx)
+- 结构化数据输出位于 [`components/JsonLd.tsx`](./components/JsonLd.tsx)
 
 ## 文档索引
 

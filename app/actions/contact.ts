@@ -3,16 +3,33 @@
 import { Resend } from 'resend';
 import { z } from 'zod';
 
+import { headers } from 'next/headers';
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Simple in-memory rate limiting
+const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_REQUESTS = 3;
+
 const contactFormSchema = z.object({
-  projectType: z.string().min(1, '请选择项目类型'),
+  projectType: z.string().min(1, '请选择项目类型').max(50),
   preferredContactMethod: z.enum(['wechat', 'phone']),
-  name: z.string().min(1, '请输入您的称呼'),
-  contact: z.string().min(1, '请输入联系方式（手机或微信）'),
-  eventDate: z.string().optional(),
-  venue: z.string().optional(),
-  message: z.string().optional(),
+  name: z.string().min(2, '请输入您的称呼').max(50),
+  contact: z.string()
+    .min(5, '请输入有效的联系方式')
+    .max(100)
+    .refine(val => {
+      // Basic regex for Chinese phone numbers or common WeChat ID patterns
+      const phoneRegex = /^1[3-9]\d{9}$/;
+      const wechatRegex = /^[a-zA-Z][-_a-zA-Z0-9]{5,19}$/;
+      return phoneRegex.test(val) || wechatRegex.test(val) || val.length > 5;
+    }, '请输入有效的手机号或微信号'),
+  eventDate: z.string().max(20).optional(),
+  venue: z.string().max(100).optional(),
+  message: z.string().max(1000, '留言内容过长，请精简').optional(),
+  // Honeypot field - should be empty
+  website: z.string().max(0).optional(),
 });
 
 function escapeHtml(str: string) {
@@ -25,9 +42,29 @@ function escapeHtml(str: string) {
 }
 
 export async function submitContactForm(data: z.infer<typeof contactFormSchema>) {
+  // 1. Rate Limiting Check
+  const headerList = await headers();
+  const ip = headerList.get('x-forwarded-for') || 'anonymous';
+  const now = Date.now();
+  const rateLimit = rateLimitMap.get(ip);
+
+  if (rateLimit && now - rateLimit.lastReset < RATE_LIMIT_WINDOW) {
+    if (rateLimit.count >= MAX_REQUESTS) {
+      return {
+        success: false,
+        error: '请求过于频繁，请 1 分钟后再试。',
+      };
+    }
+    rateLimit.count++;
+  } else {
+    rateLimitMap.set(ip, { count: 1, lastReset: now });
+  }
+
+  // 2. Data Validation (includes Honeypot check via zod schema)
   const validatedFields = contactFormSchema.safeParse(data);
 
   if (!validatedFields.success) {
+    // If honeypot is filled, it fails validation here
     return {
       success: false,
       error: '表单校验失败，请检查填写内容。',

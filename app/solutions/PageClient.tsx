@@ -39,7 +39,7 @@ export default function SolutionsPage() {
         panel={
           <div className="space-y-6">
             <div className="grid gap-4">
-              {solutionPlaybooks.slice(0, 3).map((playbook, index) => (
+              {solutionPlaybooks.slice(0, 3).map((playbook) => (
                 <div key={playbook.title} className="rounded-2xl bg-white/60 p-5 border border-outline-variant/30 backdrop-blur-sm shadow-sm flex items-center justify-between">
                   <p className="font-headline text-lg font-black text-on-surface tracking-tight">{playbook.title}</p>
                 </div>

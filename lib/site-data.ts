@@ -36,9 +36,7 @@ import familyOutlet from '@/assets/photos/lion-dance-family-group-photo-outlet-a
 import redCarpet from '@/assets/photos/lion-dance-red-carpet-couplets-formation.jpg';
 import stageAudience from '@/assets/photos/lion-dance-stage-performance-audience.jpg';
 import snowShow from '@/assets/photos/lion-dance-snow-show-mountain-stage.jpg';
-import indoorStageLineup from '@/assets/photos/lion-dance-indoor-mall-stage-lineup.jpg';
 import pepsiPromo from '@/assets/photos/lion-dance-pepsi-promo-street-plaza.jpg';
-import wandaStage from '@/assets/photos/lion-dance-wanda-stage-couplets-photo.jpg';
 
 export const brand = {
   name: '重庆鑫龙堂舞狮',
@@ -417,24 +415,14 @@ export const responsePromises = [
   '支持按商场、品牌、年会、庆典场景给出方案方向',
 ];
 
-export const mixedGallery = [
-  mallEntrance,
-  familyOutlet,
-  waterwayOutlet,
-  charityGroup,
-  sportsParty,
-  dragonMall,
-  snowShow,
-];
-
-export const mixedGalleryAlt = [
-  '重庆商业街区品牌路演引发大量围观的高人气舞狮快闪',
-  '亲子家庭在重庆大型综合商超外与传统红白醒狮互动合影',
-  '重庆文旅小镇与主题乐园庆典定制传统舞狮文化展示',
-  '重庆社区公益团拜与节庆活动中的驻点民俗舞狮演出',
-  '重庆运动潮牌年度派对特邀联名国风景观舞狮暖场实录',
-  '重庆室内大型购物中心超长阵容非遗舞龙大巡游',
-  '极端雨雪天气下依旧稳定的重庆高水准户外国潮醒狮表演',
+export const galleryItems = [
+  { src: mallEntrance, alt: '重庆商业街区品牌路演引发大量围观的人气舞狮快闪' },
+  { src: familyOutlet, alt: '亲子家庭在重庆大型综合商超外与传统醒狮互动合影' },
+  { src: waterwayOutlet, alt: '重庆文旅小镇与主题乐园庆典定制舞狮文化展示' },
+  { src: charityGroup, alt: '重庆社区公益团拜与节庆活动中的民俗舞狮演出' },
+  { src: sportsParty, alt: '重庆运动潮牌年度派对特邀联名国风景观舞狮暖场' },
+  { src: dragonMall, alt: '重庆室内大型购物中心超长阵容非遗舞龙大巡游' },
+  { src: snowShow, alt: '极端雨雪天气下依旧稳定的重庆高水准户外国潮醒狮' },
 ];
 
 export const mediaVideos = [

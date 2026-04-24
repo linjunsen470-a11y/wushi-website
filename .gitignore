@@ -76,3 +76,10 @@ logs
 
 #stitch assets
 stich-assets/*
+
+# Playwright
+node_modules/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

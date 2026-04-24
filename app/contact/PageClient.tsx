@@ -25,13 +25,14 @@ import { submitContactForm } from '@/app/actions/contact';
 import { cn } from '@/lib/utils';
 
 const formSchema = z.object({
-  projectType: z.string().min(1, '请选择活动类型'),
+  projectType: z.string().min(1, '请选择活动类型').max(50),
   preferredContactMethod: z.enum(['wechat', 'phone']),
-  name: z.string().min(2, '请输入您的称呼'),
-  contact: z.string().min(5, '请输入手机号或微信号'),
-  eventDate: z.string().optional(),
-  venue: z.string().optional(),
-  message: z.string().optional(),
+  name: z.string().min(2, '请输入您的称呼').max(50),
+  contact: z.string().min(5, '请输入手机号或微信号').max(100),
+  eventDate: z.string().max(20).optional(),
+  venue: z.string().max(100).optional(),
+  message: z.string().max(1000).optional(),
+  website: z.string().max(0).optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -270,6 +271,8 @@ export default function ContactPage() {
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 p-8 md:p-10">
+              {/* Honeypot field for anti-spam */}
+              <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" />
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
                   <label htmlFor="project-type" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
