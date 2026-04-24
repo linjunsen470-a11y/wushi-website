@@ -93,7 +93,6 @@ pnpm clean    # 清理 .next
 
 ## 当前已知问题
 
-- `package.json` 项目名仍是模板名 `ai-studio-applet`
 - `components/JsonLd.tsx` 中部分结构化数据字段仍需进一步校正
 - `.env.example` 仍包含历史模板说明，需要后续继续收敛
 
