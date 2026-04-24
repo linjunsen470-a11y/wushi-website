@@ -50,7 +50,7 @@ jobs:
           source: "release.tar.gz"
           target: ${{ secrets.REMOTE_TARGET }}
 
-      - name: Deploy and Restart on VPS
+      - name: Deploy and Zero-Downtime Restart
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -58,14 +58,31 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.REMOTE_TARGET }}
-            # 解压并覆盖
-            tar -xzf release.tar.gz
+            
+            # 1. 创建基于时间戳的新版本目录
+            DEPLOY_ID=$(date +%s)
+            mkdir -p releases/$DEPLOY_ID
+            
+            # 2. 解压到新目录
+            tar -xzf release.tar.gz -C releases/$DEPLOY_ID
             rm release.tar.gz
             
-            # 使用 pm2 启动或重启（如果没有安装 pm2，可以使用 nohup）
-            # 假设你的 pm2 任务名为 wushi-website
-            if pm2 list | grep -q "wushi-website"; then
-              pm2 restart wushi-website
-            else
-              pm2 start server.js --name "wushi-website" --env PORT=3000
+            # 3. 复制 .env.local 到新目录（如果存在）
+            if [ -f ".env.local" ]; then
+              cp .env.local releases/$DEPLOY_ID/
             fi
+            
+            # 4. 原子化切换软链接：将 current 指向最新版本
+            # -f 强制覆盖，-n 将链接视为普通文件（防止在链接上创建子链接）
+            ln -sfn releases/$DEPLOY_ID current
+            
+            # 5. 使用 PM2 零停机重载 (依赖你已在 VPS 创建的 ecosystem.config.js)
+            # --update-env 确保如果 .env.local 有变动，重启后能生效
+            if pm2 list | grep -q "wushi-website"; then
+              pm2 reload ecosystem.config.js --update-env
+            else
+              pm2 start ecosystem.config.js
+            fi
+            
+            # 6. 清理旧版本，只保留最近的 5 个版本，防止磁盘爆满
+            cd releases && ls -t | tail -n +6 | xargs rm -rf --
