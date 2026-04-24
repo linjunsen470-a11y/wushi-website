@@ -83,12 +83,12 @@ pnpm clean    # 清理 .next
 
 ## 文档索引
 
-- [COMPANY_PROFILE.md](./COMPANY_PROFILE.md): 公司简介与业务定位
-- [CMS_ANALYSIS.md](./CMS_ANALYSIS.md): CMS 选型分析
-- [SEO_AUDIT.md](./SEO_AUDIT.md): SEO 审计与修复建议
-- [audit_report.md](./audit_report.md): 当前工程审计摘要
-- [audit_report_2026-04-12.md](./audit_report_2026-04-12.md): 2026-04-12 审计快照
-- [bilibili.md](./bilibili.md): 参考视频链接
+- [COMPANY_PROFILE.md](./docs/COMPANY_PROFILE.md): 公司简介与业务定位
+- [CMS_ANALYSIS.md](./docs/CMS_ANALYSIS.md): CMS 选型分析
+- [SEO_AUDIT.md](./docs/SEO_AUDIT.md): SEO 审计与修复建议
+- [audit_report.md](./docs/audit_report.md): 当前工程审计摘要
+- [audit_report_2026-04-12.md](./docs/audit_report_2026-04-12.md): 2026-04-12 审计快照
+- [bilibili.md](./docs/bilibili.md): 参考视频链接
 - [stich-assets/awakened_spirit/DESIGN.md](./stich-assets/awakened_spirit/DESIGN.md): 视觉设计原则
 
 ## 当前已知问题
