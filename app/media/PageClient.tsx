@@ -164,7 +164,7 @@ export default function MediaPage() {
                   className="rounded-[1.45rem] border border-[#eadcc9] bg-white px-6 py-6 shadow-[0_18px_50px_rgba(30,27,19,0.08)]"
                 >
                   <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-                    <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-[1rem] border border-[#efe3d3] bg-white p-2 shadow-sm">
+                    <div className="relative h-32 w-32 shrink-0 overflow-hidden border border-[#efe3d3] bg-white p-2 shadow-sm">
                       <Image
                         src={channel.qrFocusImage ?? channel.qrImage}
                         alt={channel.label}

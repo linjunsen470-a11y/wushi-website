@@ -76,7 +76,7 @@ export default function FloatingContact() {
 
                 <div className="mt-3 rounded-[1rem] border border-outline-variant/20 bg-surface-container-low p-4">
                   <div className="flex items-start gap-3">
-                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[0.9rem] border border-white bg-white p-1.5">
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden border border-white bg-white p-1.5">
                       <Image src={wechatQrImage} alt={contactPanel.primaryChannels[1].qrAlt || '微信二维码'} fill sizes="80px" className="object-cover" />
                     </div>
                     <div className="min-w-0 flex-1">
