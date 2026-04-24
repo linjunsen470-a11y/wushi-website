@@ -1,0 +1,69 @@
+name: Deploy Next.js Standalone to VPS
+
+on:
+  push:
+    branches:
+      - main # 触发分支
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.1
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Prepare Deployment Package
+        run: |
+          # Next.js standalone 模式不包含 static 和 public，需要手动补全
+          cp -r public .next/standalone/
+          cp -r .next/static .next/standalone/.next/
+          
+          # 打包产物
+          tar -czf release.tar.gz -C .next/standalone .
+          
+      - name: Upload to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "release.tar.gz"
+          target: ${{ secrets.REMOTE_TARGET }}
+
+      - name: Deploy and Restart on VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.REMOTE_TARGET }}
+            # 解压并覆盖
+            tar -xzf release.tar.gz
+            rm release.tar.gz
+            
+            # 使用 pm2 启动或重启（如果没有安装 pm2，可以使用 nohup）
+            # 假设你的 pm2 任务名为 wushi-website
+            if pm2 list | grep -q "wushi-website"; then
+              pm2 restart wushi-website
+            else
+              pm2 start server.js --name "wushi-website" --env PORT=3000
+            fi
