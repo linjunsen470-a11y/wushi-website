@@ -55,62 +55,36 @@
 
 ---
 
-### H-2: 表单 `zodResolver(formSchema as any)` 绕过类型安全
+### H-2: 表单 `zodResolver(formSchema)` 恢复类型安全 ✅
 
 - 📍 [app/contact/PageClient.tsx](file:///d:/work/wushi-website/app/contact/PageClient.tsx#L55) L55
-- ❗ `as any` 完全绕过了 zod v4 与 `@hookform/resolvers` 之间的类型检查。
-- 💥 如果 schema 与 form data 类型不匹配，编译器无法发现，可能导致运行时验证失效或字段遗漏。
-- 🔍 去掉 `as any`，观察 TypeScript 是否报错。
-- ✅ 两种方案：
-  1. 如果 `@hookform/resolvers` v5 已支持 zod v4，直接去掉 `as any`
-  2. 如果不兼容，降级 zod 到 v3 或使用 `zodResolver` 的正确泛型签名
-
-```diff
-- resolver: zodResolver(formSchema as any),
-+ resolver: zodResolver(formSchema),
-```
+- ❗ 已移除 `as any`，并通过降级 `zod` 到 `3.24.2` 解决了版本不兼容导致的类型报错。
+- ✅ **已修复**：现在表单 schema 与 `FormData` 类型受到 TypeScript 严格检查。
 
 ---
 
-### H-3: In-memory Rate Limit 在多实例/Serverless 下无效
+### H-3: In-memory Rate Limit 内存管理优化 ✅
 
 - 📍 [app/actions/contact.ts](file:///d:/work/wushi-website/app/actions/contact.ts#L11) L11
-- ❗ `rateLimitMap` 是一个进程内 `Map`。在 standalone 模式下如果有多个 Node 进程（PM2 cluster）或每次冷启动（Serverless），Map 被重置。
-- 💥 攻击者可以通过频繁触发冷启动来绕过限流，批量发送垃圾表单，消耗 Resend 配额。
-- 🔍 部署后用脚本 `for i in {1..20}; do curl -X POST ...; done` 测试。
-- ✅ 对于 VPS 单实例部署（PM2 fork 模式），当前方案**可接受**。但建议：
-  - 部署时确保 PM2 使用 `fork` 而非 `cluster` 模式
-  - 长期迁移到 Redis 或 Upstash 做分布式限流
-  - 添加 `rateLimitMap` 的内存清理（防止 Map 无限增长）：
-
-```typescript
-// 每 5 分钟清理过期条目
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, val] of rateLimitMap) {
-    if (now - val.lastReset > RATE_LIMIT_WINDOW * 2) rateLimitMap.delete(key);
-  }
-}, 5 * 60 * 1000);
-```
+- ❗ 已添加自动清理机制，防止 `rateLimitMap` 无限增长导致的内存泄漏（OOM）。
+- ✅ **已修复**：现在每 5 分钟会自动清理一次过期条目。
+- ⚠️ **注意**：对于分布式/Serverless 部署，仍建议未来迁移到 Redis。
 
 ---
 
-### H-4: ICP 备案号为占位符
+### H-4: ICP 备案号清理 ✅
 
 - 📍 [components/Footer.tsx](file:///d:/work/wushi-website/components/Footer.tsx#L74) L74
-- ❗ `渝ICP备XXXXXXXX号` 为模板占位文本。
-- 💥 中国大陆境内网站未展示真实 ICP 备案号属于违规行为，可能被工信部要求关闭网站。用户看到假备案号会**立刻降低信任感**。
-- 🔍 直接查看页面底部。
-- ✅ 替换为真实备案号，或在备案未完成前暂时移除该行。
+- ❗ 原为 `渝ICP备XXXXXXXX号` 占位符。
+- ✅ **已修复**：根据业务状态（备案进行中），已暂时从页脚移除占位符。待备案完成后再行添加。
 
 ---
 
-### H-5: `firebase-tools` 残留在 devDependencies
+### H-5: 冗余依赖 `firebase-tools` 清理 ✅
 
 - 📍 [package.json](file:///d:/work/wushi-website/package.json#L44) L44
-- ❗ `"firebase-tools": "^15.0.0"` 从未在代码中使用（grep 确认），是之前部署方案的残留。
-- 💥 无安全直接风险，但增加 `pnpm install` 时间约 30-60s，且给审计者造成"项目使用 Firebase"的错误印象。`firebase-tools` 自身依赖链庞大，可能引入供应链安全隐患。
-- ✅ `pnpm remove firebase-tools`
+- ❗ 已成功移除 `firebase-tools`。
+- ✅ **已修复**：减小了依赖树体积，优化了 `pnpm install` 速度并降低了供应链风险。
 
 ---
 
@@ -161,29 +135,27 @@ projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会
 
 ---
 
-### M-5: JSON-LD `logo` 指向不存在的路径
+### M-5: JSON-LD `logo` 路径修复 ✅
 
 - 📍 [components/JsonLd.tsx](file:///d:/work/wushi-website/components/JsonLd.tsx#L12) L12
-- ❗ `'logo': 'https://www.cqwushi.com/logo-red.png'` — `public/` 目录下只有 `og-image.png` 和 `patterns/`，没有 `logo-red.png`。
-- 💥 Google 结构化数据测试会报错，影响 Rich Results 展示。
-- 🔍 用 [Google Rich Results Test](https://search.google.com/test/rich-results) 测试。
-- ✅ 将 logo 图片复制到 `public/logo-red.png`，或改为指向 `og-image.png`。
+- ❗ 原指向 `logo-red.png` 但文件不存在于 `public/`。
+- ✅ **已修复**：已将 `assets/logo-red.png` 复制到 `public/logo-red.png`，确保 Google 结构化数据校验通过。
 
 ---
 
-### M-6: OG Image 缺少绝对 URL
+### M-6: OG Image 绝对 URL 修复 ✅
 
 - 📍 [app/layout.tsx](file:///d:/work/wushi-website/app/layout.tsx#L38) L38
-- ❗ `url: '/og-image.png'` 是相对路径。虽然 Next.js 会用 `metadataBase` 自动拼接，但部分社交平台爬虫不支持相对路径。
-- ✅ 改为 `url: 'https://www.cqwushi.com/og-image.png'`。
+- ❗ 原为相对路径 `/og-image.png`。
+- ✅ **已修复**：已统一改为绝对 URL `https://www.cqwushi.com/og-image.png`，提升社交平台爬虫兼容性。
 
 ---
 
-### M-7: `autoprefixer` 在 Tailwind v4 中已内置
+### M-7: 冗余插件 `autoprefixer` 已清理 ✅
 
 - 📍 [package.json](file:///d:/work/wushi-website/package.json#L18) L18 + [postcss.config.mjs](file:///d:/work/wushi-website/postcss.config.mjs#L5) L5
-- ❗ Tailwind CSS v4 已内置 autoprefixer 功能，额外配置 autoprefixer 插件会导致重复处理。
-- ✅ 移除 `autoprefixer` 依赖和 PostCSS 配置中的引用。
+- ❗ Tailwind CSS v4 已内置 autoprefixer，额外配置会导致重复处理。
+- ✅ **已修复**：已移除依赖及 PostCSS 配置文件中的引用。
 
 ---
 
@@ -196,16 +168,15 @@ projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会
 - 💥 **UX 信任问题**：用户看到"陈女士"的头像是一张舞狮全景照，会怀疑评价的真实性。
 - ✅ 使用真实客户头像（需授权），或使用文字首字母占位符代替照片头像。
 
-### L-2: `tw-animate-css` 已安装但未在代码中使用
+### L-2: `tw-animate-css` 已清理 ✅
 
 - 📍 [package.json](file:///d:/work/wushi-website/package.json#L47) L47
-- ✅ `pnpm remove tw-animate-css`
+- ✅ **已修复**：已移除未使用的动画库依赖。
 
-### L-3: `@tailwindcss/typography` 已安装但未在 CSS 中引入
+### L-3: `@tailwindcss/typography` 已清理 ✅
 
 - 📍 [package.json](file:///d:/work/wushi-website/package.json#L35) L35
-- ❗ 未在 `globals.css` 中 `@plugin "@tailwindcss/typography"` 引入，`prose` 类不会生效。
-- ✅ 如不需要，移除依赖；如需要，在 CSS 中引入。
+- ✅ **已修复**：已移除未使用的排版插件依赖。
 
 ### L-4: `playwright` + `tests/` 目录存在但无实际测试
 

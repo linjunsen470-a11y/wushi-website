@@ -52,7 +52,7 @@ export default function ContactPage() {
     reset,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(formSchema as any),
+    resolver: zodResolver(formSchema),
     defaultValues: {
       preferredContactMethod: 'wechat',
     },

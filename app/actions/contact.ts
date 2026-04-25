@@ -11,6 +11,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 3;
+let lastCleanupTime = Date.now();
+const CLEANUP_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
 const contactFormSchema = z.object({
   projectType: z.string().min(1, '请选择项目类型').max(50),
@@ -42,10 +44,20 @@ function escapeHtml(str: string) {
 }
 
 export async function submitContactForm(data: z.infer<typeof contactFormSchema>) {
+  // 0. Cleanup expired entries periodically to prevent memory leaks (H-3 fix)
+  const now = Date.now();
+  if (now - lastCleanupTime > CLEANUP_INTERVAL) {
+    lastCleanupTime = now;
+    for (const [ip, record] of rateLimitMap.entries()) {
+      if (now - record.lastReset > RATE_LIMIT_WINDOW * 5) {
+        rateLimitMap.delete(ip);
+      }
+    }
+  }
+
   // 1. Rate Limiting Check
   const headerList = await headers();
   const ip = headerList.get('x-forwarded-for') || 'anonymous';
-  const now = Date.now();
   const rateLimit = rateLimitMap.get(ip);
 
   if (rateLimit && now - rateLimit.lastReset < RATE_LIMIT_WINDOW) {

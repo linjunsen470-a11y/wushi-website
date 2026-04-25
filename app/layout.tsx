@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: '重庆鑫龙堂舞狮',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://www.cqwushi.com/og-image.png',
         width: 1200,
         height: 630,
         alt: '重庆鑫龙堂舞狮 - 重庆专业演出服务商',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '重庆鑫龙堂舞狮 | 专业舞狮演出服务商',
     description: '重庆及西南地区专业舞狮演艺，专注开业庆典、商演、宴会，稳定交付，品质过硬。',
-    images: ['/og-image.png'],
+    images: ['https://www.cqwushi.com/og-image.png'],
   },
 };
 
