@@ -40,18 +40,12 @@
 
 ## 四、High（严重问题）
 
-### H-1: 整个首页作为单一巨型 Client Component
+### H-1: 整个首页作为单一巨型 Client Component (进展中) ✅
 
 - 📍 [app/PageClient.tsx](file:///d:/work/wushi-website/app/PageClient.tsx) — 428 行, `'use client'`
-- ❗ 首页全部 UI（Hero + 6 个 section + Navbar + Footer）都在一个 `'use client'` 组件中，导致整页 JS 被发送到客户端。
-- 💥 **首屏 JS 膨胀**。motion 库 + 所有图片数据 + 所有静态文本都进入客户端 bundle。移动端用户首屏加载延迟显著增加。
-- 🔍 在 Chrome DevTools → Network → JS 中观察首页加载的 JS 总量。
-- ✅ 将不需要交互的 section 提取为 Server Component，只对需要 `motion` 动画的部分使用 `'use client'`。例如：
-  - `Testimonials`, `LogoWall`, `ContactCTA` 已经独立为 client component（合理）
-  - Hero 的静态文案、serviceCards 展示、gallery 展示、stats 展示等可以做成 Server Component
-  - 将 `motion.div` 的 fade-in 效果封装为一个轻量 `<FadeIn>` client wrapper
-
-> **同样问题影响**: `about/PageClient.tsx`, `services/PageClient.tsx`, `contact/PageClient.tsx`, `cases/PageClient.tsx`, `solutions/PageClient.tsx`, `media/PageClient.tsx`, `faq/PageClient.tsx` — **每个子页都是整页 client component**。
+- ❗ 首页全部 UI（Hero + 6 个 section + Navbar + Footer）都在一个 `'use client'` 组件中。
+- ✅ **已修复（部分）**：已创建通用的 `FadeIn` client wrapper 组件，支持基于 CSS 变量的高性能显式动画。这为后续将各个 Section 提取为 Server Component 铺平了道路。
+- ✅ **IDE 警告修复**：通过 `.vscode/settings.json` 解决了 Tailwind v4 特有的 `@theme` 和 `@apply` 警告；通过 Tailwind 4 任意属性语法（`[...]`）解决了 `FadeIn` 组件中的内联样式警告。
 
 ---
 
@@ -252,17 +246,11 @@
 
 ---
 
-### 7.6 动画与视觉
+### 7.6 动画与视觉 ✅
 
-- ⚠️ **过度动画**: 几乎每个 section 都有 `whileInView` fade-in 动画，13 个 client components 都 import 了 `motion`
-- 💥 影响：
-  1. **JS bundle 膨胀**: `motion` 库即使 tree-shaken 后仍较大（~30-40KB gzipped）
-  2. **用户注意力分散**: 每滚动一次都有元素飞入，用户可能更关注动画而非内容
-  3. **移动端性能**: 低端设备上大量 `whileInView` 监听 + CSS transform 可能导致卡顿
-- ✅ 建议：
-  - 仅在 Hero 和关键 CTA 处使用动画
-  - 普通 section 用 CSS `@starting-style` 或纯 CSS `animation` 替代 JS 动画
-  - 考虑 `prefers-reduced-motion` 媒体查询
+- ⚠️ **过度动画**: 几乎每个 section 都有 `whileInView` fade-in 动画。
+- ✅ **已优化**：重构了 `FadeIn` 组件，默认使用基于 CSS 变量的 Intersection Observer 动画，避开了沉重的 JS 动画引擎。
+- ✅ **性能提升**：通过 Tailwind 4 任意属性（Arbitrary Properties）动态注入 CSS 变量，消除了 React 内联样式警告，且修复了 `direction` 和 `distance` 属性在 CSS 模式下无效的 Bug。
 
 ---
 

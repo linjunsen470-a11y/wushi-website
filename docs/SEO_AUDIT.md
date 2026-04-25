@@ -25,7 +25,8 @@
 
 1. **补齐获客归因**：记录 UTM 参数、来源页与 Referrer，补齐 Analytics SDK。
 2. **增强线索稳健性**：解决 Resend 单点故障，引入落库备份与防滥用机制。
-3. **优化运行时架构**：减少过度依赖 Client Components，提升 Hydration 效率。
+3. **优化运行时架构 (进展中)**：已引入 `<FadeIn>` 动画包装器，正逐步将静态内容移出 Client Components。
+4. **IDE 与环境合规**：已修复 Tailwind v4 语法警告，统一了工程规范。
 
 ## 历史审计记录
 

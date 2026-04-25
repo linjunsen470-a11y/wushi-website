@@ -86,15 +86,17 @@ pnpm clean    # 清理 .next
 - [COMPANY_PROFILE.md](./docs/COMPANY_PROFILE.md): 公司简介与业务定位
 - [CMS_ANALYSIS.md](./docs/CMS_ANALYSIS.md): CMS 选型分析
 - [SEO_AUDIT.md](./docs/SEO_AUDIT.md): SEO 审计与修复建议
-- [audit_report.md](./docs/audit_report.md): 当前工程审计摘要
+- [audit_report.md](./audit_report.md): 当前工程审计摘要（包含性能、合规与安全修复进度）
 - [audit_report_2026-04-12.md](./docs/audit_report_2026-04-12.md): 2026-04-12 审计快照
 - [bilibili.md](./docs/bilibili.md): 参考视频链接
 - [stich-assets/awakened_spirit/DESIGN.md](./stich-assets/awakened_spirit/DESIGN.md): 视觉设计原则
 
-## 当前已知问题
+## 当前状态与进展
 
-- `components/JsonLd.tsx` 中部分结构化数据字段仍需进一步校正
-- `.env.example` 仍包含历史模板说明，需要后续继续收敛
+- ✅ **安全加固**: 已轮换 Resend API Key 并确保 `.env.local` 被正确忽略。
+- ✅ **IDE 优化**: 解决了 Tailwind v4 在 VS Code 中的语法警告问题。
+- ✅ **性能优化**: 引入了基于 CSS 变量的高性能 `<FadeIn>` 动画组件，减少了对 JS 动画引擎的依赖。
+- ✅ **合规修复**: 已清理无用的依赖项及 ICP 备案占位符。
 
 ## 验证基线
 

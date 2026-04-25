@@ -68,18 +68,20 @@ export function FadeIn({
   }
 
   // Default CSS-based reveal
+  const { x, y } = getDirectionOffset();
+
   return (
     <div
       ref={ref}
       className={cn(
         'reveal',
         isVisible && 'reveal-visible',
+        `[--reveal-delay:${delay}s]`,
+        `[--reveal-duration:${duration}s]`,
+        `[--reveal-x:${x ?? 0}px]`,
+        `[--reveal-y:${y ?? 0}px]`,
         className
       )}
-      style={{
-        transitionDelay: delay ? `${delay}s` : undefined,
-        transitionDuration: duration ? `${duration}s` : undefined,
-      }}
       {...(props as any)}
     >
       {children}

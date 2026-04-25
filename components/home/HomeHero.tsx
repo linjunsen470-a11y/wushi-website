@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { brand, homeShowcase, responsePromises } from '@/lib/site-data';
+import { brand, homeShowcase } from '@/lib/site-data';
 
 const heroPillars = ['商场开业', '品牌路演', '企业晚宴', '重庆本地执行'];
 
@@ -20,8 +20,7 @@ export default function HomeHero() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,13,11,0.12)_0%,rgba(20,13,11,0.24)_30%,rgba(20,13,11,0.64)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,13,11,0.6)_0%,rgba(20,13,11,0.1)_42%,rgba(20,13,11,0.5)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,13,11,0.12)_0%,rgba(20,13,11,0.24)_30%,rgba(20,13,11,0.64)_100%),linear-gradient(90deg,rgba(20,13,11,0.6)_0%,rgba(20,13,11,0.1)_42%,rgba(20,13,11,0.5)_100%)]" />
         <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:clamp(44px,6vw,72px)_clamp(44px,6vw,72px)]" />
       </div>
 
@@ -72,13 +71,6 @@ export default function HomeHero() {
             <p className="mt-6 text-xs font-black tracking-[0.2em] text-[#caa66a] uppercase drop-shadow-sm">
               📅 节假日与周末请提前预约档期，确保优质服务交付
             </p>
-            <div className="mt-10 grid gap-3 text-sm text-white/78 md:max-w-3xl md:grid-cols-3">
-              {responsePromises.map((item) => (
-                <div key={item} className="rounded-[1rem] border border-white/10 bg-black/18 px-4 py-3 backdrop-blur-md">
-                  {item}
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

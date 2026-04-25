@@ -55,12 +55,12 @@ export const legalInfo = {
 };
 
 export const primaryNavLinks = [
-  { label: '关于我们', href: '/about', description: '了解我们的团队与资历' },
-  { label: '服务项目', href: '/services', description: '提供开业、商演、宴会等多样化演出' },
-  { label: '场景方案', href: '/solutions', description: '看看不同活动怎么安排' },
-  { label: '真实案例', href: '/cases', description: '查看以往落地项目的现场图' },
-  { label: '视频展示', href: '/media', description: '直接通过视频看演出效果' },
-  { label: '预订指南', href: '/faq', description: '了解报价并准备咨询信息' },
+  { label: '关于我们', href: '/about', description: '了解我们的团队与文化' },
+  { label: '服务项目', href: '/services', description: '提供开业庆典、企业活动、宴会庆典等多样化演出' },
+  { label: '场景方案', href: '/solutions', description: '探索不同活动的详细方案' },
+  { label: '真实案例', href: '/cases', description: '查看往期案例现场图片' },
+  { label: '视频展示', href: '/media', description: '通过视频直观感受演出效果' },
+  { label: '预订指南', href: '/faq', description: '了解报价与预订流程' },
 ];
 
 export const utilityNavLinks = [
@@ -124,9 +124,9 @@ export const testimonials = [
 
 export const teamMembers = [
   {
-    name: '周老师',
+    name: '张老师',
     role: '创始人 / 艺术指导',
-    bio: '深耕舞狮行业 15 年，多次代表重庆团队参与西南地区高水平竞技，注重传承与商业创新的平衡。',
+    bio: '深耕舞狮行业 10 年，多次代表重庆团队辗转西南多地表演，注重传承与商业创新的平衡。',
     image: blueJongLanterns,
     altText: '重庆鑫龙堂舞狮队创始人指导高桩醒狮演练'
   },
@@ -422,11 +422,6 @@ export const stats = [
   { value: '标准', label: '现场服务流程规范' },
 ];
 
-export const responsePromises = [
-  '优先微信或电话直连，减少反复表单沟通',
-  '需求明确后可快速反馈档期与建议配置',
-  '支持按商场、品牌、年会、庆典场景给出方案方向',
-];
 
 export const galleryItems = [
   { src: mallEntrance, alt: '重庆商业街区品牌路演引发大量围观的人气舞狮快闪' },
