@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone } from 'lucide-react';
-import { brand, contactPanel, footerLinks } from '@/lib/site-data';
+import { brand, contactPanel, footerLinks, legalLinks } from '@/lib/site-data';
 
 export default function Footer() {
   return (
@@ -66,8 +66,21 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/8">
-        <div className="shell flex flex-col gap-2 py-4 text-sm text-white/38 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 {brand.name}. All rights reserved.</p>
+        <div className="shell flex flex-col gap-4 py-6 text-sm text-white/38 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6">
+            <p>© 2026 {brand.name}. All rights reserved.</p>
+            <div className="flex items-center gap-4">
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-white/25 transition-colors hover:text-white/45"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           <div className="flex flex-col items-center gap-2 md:flex-row md:items-end md:gap-6">
             <p>重庆本地专业舞狮演艺服务平台</p>
             <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" className="text-white/25 hover:text-white/45 transition-colors">

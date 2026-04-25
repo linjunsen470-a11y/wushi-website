@@ -1,5 +1,19 @@
 import { Metadata } from 'next';
-import PageClient from './PageClient';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import LogoWall from '@/components/LogoWall';
+import Testimonials from '@/components/Testimonials';
+import ContactCTA from '@/components/ContactCTA';
+
+// Home Sections
+import HomeHero from '@/components/home/HomeHero';
+import ProofPoints from '@/components/home/ProofPoints';
+import ServiceGrid from '@/components/home/ServiceGrid';
+import MediaShowcase from '@/components/home/MediaShowcase';
+import Craftsmanship from '@/components/home/Craftsmanship';
+import FeatureCards from '@/components/home/FeatureCards';
+import Gallery from '@/components/home/Gallery';
+import Stats from '@/components/home/Stats';
 
 export const metadata: Metadata = {
   title: '重庆鑫龙堂舞狮 | 西南专业舞狮演出团队_开业醒狮_商演路演_婚礼宴会',
@@ -10,5 +24,21 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PageClient />;
+  return (
+    <main className="min-h-screen">
+      <Navbar />
+      <HomeHero />
+      <LogoWall />
+      <ProofPoints />
+      <ServiceGrid />
+      <MediaShowcase />
+      <Testimonials />
+      <Craftsmanship />
+      <FeatureCards />
+      <Gallery />
+      <Stats />
+      <ContactCTA />
+      <Footer />
+    </main>
+  );
 }

@@ -46,6 +46,14 @@ export const brand = {
   logoAlt: '重庆鑫龙堂专业舞狮团队官方Logo',
 };
 
+export const legalInfo = {
+  companyName: '重庆鑫龙堂文化传播有限公司',
+  socialCreditCode: '91500109MAABW3K05K',
+  address: '重庆市北碚区童家溪镇建设村瓦房子组同兴北路261号3-23',
+  email: 'service@cqwushi.com',
+  phone: '18983662830',
+};
+
 export const primaryNavLinks = [
   { label: '关于我们', href: '/about', description: '了解我们的团队与资历' },
   { label: '服务项目', href: '/services', description: '提供开业、商演、宴会等多样化演出' },
@@ -400,6 +408,11 @@ export const footerLinks = [
   { label: '场景方案', href: '/solutions' },
   { label: '预订指南', href: '/faq' },
   { label: '联系我们', href: '/contact' },
+];
+
+export const legalLinks = [
+  { label: '服务协议', href: '/terms' },
+  { label: '隐私政策', href: '/privacy' },
 ];
 
 export const stats = [
