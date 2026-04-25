@@ -90,48 +90,31 @@
 
 ## 五、Medium（中等问题）
 
-### M-1: SubpageHero 是 Server Component 但使用了 motion
+### M-1: 组件边界明确化 ✅
 
-- 📍 [components/SubpageHero.tsx](file:///d:/work/wushi-website/components/SubpageHero.tsx#L3) L3
-- ❗ 该组件没有 `'use client'` 声明，但 import 了 `motion` 并使用 `motion.div`。它能工作仅因为调用方（如 `services/PageClient.tsx`）是 client component。
-- 💥 如果将来有 Server Component 页面引用它，会产生运行时错误。代码意图不清晰。
-- ✅ 在文件顶部添加 `'use client';` 使边界明确。
+- 📍 [components/SubpageHero.tsx](file:///d:/work/wushi-website/components/SubpageHero.tsx#L1) L1
+- ✅ **已修复**：已添加 `'use client'` 指令，明确其为客户端组件。
 
 ---
 
-### M-2: Video API Route 缺少路径遍历防护
+### M-2: API 路径遍历防护 ✅
 
-- 📍 [app/api/video/route.ts](file:///d:/work/wushi-website/app/api/video/route.ts#L23-L29)
-- ❗ 虽然有 `ALLOWED_FILES` 白名单（好），但未对 `file` 参数做路径穿越检查。如果未来维护者修改白名单逻辑，`../` 类攻击可能生效。
-- 💥 当前白名单已防护，风险为"未来维护安全性"。
-- ✅ 添加防御性检查：
-
-```typescript
-if (!file || file.includes('..') || file.includes('/') || !ALLOWED_FILES.has(file)) {
-  return new Response('Video not found', { status: 404 });
-}
-```
+- 📍 [app/api/video/route.ts](file:///d:/work/wushi-website/app/api/video/route.ts#L25) L25
+- ✅ **已修复**：已添加路径过滤逻辑，确保文件请求无法脱离预设目录。
 
 ---
 
-### M-3: Video API 未处理文件不存在的异常
+### M-3: API 异常处理优化 ✅
 
 - 📍 [app/api/video/route.ts](file:///d:/work/wushi-website/app/api/video/route.ts#L30) L30
-- ❗ `await stat(filePath)` 如果文件不存在会抛出未捕获异常，返回 500 而非 404。
-- ✅ 用 `try/catch` 包裹，文件不存在时返回 404。
+- ✅ **已修复**：已添加 `try-catch` 块处理文件系统异常，确保找不到文件时返回 404。
 
 ---
 
-### M-4: `projectType` 未做 HTML 转义就插入邮件 Subject
+### M-4: 输入校验强化 ✅
 
-- 📍 [app/actions/contact.ts](file:///d:/work/wushi-website/app/actions/contact.ts#L89) L89
-- ❗ `subject: \`[新商机] ${cleanName} - ${projectType}\`` — `projectType` 来自 `select` 的固定选项，但服务端的 `projectType` 字段是 `z.string()`，不限于选项值。攻击者可伪造请求发送恶意 Subject。
-- 💥 邮件头注入风险较低（Resend SDK 会处理），但建议用 `escapeHtml()` 处理，或用 `z.enum()` 限制为已知选项。
-- ✅ 将 server schema 的 `projectType` 改为 `z.enum([...])` 白名单：
-
-```typescript
-projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会/盛典', '婚礼/宴会/喜事', '其他定制项目']),
-```
+- 📍 [app/actions/contact.ts](file:///d:/work/wushi-website/app/actions/contact.ts#L18) L18
+- ✅ **已修复**：已将服务端 `projectType` 校验逻辑升级为枚举白名单，防止非法文本注入邮件主题。
 
 ---
 

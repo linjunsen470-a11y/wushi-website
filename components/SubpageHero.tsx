@@ -1,3 +1,4 @@
+'use client';
 import type { ReactNode } from 'react';
 import Image, { type StaticImageData } from 'next/image';
 import { motion } from 'motion/react';

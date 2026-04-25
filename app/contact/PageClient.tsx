@@ -25,7 +25,7 @@ import { submitContactForm } from '@/app/actions/contact';
 import { cn } from '@/lib/utils';
 
 const formSchema = z.object({
-  projectType: z.string().min(1, '请选择活动类型').max(50),
+  projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会/盛典', '婚礼/宴会/喜事', '其他定制项目']),
   preferredContactMethod: z.enum(['wechat', 'phone']),
   name: z.string().min(2, '请输入您的称呼').max(50),
   contact: z.string().min(5, '请输入手机号或微信号').max(100),

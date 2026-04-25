@@ -15,7 +15,7 @@ let lastCleanupTime = Date.now();
 const CLEANUP_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
 const contactFormSchema = z.object({
-  projectType: z.string().min(1, '请选择项目类型').max(50),
+  projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会/盛典', '婚礼/宴会/喜事', '其他定制项目']),
   preferredContactMethod: z.enum(['wechat', 'phone']),
   name: z.string().min(2, '请输入您的称呼').max(50),
   contact: z.string()
