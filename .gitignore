@@ -2,11 +2,15 @@
 /node_modules/
 /.pnpm-store/
 
-# Next.js and production build output
-/.next/
-/out/
-/build/
-/dist/
+# Production Build
+.next/
+out/
+build/
+dist/
+
+# Assets (Ignore unused large files)
+/assets/archive/
+/assets/videos/
 
 # Runtime caches
 /.cache/
@@ -66,11 +70,5 @@ desktop.ini
 audit_report.md
 /docs/*
 
-# Local-only media and design source material
-/assets/videos/
-/assets/archive/
+# Design source material
 /stich-assets/
-*.mp4
-*.mov
-*.webm
-*.avi

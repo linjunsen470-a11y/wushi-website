@@ -96,7 +96,8 @@ export default function Navbar() {
 
         <button
           type="button"
-          aria-expanded={isOpen}
+          aria-expanded={isOpen ? "true" : "false"}
+          aria-controls="mobile-navigation"
           aria-label={ariaLabel}
           className={cn(
             'rounded-[1rem] border p-2.5 shadow-[0_10px_30px_rgba(30,27,19,0.08)] md:hidden',
@@ -111,7 +112,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="border-t border-outline-variant/15 bg-[rgba(255,248,239,0.94)] backdrop-blur-2xl md:hidden">
+        <div id="mobile-navigation" className="border-t border-outline-variant/15 bg-[rgba(255,248,239,0.94)] backdrop-blur-2xl md:hidden">
           <div className="shell pb-6 pt-4">
             <div className="rounded-[1.5rem] border border-[#eadcc9] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,241,230,0.96))] p-4 shadow-[0_28px_70px_rgba(30,27,19,0.12)]">
               <div className="grid gap-3">
