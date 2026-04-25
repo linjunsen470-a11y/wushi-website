@@ -48,7 +48,8 @@ yarn-error.log*
 .netlify/
 
 # Local editor and OS files
-/.vscode/
+/.vscode/*
+!/.vscode/settings.json
 .idea/
 *.suo
 *.ntvs*
@@ -60,6 +61,10 @@ yarn-error.log*
 ._*
 Thumbs.db
 desktop.ini
+
+# Audit and internal reports
+audit_report.md
+/docs/*
 
 # Local-only media and design source material
 /assets/videos/
