@@ -27,8 +27,6 @@ const contactFormSchema = z.object({
       const wechatRegex = /^[a-zA-Z][-_a-zA-Z0-9]{5,19}$/;
       return phoneRegex.test(val) || wechatRegex.test(val) || val.length > 5;
     }, '请输入有效的手机号或微信号'),
-  eventDate: z.string().max(20).optional(),
-  venue: z.string().max(100).optional(),
   message: z.string().max(1000, '留言内容过长，请精简').optional(),
   // Honeypot field - should be empty
   website: z.string().max(0).optional(),
@@ -83,14 +81,12 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
     };
   }
 
-  const { projectType, preferredContactMethod, eventDate, name, contact, venue, message } = validatedFields.data;
+  const { projectType, preferredContactMethod, name, contact, message } = validatedFields.data;
   
   // Clean inputs for email display
   const cleanName = escapeHtml(name);
   const cleanContact = escapeHtml(contact);
-  const cleanVenue = venue ? escapeHtml(venue) : '';
   const cleanMessage = message ? escapeHtml(message) : '';
-  const cleanEventDate = eventDate ? escapeHtml(eventDate) : '';
 
   const preferredContactLabel = preferredContactMethod === 'wechat' ? '优先微信' : '优先电话';
 
@@ -130,10 +126,6 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
                   <span class="label">优先联系</span>
                   <div class="value">${preferredContactLabel}</div>
                 </div>
-                <div class="field">
-                  <span class="label">活动日期</span>
-                  <div class="value">${cleanEventDate || '待定'}</div>
-                </div>
                 <div class="divider"></div>
                 <div class="field">
                   <span class="label">客户称呼</span>
@@ -142,10 +134,6 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
                 <div class="field">
                   <span class="label">联系方式</span>
                   <div class="value">${cleanContact}</div>
-                </div>
-                <div class="field">
-                  <span class="label">活动地点</span>
-                  <div class="value">${cleanVenue || '待定'}</div>
                 </div>
                 <div class="divider"></div>
                 <div class="field">

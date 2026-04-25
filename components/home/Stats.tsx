@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { stats } from '@/lib/site-data';
 import { FadeIn } from '@/components/animations/FadeIn';
 
@@ -13,6 +14,15 @@ export default function Stats() {
             <br />
             更能理解您的活动需求
           </h2>
+          <div className="mt-10">
+            <Link
+              href="/contact"
+              className="button-primary group relative inline-flex overflow-hidden px-8 py-3.5 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-all hover:-translate-y-1 hover:bg-primary-container"
+            >
+              <span className="relative z-10">免费定制专属演出方案</span>
+              <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />
+            </Link>
+          </div>
         </FadeIn>
         <div className="grid gap-8 sm:grid-cols-2">
           {stats.map((stat, idx) => (

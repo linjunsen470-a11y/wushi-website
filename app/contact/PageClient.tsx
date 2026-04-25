@@ -29,8 +29,6 @@ const formSchema = z.object({
   preferredContactMethod: z.enum(['wechat', 'phone']),
   name: z.string().min(2, '请输入您的称呼').max(50),
   contact: z.string().min(5, '请输入手机号或微信号').max(100),
-  eventDate: z.string().max(20).optional(),
-  venue: z.string().max(100).optional(),
   message: z.string().max(1000).optional(),
   website: z.string().max(0).optional(),
 });
@@ -263,10 +261,10 @@ export default function ContactPage() {
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
               <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线留言</p>
               <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                提交活动需求
+                免费获取定制方案
               </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                留下您的活动信息与联系方式，我们的专家团队将尽快为您提供项目方案与报价建议。
+                留下您的活动信息与联系方式，我们的专家团队将尽快为您提供项目方案与报价建议，无任何套路与隐形消费。
               </p>
             </div>
 
@@ -334,38 +332,13 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="event-date" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动日期（可选）</label>
-                  <input
-                    id="event-date"
-                    type="date"
-                    {...register('eventDate')}
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
-                    disabled={submitStatus === 'submitting'}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="event-venue" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动地点（可选）</label>
-                  <input
-                    id="event-venue"
-                    type="text"
-                    {...register('venue')}
-                    placeholder="例如：渝中区某商场中庭"
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
-                    disabled={submitStatus === 'submitting'}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
+              <div className="space-y-2 mt-6">
                 <label htmlFor="event-message" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">备注说明（可选）</label>
                 <textarea
                   id="event-message"
                   {...register('message')}
                   rows={5}
-                  placeholder="如有流程要求、场地限制、预算范围或拍摄需求，请在这里说明。"
+                  placeholder="如有日期要求、场地限制、流程要求或预算范围，请在这里说明。"
                   className="w-full resize-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                   disabled={submitStatus === 'submitting'}
                 />

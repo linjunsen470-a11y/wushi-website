@@ -1,0 +1,30 @@
+# 重庆鑫龙堂舞狮 (Wushi Lion Dance)
+
+重庆鑫龙堂文化传播有限公司 (Chongqing Xinlongtang Culture Communication Co., Ltd.) is a professional lion dance performance team based in Chongqing and serving the Southwest China region.
+
+## Core Services
+- Shopping Mall Openings & Celebrations (商场开业/庆典)
+- Brand Roadshows & Store Promotions (品牌商演/路演)
+- Corporate Annual Meetings & Galas (企业年会/盛典)
+- Weddings & Traditional Banquets (婚礼/宴会/喜事)
+- Custom Lion Dance Projects (其他定制项目)
+
+## Key Information
+- **Location**: Chongqing, Southwest China
+- **Expertise**: Over 10 years of local market experience, 1000+ successful executions.
+- **Standards**: High-level "High Jong" (高桩) performance, standardized field control, and precise synchronization.
+- **Contact**: 18983662830 (Phone/WeChat)
+- **Website**: https://www.cqwushi.com
+
+## Site Structure
+- `/`: Homepage with core value propositions and stats.
+- `/about`: Team history, founder bios, and core values.
+- `/services`: Detailed breakdown of performance types.
+- `/solutions`: Scenario-based playbooks for different event types.
+- `/cases`: Real-world project showcases with client details.
+- `/media`: Video gallery of past performances.
+- `/faq`: Booking guidelines and common questions.
+- `/contact`: Direct lead generation form and contact details.
+
+## Technical Stack
+Built with Next.js 16 (App Router), TypeScript, and Tailwind CSS v4. Designed for high performance and SEO.

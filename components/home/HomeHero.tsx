@@ -59,7 +59,7 @@ export default function HomeHero() {
                 href="/contact"
                 className="button-primary group relative overflow-hidden px-8 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-all hover:-translate-y-1 hover:bg-primary-container"
               >
-                <span className="relative z-10">加微信 / 电话拿方案</span>
+                <span className="relative z-10">免费获取演出方案</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
               <Link
