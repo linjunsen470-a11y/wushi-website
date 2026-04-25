@@ -72,3 +72,11 @@ audit_report.md
 
 # Design source material
 /stich-assets/
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
