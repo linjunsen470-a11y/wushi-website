@@ -1,9 +1,11 @@
 'use client';
 
-import { motion, HTMLMotionProps } from 'motion/react';
 import { ReactNode } from 'react';
+import { motion, HTMLMotionProps } from 'motion/react';
+import { useReveal } from '@/hooks/use-reveal';
+import { cn } from '@/lib/utils';
 
-interface FadeInProps extends HTMLMotionProps<'div'> {
+interface FadeInProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
   children: ReactNode;
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
@@ -11,6 +13,8 @@ interface FadeInProps extends HTMLMotionProps<'div'> {
   duration?: number;
   once?: boolean;
   margin?: string;
+  useJS?: boolean;
+  className?: string;
 }
 
 const transitionBase = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
@@ -23,8 +27,15 @@ export function FadeIn({
   duration = 0.8,
   once = true,
   margin = "-100px",
+  useJS = false,
+  className,
   ...props
 }: FadeInProps) {
+  const { ref, isVisible } = useReveal({ 
+    once, 
+    rootMargin: `0px 0px ${margin} 0px` 
+  });
+
   const getDirectionOffset = () => {
     switch (direction) {
       case 'up': return { y: distance };
@@ -36,19 +47,42 @@ export function FadeIn({
     }
   };
 
+  // If useJS is requested, fall back to motion
+  if (useJS) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, ...getDirectionOffset() }}
+        whileInView={{ opacity: 1, x: 0, y: 0 }}
+        viewport={{ once, margin }}
+        transition={{
+          duration,
+          ease: transitionBase.ease,
+          delay,
+        }}
+        className={className}
+        {...props}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  // Default CSS-based reveal
   return (
-    <motion.div
-      initial={{ opacity: 0, ...getDirectionOffset() }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin }}
-      transition={{
-        duration,
-        ease: transitionBase.ease,
-        delay,
+    <div
+      ref={ref}
+      className={cn(
+        'reveal',
+        isVisible && 'reveal-visible',
+        className
+      )}
+      style={{
+        transitionDelay: delay ? `${delay}s` : undefined,
+        transitionDuration: duration ? `${duration}s` : undefined,
       }}
-      {...props}
+      {...(props as any)}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

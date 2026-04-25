@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'motion/react';
 import { testimonials } from '@/lib/site-data';
 import { Quote } from 'lucide-react';
+import { FadeIn } from '@/components/animations/FadeIn';
 
 export default function Testimonials() {
   return (
@@ -20,12 +20,11 @@ export default function Testimonials() {
         
         <div className="grid gap-8 lg:grid-cols-3">
           {testimonials.map((item, idx) => (
-            <motion.article
+            <FadeIn
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              delay={idx * 0.1}
+              duration={0.6}
+              direction="none"
               className="editorial-card !p-10 flex flex-col justify-between group hover:border-primary/20 transition-all"
             >
               <div>
@@ -50,7 +49,7 @@ export default function Testimonials() {
                   <p className="text-[11px] font-bold text-on-surface-variant/60 uppercase tracking-widest mt-0.5">{item.role}</p>
                 </div>
               </div>
-            </motion.article>
+            </FadeIn>
           ))}
         </div>
       </div>
