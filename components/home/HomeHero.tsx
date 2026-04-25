@@ -69,6 +69,9 @@ export default function HomeHero() {
                 看真实落地案例
               </Link>
             </div>
+            <p className="mt-6 text-xs font-black tracking-[0.2em] text-[#caa66a] uppercase drop-shadow-sm">
+              📅 节假日与周末请提前预约档期，确保优质服务交付
+            </p>
             <div className="mt-10 grid gap-3 text-sm text-white/78 md:max-w-3xl md:grid-cols-3">
               {responsePromises.map((item) => (
                 <div key={item} className="rounded-[1rem] border border-white/10 bg-black/18 px-4 py-3 backdrop-blur-md">

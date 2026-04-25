@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   Copy,
   Loader2,
-  Mail,
   MapPin,
   MessageCircle,
   Phone,
@@ -91,7 +90,154 @@ export default function ContactPage() {
       <section className="shell py-24 md:py-32">
         <div className="grid gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="premium-shadow overflow-hidden rounded-[1.6rem] border border-outline-variant/10 bg-white"
+          >
+            <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
+              <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线咨询</p>
+              <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
+                免费获取演出方案
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-on-surface-variant">
+                留下您的活动信息与联系方式，我们的项目经理将为您提供定制化的执行建议与报价参考。
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 p-8 md:p-10">
+              <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" />
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label htmlFor="project-type" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
+                  <select
+                    id="project-type"
+                    {...register('projectType')}
+                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    disabled={submitStatus === 'submitting'}
+                  >
+                    <option value="">请选择...</option>
+                    <option value="商场开业/庆典">商场开业 / 庆典</option>
+                    <option value="品牌商演/路演">品牌商演 / 路演</option>
+                    <option value="企业年会/盛典">企业年会 / 盛典</option>
+                    <option value="婚礼/宴会/喜事">婚礼 / 宴会 / 喜事</option>
+                    <option value="其他定制项目">其他定制项目</option>
+                  </select>
+                  {errors.projectType ? <p className="ml-1 text-xs font-bold text-primary">{errors.projectType.message}</p> : null}
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="preferred-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">希望怎么联系</label>
+                  <select
+                    id="preferred-contact"
+                    {...register('preferredContactMethod')}
+                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    disabled={submitStatus === 'submitting'}
+                  >
+                    <option value="wechat">优先微信</option>
+                    <option value="phone">优先电话</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label htmlFor="user-name" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">您的称呼</label>
+                  <input
+                    id="user-name"
+                    type="text"
+                    {...register('name')}
+                    placeholder="例如：陈先生"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    disabled={submitStatus === 'submitting'}
+                  />
+                  {errors.name ? <p className="ml-1 text-xs font-bold text-primary">{errors.name.message}</p> : null}
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="user-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">联系电话 / 微信</label>
+                  <input
+                    id="user-contact"
+                    type="text"
+                    {...register('contact')}
+                    placeholder="方便我们及时联系您"
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    disabled={submitStatus === 'submitting'}
+                  />
+                  {errors.contact ? <p className="ml-1 text-xs font-bold text-primary">{errors.contact.message}</p> : null}
+                </div>
+              </div>
+
+              <div className="space-y-2 mt-6">
+                <label htmlFor="event-message" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">备注说明（可选）</label>
+                <textarea
+                  id="event-message"
+                  {...register('message')}
+                  rows={5}
+                  placeholder="如有日期要求、场地限制、流程要求或预算范围，请在这里说明。"
+                  className="w-full resize-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                  disabled={submitStatus === 'submitting'}
+                />
+              </div>
+
+              <div className="relative pt-2">
+                <AnimatePresence mode="wait">
+                  {submitStatus === 'success' ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center justify-center gap-3 rounded-[1rem] border border-green-100 bg-green-50 p-6 text-green-700"
+                    >
+                      <CheckCircle2 size={24} />
+                      <p className="font-bold">需求提交成功，我们会按您选择的方式尽快联系。</p>
+                    </motion.div>
+                  ) : submitStatus === 'error' ? (
+                    <motion.div
+                      key="error"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center justify-center gap-3 rounded-[1rem] border border-red-100 bg-red-50 p-6 text-red-700"
+                    >
+                      <AlertCircle size={24} />
+                      <p className="font-bold">提交失败，请稍后重试，或直接电话联系。</p>
+                      <button
+                        type="button"
+                        onClick={() => setSubmitStatus('idle')}
+                        className="ml-4 text-sm font-bold underline"
+                      >
+                        重试
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.button
+                      key="idle"
+                      type="submit"
+                      disabled={submitStatus === 'submitting'}
+                      className="button-primary group relative flex w-full items-center justify-center gap-3 overflow-hidden !py-4"
+                    >
+                      {submitStatus === 'submitting' ? (
+                        <>
+                          <Loader2 className="animate-spin" size={20} />
+                          <span>正在提交...</span>
+                        </>
+                      ) : (
+                        <span>免费获取方案</span>
+                      )}
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+                <p className="mt-4 text-center text-[11px] font-bold text-on-surface/40">
+                  提交后，我们的项目经理将在 1 小时内通过微信联系您，免费提供初步方案。
+                </p>
+              </div>
+            </form>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-10"
@@ -226,175 +372,6 @@ export default function ContactPage() {
                 })}
               </div>
             </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
-                  <Phone size={20} />
-                </div>
-                <p className="mt-4 font-headline text-lg font-black text-on-surface">一对一电话</p>
-                <p className="mt-2 text-sm leading-6 text-on-surface-variant">高效沟通，快速为您评估活动档期及费用范围。</p>
-              </div>
-              <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
-                  <MessageCircle size={20} />
-                </div>
-                <p className="mt-4 font-headline text-lg font-black text-on-surface">项目对接</p>
-                <p className="mt-2 text-sm leading-6 text-on-surface-variant">添加微信发送场地照片及要求，细化执行方案。</p>
-              </div>
-              <div className="rounded-[1.15rem] border border-outline-variant/10 bg-white px-5 py-5 shadow-sm">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[0.95rem] bg-primary/5 text-primary">
-                  <Mail size={20} />
-                </div>
-                <p className="mt-4 font-headline text-lg font-black text-on-surface">需求登记</p>
-                <p className="mt-2 text-sm leading-6 text-on-surface-variant">提交您的活动初步计划，我们将安排专人主动与您联系。</p>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="premium-shadow overflow-hidden rounded-[1.6rem] border border-outline-variant/10 bg-white"
-          >
-            <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
-              <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线留言</p>
-              <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                免费获取定制方案
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                留下您的活动信息与联系方式，我们的专家团队将尽快为您提供项目方案与报价建议，无任何套路与隐形消费。
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 p-8 md:p-10">
-              {/* Honeypot field for anti-spam */}
-              <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" />
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="project-type" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
-                  <select
-                    id="project-type"
-                    {...register('projectType')}
-                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
-                    disabled={submitStatus === 'submitting'}
-                  >
-                    <option value="">请选择...</option>
-                    <option value="商场开业/庆典">商场开业 / 庆典</option>
-                    <option value="品牌商演/路演">品牌商演 / 路演</option>
-                    <option value="企业年会/盛典">企业年会 / 盛典</option>
-                    <option value="婚礼/宴会/喜事">婚礼 / 宴会 / 喜事</option>
-                    <option value="其他定制项目">其他定制项目</option>
-                  </select>
-                  {errors.projectType ? <p className="ml-1 text-xs font-bold text-primary">{errors.projectType.message}</p> : null}
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="preferred-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">希望怎么联系</label>
-                  <select
-                    id="preferred-contact"
-                    {...register('preferredContactMethod')}
-                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
-                    disabled={submitStatus === 'submitting'}
-                  >
-                    <option value="wechat">优先微信</option>
-                    <option value="phone">优先电话</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="user-name" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">您的称呼</label>
-                  <input
-                    id="user-name"
-                    type="text"
-                    {...register('name')}
-                    placeholder="例如：陈先生"
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
-                    disabled={submitStatus === 'submitting'}
-                  />
-                  {errors.name ? <p className="ml-1 text-xs font-bold text-primary">{errors.name.message}</p> : null}
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="user-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">联系电话 / 微信</label>
-                  <input
-                    id="user-contact"
-                    type="text"
-                    {...register('contact')}
-                    placeholder="方便我们及时联系您"
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
-                    disabled={submitStatus === 'submitting'}
-                  />
-                  {errors.contact ? <p className="ml-1 text-xs font-bold text-primary">{errors.contact.message}</p> : null}
-                </div>
-              </div>
-
-              <div className="space-y-2 mt-6">
-                <label htmlFor="event-message" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">备注说明（可选）</label>
-                <textarea
-                  id="event-message"
-                  {...register('message')}
-                  rows={5}
-                  placeholder="如有日期要求、场地限制、流程要求或预算范围，请在这里说明。"
-                  className="w-full resize-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
-                  disabled={submitStatus === 'submitting'}
-                />
-              </div>
-
-              <div className="relative pt-2">
-                <AnimatePresence mode="wait">
-                  {submitStatus === 'success' ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="flex items-center justify-center gap-3 rounded-[1rem] border border-green-100 bg-green-50 p-6 text-green-700"
-                    >
-                      <CheckCircle2 size={24} />
-                      <p className="font-bold">需求提交成功，我们会按您选择的方式尽快联系。</p>
-                    </motion.div>
-                  ) : submitStatus === 'error' ? (
-                    <motion.div
-                      key="error"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="flex items-center justify-center gap-3 rounded-[1rem] border border-red-100 bg-red-50 p-6 text-red-700"
-                    >
-                      <AlertCircle size={24} />
-                      <p className="font-bold">提交失败，请稍后重试，或直接电话联系。</p>
-                      <button
-                        type="button"
-                        onClick={() => setSubmitStatus('idle')}
-                        className="ml-4 text-sm font-bold underline"
-                      >
-                        重试
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <motion.button
-                      key="idle"
-                      type="submit"
-                      disabled={submitStatus === 'submitting'}
-                      className="button-primary group relative flex w-full items-center justify-center gap-3 overflow-hidden !py-4"
-                    >
-                      {submitStatus === 'submitting' ? (
-                        <>
-                          <Loader2 className="animate-spin" size={20} />
-                          <span>正在提交...</span>
-                        </>
-                      ) : (
-                        <span>提交需求并开始沟通</span>
-                      )}
-                    </motion.button>
-                  )}
-                </AnimatePresence>
-              </div>
-            </form>
           </motion.div>
         </div>
       </section>

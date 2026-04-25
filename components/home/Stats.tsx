@@ -34,6 +34,11 @@ export default function Stats() {
               <div className="absolute top-0 left-0 h-full w-1 origin-top scale-y-0 bg-secondary transition-transform duration-500 group-hover:scale-y-100" />
               <div className="font-headline text-7xl font-black text-secondary-fixed tracking-tight">{stat.value}</div>
               <div className="mt-4 text-sm font-black uppercase tracking-[0.2em] text-white/50">{stat.label}</div>
+              {stat.value.includes('+') && (
+                <Link href="/cases" className="mt-4 inline-block text-[10px] font-black tracking-widest text-secondary hover:underline">
+                  查看真实案例记录 →
+                </Link>
+              )}
             </FadeIn>
           ))}
         </div>

@@ -36,8 +36,14 @@ export default function Testimonials() {
               </div>
               
               <div className="mt-12 flex items-center gap-4 border-t border-outline-variant/30 pt-8">
-                <div className="relative h-12 w-12 overflow-hidden rounded-full border border-outline-variant/20">
-                  <Image src={item.avatar} alt={item.altText || item.author} fill sizes="48px" className="object-cover" />
+                <div className="relative h-12 w-12 overflow-hidden rounded-full border border-outline-variant/20 bg-primary/5 flex items-center justify-center">
+                  {item.avatar ? (
+                    <Image src={item.avatar} alt={item.altText || item.author} fill sizes="48px" className="object-cover" />
+                  ) : (
+                    <span className="font-headline text-lg font-black text-primary/60">
+                      {item.author.charAt(0)}
+                    </span>
+                  )}
                 </div>
                 <div>
                   <p className="font-headline text-base font-black text-on-surface tracking-tight">{item.author}</p>

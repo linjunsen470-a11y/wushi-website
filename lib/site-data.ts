@@ -103,22 +103,22 @@ export const testimonials = [
     content: '我是帮客户筹办开业活动的，鑫龙堂配合度非常高。最关键的是流程衔接稳、现场不卡壳，商场方和品牌方都觉得省心。',
     author: '陈女士',
     role: '品牌活动策划人 / 商场开业项目',
-    avatar: pinkCloseup,
-    altText: '重庆商演项目合作客户真实评价留影'
+    avatar: null,
+    altText: '重庆商演项目合作客户真实评价'
   },
   {
     content: '新店开业请了鑫龙堂，团队提前到场，服装和狮头都很新，现场排面和人气一下就起来了，适合要效果也要效率的活动。',
     author: '王先生',
     role: '连锁餐饮门店负责人 / 开业活动',
-    avatar: teamFormation,
-    altText: '新店开业商户现场对接实录留影'
+    avatar: null,
+    altText: '新店开业商户真实对接反馈'
   },
   {
     content: '我们是室内舞台演出，对灯光、卡点和镜头效果要求高。鑫龙堂动作和鼓点都很准，拍出来的视频素材也能直接用。',
     author: '李经理',
     role: '大型商业体企划部 / 年度盛典项目',
-    avatar: corporateAnnual,
-    altText: '重庆大型企业年会主办方活动现场合影'
+    avatar: null,
+    altText: '重庆大型企业年会主办方活动评价'
   }
 ];
 
@@ -416,10 +416,10 @@ export const legalLinks = [
 ];
 
 export const stats = [
-  { value: '10年+', label: '深耕重庆本地市场' },
-  { value: '1000+', label: '场次执行经验' },
-  { value: '专业', label: '高桩实力保障' },
-  { value: '标准', label: '现场服务流程' },
+  { value: '10年+', label: '重庆本地资深团队' },
+  { value: '1000+', label: '场次真实交付经验' },
+  { value: '专业', label: '高桩竞技实力保障' },
+  { value: '标准', label: '现场服务流程规范' },
 ];
 
 export const responsePromises = [

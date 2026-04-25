@@ -46,6 +46,21 @@ export default function ContactCTA() {
                 先看真实视频案例
               </Link>
             </div>
+
+            <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-black tracking-widest text-on-surface/40 uppercase">
+              <div className="flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
+                <span>免费出具初步方案</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
+                <span>档期不满意全额退定金</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
+                <span>1小时内极速响应</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

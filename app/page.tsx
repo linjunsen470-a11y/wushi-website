@@ -7,12 +7,7 @@ import ContactCTA from '@/components/ContactCTA';
 
 // Home Sections
 import HomeHero from '@/components/home/HomeHero';
-import ProofPoints from '@/components/home/ProofPoints';
 import ServiceGrid from '@/components/home/ServiceGrid';
-import MediaShowcase from '@/components/home/MediaShowcase';
-import Craftsmanship from '@/components/home/Craftsmanship';
-import FeatureCards from '@/components/home/FeatureCards';
-import Gallery from '@/components/home/Gallery';
 import Stats from '@/components/home/Stats';
 
 export const metadata: Metadata = {
@@ -28,15 +23,10 @@ export default function Page() {
     <main className="min-h-screen">
       <Navbar />
       <HomeHero />
-      <LogoWall />
-      <ProofPoints />
-      <ServiceGrid />
-      <MediaShowcase />
-      <Testimonials />
-      <Craftsmanship />
-      <FeatureCards />
-      <Gallery />
       <Stats />
+      <LogoWall />
+      <ServiceGrid />
+      <Testimonials />
       <ContactCTA />
       <Footer />
     </main>
