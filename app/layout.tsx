@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Epilogue, Manrope, Noto_Sans_SC } from 'next/font/google';
+import Script from 'next/script';
 import FloatingContact from '@/components/FloatingContact';
 import JsonLd from '@/components/JsonLd';
 import './globals.css';
@@ -59,6 +60,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-[#fff8ef] text-[#1e1b13] font-body selection:bg-[#b22222] selection:text-white overflow-x-hidden"
         suppressHydrationWarning
       >
+        <Script id="baidu-tongji" strategy="afterInteractive">
+          {`
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?5993a407a0f1e813d26b91081adc46c8";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+          `}
+        </Script>
         {children}
         <FloatingContact />
       </body>
