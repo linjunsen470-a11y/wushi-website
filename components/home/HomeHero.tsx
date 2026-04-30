@@ -36,7 +36,7 @@ export default function HomeHero() {
               重庆本地商业活动舞狮执行团队
             </span>
             <h1 className="page-hero-title text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-              西南地区专业舞狮，
+              西南地区专业舞狮
               <br />
               为您的商业活动赋能
             </h1>

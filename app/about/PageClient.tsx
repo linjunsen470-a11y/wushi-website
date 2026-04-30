@@ -81,7 +81,7 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-20">
             <span className="section-eyebrow text-secondary">团队硬实力</span>
             <h2 className="page-section-title !text-on-surface mt-4 tracking-tight">
-              丰富的实战经验，
+              丰富的实战经验
               <br className="hidden sm:block" />
               是您值得信任的理由
             </h2>
@@ -118,7 +118,7 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-16">
             <span className="section-eyebrow text-secondary">管理团队</span>
             <h2 className="page-section-title !text-on-surface mt-4 tracking-tight">
-              从艺术指导到现场执行，
+              从艺术指导到现场执行
               <br />
               确保每一个项目稳妥交付
             </h2>
@@ -157,7 +157,7 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-2xl space-y-8">
             <span className="section-eyebrow text-secondary-fixed">品质把控</span>
             <h2 className="page-section-title !text-white !leading-tight tracking-tight">
-              更精良的装备，
+              更精良的装备
               <br className="hidden sm:block" />
               才能成就非凡的现场品质
             </h2>

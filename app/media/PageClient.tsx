@@ -39,20 +39,8 @@ export default function MediaPage() {
       <SubpageHero
         eyebrow="真实影像展示 / MEDIA"
         variant="media"
-        title={
-          <>
-            重庆本地商演实录，
-            <br />
-            见证实战交付水准
-          </>
-        }
-        description={
-          <>
-            所有视频均为鑫龙堂团队的真实演出记录，绝不套用任何网络样片。
-            <br className="hidden md:block" />
-            通过高清视频，您可以直观感受活动现场的热烈氛围与完美的镜头视觉张力。
-          </>
-        }
+        title="本地商演实录 见证交付水准"
+        description="鑫龙堂真实演出实录，绝不套用网络样片。通过高清视频直观感受现场热烈氛围。"
         chips={['真实实录', '视频为主', '平台补充', featured.category]}
         panel={
           <div className="space-y-6">

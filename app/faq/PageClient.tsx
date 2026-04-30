@@ -20,20 +20,8 @@ export default function FaqPage() {
       <Navbar />
       <SubpageHero
         eyebrow="疑问解答中心 / FAQ"
-        title={
-          <>
-            透明服务流程标准，
-            <br />
-            打消您的前期顾虑
-          </>
-        }
-        description={
-          <>
-            在这里，我们为您整理了关于活动报价、前期筹备及落地执行的所有核心信息。
-            <br className="hidden md:block" />
-            以最清晰的沟通标准，为您提供安心的商业合作保障。
-          </>
-        }
+        title="透明服务流程 打消前期顾虑"
+        description="整理活动报价、筹备及执行的核心信息。以清晰标准为您提供安心的合作保障。"
         chips={['报价透明', '准备清单', '执行标准', '安心保障']}
         panel={
           <div className="space-y-6">
