@@ -41,9 +41,10 @@ jobs:
           cp -r public .next/standalone/
           cp -r .next/static .next/standalone/.next/
 
-          # Inject secrets into .env file
-          echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" >> .next/standalone/.env
-          echo "LEAD_TO_EMAIL=${{ secrets.LEAD_TO_EMAIL }}" >> .next/standalone/.env
+          # Inject secrets into ecosystem.config.js placeholders
+          # Using | as delimiter for sed to avoid issues with / in keys
+          sed -i "s|TOKEN_RESEND_API_KEY|${{ secrets.RESEND_API_KEY }}|g" ecosystem.config.js
+          sed -i "s|TOKEN_LEAD_TO_EMAIL|${{ secrets.LEAD_TO_EMAIL }}|g" ecosystem.config.js
 
           tar -czf release.tar.gz -C .next/standalone .
 
@@ -65,6 +66,8 @@ jobs:
           script: |
             set -euo pipefail
 
+            # Ensure the target directory exists (for "nuke and rebuild" support)
+            mkdir -p ${{ secrets.REMOTE_TARGET }}
             cd ${{ secrets.REMOTE_TARGET }}
 
             DEPLOY_ID=$(date +%s)
@@ -79,6 +82,10 @@ jobs:
             fi
 
             ln -sfn "$DEPLOY_DIR" current
+
+            # Force Alignment: Clean up any redundant files in the root directory
+            # Keep only the essential deployment structure
+            rm -rf server.js package.json public node_modules release.tar.gz
 
             echo "Deployed release: $DEPLOY_ID"
 
