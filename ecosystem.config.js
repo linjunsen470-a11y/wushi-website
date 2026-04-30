@@ -5,7 +5,9 @@ module.exports = {
       cwd: './current',
       script: 'server.js',
       exec_mode: 'cluster',
-      instances: 2,
+      instances: 1,
+      max_memory_restart: '1G',
+      node_args: '--max-old-space-size=1024',
       env: {
         NODE_ENV: 'production',
         PORT: 3000,
