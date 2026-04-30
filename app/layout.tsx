@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-[#fff8ef] text-[#1e1b13] font-body selection:bg-[#b22222] selection:text-white overflow-x-hidden"
         suppressHydrationWarning
       >
-        <Script id="baidu-tongji" strategy="afterInteractive">
+        <Script id="baidu-tongji" strategy="beforeInteractive">
           {`
             var _hmt = _hmt || [];
             (function() {
