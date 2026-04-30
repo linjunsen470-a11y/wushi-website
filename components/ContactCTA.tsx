@@ -36,14 +36,14 @@ export default function ContactCTA() {
                 href="/contact"
                 className="button-primary group relative overflow-hidden px-10 py-5 text-lg shadow-[0_20px_50px_rgba(163,0,17,0.24)] transition-all hover:-translate-y-1 hover:bg-primary-container"
               >
-                <span className="relative z-10">加微信 / 电话沟通</span>
+                <span className="relative z-10">微信/电话沟通</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/10 transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
               <Link
                 href="/media"
                 className="button-secondary border-primary/20 bg-white/60 px-10 py-5 text-lg text-on-surface backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white"
               >
-                先看真实视频案例
+                视频案例
               </Link>
             </div>
 

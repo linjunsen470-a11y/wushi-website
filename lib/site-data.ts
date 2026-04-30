@@ -54,6 +54,13 @@ export const legalInfo = {
   phone: '18983662830',
 };
 
+export const filingInfo = {
+  icp: '渝ICP备2026008275号-1',
+  icpUrl: 'https://beian.miit.gov.cn/',
+  psb: '', // 待补充公安备案号
+  psbUrl: 'https://beian.mps.gov.cn/',
+};
+
 export const primaryNavLinks = [
   { label: '关于我们', href: '/about', description: '了解我们的团队与文化' },
   { label: '服务项目', href: '/services', description: '提供开业庆典、企业活动、宴会庆典等多样化演出' },
