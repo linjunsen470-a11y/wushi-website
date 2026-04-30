@@ -7,7 +7,7 @@
   /* Premium Traditional Palette */
   --color-primary: #a30011; /* Slightly brighter, more vibrant red */
   --color-primary-container: #7d000d;
-  --color-secondary: #8c7100; /* Richer Gold/Bronze */
+  --color-secondary: #806700; /* Darkened for accessibility contrast (4.5:1+) */
   --color-secondary-fixed: #ffdb70;
   --color-surface: #fffdfa;
   --color-surface-container-low: #f9f4eb;
