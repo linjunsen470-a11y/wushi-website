@@ -41,6 +41,10 @@ jobs:
           cp -r public .next/standalone/
           cp -r .next/static .next/standalone/.next/
 
+          # Inject secrets into .env file
+          echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" >> .next/standalone/.env
+          echo "LEAD_TO_EMAIL=${{ secrets.LEAD_TO_EMAIL }}" >> .next/standalone/.env
+
           tar -czf release.tar.gz -C .next/standalone .
 
       - name: Upload to VPS
@@ -49,7 +53,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: release.tar.gz
+          source: "release.tar.gz,ecosystem.config.js"
           target: ${{ secrets.REMOTE_TARGET }}
 
       - name: Deploy and restart
@@ -77,13 +81,12 @@ jobs:
             ln -sfn "$DEPLOY_DIR" current
 
             echo "Deployed release: $DEPLOY_ID"
-            if [ -f "current/.next/BUILD_ID" ]; then
-              echo "Next BUILD_ID: $(cat current/.next/BUILD_ID)"
-            fi
 
-            if pm2 list | grep -q "wushi-website"; then
+            if pm2 describe wushi-website > /dev/null 2>&1; then
+              echo "Reloading existing PM2 process..."
               pm2 reload ecosystem.config.js --update-env
             else
+              echo "Starting new PM2 process..."
               pm2 start ecosystem.config.js
             fi
 
