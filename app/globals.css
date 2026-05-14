@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 
 @theme {
   --font-headline: var(--font-headline), ui-sans-serif, system-ui;
@@ -218,5 +220,9 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  .prose-guide {
+    @apply prose prose-neutral max-w-none prose-headings:font-headline prose-headings:font-black prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-primary prose-blockquote:bg-surface-container-low prose-blockquote:px-6 prose-blockquote:py-1 prose-blockquote:rounded-r-xl prose-img:rounded-2xl prose-img:shadow-xl prose-table:text-[0.95rem];
   }
 }

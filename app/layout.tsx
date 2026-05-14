@@ -60,17 +60,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-[#fff8ef] text-[#1e1b13] font-body selection:bg-[#b22222] selection:text-white overflow-x-hidden"
         suppressHydrationWarning
       >
-        <Script id="baidu-tongji" strategy="beforeInteractive">
+        <Script id="baidu-tongji-init" strategy="afterInteractive">
           {`
-            var _hmt = _hmt || [];
-            (function() {
-              var hm = document.createElement("script");
-              hm.src = "https://hm.baidu.com/hm.js?5993a407a0f1e813d26b91081adc46c8";
-              var s = document.getElementsByTagName("script")[0]; 
-              s.parentNode.insertBefore(hm, s);
-            })();
+            window._hmt = window._hmt || [];
           `}
         </Script>
+        <Script
+          id="baidu-tongji"
+          src="https://hm.baidu.com/hm.js?5993a407a0f1e813d26b91081adc46c8"
+          strategy="afterInteractive"
+        />
         {children}
         <FloatingContact />
       </body>

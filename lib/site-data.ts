@@ -67,7 +67,7 @@ export const primaryNavLinks = [
   { label: '场景方案', href: '/solutions', description: '探索不同活动的详细方案' },
   { label: '真实案例', href: '/cases', description: '查看往期案例现场图片' },
   { label: '视频展示', href: '/media', description: '通过视频直观感受演出效果' },
-  { label: '预订指南', href: '/faq', description: '了解报价与预订流程' },
+  { label: '预订指南', href: '/guide', description: '了解报价、流程与避坑指南' },
 ];
 
 export const utilityNavLinks = [
@@ -413,7 +413,7 @@ export const footerLinks = [
   { label: '真实案例', href: '/cases' },
   { label: '视频展示', href: '/media' },
   { label: '场景方案', href: '/solutions' },
-  { label: '预订指南', href: '/faq' },
+  { label: '预订指南', href: '/guide' },
   { label: '联系我们', href: '/contact' },
 ];
 

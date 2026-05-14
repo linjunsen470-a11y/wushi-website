@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository is a Next.js 16 App Router site written in TypeScript. Route entry points live under `app/` (`app/page.tsx`, `app/about/page.tsx`, `app/services/page.tsx`). Shared UI belongs in `components/`, reusable hooks in `hooks/`, and utility helpers in `lib/`. Static media is stored in `assets/` with subfolders for `photos/` and `videos/`. `stich-assets/` holds design reference material and should be treated as source inspiration, not runtime code.
+This repository is a Next.js 16 App Router site written in TypeScript. Route entry points live under `app/` (`app/page.tsx`, `app/about/page.tsx`, `app/services/page.tsx`). Shared UI belongs in `components/`, reusable hooks in `hooks/`, and utility helpers in `lib/`. Static media is stored in `assets/` with subfolders for `photos/` and `videos/`. `stich-assets/` holds design reference material and should be treated as source inspiration, not runtime code. `blog-template/` is a dedicated workspace for drafting blog posts, soft articles, and research; it is ignored by Git and should be used as a creative staging area.
 
 ## Build, Test, and Development Commands
 Use `pnpm` with Node `>=20.9.0`.
