@@ -3,8 +3,8 @@
 
 
 @theme {
-  --font-headline: var(--font-headline), ui-sans-serif, system-ui;
-  --font-body: var(--font-chinese), var(--font-body-latin), system-ui, sans-serif;
+  --font-headline: Epilogue, ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Noto Sans SC", Manrope, system-ui, -apple-system, sans-serif;
 
   /* Premium Traditional Palette */
   --color-primary: #a30011; /* Slightly brighter, more vibrant red */

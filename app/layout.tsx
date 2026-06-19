@@ -1,27 +1,8 @@
 import type { Metadata } from 'next';
-import { Epilogue, Manrope, Noto_Sans_SC } from 'next/font/google';
 import Script from 'next/script';
 import FloatingContact from '@/components/FloatingContact';
 import JsonLd from '@/components/JsonLd';
 import './globals.css';
-
-const epilogue = Epilogue({
-  subsets: ['latin'],
-  variable: '--font-headline',
-  weight: ['700', '800', '900'],
-});
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-body-latin',
-  weight: ['400', '500', '600', '700'],
-});
-
-const notoSansSC = Noto_Sans_SC({
-  subsets: ['latin'],
-  variable: '--font-chinese',
-  weight: ['400', '500', '700', '900'],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.cqwushi.com'),
@@ -52,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN" className={`${epilogue.variable} ${manrope.variable} ${notoSansSC.variable}`} data-scroll-behavior="smooth">
+    <html lang="zh-CN" data-scroll-behavior="smooth">
       <head>
         <JsonLd />
       </head>

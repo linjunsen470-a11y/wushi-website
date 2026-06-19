@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { load } from 'js-yaml';
 
 const guideDirectory = path.join(process.cwd(), 'content/guide');
 
@@ -19,6 +20,14 @@ export interface GuidePost {
   content: string;
 }
 
+const matterOptions = {
+  engines: {
+    yaml: {
+      parse: (str: string) => load(str) as object,
+    },
+  },
+};
+
 export function getAllGuidePosts(): Omit<GuidePost, 'content'>[] {
   if (!fs.existsSync(guideDirectory)) {
     return [];
@@ -31,7 +40,7 @@ export function getAllGuidePosts(): Omit<GuidePost, 'content'>[] {
       const slug = fileName.replace(/\.md$/, '');
       const fullPath = path.join(guideDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data } = matter(fileContents);
+      const { data } = matter(fileContents, matterOptions);
 
       return {
         slug,
@@ -58,7 +67,7 @@ export function getGuidePostBySlug(slug: string): GuidePost | null {
     if (!fs.existsSync(fullPath)) return null;
     
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
+    const { data, content } = matter(fileContents, matterOptions);
 
     return {
       slug,
