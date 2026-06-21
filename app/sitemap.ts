@@ -3,29 +3,39 @@ import { getAllGuidePosts } from '@/lib/guide';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.cqwushi.com';
-  
-  const staticRoutes = [
-    '',
-    '/about',
-    '/services',
-    '/solutions',
-    '/cases',
-    '/media',
-    '/guide',
-    '/contact',
-    '/terms',
-    '/privacy',
+  const buildDate = new Date('2026-06-22');
+
+  const staticPages = [
+    { route: '', priority: 1.0, changeFrequency: 'daily' as const },
+    { route: '/services', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/solutions', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/cases', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
+    { route: '/media', priority: 0.7, changeFrequency: 'weekly' as const },
+    { route: '/guide', priority: 0.7, changeFrequency: 'daily' as const },
+    { route: '/contact', priority: 0.7, changeFrequency: 'monthly' as const },
+    { route: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
+    { route: '/terms', priority: 0.3, changeFrequency: 'monthly' as const },
+    { route: '/privacy', priority: 0.3, changeFrequency: 'monthly' as const },
   ];
 
-  const guidePosts = getAllGuidePosts();
-  const dynamicRoutes = guidePosts.map(post => `/guide/${post.slug}`);
-
-  const allRoutes = [...staticRoutes, ...dynamicRoutes];
-
-  return allRoutes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: (route === '' ? 'daily' : 'weekly') as 'daily' | 'weekly' | 'always' | 'hourly' | 'monthly' | 'yearly' | 'never',
-    priority: route === '' ? 1 : 0.8,
+  const staticEntries = staticPages.map(page => ({
+    url: `${baseUrl}${page.route}`,
+    lastModified: buildDate,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
   }));
+
+  const guidePosts = getAllGuidePosts();
+  const dynamicEntries = guidePosts.map(post => {
+    const postDate = post.updated ? new Date(post.updated) : new Date(post.date);
+    return {
+      url: `${baseUrl}/guide/${post.slug}`,
+      lastModified: isNaN(postDate.getTime()) ? buildDate : postDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    };
+  });
+
+  return [...staticEntries, ...dynamicEntries];
 }

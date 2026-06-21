@@ -6,7 +6,10 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.cqwushi.com'),
-  title: '重庆鑫龙堂舞狮 | 专业舞狮演出标杆团队_开业庆典_商演活动_婚礼宴会',
+  title: {
+    default: '重庆鑫龙堂舞狮 | 西南专业舞狮演出团队_开业醒狮_商演路演_婚礼宴会',
+    template: '%s | 重庆鑫龙堂舞狮',
+  },
   description:
     '重庆鑫龙堂舞狮是面向重庆及西南地区的专业舞狮演出服务商。提供开业庆典、商场活动、婚礼宴会、品牌发布等各类高标准舞狮演艺，以真实现场与卓越执行力为活动增色。',
   openGraph: {

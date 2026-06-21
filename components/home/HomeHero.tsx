@@ -36,12 +36,12 @@ export default function HomeHero() {
               重庆本地商业活动舞狮执行团队
             </span>
             <h1 className="page-hero-title text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-              西南地区专业舞狮
+              西南地区专业舞狮团队
               <br />
-              为您的商业活动赋能
+              专注庆典、商演与婚礼宴会
             </h1>
             <p className="page-lead mt-10 text-white/94 md:text-[1.12rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              {brand.name} 深耕重庆本地市场，专注承接商场开业、品牌路演、企业晚宴等高规格商业活动。以高标准的场控、精准的卡点与热烈的现场氛围，确保每一场演出完美交付。
+              {brand.name} 专注重庆及西南地区的开业剪彩、商演路演和宴会舞狮。我们以高标准的礼仪配合、精准的动作卡点与热烈的现场氛围，为您的活动带来专业精彩的舞狮演艺。
             </p>
             <div className="mt-11 flex flex-wrap gap-3">
               {heroPillars.map((item) => (

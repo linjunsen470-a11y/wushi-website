@@ -101,9 +101,18 @@ export default function ContactPage() {
                 免费获取演出方案
               </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                留下您的活动信息与联系方式，我们的项目经理将为您提供定制化的执行建议与报价参考。
+                告诉我们您的活动时间、地点和大致需求，我们将在 1 小时内通过微信或电话回复，免费提供定制化执行建议与报价参考。
               </p>
             </div>
+
+            <noscript>
+              <div className="border-b border-primary/10 bg-primary/[0.03] px-8 py-5 text-sm font-medium leading-relaxed text-on-surface-variant">
+                提示：检测到您的浏览器禁用了 JavaScript，在线表单将无法提交。如需获取舞狮策划方案与实时报价，可以直接拨打电话或添加微信：
+                <div className="mt-2 text-base font-black text-primary">
+                  📞 电话：<a href="tel:18983662830" className="underline">189-8366-2830</a> (微信同号)
+                </div>
+              </div>
+            </noscript>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 p-8 md:p-10">
               <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" />

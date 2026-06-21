@@ -1,5 +1,5 @@
 ---
-title: "写字楼办公室乔迁舞狮怎么做？报备流程、现场控音与避坑指南"
+title: "办公室乔迁舞狮指南：流程与报备"
 slug: "office-relocation-lion-dance"
 date: "2026-06-19"
 updated: "2026-06-19"

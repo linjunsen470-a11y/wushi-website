@@ -1,5 +1,5 @@
 ---
-title: "重庆中式婚礼请舞狮合适吗？迎宾、合影、主流程配合与执行指南"
+title: "重庆婚礼舞狮指南：迎宾与流程配合"
 slug: "wedding-lion-dance-guide"
 date: "2026-06-16"
 updated: "2026-06-16"

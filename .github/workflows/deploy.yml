@@ -54,7 +54,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "release.tar.gz,ecosystem.config.js"
+          source: "release.tar.gz,ecosystem.config.js,docs/nginx-redirect.conf"
           target: ${{ secrets.REMOTE_TARGET }}
 
       - name: Deploy and restart
@@ -96,6 +96,31 @@ jobs:
               echo "Starting new PM2 process..."
               pm2 start ecosystem.config.js
             fi
+
+            # ================== Nginx configuration deployment ==================
+            echo "Checking and updating Nginx configuration..."
+            NGINX_CONF_DEST="/etc/nginx/sites-available/wushi-website.conf"
+            NGINX_ENABLED_LINK="/etc/nginx/sites-enabled/wushi-website.conf"
+
+            if [ -f "docs/nginx-redirect.conf" ]; then
+              sudo cp docs/nginx-redirect.conf "$NGINX_CONF_DEST"
+              if [ ! -L "$NGINX_ENABLED_LINK" ]; then
+                sudo ln -s "$NGINX_CONF_DEST" "$NGINX_ENABLED_LINK"
+              fi
+              
+              if sudo nginx -t; then
+                echo "Nginx configuration test passed, reloading Nginx service..."
+                sudo systemctl reload nginx
+                echo "Nginx reload completed successfully."
+              else
+                echo "Error: Nginx configuration test failed!"
+                exit 1
+              fi
+              rm -rf docs
+            else
+              echo "Warning: docs/nginx-redirect.conf not found."
+            fi
+            # ====================================================================
 
             find releases -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' \
               | sort -rn \
