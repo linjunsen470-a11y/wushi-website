@@ -112,6 +112,17 @@ jobs:
                 echo "Nginx configuration test passed, reloading Nginx service..."
                 sudo systemctl reload nginx
                 echo "Nginx reload completed successfully."
+                
+                # Diagnostic output to inspect Nginx configurations
+                echo "=== DIAGNOSTIC: Nginx active sites ==="
+                sudo ls -la /etc/nginx/sites-enabled/
+                for f in /etc/nginx/sites-enabled/*; do
+                  if [ -f "$f" ] || [ -L "$f" ]; then
+                    echo "--- Nginx site config: $f ---"
+                    sudo cat "$f"
+                  fi
+                done
+                echo "======================================"
               else
                 echo "Error: Nginx configuration test failed!"
                 exit 1
