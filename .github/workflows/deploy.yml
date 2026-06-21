@@ -113,16 +113,16 @@ jobs:
                 sudo systemctl reload nginx
                 echo "Nginx reload completed successfully."
                 
-                # Diagnostic output to inspect Nginx configurations
-                echo "=== DIAGNOSTIC: Nginx active sites ==="
-                sudo ls -la /etc/nginx/sites-enabled/
+                # Write diagnostic output to a public file for remote inspection
+                echo "=== DIAGNOSTIC: Nginx active sites ===" > current/public/nginx-diagnostic.txt
+                sudo ls -la /etc/nginx/sites-enabled/ >> current/public/nginx-diagnostic.txt
                 for f in /etc/nginx/sites-enabled/*; do
                   if [ -f "$f" ] || [ -L "$f" ]; then
-                    echo "--- Nginx site config: $f ---"
-                    sudo cat "$f"
+                    echo "--- Nginx site config: $f ---" >> current/public/nginx-diagnostic.txt
+                    sudo cat "$f" >> current/public/nginx-diagnostic.txt
                   fi
                 done
-                echo "======================================"
+                echo "======================================" >> current/public/nginx-diagnostic.txt
               else
                 echo "Error: Nginx configuration test failed!"
                 exit 1
