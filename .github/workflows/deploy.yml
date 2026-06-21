@@ -93,6 +93,13 @@ jobs:
             echo "Checking and updating Nginx configuration..."
             NGINX_CONF_DEST="/etc/nginx/sites-available/wushi-website.conf"
             NGINX_ENABLED_LINK="/etc/nginx/sites-enabled/wushi-website.conf"
+            OLD_NGINX_LINK="/etc/nginx/sites-enabled/wushi-website"
+
+            # Remove old duplicate site configuration link if present to avoid conflict
+            if [ -L "$OLD_NGINX_LINK" ] || [ -f "$OLD_NGINX_LINK" ]; then
+              echo "Removing old duplicate Nginx configuration link: $OLD_NGINX_LINK"
+              sudo rm -f "$OLD_NGINX_LINK"
+            fi
 
             if [ -f "docs/nginx-redirect.conf" ]; then
               sudo cp docs/nginx-redirect.conf "$NGINX_CONF_DEST"
