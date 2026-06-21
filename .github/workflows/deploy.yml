@@ -89,14 +89,6 @@ jobs:
 
             echo "Deployed release: $DEPLOY_ID"
 
-            if pm2 describe wushi-website > /dev/null 2>&1; then
-              echo "Reloading existing PM2 process..."
-              pm2 reload ecosystem.config.js --update-env
-            else
-              echo "Starting new PM2 process..."
-              pm2 start ecosystem.config.js
-            fi
-
             # ================== Nginx configuration deployment ==================
             echo "Checking and updating Nginx configuration..."
             NGINX_CONF_DEST="/etc/nginx/sites-available/wushi-website.conf"
@@ -132,6 +124,14 @@ jobs:
               echo "Warning: docs/nginx-redirect.conf not found."
             fi
             # ====================================================================
+
+            if pm2 describe wushi-website > /dev/null 2>&1; then
+              echo "Reloading existing PM2 process..."
+              pm2 reload ecosystem.config.js --update-env
+            else
+              echo "Starting new PM2 process..."
+              pm2 start ecosystem.config.js
+            fi
 
             find releases -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' \
               | sort -rn \
