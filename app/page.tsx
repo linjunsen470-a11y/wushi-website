@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   title: {
     absolute: '重庆鑫龙堂舞狮 | 西南专业舞狮演出团队_开业醒狮_商演路演_婚礼宴会',
   },
-  description: '重庆鑫龙堂舞狮，开业、路演、喜宴都接。干了上千场，头天对流程当天照着敲。电话 18983662830。',
+  description: '重庆鑫龙堂舞狮队，提供开业剪彩、商场路演、企业年会及喜宴舞狮。拥有千场商演执行经验，现场流程严谨，服装道具整洁，欢迎联系确认演出档期。',
   keywords: '重庆开业舞狮, 醒狮表演, 重庆舞狮队, 商演路演舞狮, 年会舞狮, 婚礼舞狮',
   alternates: {
     canonical: 'https://www.cqwushi.com',
   },
   openGraph: {
     title: '重庆鑫龙堂舞狮 | 西南专业舞狮演出团队',
-    description: '重庆本地舞狮队，开业、商演、喜宴都接。看视频看案例，微信问档期。',
+    description: '提供开业剪彩点睛、商场路演快闪、企业年会开场、婚礼喜庆宴会等多类型醒狮表演。',
     url: 'https://www.cqwushi.com',
     type: 'website',
   },

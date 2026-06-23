@@ -39,8 +39,8 @@ export default function MediaPage() {
       <SubpageHero
         eyebrow="真实影像展示 / MEDIA"
         variant="media"
-        title="看视频"
-        description="都是现场拍的。鼓齐不齐、人晃不晃，自个儿看一分钟就晓得。"
+        title="演艺影像集锦"
+        description="全部视频源自团队真实演出现场记录，展现动作细节与鼓乐节奏的真实质感。"
         chips={['真实实录', '视频为主', '平台补充', featured.category]}
         panel={
           <div className="space-y-6">

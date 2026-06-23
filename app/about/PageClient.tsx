@@ -31,21 +31,21 @@ export default function AboutPage() {
             </span>
             <div className="mt-8 space-y-8">
               <h1 className="page-hero-title text-primary !leading-[1.1] tracking-tight">
-                耍狮子的
+                传承醒狮民俗
                 <br />
-                <span className="text-on-surface">也接商演</span>
+                <span className="text-on-surface">专注商业演艺</span>
               </h1>
               <p className="page-lead text-on-surface-variant font-medium leading-relaxed">
-                老手艺是老手艺，商场开业那套流程是另一回事。
+                融汇传统醒狮艺术与现代商业活动规范，我们致力于提供兼具民俗文化内涵与专业执行标准的演出服务。
                 <br className="hidden md:block" />
-                我们两边都干——村里庙会能演，万象城开业也能演，不耽误人家剪彩。
+                无论是地方传统庙会，还是地标级商业中心的开业庆典，我们均能精准把握活动节奏，确保演出圆满成功。
               </p>
             </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {[
-                ['场子熟', '万象城、融创茂、尼依格罗都进过。物业咋批、几点能进场，不用你们现学。'],
-                ['家伙不差', '狮头狮皮该换就换，排练没少练。上台不能丢人。'],
-                ['图没造假', '网站这些照片视频，全是自己人拍的，没从网上扒。'],
+                ['经验丰富', '曾多次进入万象城、IFS、来福士、尼依格罗酒店等大型商业体及高档酒店执行，熟知进场报批与安全配合流程。'],
+                ['装备精良', '定期更新狮头与服饰道具，保障上镜及现场视觉质感。'],
+                ['真实案例', '官方网站展示的全部图片和视频均来自团队真实演出现场，无任何虚假素材。'],
               ].map(([title, text], idx) => (
                 <motion.div
                   key={title}
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <Image src={aboutGallery.story} alt={aboutGallery.storyAlt || '重庆舞狮团队表演实景'} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
             <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-black/60 px-8 py-6 text-white backdrop-blur-md border border-white/10">
-              <p className="font-headline text-2xl font-black tracking-tight leading-tight">该敲鼓的时候敲，该安静的时候安静</p>
+              <p className="font-headline text-2xl font-black tracking-tight leading-tight">紧密配合流程，现场调度有序，动静皆合规范</p>
             </div>
           </motion.div>
         </div>
@@ -79,14 +79,14 @@ export default function AboutPage() {
       <section className="bg-surface-container-low py-32">
         <div className="shell">
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-20">
-            <span className="section-eyebrow text-secondary">干过啥</span>
+            <span className="section-eyebrow text-secondary">演艺足迹</span>
             <h2 className="page-section-title !text-on-surface mt-4 tracking-tight">
-              商场里、酒店里、广场上
+              地标商场、星级酒店、企业年会
               <br className="hidden sm:block" />
-              都演过
+              全场景演出经验
             </h2>
             <p className="body-copy text-lg text-on-surface-variant leading-relaxed font-medium mt-6">
-              街上路演得把人拢住，开业得体面，喜宴得红火。场合不一样，排法不一样。反正头天对好，当天别乱。
+              针对不同场合（如商场路演的聚客互动、开业庆典的庄重体面、商务晚宴的喜庆祥和），量身定制表演编排。前期对接清晰，确保现场执行无纰漏。
             </p>
           </motion.div>
           <div className="grid gap-10 md:grid-cols-3">
@@ -117,9 +117,9 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-16">
             <span className="section-eyebrow text-secondary">管理团队</span>
             <h2 className="page-section-title !text-on-surface mt-4 tracking-tight">
-              从艺术指导到现场执行
+              从艺术指导到现场调度
               <br />
-              从排练到现场，有人盯
+              专业团队，全程专人专责
             </h2>
           </motion.div>
 
@@ -156,12 +156,12 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-2xl space-y-8">
             <span className="section-eyebrow text-secondary-fixed">品质把控</span>
             <h2 className="page-section-title !text-white !leading-tight tracking-tight">
-              狮头狮皮
+              精益求精
               <br className="hidden sm:block" />
-              上台前瞅一眼
+              细节彰显专业质感
             </h2>
             <p className="page-lead text-xl !text-white/70 font-medium">
-              远远看热闹就行，摄像机怼上来又是另一码事。毛别炸、皮别脏、衣服别皱，拍出来才过得去。
+              无论是现场观众还是专业摄影摄像捕捉，我们均要求狮皮洁净、配饰齐整、队员精神饱满，以高标准展示团队形象。
             </p>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">

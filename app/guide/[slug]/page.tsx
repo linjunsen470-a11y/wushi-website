@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getGuidePostBySlug, getAllGuidePosts } from '@/lib/guide';
 import Navbar from '@/components/Navbar';
@@ -128,7 +129,7 @@ export default async function GuidePostPage({ params }: Props) {
         <div className="shell">
           <div className="mx-auto max-w-3xl">
             <div className="prose-guide prose-lg prose-p:text-on-surface-variant prose-p:font-medium prose-p:leading-relaxed prose-h2:mt-14 prose-h2:mb-6 prose-h2:text-3xl prose-h3:text-2xl prose-strong:text-on-surface prose-strong:font-black prose-table:border-collapse prose-th:bg-surface-container prose-th:p-4 prose-td:border-b prose-td:border-outline-variant/10 prose-td:p-4">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
             </div>
 
             {post.tags.length > 0 ? (

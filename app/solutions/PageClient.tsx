@@ -23,12 +23,12 @@ export default function SolutionsPage() {
         eyebrow="演出场景方案 —— SOLUTIONS"
         title={
           <>
-            场合不一样，排法不一样
+            按需定制，契合多元活动场景
           </>
         }
         description={
           <>
-            商场开业、街上快闪、年会、喜宴——不是一回事。下面按场合写了几个常见的排法，你对照着自己那场看。
+            商场开业、街区路演、企业年会、高端喜宴等不同场景有着截然不同的演出诉求。我们制定了标准演艺方案，帮助您快速找到适合当前活动定位的配置。
           </>
         }
         chips={['商场开业', '商圈路演', '酒店年会', '喜宴寿宴']}
@@ -69,7 +69,7 @@ export default function SolutionsPage() {
                 </p>
                 <div className="mt-12 grid gap-8 md:grid-cols-2">
                   <div className="rounded-[1.5rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
-                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">啥情况合适</h3>
+                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">适用场景</h3>
                     <ul className="mt-5 space-y-4">
                       {playbook.fit.map((item) => (
                         <li key={item} className="flex gap-3 text-sm font-bold text-on-surface-variant">
@@ -80,7 +80,7 @@ export default function SolutionsPage() {
                     </ul>
                   </div>
                   <div className="rounded-[1.5rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
-                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">我们能干啥</h3>
+                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">服务内容</h3>
                     <ul className="mt-5 space-y-4">
                       {playbook.deliverables.map((item) => (
                         <li key={item} className="flex gap-3 text-sm font-bold text-on-surface-variant">

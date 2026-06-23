@@ -23,16 +23,16 @@ export default function ServicesPage() {
         eyebrow="服务项目 —— SERVICES"
         title={
           <>
-            开业、路演、喜宴
+            开业庆典、品牌路演、高端宴会
             <br />
-            就这三样最多
+            三大核心服务版块
           </>
         }
         description={
           <>
-            门店开业、街上路演、酒店喜宴——不是一回事。几只狮、走哪些环节，得看场地。
+            针对门店开业、街头路演、酒店宴会等不同演艺场景，提供针对性的道具配置与环节编排。
             <br className="hidden md:block" />
-            拿不准就打电话，发两段视频也行。
+            欢迎来电详询，我们将根据您的场地条件与预算，定制推荐演出配置。
           </>
         }
         chips={['开业庆典', '品牌路演', '酒店宴会', '节庆定制']}
@@ -48,7 +48,7 @@ export default function ServicesPage() {
             </div>
             <div className="rounded-[1.75rem] bg-secondary-container px-6 py-6 text-on-secondary-container">
               <p className="mt-1 text-sm leading-relaxed font-bold">
-                狮头别旧得丢人，动作别晃。热闹要有，场面也得过得去。
+                我们坚持定期更新道具并维持高强度日常排练，确保每一次现场演出动作平稳、节奏齐整、视觉质感优异。
               </p>
             </div>
           </div>
@@ -99,9 +99,9 @@ export default function ServicesPage() {
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-20 section-stack">
             <span className="section-eyebrow text-secondary-fixed">服务流程</span>
             <h2 className="page-section-title mt-6 text-white !leading-tight">
-              从问到演，
+              规范化演艺合作流程，
               <br />
-              就这么几步
+              省心高效
             </h2>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-4">
@@ -109,7 +109,7 @@ export default function ServicesPage() {
               <motion.article 
                 key={step.title} 
                 {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: index * 0.1 }}
+                transition={{ ...subtleFadeProps.transition, delay: index * 0.15 }}
                 className="rounded-[2rem] border border-white/5 bg-white/5 p-10 hover:bg-white/10 transition-colors group"
               >
                 <div className="font-headline text-5xl font-black text-secondary-fixed/30 group-hover:text-secondary-fixed/50 transition-colors tracking-tighter">0{index + 1}</div>
@@ -126,9 +126,9 @@ export default function ServicesPage() {
           <motion.div {...subtleFadeProps} className="mb-20 text-center mx-auto">
             <span className="section-eyebrow text-secondary">常见问题</span>
             <h2 className="page-section-title mt-6 tracking-tight !leading-tight">
-              预订前
+              常见问题
               <br className="sm:hidden" />
-              您可以先了解这些
+              为您解答前期顾虑
             </h2>
           </motion.div>
           <div className="space-y-6">

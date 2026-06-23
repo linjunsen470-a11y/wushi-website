@@ -30,9 +30,9 @@ export default function CasesPage() {
         title={featured.title}
         description={
           <>
-            都是咱自己人拍的，没从网上扒图。
+            所有展示图片及视频均为演出现场真实记录。
             <br className="hidden md:block" />
-            商场中庭、酒店宴会厅、外面广场——地方不一样，排法也不一样。
+            涵盖商场中庭、五星级酒店宴会厅及户外广场，针对不同场地空间及物业规范提供定制化演出方案。
           </>
         }
         chips={[featured.category, featured.client, featured.location]}
@@ -61,12 +61,12 @@ export default function CasesPage() {
       <section className="bg-surface py-32 overflow-hidden">
         <div className="shell grid gap-20 lg:grid-cols-[1fr_1fr] items-center">
           <motion.div {...subtleFadeProps} className="max-w-xl space-y-8">
-            <span className="section-eyebrow text-secondary">以前干的</span>
+            <span className="section-eyebrow text-secondary">精品案例</span>
             <h2 className="page-section-title !text-5xl tracking-tight !leading-tight">
-              看图比听人吹快
+              现场实例与执行细节
             </h2>
             <p className="body-copy text-xl text-on-surface-variant leading-relaxed font-medium">
-              中庭、宴会厅、外面广场——地方窄宽不一样，狮子几只、走哪些环节也不一样。翻翻就有数。
+              根据中庭、宴会厅、户外广场等不同场地的空间特点，合理配置狮队规模与表演环节，确保现场动线流畅与演出效果。
             </p>
           </motion.div>
           

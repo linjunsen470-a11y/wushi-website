@@ -19,15 +19,15 @@ export default function FaqPage() {
     <main className="min-h-screen">
       <Navbar />
       <SubpageHero
-        eyebrow="常问的"
-        title="人家老问这些"
-        description="价钱、啥时候定、现场要准备啥——问的人多，搁这儿了。还有不明白的直接打电话。"
+        eyebrow="常见问题解答 / FAQ"
+        title="透明服务流程，打消前期顾虑"
+        description="我们整理了客户在筹备演出时最关心的核心问题，包含报价标准、档期确认与现场配合细节。如需更具体的定制方案，欢迎直接来电沟通。"
         chips={['报价', '预订', '现场准备', '装备']}
         panel={
           <div className="space-y-6">
             <div className="rounded-[1rem] bg-secondary/5 p-8 border border-secondary/10">
-              <span className="section-eyebrow text-secondary uppercase">打电话前</span>
-              <h4 className="mt-3 font-headline text-lg font-black text-on-surface">先想好这几样</h4>
+              <span className="section-eyebrow text-secondary uppercase">沟通准备清单</span>
+              <h4 className="mt-3 font-headline text-lg font-black text-on-surface">咨询前建议确认</h4>
               <ul className="mt-4 space-y-3">
                 {prepChecklist.slice(0, 3).map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm font-medium text-on-surface-variant">
@@ -47,10 +47,10 @@ export default function FaqPage() {
             {...subtleFadeProps}
             className="editorial-card h-fit !p-12 sticky top-32"
           >
-            <span className="section-eyebrow text-secondary">打电话前</span>
-            <h2 className="page-section-title mt-4 !text-3xl">先想好这几样</h2>
+            <span className="section-eyebrow text-secondary">沟通准备清单</span>
+            <h2 className="page-section-title mt-4 !text-3xl">咨询前建议确认</h2>
             <p className="mt-6 text-on-surface-variant leading-relaxed font-medium">
-              讲明白了好报价，也少跑冤枉路：
+              为了能更高效地为您提供精准报价与执行方案，建议提前确认以下信息：
             </p>
             <ul className="mt-8 space-y-4">
               {prepChecklist.map((item) => (

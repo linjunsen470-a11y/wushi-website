@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { motion } from 'motion/react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -91,7 +92,7 @@ export default function PostClient({ post, relatedPosts }: PostClientProps) {
             </div>
             
             <div className="prose-guide">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
             </div>
 
             {/* In-article CTA Section */}

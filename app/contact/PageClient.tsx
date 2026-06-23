@@ -98,10 +98,10 @@ export default function ContactPage() {
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
               <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线咨询</p>
               <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                留个话
+                在线预约与咨询
               </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                哪天办、在哪儿、要几只狮、点睛要不要——写几句就行。白天一般一会儿就回你。
+                请填写您的活动日期、演出地点及基本需求（如狮队规模、是否需要点睛等），我们的项目经理将在工作日极速与您取得联系。
               </p>
             </div>
 
@@ -239,7 +239,7 @@ export default function ContactPage() {
                   )}
                 </AnimatePresence>
                 <p className="mt-4 text-center text-[11px] font-bold text-on-surface/40">
-                  提交了我们白天会联系你，聊方案不收钱。
+                  提交后我们将于工作日极速响应，免费为您出具初步演出配置方案。
                 </p>
               </div>
             </form>
@@ -252,14 +252,14 @@ export default function ContactPage() {
             className="space-y-10"
           >
             <div className="max-w-3xl">
-              <span className="section-eyebrow text-secondary">联系我们</span>
+              <span className="section-eyebrow text-secondary">即刻开启专业合作</span>
               <h1 className="page-hero-title mt-6 text-on-surface !leading-[1.08] tracking-tight">
-                打电话
+                联系电话
                 <br />
-                18983662830
+                189-8366-2830
               </h1>
               <p className="page-lead mt-8 font-medium leading-relaxed text-on-surface-variant">
-                公司在北碚，主城常跑。开业、路演、喜宴都干。哪天办、在哪办，说一声，档期价钱聊两句就清楚。
+                团队立足重庆北碚，服务覆盖重庆及西南地区。专业承接商场开业、品牌路演、企业年会、高端婚礼等各类演艺活动。欢迎来电咨询，我们将快速为您核对档期与提供合理报价。
               </p>
             </div>
 
@@ -321,10 +321,10 @@ export default function ContactPage() {
                 <div className="max-w-2xl">
                   <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">关注各大平台</p>
                   <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                    抖音小红书有实拍
+                    主流视频平台官方号
                   </h2>
                   <p className="mt-3 text-base leading-8 text-on-surface-variant">
-                    嘴上说得再好不如看一眼。抖音、小红书上都是现场拍的，自个儿判断。
+                    您也可以在抖音、小红书等平台搜索并关注我们，查看海量近期演出的真实实拍记录。
                   </p>
                 </div>
 

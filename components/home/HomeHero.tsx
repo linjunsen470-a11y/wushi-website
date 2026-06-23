@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { brand, homeShowcase } from '@/lib/site-data';
 
-const heroPillars = ['商场开业', '街上路演', '婚宴寿宴', '就在重庆'];
+const heroPillars = ['商场开业', '品牌路演', '企业晚宴 / 婚礼喜宴', '重庆本地执行'];
 
 export default function HomeHero() {
   return (
@@ -33,15 +33,15 @@ export default function HomeHero() {
             className="relative z-10 max-w-[62rem]"
           >
             <span className="mb-6 inline-flex items-center border-l-2 border-[#caa66a] pl-3 text-[0.78rem] font-semibold tracking-[0.18em] text-[#efe3cf] drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
-              重庆舞狮队
+              重庆本地商业活动舞狮执行团队
             </span>
             <h1 className="page-hero-title text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-              开业要狮
+              西南地区专业舞狮团队
               <br />
-              打个电话就行
+              专注庆典、商演与婚礼宴会
             </h1>
             <p className="page-lead mt-10 text-white/94 md:text-[1.12rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              {brand.name}，开业、街上路演、婚宴都接。头天把流程对好，当天照着敲，不临场瞎改。
+              {brand.name} 专注重庆及西南地区的开业剪彩、商演路演和宴会舞狮。我们以规范的礼仪配合、精准的动作衔接与热烈的现场氛围，为您的活动带来专业精彩的舞狮演艺。
             </p>
             <div className="mt-11 flex flex-wrap gap-3">
               {heroPillars.map((item) => (
@@ -58,18 +58,18 @@ export default function HomeHero() {
                 href="/contact"
                 className="button-primary group relative overflow-hidden px-8 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-all hover:-translate-y-1 hover:bg-primary-container"
               >
-                <span className="relative z-10">问档期</span>
+                <span className="relative z-10">免费获取演出方案</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
               <Link
                 href="/cases"
                 className="button-secondary border-white/16 bg-white/6 px-8 text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-on-surface"
               >
-                看以前演过的
+                看真实落地案例
               </Link>
             </div>
             <p className="mt-6 text-xs font-black tracking-[0.2em] text-[#caa66a] uppercase drop-shadow-sm">
-              过年过节档期紧，想请早点说
+              📅 节假日与周末为预订高峰期，请提前预约档期以确保服务品质。
             </p>
           </motion.div>
         </div>

@@ -3,19 +3,19 @@ import { FadeIn } from '@/components/animations/FadeIn';
 
 const growthPages = [
   {
-    title: '看视频',
+    title: '视频案例',
     href: '/media',
-    text: '以前演过的现场，没拼素材。鼓齐不齐、人稳不稳，自个儿看。',
+    text: '直击过往真实演出现场，直观了解现场氛围与团队交付水平。',
   },
   {
-    title: '场合咋排',
+    title: '场景方案',
     href: '/solutions',
-    text: '商场开业、街上路演、喜宴——场合不一样，排法也不一样。',
+    text: '涵盖商超开业、品牌路演及喜宴庆典等多场景定制化配置。',
   },
   {
-    title: '常问的',
+    title: '预订指南',
     href: '/faq',
-    text: '价钱、啥时候定、现场要准备啥。问的人多，搁这儿了。',
+    text: '汇总演出报价、时间预约及现场筹备等常见问题与解答。',
   },
 ];
 
@@ -25,8 +25,8 @@ export default function FeatureCards() {
       <div className="shell">
         <FadeIn className="section-intro grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div className="max-w-xl">
-            <span className="section-eyebrow text-secondary">多看看</span>
-            <h2 className="section-title">视频、场合、价钱——自个儿翻翻</h2>
+            <span className="section-eyebrow text-secondary">服务特色</span>
+            <h2 className="section-title">了解我们的服务与执行标准</h2>
           </div>
           <div className="hidden h-px w-full bg-outline-variant/30 lg:block" />
         </FadeIn>

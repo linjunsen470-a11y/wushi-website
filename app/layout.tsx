@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s | 重庆鑫龙堂舞狮',
   },
   description:
-    '重庆鑫龙堂舞狮，开业路演喜宴都接。干了上千场，图和视频没造假。电话微信 18983662830。',
+    '重庆鑫龙堂舞狮是面向重庆及西南地区的专业舞狮演出服务团队。提供开业庆典、商场活动、婚礼宴会、品牌发布等各类高标准舞狮演艺，以丰富的商业综合体执行经验与严谨的现场纪律为活动增色。',
   openGraph: {
     type: 'website',
     locale: 'zh_CN',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '重庆鑫龙堂舞狮 | 开业商演喜宴舞狮',
-    description: '重庆本地舞狮队，开业点睛、商场路演、婚宴暖场。看视频看案例，微信问档期。',
+    title: '重庆鑫龙堂舞狮 | 专业舞狮演出服务团队',
+    description: '重庆及西南地区专业舞狮演艺服务商，提供开业庆典、商演路演、婚礼宴会舞狮表演，流程严谨，交付稳定。',
     images: ['https://www.cqwushi.com/og-image.webp'],
   },
 };
