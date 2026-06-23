@@ -26,7 +26,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} - 舞狮预订指南`,
     description: post.excerpt,
-    keywords: post.keywords.join(', '),
     alternates: {
       canonical: `https://www.cqwushi.com/guide/${slug}`,
     },

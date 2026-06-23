@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { brand, contactPanel, filingInfo, footerLinks, legalInfo, legalLinks } from '@/lib/site-data';
 
 export default function Footer() {
@@ -60,6 +60,15 @@ export default function Footer() {
               </div>
             </a>
 
+            <div className="flex items-center gap-3 rounded-[0.95rem] border border-white/10 bg-white/5 px-4 py-3 text-white/88">
+              <div className="flex h-9 w-9 items-center justify-center rounded-[0.8rem] bg-white/10 text-secondary-fixed">
+                <MapPin size={16} />
+              </div>
+              <div>
+                <p className="text-[11px] font-black tracking-[0.16em] text-white/45">地址</p>
+                <p className="text-sm font-medium leading-6 text-white/75">{legalInfo.address}</p>
+              </div>
+            </div>
 
           </div>
         </div>

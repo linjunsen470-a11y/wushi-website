@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: ['/', '/llms.txt'],
-        disallow: ['/api/', '/_next/'],
+        disallow: ['/api/'],
       },
     ],
     sitemap: 'https://www.cqwushi.com/sitemap.xml',

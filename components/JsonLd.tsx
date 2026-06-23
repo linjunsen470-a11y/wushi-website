@@ -1,4 +1,4 @@
-import { brand } from '@/lib/site-data';
+import { brand, legalInfo } from '@/lib/site-data';
 
 export default function JsonLd() {
   const schema = {
@@ -6,8 +6,10 @@ export default function JsonLd() {
     '@type': 'LocalBusiness',
     'name': brand.name,
     'description': brand.tagline,
-    'telephone': '18983662830',
-    'email': 'service@cqwushi.com',
+    'legalName': legalInfo.companyName,
+    'identifier': legalInfo.socialCreditCode,
+    'telephone': legalInfo.phone,
+    'email': legalInfo.email,
     'url': 'https://www.cqwushi.com',
     'logo': 'https://www.cqwushi.com/logo-red.png',
     'image': 'https://www.cqwushi.com/logo-red.png',
@@ -17,8 +19,8 @@ export default function JsonLd() {
     ],
     'address': {
       '@type': 'PostalAddress',
-      'streetAddress': '重庆市各区域服务',
-      'addressLocality': '重庆市',
+      'streetAddress': legalInfo.address,
+      'addressLocality': '重庆',
       'addressRegion': '重庆市',
       'postalCode': '400000',
       'addressCountry': 'CN',
@@ -36,7 +38,7 @@ export default function JsonLd() {
       },
       'geoRadius': '100000',
     },
-    'priceRange': '¥1500 - ¥5000',
+    'priceRange': '基础双狮约¥1500起，高桩与群狮按场地和流程报价',
     'openingHoursSpecification': [
       {
         '@type': 'OpeningHoursSpecification',

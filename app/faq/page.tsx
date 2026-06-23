@@ -4,8 +4,7 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: '常见问题与预订指南 - 专业解答',
-  description: '解决您关于舞狮报价、预订周期、场地要求及执行细节的所有疑问。提供 1500-3000 元/均价参考，助您快速准备咨询信息。',
-  keywords: '舞狮价格, 重庆舞狮多少钱, 舞狮预订流程, 舞狮常见问题, 租狮子演出',
+  description: '解决您关于舞狮报价、预订周期、场地要求及执行细节的常见问题。基础双狮约 1500 元起，高桩、群狮和远郊执行按场地与流程另行报价。',
   alternates: { canonical: 'https://www.cqwushi.com/faq' },
   openGraph: {
     title: '常见问题与预订指南 - 鑫龙堂专业解答 | 重庆鑫龙堂舞狮',
