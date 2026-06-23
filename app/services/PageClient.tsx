@@ -25,14 +25,14 @@ export default function ServicesPage() {
           <>
             开业、路演、喜宴
             <br />
-            三类活最常接
+            就这三样最多
           </>
         }
         description={
           <>
-            商场门店开业、商圈品牌路演、酒店婚宴寿宴——场合不一样，狮数、流程、互动频率都不一样。
+            门店开业、街上路演、酒店喜宴——不是一回事。几只狮、走哪些环节，得看场地。
             <br className="hidden md:block" />
-            你把场地和需求说清楚，我们帮你配。
+            拿不准就打电话，发两段视频也行。
           </>
         }
         chips={['开业庆典', '品牌路演', '酒店宴会', '节庆定制']}
@@ -48,7 +48,7 @@ export default function ServicesPage() {
             </div>
             <div className="rounded-[1.75rem] bg-secondary-container px-6 py-6 text-on-secondary-container">
               <p className="mt-1 text-sm leading-relaxed font-bold">
-                狮头要新、动作要稳——这是底线。热闹有了，排面也得过得去。
+                狮头别旧得丢人，动作别晃。热闹要有，场面也得过得去。
               </p>
             </div>
           </div>

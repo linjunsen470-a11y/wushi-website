@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: {
     absolute: '重庆鑫龙堂舞狮 | 西南专业舞狮演出团队_开业醒狮_商演路演_婚礼宴会',
   },
-  description: '重庆鑫龙堂舞狮队，接开业点睛、商场路演、年会和婚宴。在重庆做了上千场，提前到场对流程，微信电话问档期。',
+  description: '重庆鑫龙堂舞狮，开业、路演、喜宴都接。干了上千场，头天对流程当天照着敲。电话 18983662830。',
   keywords: '重庆开业舞狮, 醒狮表演, 重庆舞狮队, 商演路演舞狮, 年会舞狮, 婚礼舞狮',
   alternates: {
     canonical: 'https://www.cqwushi.com',

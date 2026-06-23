@@ -16,7 +16,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="max-w-md text-sm leading-7 text-white/65">
-            公司在重庆，开业、商演、喜宴都接。档期、动线、流程提前对清楚，现场按计划走。
+            在北碚，主城常跑。开业、路演、喜宴都干。头天把事儿说清楚，当天不抓瞎。
           </p>
         </div>
 

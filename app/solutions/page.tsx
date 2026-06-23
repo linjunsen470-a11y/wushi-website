@@ -3,7 +3,7 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: '场景方案 - 开业、路演、年会、喜宴怎么排',
-  description: '商场开业、品牌路演、企业年会、中式喜宴——不同场合舞狮配置不一样。对照场景看几狮、流程怎么排。',
+  description: '商场开业、街上路演、年会、喜宴——场合不一样，几只狮、走哪些环节也不一样。对照着看。',
   keywords: '舞狮方案, 场景演艺, 重庆商场活动, 活动流程设计, 鑫龙堂方案',
   alternates: { canonical: 'https://www.cqwushi.com/solutions' },
   openGraph: {

@@ -31,21 +31,21 @@ export default function AboutPage() {
             </span>
             <div className="mt-8 space-y-8">
               <h1 className="page-hero-title text-primary !leading-[1.1] tracking-tight">
-                传承舞狮民俗
+                耍狮子的
                 <br />
-                <span className="text-on-surface">更懂商业演艺</span>
+                <span className="text-on-surface">也接商演</span>
               </h1>
               <p className="page-lead text-on-surface-variant font-medium leading-relaxed">
-                狮舞、龙舞是老手艺，但商场开业、品牌路演、酒店喜宴各有各的规矩。
+                老手艺是老手艺，商场开业那套流程是另一回事。
                 <br className="hidden md:block" />
-                我们干的就是把民俗演好，同时跟得上甲方的流程和时间表。
+                我们两边都干——村里庙会能演，万象城开业也能演，不耽误人家剪彩。
               </p>
             </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {[
-                ['跑过不少场', '万象城、融创茂、尼依格罗……进场报批、彩排时间都有经验。'],
-                ['装备看得过去', '狮头狮皮定期换，动作排练过，现场看着不糊弄。'],
-                ['照片都是实拍', '网站上的图和视频全是自己队伍出的，没拿网图凑。'],
+                ['场子熟', '万象城、融创茂、尼依格罗都进过。物业咋批、几点能进场，不用你们现学。'],
+                ['家伙不差', '狮头狮皮该换就换，排练没少练。上台不能丢人。'],
+                ['图没造假', '网站这些照片视频，全是自己人拍的，没从网上扒。'],
               ].map(([title, text], idx) => (
                 <motion.div
                   key={title}
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <Image src={aboutGallery.story} alt={aboutGallery.storyAlt || '重庆舞狮团队表演实景'} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
             <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-black/60 px-8 py-6 text-white backdrop-blur-md border border-white/10">
-              <p className="font-headline text-2xl font-black tracking-tight leading-tight">点睛、采青、开场——该热闹的环节热闹，不耽误正事</p>
+              <p className="font-headline text-2xl font-black tracking-tight leading-tight">该敲鼓的时候敲，该安静的时候安静</p>
             </div>
           </motion.div>
         </div>
@@ -79,14 +79,14 @@ export default function AboutPage() {
       <section className="bg-surface-container-low py-32">
         <div className="shell">
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-20">
-            <span className="section-eyebrow text-secondary">团队硬实力</span>
+            <span className="section-eyebrow text-secondary">干过啥</span>
             <h2 className="page-section-title !text-on-surface mt-4 tracking-tight">
-              商场、酒店、户外广场
+              商场里、酒店里、广场上
               <br className="hidden sm:block" />
               都演过
             </h2>
             <p className="body-copy text-lg text-on-surface-variant leading-relaxed font-medium mt-6">
-              路演要聚人、开业要体面、喜宴要喜庆——场合不同，排法不同。反正提前对过流程，现场少抓瞎。
+              街上路演得把人拢住，开业得体面，喜宴得红火。场合不一样，排法不一样。反正头天对好，当天别乱。
             </p>
           </motion.div>
           <div className="grid gap-10 md:grid-cols-3">
@@ -156,12 +156,12 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-2xl space-y-8">
             <span className="section-eyebrow text-secondary-fixed">品质把控</span>
             <h2 className="page-section-title !text-white !leading-tight tracking-tight">
-              狮头、狮皮、演出服
+              狮头狮皮
               <br className="hidden sm:block" />
-              上台前都会过一眼
+              上台前瞅一眼
             </h2>
             <p className="page-lead text-xl !text-white/70 font-medium">
-              热闹是一回事，镜头怼近了又是另一回事。狮头扎得结实、狮皮干净、衣服熨平整，拍出来才过得去。
+              远远看热闹就行，摄像机怼上来又是另一码事。毛别炸、皮别脏、衣服别皱，拍出来才过得去。
             </p>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">

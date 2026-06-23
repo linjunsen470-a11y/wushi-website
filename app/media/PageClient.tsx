@@ -39,8 +39,8 @@ export default function MediaPage() {
       <SubpageHero
         eyebrow="真实影像展示 / MEDIA"
         variant="media"
-        title="现场视频，自己看"
-        description="都是实拍，没套样片。鼓点齐不齐、动作稳不稳，一分钟能看出来。"
+        title="看视频"
+        description="都是现场拍的。鼓齐不齐、人晃不晃，自个儿看一分钟就晓得。"
         chips={['真实实录', '视频为主', '平台补充', featured.category]}
         panel={
           <div className="space-y-6">

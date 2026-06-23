@@ -20,14 +20,14 @@ export default function ContactCTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <span className="section-eyebrow text-secondary">问档期</span>
+            <span className="section-eyebrow text-secondary">联系我们</span>
             <h2 className="mt-8 font-headline text-4xl font-black leading-tight tracking-tight text-on-surface md:text-5xl lg:text-6xl">
-              先把时间和场地
+              哪天办、在哪办
               <br />
-              发过来对一遍
+              说一声
             </h2>
             <p className="body-copy mx-auto mt-10 text-lg leading-relaxed text-on-surface-variant md:text-xl">
-              商场开业、路演、年会、喜宴都接。{brand.name} 优先微信或电话聊，场地条件、档期、几狮怎么配，说清楚就好办。
+              开业、路演、年会、喜宴都接。电话微信都行，{brand.name}，档期能不能排，聊两句就晓得。
             </p>
             
             <div className="mt-14 flex flex-wrap justify-center gap-6">
@@ -49,15 +49,15 @@ export default function ContactCTA() {
             <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-black tracking-widest text-on-surface/40 uppercase">
               <div className="flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
-                <span>初步方案不收费</span>
+                <span>聊方案不收钱</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
-                <span>档期不合适退定金</span>
+                <span>档期不行退定金</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
-                <span>工作时段一般一小时内回</span>
+                <span>白天打电话一会儿就回</span>
               </div>
             </div>
           </motion.div>

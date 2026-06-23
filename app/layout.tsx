@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s | 重庆鑫龙堂舞狮',
   },
   description:
-    '重庆鑫龙堂舞狮队，接开业、商演、喜宴。在重庆做了上千场，照片视频都是实拍，微信电话问档期。',
+    '重庆鑫龙堂舞狮，开业路演喜宴都接。干了上千场，图和视频没造假。电话微信 18983662830。',
   openGraph: {
     type: 'website',
     locale: 'zh_CN',

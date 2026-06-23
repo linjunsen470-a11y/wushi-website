@@ -98,10 +98,10 @@ export default function ContactPage() {
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
               <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线咨询</p>
               <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                发个时间地点，帮你看档期
+                留个话
               </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                活动日期、地点、要几狮、包不包点睛采青——写清楚就行。工作时段一般一小时内回，给初步建议和报价区间。
+                哪天办、在哪儿、要几只狮、点睛要不要——写几句就行。白天一般一会儿就回你。
               </p>
             </div>
 
@@ -239,7 +239,7 @@ export default function ContactPage() {
                   )}
                 </AnimatePresence>
                 <p className="mt-4 text-center text-[11px] font-bold text-on-surface/40">
-                  提交后工作时段一般一小时内联系你，初步方案不另外收费。
+                  提交了我们白天会联系你，聊方案不收钱。
                 </p>
               </div>
             </form>
@@ -254,12 +254,12 @@ export default function ContactPage() {
             <div className="max-w-3xl">
               <span className="section-eyebrow text-secondary">联系我们</span>
               <h1 className="page-hero-title mt-6 text-on-surface !leading-[1.08] tracking-tight">
-                问档期
+                打电话
                 <br />
-                或者直接打电话
+                18983662830
               </h1>
               <p className="page-lead mt-8 font-medium leading-relaxed text-on-surface-variant">
-                公司在重庆，主城和周边区县都接。商场开业、品牌路演、年会喜宴——你把时间、场地、大概需求说一下，我们帮你对档期、报个价。
+                公司在北碚，主城常跑。开业、路演、喜宴都干。哪天办、在哪办，说一声，档期价钱聊两句就清楚。
               </p>
             </div>
 
@@ -321,10 +321,10 @@ export default function ContactPage() {
                 <div className="max-w-2xl">
                   <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">关注各大平台</p>
                   <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                    抖音、小红书看实拍
+                    抖音小红书有实拍
                   </h2>
                   <p className="mt-3 text-base leading-8 text-on-surface-variant">
-                    文字说不清的水平，看视频就行。抖音、小红书有最新路演和开业现场，没滤镜，自己判断。
+                    嘴上说得再好不如看一眼。抖音、小红书上都是现场拍的，自个儿判断。
                   </p>
                 </div>
 

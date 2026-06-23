@@ -40,7 +40,7 @@ import pepsiPromo from '@/assets/photos/lion-dance-pepsi-promo-street-plaza.webp
 
 export const brand = {
   name: '重庆鑫龙堂舞狮',
-  tagline: '重庆本地舞狮队，接开业、商演、喜宴',
+  tagline: '就在重庆，舞狮的事儿找我们',
   logoRed,
   logoYellow,
   logoAlt: '重庆鑫龙堂舞狮队 Logo',
@@ -62,17 +62,17 @@ export const filingInfo = {
 };
 
 export const primaryNavLinks = [
-  { label: '关于我们', href: '/about', description: '团队是谁、做过哪些场' },
-  { label: '服务项目', href: '/services', description: '开业、商演、喜宴怎么接' },
-  { label: '场景方案', href: '/solutions', description: '不同活动怎么安排舞狮' },
-  { label: '真实案例', href: '/cases', description: '往期现场照片' },
-  { label: '视频展示', href: '/media', description: '看视频判断水平' },
-  { label: '预订指南', href: '/guide', description: '报价、流程、注意事项' },
+  { label: '关于我们', href: '/about', description: '队里几个人、干过啥' },
+  { label: '服务项目', href: '/services', description: '开业路演喜宴都咋接' },
+  { label: '场景方案', href: '/solutions', description: '不同场合咋排' },
+  { label: '真实案例', href: '/cases', description: '以前演过的现场' },
+  { label: '视频展示', href: '/media', description: '直接看视频' },
+  { label: '预订指南', href: '/guide', description: '价钱流程那些事儿' },
 ];
 
 export const utilityNavLinks = [
-  { label: '首页', href: '/', description: '回到首页' },
-  { label: '联系我们', href: '/contact', description: '问档期、要报价' },
+  { label: '首页', href: '/', description: '回首页' },
+  { label: '联系我们', href: '/contact', description: '打电话问档期' },
 ];
 
 export const homeShowcase = {
@@ -92,38 +92,38 @@ export const partnerLogos = [
 
 export const proofPoints = [
   {
-    title: '商场酒店都做过',
-    text: '万象城、融创茂、尼依格罗这些场子都进过，物业报批、进场时间、彩排节奏心里有数。',
+    title: '商场进得去',
+    text: '万象城、融创茂、来福士都演过。物业要啥材料、几点能拉家伙进场，我们熟，不用你们自己去磨物业。',
   },
   {
-    title: '微信电话直接聊',
-    text: '你把日期、地点、要几狮发过来，一般当天能回档期和大致报价。',
+    title: '电话微信都行',
+    text: '18983662830，同号微信。哪天办、在哪办，说一声，档期能不能排，很快就晓得。',
   },
   {
-    title: '到场前先对一遍',
-    text: '动线、鼓点卡点、层高、拍摄机位提前确认，少在现场临时改。',
+    title: '不爱临场改',
+    text: '头天把流程对好：几点点睛、鼓响多久、从哪个门进。当天按说好的来，大家都省事。',
   },
 ];
 
 export const testimonials = [
   {
-    content: '帮客户办商场开业，最怕现场卡壳。鑫龙堂提前一小时到了，点睛、采青跟主持节奏走得很顺，物业也没来找麻烦。',
+    content: '帮甲方搞开业最烦临场乱套。他们提前来了，跟主持对了两遍鼓点，点睛采青没卡壳，物业也没来催。',
     author: '陈女士',
-    role: '活动策划 / 商场开业',
+    role: '搞活动策划的',
     avatar: null,
     altText: '商场开业活动客户评价'
   },
   {
-    content: '餐饮新店开业请的，狮头狮皮看着挺新。门口暖场十来分钟，人气就聚起来了，剪彩完还帮着巡了一圈店。',
+    content: '江北一家火锅店开业找的他们。狮头看着新，门口敲了十来分钟，过路的都停下来看，剪完彩还在店里转了一圈。',
     author: '王先生',
-    role: '连锁餐饮 / 江北店开业',
+    role: '开火锅店的',
     avatar: null,
     altText: '餐饮门店开业客户反馈'
   },
   {
-    content: '年会室内舞台，灯光暗、镜头近，要求鼓点和动作都得准。拍出来素材企划直接拿去发了，没返工。',
+    content: '年会室内灯光暗，摄像机怼得近。就要鼓点别乱、人别晃。拍出来企划直接发了，没让我们返工。',
     author: '李经理',
-    role: '商业体企划部 / 年度盛典',
+    role: '商场企划',
     avatar: null,
     altText: '企业年会主办方评价'
   }
@@ -133,21 +133,21 @@ export const teamMembers = [
   {
     name: '张老师',
     role: '创始人 / 艺术指导',
-    bio: '干这行十来年了，带着队伍跑过重庆、成都、贵阳不少场。老套路能演，商场路演的节奏也得会卡。',
+    bio: '十多岁就开始玩狮。村里庙会演，商场开业也演——两边节奏不一样，都得会。现在主要管排练和对外谈活儿。',
     image: blueJongLanterns,
     altText: '张老师指导队员高桩排练'
   },
   {
     name: '李领队',
     role: '执行总监',
-    bio: '中大型商业场子接过五百多场。进场动线、跟物业对接、领导迟到怎么调流程，这些琐事主要他盯。',
+    bio: '商演跟了五百多场，啥状况都见过。领导迟到、物业临时改路线、音响没声儿……他在现场顶着。',
     image: purpleShoulderLift,
     altText: '李领队商演现场指挥动线'
   },
   {
     name: '张师傅',
     role: '首席高桩狮头',
-    bio: '桩上活是他扛。基本功扎实，起跳落地稳，高桩节目看着过瘾，安全也盯得紧。',
+    bio: '高桩就他上。练了很多年，落桩稳。看着险，底下有人盯着绳、盯着垫。',
     image: redHighJong,
     altText: '张师傅高桩腾空动作'
   }
@@ -156,49 +156,49 @@ export const teamMembers = [
 export const serviceCards = [
   {
     title: '开业醒狮',
-    subtitle: '商场、门店、展馆',
+    subtitle: '门店、商场、展馆',
     description:
-      '开业最常见就配双狮加鼓乐。点睛、采青、剪彩按你们流程排，人多的先在门口暖场，再进主仪式。',
+      '开业请狮是老规矩。一般双狮带鼓，点睛采青剪彩你们咋排我们咋跟。门口本来没人，就先敲一阵把气氛顶起来。',
     image: museumOpening,
     altText: '展馆开馆仪式剪彩点睛舞狮',
-    points: ['点睛采青都会', '跟主持节奏走', '门口能暖场聚人'],
+    points: ['点睛采青常做', '主持喊啥我们对啥', '店门口窄也能排'],
   },
   {
     title: '商演路演',
-    subtitle: '快闪、巡游、街区',
+    subtitle: '街上、商场里转悠',
     description:
-      '路演要的是路人停下来。互动频率高一些，动作幅度大，方便手机拍；拍完素材你们直接发抖音小红书。',
+      '路演就图把人拢住。狮子得往人堆里凑，节奏密一点，路人举手机能拍。你们市场部要素材，现场就能拣几条。',
     image: mallEntrance,
     altText: '商业街舞狮路演围观现场',
-    points: ['跟路人互动多', '手机好拍', '能配合巡游动线'],
+    points: ['敢跟人握手合影', '跟着路线走', '拍摄时我们能停'],
   },
   {
     title: '宴会婚礼',
-    subtitle: '喜宴、寿宴、庆功',
+    subtitle: '婚嫁、寿酒、乔迁',
     description:
-      '婚宴、寿宴、乔迁、企业庆功宴都接。热闹归热闹，不耽误你们敬酒致辞，长辈小孩看着也欢喜。',
+      '喜宴请狮图个红火。门口迎一回，台上翻一回都行。不动你们的敬酒次序，老人家看得高兴就好。',
     image: weddingBanquet,
     altText: '酒店中式婚礼舞狮迎宾',
-    points: ['室内舞台能适配', '喜庆但不闹腾', '双狮迎宾常见'],
+    points: ['酒店舞台演过不少', '声音能收着点', '双狮最常见'],
   },
 ];
 
 export const workflowSteps = [
   {
-    title: '先聊清楚',
-    text: '微信或电话，把日期、地点、室内室外、要几狮、要不要高桩说清楚。不清楚的我们会追问几句。',
+    title: '先打个电话',
+    text: '哪天办、几点、室内还是室外。要几只狮，高桩要不要。我们听着，缺啥再问你。',
   },
   {
-    title: '定人数和流程',
-    text: '看了场地照片或平面图，定几狮、要不要点睛采青、巡游怎么走。报价这时候基本能定下来。',
+    title: '看场地',
+    text: '有平面图最好，没有就拍段视频发来。几个人、走哪些环节，价钱这时候就能谈个大概。',
   },
   {
-    title: '提前到场',
-    text: '正式活动一般提前一小时到，更衣、试鼓、跟主持对一遍流程。当天按说好的节奏走。',
+    title: '提前到',
+    text: '活动前大概一小时，换衣服、试鼓，跟主持碰个头。正式开始就不赶了。',
   },
   {
-    title: '演完还能帮点忙',
-    text: '要是你们自己人拍了素材想确认哪段能用，或者需要现场照片，说一声就行。',
+    title: '完了再说',
+    text: '演完还要照片、想知道哪段视频好用，喊一声就行。',
   },
 ];
 
@@ -206,17 +206,17 @@ export const faqItems = [
   {
     question: '报价大概是多少？',
     answer:
-      '看几狮、要不要高桩、在哪个区、包不包点睛采青。你先把需求说清楚，我们给区间价；定了方案再出明细。',
+      '没一口价。两只还是四只？要高桩吗？在江北还是在万州？要不要帮着点睛？你讲清楚，我给你个数。',
   },
   {
     question: '需要提前多久预订？',
     answer:
-      '平常提前一两周差不多。国庆、春节前开业扎堆，越早越好，好档期走得快。',
+      '平常一两周前说好就行。过年过节、国庆那种日子，队里都排满了，想请就早点定。',
   },
   {
     question: '现场需要我们准备什么吗？',
     answer:
-      '给个能更衣的地方，演出区地面平整就行。朱砂、毛笔、狮头鼓我们自带，商场要报备的我们可以配合出资料。',
+      '给我们一块换衣服的地方，地上别太坑。朱砂毛笔我们带。要是在商场里演，报备资料我们可以帮着写。',
   },
 ];
 
@@ -230,8 +230,8 @@ export const caseStudies = [
     image: ifcOpening,
     altText: '重庆舞狮演出团队参演万象城周年庆中庭舞狮聚客活动实录',
     description:
-      '中庭空间不大，开场、采青、围观三段节奏卡得紧。跟商场安保对了安全距离，企划拍的素材当天就发了。',
-    metrics: ['中庭暖场十来分钟聚人', '采青吐幅一次过', '现场视频直接能用'],
+      '中庭不大，开场采青围观得掐着时间来。跟安保对了围挡，企划拍的几条视频当天就发朋友圈了。',
+    metrics: ['中庭围了一圈人', '条幅一次拉开', '视频当天就发了'],
   },
   {
     title: 'Haier 海尔年度盛典',
@@ -242,8 +242,8 @@ export const caseStudies = [
     image: corporateAnnual,
     altText: '重庆本地鑫龙堂舞狮服务海尔集团年度盛典舞台舞狮开场实景',
     description:
-      '酒店宴会厅舞台不大，配合灯光大屏进场。鼓点跟主持报幕对齐，领导入座前演完，没耽误后面颁奖。',
-    metrics: ['开场跟主持无缝接', '鼓点和灯光师对过', '室内舞台没出状况'],
+      '宴会厅舞台不大，配合灯光大屏进场。主持报幕我们对鼓点，领导坐稳前演完，后面颁奖没耽误。',
+    metrics: ['跟主持接得上', '灯光师事先对过', '台上没出岔子'],
   },
   {
     title: '精品酒店中式婚礼',
@@ -254,8 +254,8 @@ export const caseStudies = [
     image: weddingBanquet,
     altText: '重庆尼依格罗高端酒店中式婚礼现场喜狮迎宾与宾客互动合影',
     description:
-      '双狮在门口迎宾，主舞台再演一段。长辈喜欢看热闹的，年轻人合影也方便。敬酒环节没被打断。',
-    metrics: ['迎宾和主仪式分开排', '宾客合影主动配合', '热闹但不抢流程'],
+      '两只狮门口迎，台上再演一段。老人家爱看热闹的，年轻人要合影我们也停。敬酒没被打断。',
+    metrics: ['门口和台上分开演', '合影时多停会儿', '没耽误敬酒'],
   },
   {
     title: '融创茂户外高桩展示',
@@ -266,27 +266,27 @@ export const caseStudies = [
     image: redHighJong,
     altText: '重庆融创茂户外广场举行的高难度高桩舞狮竞技特技表演现场',
     description:
-      '户外广场视野开阔，上了高桩，远处也能看见。品牌方在旁边架了机位拍短视频，当天就剪出来了。',
-    metrics: ['广场远处看得见', '高桩几个动作有看头', '视频素材够发一轮'],
+      '户外广场敞亮，上了桩远处也看得见。品牌方旁边架着机位，几条短视频当天就剪出来了。',
+    metrics: ['远处也能看见', '桩上那几个动作够看', '素材够发好几条'],
   },
 ];
 
 export const teamHighlights = [
   {
-    title: '重庆本地队伍',
-    text: '队员大多在重庆跑场多年，万象城、北城天街、来福士这些商场的进场规矩都熟。',
+    title: '就在重庆跑活儿',
+    text: '队员大多在本地混了多年。万象城、北城天街、来福士，哪个门进、货梯咋走，不用你们现问物业。',
     image: teamFormation,
     altText: '舞狮团队室外演出合影',
   },
   {
-    title: '高桩也能上',
-    text: '普通地面醒狮是基本功，户外广场或商场中庭有需要，高桩节目也能排。',
+    title: '高桩也耍得',
+    text: '地面狮是基本功。广场开阔、中庭层高够，要上桩也行，得先看场地，别硬来。',
     image: yellowJongMall,
     altText: '商场内高桩舞狮表演',
   },
   {
-    title: '照片视频都是实拍',
-    text: '网站上看到的图和视频，全是自己队伍出的现场，没有拿网图凑数。',
+    title: '图和视频没造假',
+    text: '网站上这些，全是自己人拍的现场。没从网上扒图糊弄你。',
     image: sportsParty,
     altText: '舞狮演出现场抓拍',
   },
@@ -309,9 +309,9 @@ export const aboutGallery = {
 
 export const homepageSections = {
   craft: {
-    title: '功底扎实，现场才少出事',
+    title: '手上功夫瞒不了人',
     text:
-      '狮头新旧、鼓点齐不齐、桩上动作稳不稳——这些细节观众未必说得出来，但看得出来。我们宁可排练多一遍，也不愿现场补救。',
+      '狮头毛炸不炸、鼓敲齐不齐，老百姓说不出来，眼睛看得出来。多练一遍，比当天瞎救场强。',
     imageA: whiteRedCloseup,
     imageAAlt: '扎实传统手工艺编织的高质量红白醒狮图',
     imageB: redHighJong,
@@ -320,9 +320,9 @@ export const homepageSections = {
     imageCAlt: '富有视觉冲击力的重庆夜场国潮蓝色醒狮实拍照',
   },
   media: {
-    title: '热闹之外，还能帮你们出片',
+    title: '顺嘴还能拍两条视频',
     text:
-      '现在开业都要发视频。路人愿意掏手机拍，你们公众号也有素材发——舞狮比纯剪彩好拍多了。',
+      '现在开业不发个视频，像没开似的。狮子一敲鼓，路人自己举手机。你们企划也不用苦思文案了。',
     imageA: openingRow,
     imageAAlt: '重庆商业群舞狮同台列阵震撼大场面开场演出实况',
     imageB: stageAudience,
@@ -331,9 +331,9 @@ export const homepageSections = {
     imageCAlt: '高端商业活动红毯通道重庆鑫龙堂迎宾舞狮阵型',
   },
   training: {
-    title: '阵容固定，装备统一',
+    title: '老班子、同一套家伙',
     text:
-      '开业就一次，搞砸了没法重来。所以我们尽量用固定班子、统一狮头狮皮，流程提前对清楚，到场按计划走。',
+      '开业一辈子就一回。人尽量不换，狮头挑好的那几对。流程头天敲定，当天照着走。',
     images: [purpleCrouch, sportsGroup, sportsStack, dragonField],
     imagesAlt: [
       '重庆专业高水平舞狮特技动作定格影像',
@@ -348,8 +348,8 @@ export const contactPanel = {
   phone: '18983662830',
   email: 'service@cqwushi.com',
   wechatId: '18983662830',
-  responseTime: '工作时段一般一小时内回复；项目复杂的话，当天给你档期和建议。',
-  address: '公司在重庆北碚，主城和周边区县都接。商场开业、品牌快闪、年会喜宴这些活常做。',
+  responseTime: '白天打电话，一般一会儿就回。事儿复杂的，当天告诉你档期行不行。',
+  address: '公司在北碚，主城九区常跑，万州涪陵这些也去过。开业、路演、喜宴都接。',
   image: charityBowing,
   altText: '重庆鑫龙堂专业舞狮团队致谢谢幕活动现场',
   primaryChannels: [
@@ -359,8 +359,8 @@ export const contactPanel = {
       value: '18983662830',
       href: 'tel:18983662830',
       action: 'call',
-      description: '直接问档期和大致报价，说得清楚。',
-      helperText: '急的话打电话最快。',
+      description: '问档期、问价钱，电话里说得明白。',
+      helperText: '急了就打这个号。',
     },
     {
       id: 'wechat',
@@ -370,8 +370,8 @@ export const contactPanel = {
       qrImage: wechatQr,
       qrFocusImage: wechatQrFocus,
       qrAlt: '添加重庆鑫龙堂舞狮官方微信客服获取专属档期方案',
-      description: '发场地照片过来，我们帮你排流程、报明细。',
-      helperText: '微信方便发图，案例和报价都从这走。',
+      description: '发几张现场照片来，帮着算算人和流程。',
+      helperText: '报价、案例一般都走微信。',
     },
   ],
   supportChannels: [
@@ -383,8 +383,8 @@ export const contactPanel = {
       qrImage: douyinQr,
       qrFocusImage: douyinQrFocus,
       qrAlt: '访问重庆鑫龙堂舞狮官方抖音浏览精彩演出实况视频',
-      description: '最新路演、开业现场视频，没滤镜。',
-      helperText: '搜抖音号看实拍，比文字直观。',
+      description: '路演、开业现场，手机直拍的。',
+      helperText: '抖音上搜我们号，比看文字快。',
     },
     {
       id: 'xhs',
@@ -394,8 +394,8 @@ export const contactPanel = {
       qrImage: xhsQr,
       qrFocusImage: xhsQrFocus,
       qrAlt: '访问重庆鑫龙堂舞狮小红书参考高颜值图文活动灵感',
-      description: '图文案例，看不同场地怎么安排舞狮。',
-      helperText: '筹备活动时翻一翻，找灵感。',
+      description: '图文笔记，别人咋请的狮，场地啥样。',
+      helperText: '筹备的时候翻翻，心里有个数。',
     },
   ],
 };
@@ -423,10 +423,10 @@ export const legalLinks = [
 ];
 
 export const stats = [
-  { value: '10年+', label: '在重庆做舞狮' },
-  { value: '1000+', label: '场商业活动经验' },
-  { value: '高桩', label: '户外广场也能排' },
-  { value: '提前1h', label: '正式活动到场备场' },
+  { value: '10年+', label: '在重庆干这行' },
+  { value: '1000+', label: '场商演办下来' },
+  { value: '高桩', label: '场地够就上桩' },
+  { value: '提前1h', label: '活动前到场' },
 ];
 
 
@@ -447,7 +447,7 @@ export const mediaVideos = [
     bvid: 'BV1KYQcB3EJx',
     poster: snowShow,
     posterAlt: '雪地户外严寒环境挑战高难度特技的重庆醒狮实录',
-    description: '毕棚沟户外实景，零下天气照样演，看队伍能不能扛住场地和天气。',
+    description: '毕棚沟外面冷得很，照样敲。天儿和场地都刁钻，看我们能不能扛住。',
   },
   {
     title: '百团大战，一鼓作气！',
@@ -455,7 +455,7 @@ export const mediaVideos = [
     bvid: 'BV1J4QwBPENM',
     poster: teamFormation,
     posterAlt: '重庆商演项目大编制百人团队舞狮震撼起鼓开场',
-    description: '大编制集体起鼓，鼓点整齐，场面撑得住。',
+    description: '好多人一起起鼓，那一下子，场面就起来了。',
   },
   {
     title: '这样的开业现场，不爱都难！',
@@ -463,7 +463,7 @@ export const mediaVideos = [
     bvid: 'BV1ABDLB3Ej7',
     poster: redCarpet,
     posterAlt: '重庆实体品牌门店开业打造极高人气的红毯迎宾醒狮',
-    description: '门店开业红毯迎宾，跟商户流程走，门口人气很快就起来了。',
+    description: '门店开业，红毯门口敲一通。人慢慢就围过来了。',
   },
   {
     title: '爱一生，爱一人！',
@@ -471,7 +471,7 @@ export const mediaVideos = [
     bvid: 'BV1FzQMBnEgb',
     poster: weddingBanquet,
     posterAlt: '重庆星级酒店唯美中式婚典舞台定制双狮祝福登场',
-    description: '婚宴舞台双狮，鼓点和环节对得上，新人长辈都说喜庆。',
+    description: '婚宴台上两只狮，鼓点对得上。新人和老人家都说红火。',
   },
 ];
 
@@ -479,51 +479,51 @@ export const mediaLogos = ['商场项目', '酒店宴会', '场馆开馆', '企�
 
 export const mediaHighlights = [
   {
-    title: '全是实拍',
-    text: '视频都是现场录得，没有拼素材，没有加滤镜糊弄。',
+    title: '没拼素材',
+    text: '视频都是现场用手机、摄像机拍的，没拿别人的片段凑。',
   },
   {
-    title: '看视频比听介绍快',
-    text: '鼓点齐不齐、动作稳不稳，一分钟就能看出来，少来回问。',
+    title: '一眼能看出水平',
+    text: '鼓齐不齐、人晃不晃，看一分钟心里有数，不用我们吹。',
   },
   {
-    title: '知道哪里好拍',
-    text: '狮头会朝镜头停一下，精彩动作也会卡节奏，方便你们拍。',
+    title: '知道往哪站好拍',
+    text: '狮头朝镜头停一下，翻腾那会儿也能卡住。你们拍起来省事。',
   },
 ];
 
 export const solutionPlaybooks = [
   {
     title: '商场周年庆与开业',
-    summary: '新店开业、周年庆要人气也要体面。双狮起步，要场面再大可以四狮加巡游。',
+    summary: '商场开业、周年庆最常请。两只狮起步，场面要大就加，还能牵着在楼里走一圈。',
     image: ifcOpening,
     altText: '商场中庭周年庆舞狮表演',
-    fit: ['有剪彩点睛环节', '想把路过的人留下来', '拍完要发公众号或抖音'],
-    deliverables: ['按流程排开场', '点睛采青全程配合', '中庭或外广场巡游'],
+    fit: ['领导要来剪彩', '门头冷冷清清想造点人气', '拍完要发朋友圈'],
+    deliverables: ['帮着排一下当天顺序', '点睛那几下带着走', '演完想巡店也成'],
   },
   {
     title: '品牌路演与快闪店',
-    summary: '商圈快闪、街区巡游，要的是路人停下来看一眼，最好还能拍段视频。',
+    summary: '街上、广场搞快闪就这意思——让人停步。狮子得下地和路人耍，不然白请。',
     image: pepsiPromo,
     altText: '品牌快闪店舞狮路演',
-    fit: ['动线会拐弯换点位', '要跟路人互动', '品牌方要拍短视频'],
-    deliverables: ['动作幅度偏大', '互动频率高一些', '固定机位能配合停'],
+    fit: ['一会儿在这头一会儿那头', '得跟路人握手合影', '旁边有人架着摄像机'],
+    deliverables: ['动作做大点好远看见', '隔几分钟互动一回', '喊停我们能定住'],
   },
   {
     title: '企业年会与晚宴',
-    summary: '酒店宴会厅，舞台不大。开场或压轴都行，关键是跟主持、灯光对好节奏，别乱场。',
+    summary: '酒店宴会厅，舞台不大。开场压轴都行，跟主持、灯光先对好，别台上乱套。',
     image: weddingBanquet,
     altText: '酒店年会舞台舞狮开场',
-    fit: ['有舞台和灯光', '开场或压轴用', '跟颁奖、致辞环节衔接'],
-    deliverables: ['提前进场对流程', '跟灯光师过一遍', '彩牌、口播时间对齐'],
+    fit: ['有舞台有灯光', '开场或压轴都行', '后面还有颁奖致辞'],
+    deliverables: ['提前进来碰一遍', '跟灯光师说一声', '口播时间对整齐'],
   },
   {
     title: '中式婚礼与寿宴',
-    summary: '喜宴图个热闹吉利。双狮迎宾加主舞台一段，跟敬酒、致辞别撞车。',
+    summary: '喜宴图个热闹。门口迎两只，台上再耍一段。别跟敬酒撞在一块儿。',
     image: snowShow,
     altText: '中式喜宴舞狮表演',
-    fit: ['长辈小孩多', '要喜庆接地气', '迎宾和主仪式都要'],
-    deliverables: ['双狮组合', '合影时多停几秒', '吉祥话、小互动道具'],
+    fit: ['老人小孩多', '要红火接地气', '门口和台上都想有'],
+    deliverables: ['一般双狮', '合影多站几秒', '吉祥话、小红包都能配合'],
   },
 ];
 
@@ -534,12 +534,12 @@ export const faqSections = [
       {
         question: '第一次咨询需要准备什么信息？',
         answer:
-          '日期、地点、室内还是室外、要几狮、包不包点睛采青——这几项说清楚就行，我们好判断怎么配。',
+          '哪天、几点、在哪儿、屋里还是屋外、要几只狮、点睛采青要不要——这几样讲明白，我们好琢磨咋排。',
       },
       {
         question: '关于场地，有什么硬性要求吗？',
         answer:
-          '如果是常规演出，只要地面平整即可；如果是高桩竞技，则需要 5x5 米以上的平整舞台空间及 4.5 米以上的层高。',
+          '平地演出，地面别坑坑洼洼就行。要上桩的话，得有一块大概 5×5 米的平整地，层高最好 4.5 米以上，不然人站不直。',
       },
     ],
   },
@@ -549,20 +549,20 @@ export const faqSections = [
       {
         question: '你们会提前到场吗？',
         answer:
-          '正式活动我们都会提前 1 小时左右到达现场，完成候场及最后一遍流程核对。',
+          '正儿八经的活动，提前一小时左右到。换衣服、试鼓、跟主持最后对一遍。',
       },
       {
         question: '演出服装与道具的新旧程度如何？',
         answer:
-          '狮头狮皮有使用年限，旧了会换。演出前再检查一遍，掉毛严重或褪色的不会带上台，拍照不好看那种直接淘汰。',
+          '狮头狮皮用久了会换。上台前再瞅一眼，掉毛厉害、褪了色的不带——拍出来难看，砸自己招牌。',
       },
     ],
   },
 ];
 
 export const prepChecklist = [
-  '具体活动日期与时间段',
-  '活动所在城市与具体场地',
-  '大致需求（开场表演/剪彩点睛/全场巡游等）',
-  '现场是否有层高或舞台空间限制',
+  '哪天办、几点开始',
+  '在哪儿（商场几楼、酒店哪个厅）',
+  '要干啥（点睛、采青、巡游还是台上演一段）',
+  '层高够不够、地方窄不窄',
 ];

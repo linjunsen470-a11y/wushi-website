@@ -30,9 +30,9 @@ export default function CasesPage() {
         title={featured.title}
         description={
           <>
-            下面都是我们自己出的现场，没拿网图。
+            都是咱自己人拍的，没从网上扒图。
             <br className="hidden md:block" />
-            商场中庭、酒店宴会厅、户外广场——场地不同，排法也不同，对照着看。
+            商场中庭、酒店宴会厅、外面广场——地方不一样，排法也不一样。
           </>
         }
         chips={[featured.category, featured.client, featured.location]}
@@ -61,12 +61,12 @@ export default function CasesPage() {
       <section className="bg-surface py-32 overflow-hidden">
         <div className="shell grid gap-20 lg:grid-cols-[1fr_1fr] items-center">
           <motion.div {...subtleFadeProps} className="max-w-xl space-y-8">
-            <span className="section-eyebrow text-secondary">往期现场</span>
+            <span className="section-eyebrow text-secondary">以前干的</span>
             <h2 className="page-section-title !text-5xl tracking-tight !leading-tight">
-              看图比听介绍快
+              看图比听人吹快
             </h2>
             <p className="body-copy text-xl text-on-surface-variant leading-relaxed font-medium">
-              中庭、宴会厅、户外广场——场地不一样，排法也不一样。对照着看，大概知道我们能做什么。
+              中庭、宴会厅、外面广场——地方窄宽不一样，狮子几只、走哪些环节也不一样。翻翻就有数。
             </p>
           </motion.div>
           

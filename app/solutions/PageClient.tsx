@@ -23,12 +23,12 @@ export default function SolutionsPage() {
         eyebrow="演出场景方案 —— SOLUTIONS"
         title={
           <>
-            按场景看怎么排
+            场合不一样，排法不一样
           </>
         }
         description={
           <>
-            商场周年庆、品牌路演、企业年会、婚礼寿宴——场合不同，舞狮怎么排也不一样。下面按场景列了几个常见配法，你对照着自己的活动看。
+            商场开业、街上快闪、年会、喜宴——不是一回事。下面按场合写了几个常见的排法，你对照着自己那场看。
           </>
         }
         chips={['商场开业', '商圈路演', '酒店年会', '喜宴寿宴']}
@@ -69,7 +69,7 @@ export default function SolutionsPage() {
                 </p>
                 <div className="mt-12 grid gap-8 md:grid-cols-2">
                   <div className="rounded-[1.5rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
-                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">适配场景</h3>
+                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">啥情况合适</h3>
                     <ul className="mt-5 space-y-4">
                       {playbook.fit.map((item) => (
                         <li key={item} className="flex gap-3 text-sm font-bold text-on-surface-variant">
@@ -80,7 +80,7 @@ export default function SolutionsPage() {
                     </ul>
                   </div>
                   <div className="rounded-[1.5rem] bg-white p-8 border border-outline-variant/20 shadow-sm">
-                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">包含内容</h3>
+                    <h3 className="font-headline text-lg font-black text-on-surface tracking-tight">我们能干啥</h3>
                     <ul className="mt-5 space-y-4">
                       {playbook.deliverables.map((item) => (
                         <li key={item} className="flex gap-3 text-sm font-bold text-on-surface-variant">
