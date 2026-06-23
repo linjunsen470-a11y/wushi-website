@@ -16,7 +16,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="max-w-md text-sm leading-7 text-white/65">
-            立足重庆，专注承接开业庆典、商场商演、婚礼宴会等商业舞狮项目，以稳定执行力推进每一场活动更快进入可执行状态。
+            公司在重庆，开业、商演、喜宴都接。档期、动线、流程提前对清楚，现场按计划走。
           </p>
         </div>
 

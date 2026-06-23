@@ -36,16 +36,16 @@ export default function AboutPage() {
                 <span className="text-on-surface">更懂商业演艺</span>
               </h1>
               <p className="page-lead text-on-surface-variant font-medium leading-relaxed">
-                鑫龙堂致力于将传统的狮舞、龙舞技艺，转化为更贴合现代商业需求的演艺方案。
+                狮舞、龙舞是老手艺，但商场开业、品牌路演、酒店喜宴各有各的规矩。
                 <br className="hidden md:block" />
-                我们提供的不仅是热闹，更是让您的活动现场更加出众的专业保障。
+                我们干的就是把民俗演好，同时跟得上甲方的流程和时间表。
               </p>
             </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {[
-                ['实战团队', '熟悉各大商场与酒店流程，确保每一个环节都衔接自如。'],
-                ['效果保证', '从装备质感到动作力道，全方位提升现场的视觉观感。'],
-                ['真实案例', '坚持使用自家团队的真实落地视频与照片，所见即所得。'],
+                ['跑过不少场', '万象城、融创茂、尼依格罗……进场报批、彩排时间都有经验。'],
+                ['装备看得过去', '狮头狮皮定期换，动作排练过，现场看着不糊弄。'],
+                ['照片都是实拍', '网站上的图和视频全是自己队伍出的，没拿网图凑。'],
               ].map(([title, text], idx) => (
                 <motion.div
                   key={title}
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <Image src={aboutGallery.story} alt={aboutGallery.storyAlt || '重庆舞狮团队表演实景'} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
             <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-black/60 px-8 py-6 text-white backdrop-blur-md border border-white/10">
-              <p className="font-headline text-2xl font-black tracking-tight leading-tight">让每一次重要环节，都成为现场的焦点</p>
+              <p className="font-headline text-2xl font-black tracking-tight leading-tight">点睛、采青、开场——该热闹的环节热闹，不耽误正事</p>
             </div>
           </motion.div>
         </div>
@@ -81,13 +81,12 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-20">
             <span className="section-eyebrow text-secondary">团队硬实力</span>
             <h2 className="page-section-title !text-on-surface mt-4 tracking-tight">
-              丰富的实战经验
+              商场、酒店、户外广场
               <br className="hidden sm:block" />
-              是您值得信任的理由
+              都演过
             </h2>
             <p className="body-copy text-lg text-on-surface-variant leading-relaxed font-medium mt-6">
-              无论是品牌路演还是大型庆典，我们都以专业的素养和稳定的表现，
-              确保演出每一个阶段都能符合预期效果。
+              路演要聚人、开业要体面、喜宴要喜庆——场合不同，排法不同。反正提前对过流程，现场少抓瞎。
             </p>
           </motion.div>
           <div className="grid gap-10 md:grid-cols-3">
@@ -103,7 +102,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 <div className="p-10">
-                  <p className="text-[11px] font-black tracking-[0.25em] text-secondary uppercase italic">Core Strength 0{index + 1}</p>
+                  <p className="text-[11px] font-black tracking-[0.25em] text-secondary uppercase italic">0{index + 1}</p>
                   <h3 className="mt-4 font-headline text-3xl font-black tracking-tight text-on-surface">{item.title}</h3>
                   <p className="mt-5 text-base leading-relaxed text-on-surface-variant font-medium">{item.text}</p>
                 </div>
@@ -120,7 +119,7 @@ export default function AboutPage() {
             <h2 className="page-section-title !text-on-surface mt-4 tracking-tight">
               从艺术指导到现场执行
               <br />
-              确保每一个项目稳妥交付
+              从排练到现场，有人盯
             </h2>
           </motion.div>
 
@@ -157,12 +156,12 @@ export default function AboutPage() {
           <motion.div {...subtleFadeProps} className="max-w-2xl space-y-8">
             <span className="section-eyebrow text-secondary-fixed">品质把控</span>
             <h2 className="page-section-title !text-white !leading-tight tracking-tight">
-              更精良的装备
+              狮头、狮皮、演出服
               <br className="hidden sm:block" />
-              才能成就非凡的现场品质
+              上台前都会过一眼
             </h2>
             <p className="page-lead text-xl !text-white/70 font-medium">
-              我们相信，卓越的演出不仅在于现场的热闹。从狮头扎制到每一件演出服的整洁程度，我们都坚持最高标准，确保在镜头下同样出彩。
+              热闹是一回事，镜头怼近了又是另一回事。狮头扎得结实、狮皮干净、衣服熨平整，拍出来才过得去。
             </p>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">

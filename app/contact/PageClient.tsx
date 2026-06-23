@@ -98,10 +98,10 @@ export default function ContactPage() {
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
               <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线咨询</p>
               <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                免费获取演出方案
+                发个时间地点，帮你看档期
               </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                告诉我们您的活动时间、地点和大致需求，我们将在 1 小时内通过微信或电话回复，免费提供定制化执行建议与报价参考。
+                活动日期、地点、要几狮、包不包点睛采青——写清楚就行。工作时段一般一小时内回，给初步建议和报价区间。
               </p>
             </div>
 
@@ -233,13 +233,13 @@ export default function ContactPage() {
                           <span>正在提交...</span>
                         </>
                       ) : (
-                        <span>免费获取方案</span>
+                        <span>提交需求</span>
                       )}
                     </motion.button>
                   )}
                 </AnimatePresence>
                 <p className="mt-4 text-center text-[11px] font-bold text-on-surface/40">
-                  提交后，我们的项目经理将在 1 小时内通过微信联系您，免费提供初步方案。
+                  提交后工作时段一般一小时内联系你，初步方案不另外收费。
                 </p>
               </div>
             </form>
@@ -254,12 +254,12 @@ export default function ContactPage() {
             <div className="max-w-3xl">
               <span className="section-eyebrow text-secondary">联系我们</span>
               <h1 className="page-hero-title mt-6 text-on-surface !leading-[1.08] tracking-tight">
-                获取专属您的
+                问档期
                 <br />
-                专业舞狮演出方案
+                或者直接打电话
               </h1>
               <p className="page-lead mt-8 font-medium leading-relaxed text-on-surface-variant">
-                立足重庆，辐射西南。我们深知每场商业活动都至关重要。无论是商场开业、品牌商演还是喜宴庆典，请告诉我们您的时间、场地与大致需求，我们将第一时间为您核对档期并提供报价与执行建议。
+                公司在重庆，主城和周边区县都接。商场开业、品牌路演、年会喜宴——你把时间、场地、大概需求说一下，我们帮你对档期、报个价。
               </p>
             </div>
 
@@ -321,10 +321,10 @@ export default function ContactPage() {
                 <div className="max-w-2xl">
                   <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">关注各大平台</p>
                   <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
-                    了解我们的过往案例与现场实力
+                    抖音、小红书看实拍
                   </h2>
                   <p className="mt-3 text-base leading-8 text-on-surface-variant">
-                    欢迎关注我们的抖音与小红书账号，查看更多真实演出现场的高清视频与图文记录，直观感受鑫龙堂带来的热烈氛围与专业标准。
+                    文字说不清的水平，看视频就行。抖音、小红书有最新路演和开业现场，没滤镜，自己判断。
                   </p>
                 </div>
 

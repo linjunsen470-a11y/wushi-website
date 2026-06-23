@@ -21,7 +21,7 @@ export default function MediaShowcase() {
             </div>
             <div className="flex flex-col gap-10">
               <div className="editorial-card group relative overflow-hidden !p-12">
-                <span className="section-eyebrow text-secondary">真实交付</span>
+                <span className="section-eyebrow text-secondary">实拍现场</span>
                 <h2 className="section-title !text-4xl !leading-[1.1]">{homepageSections.media.title}</h2>
                 <p className="body-copy mt-6 text-on-surface-variant font-medium leading-relaxed">{homepageSections.media.text}</p>
               </div>

@@ -23,16 +23,16 @@ export default function ServicesPage() {
         eyebrow="服务项目 —— SERVICES"
         title={
           <>
-            专业演艺，
+            开业、路演、喜宴
             <br />
-            为您的活动增色
+            三类活最常接
           </>
         }
         description={
           <>
-            从热情的开业盛典，到雅致的商场路演或私人宴会，
+            商场门店开业、商圈品牌路演、酒店婚宴寿宴——场合不一样，狮数、流程、互动频率都不一样。
             <br className="hidden md:block" />
-            我们提供与您活动风格高度匹配的定制舞狮服务方案。
+            你把场地和需求说清楚，我们帮你配。
           </>
         }
         chips={['开业庆典', '品牌路演', '酒店宴会', '节庆定制']}
@@ -48,7 +48,7 @@ export default function ServicesPage() {
             </div>
             <div className="rounded-[1.75rem] bg-secondary-container px-6 py-6 text-on-secondary-container">
               <p className="mt-1 text-sm leading-relaxed font-bold">
-                舞狮不仅是热闹，也代表了活动的排面与质感。我们坚持“器材要新、动作要稳”的执行底线。
+                狮头要新、动作要稳——这是底线。热闹有了，排面也得过得去。
               </p>
             </div>
           </div>
@@ -99,9 +99,9 @@ export default function ServicesPage() {
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-20 section-stack">
             <span className="section-eyebrow text-secondary-fixed">服务流程</span>
             <h2 className="page-section-title mt-6 text-white !leading-tight">
-              标准化执行环节，
+              从问到演，
               <br />
-              确保现场不出错
+              就这么几步
             </h2>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-4">

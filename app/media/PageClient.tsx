@@ -39,8 +39,8 @@ export default function MediaPage() {
       <SubpageHero
         eyebrow="真实影像展示 / MEDIA"
         variant="media"
-        title="本地商演实录 见证交付水准"
-        description="鑫龙堂真实演出实录，绝不套用网络样片。通过高清视频直观感受现场热烈氛围。"
+        title="现场视频，自己看"
+        description="都是实拍，没套样片。鼓点齐不齐、动作稳不稳，一分钟能看出来。"
         chips={['真实实录', '视频为主', '平台补充', featured.category]}
         panel={
           <div className="space-y-6">

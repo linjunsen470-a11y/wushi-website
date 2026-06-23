@@ -20,9 +20,9 @@ export default function FaqPage() {
       <Navbar />
       <SubpageHero
         eyebrow="疑问解答中心 / FAQ"
-        title="透明服务流程 打消前期顾虑"
-        description="整理活动报价、筹备及执行的核心信息。以清晰标准为您提供安心的合作保障。"
-        chips={['报价透明', '准备清单', '执行标准', '安心保障']}
+        title="常见问题"
+        description="报价、预订、现场准备这些事，问的人多。整理在下面了，还有不清楚的直接微信问。"
+        chips={['报价', '预订', '现场准备', '装备']}
         panel={
           <div className="space-y-6">
             <div className="rounded-[1rem] bg-secondary/5 p-8 border border-secondary/10">
@@ -48,9 +48,9 @@ export default function FaqPage() {
             className="editorial-card h-fit !p-12 sticky top-32"
           >
             <span className="section-eyebrow text-secondary">业务评估指南</span>
-            <h2 className="page-section-title mt-4 !text-3xl">专属方案筹备要素</h2>
+            <h2 className="page-section-title mt-4 !text-3xl">咨询前先想好这几项</h2>
             <p className="mt-6 text-on-surface-variant leading-relaxed font-medium">
-              明确以下核心活动信息，能够协助我们的专家团队为您迅速匹配最适合的表演编制与精准报价方案：
+              下面几项说清楚，报价快，也少来回问：
             </p>
             <ul className="mt-8 space-y-4">
               {prepChecklist.map((item) => (

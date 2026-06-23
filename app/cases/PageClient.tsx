@@ -30,9 +30,9 @@ export default function CasesPage() {
         title={featured.title}
         description={
           <>
-            深耕重庆及西南区域重点商业项目。每一个案例均源自鑫龙堂团队的真实落地执行，
+            下面都是我们自己出的现场，没拿网图。
             <br className="hidden md:block" />
-            为您提供直观的现场效果参考、动作细节解析以及不同场地的执行经验。
+            商场中庭、酒店宴会厅、户外广场——场地不同，排法也不同，对照着看。
           </>
         }
         chips={[featured.category, featured.client, featured.location]}
@@ -61,14 +61,12 @@ export default function CasesPage() {
       <section className="bg-surface py-32 overflow-hidden">
         <div className="shell grid gap-20 lg:grid-cols-[1fr_1fr] items-center">
           <motion.div {...subtleFadeProps} className="max-w-xl space-y-8">
-            <span className="section-eyebrow text-secondary">实战交付</span>
+            <span className="section-eyebrow text-secondary">往期现场</span>
             <h2 className="page-section-title !text-5xl tracking-tight !leading-tight">
-              用实排预演，
-              <br />
-              确保现场万无一失
+              看图比听介绍快
             </h2>
             <p className="body-copy text-xl text-on-surface-variant leading-relaxed font-medium">
-              我们深知每一场活动都是不可逆的。通过对过往案例的整理，您可以直观地看到我们在不同空间布局下的演出质感、仪式配合及氛围把控能力，帮您在决策时更有底气。
+              中庭、宴会厅、户外广场——场地不一样，排法也不一样。对照着看，大概知道我们能做什么。
             </p>
           </motion.div>
           
@@ -103,7 +101,7 @@ export default function CasesPage() {
         <div className="shell">
           <motion.div {...subtleFadeProps} className="mb-20 max-w-3xl">
             <span className="section-eyebrow text-secondary">更多项目</span>
-            <h2 className="page-section-title mt-6 tracking-tight !leading-tight">不同业态下的真实演艺交付效果</h2>
+            <h2 className="page-section-title mt-6 tracking-tight !leading-tight">商场、年会、婚礼、户外</h2>
           </motion.div>
           <div className="grid gap-12 lg:grid-cols-2 lg:mx-auto">
             {restCases.map((item, idx) => (

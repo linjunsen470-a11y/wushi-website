@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s | 重庆鑫龙堂舞狮',
   },
   description:
-    '重庆鑫龙堂舞狮是面向重庆及西南地区的专业舞狮演出服务商。提供开业庆典、商场活动、婚礼宴会、品牌发布等各类高标准舞狮演艺，以真实现场与卓越执行力为活动增色。',
+    '重庆鑫龙堂舞狮队，接开业、商演、喜宴。在重庆做了上千场，照片视频都是实拍，微信电话问档期。',
   openGraph: {
     type: 'website',
     locale: 'zh_CN',
@@ -22,14 +22,14 @@ export const metadata: Metadata = {
         url: 'https://www.cqwushi.com/og-image.webp',
         width: 1200,
         height: 630,
-        alt: '重庆鑫龙堂舞狮 - 重庆专业演出服务商',
+        alt: '重庆鑫龙堂舞狮队',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '重庆鑫龙堂舞狮 | 专业舞狮演出服务商',
-    description: '重庆及西南地区专业舞狮演艺，专注开业庆典、商演、宴会，稳定交付，品质过硬。',
+    title: '重庆鑫龙堂舞狮 | 开业商演喜宴舞狮',
+    description: '重庆本地舞狮队，开业点睛、商场路演、婚宴暖场。看视频看案例，微信问档期。',
     images: ['https://www.cqwushi.com/og-image.webp'],
   },
 };

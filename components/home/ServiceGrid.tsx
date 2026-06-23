@@ -17,7 +17,7 @@ export default function ServiceGrid() {
           </div>
           <div className="max-w-xl">
             <p className="body-copy text-on-surface-variant">
-              无论是需要正式剪彩与点睛、品牌活动中的聚客互动，还是企业宴会中的开场与压轴节目，鑫龙堂都有成熟执行经验。
+              开业要剪彩点睛、路演要聚人、喜宴要热闹——三类活做得最多，流程也最常熟。
             </p>
             <p className="mt-4 text-xs font-black tracking-widest text-primary uppercase">
               基础演出服务 ¥1,500 元起，欢迎咨询定制方案
