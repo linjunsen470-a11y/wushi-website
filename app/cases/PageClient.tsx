@@ -58,7 +58,7 @@ export default function CasesPage() {
         }
       />
 
-      <section className="bg-surface py-32 overflow-hidden">
+      <section className="bg-surface section-space overflow-hidden">
         <div className="shell grid gap-20 lg:grid-cols-[1fr_1fr] items-center">
           <motion.div {...subtleFadeProps} className="max-w-xl space-y-8">
             <span className="section-eyebrow text-secondary">精品案例</span>
@@ -97,7 +97,7 @@ export default function CasesPage() {
         </div>
       </section>
 
-      <section className="bg-surface-container-low py-32">
+      <section className="bg-surface-container-low section-space">
         <div className="shell">
           <motion.div {...subtleFadeProps} className="mb-20 max-w-3xl">
             <span className="section-eyebrow text-secondary">更多项目</span>
@@ -138,7 +138,7 @@ export default function CasesPage() {
         </div>
       </section>
 
-      <section className="bg-[#1a1714] py-32 text-white relative">
+      <section className="bg-[#1a1714] section-space text-white relative">
         <div className="absolute inset-0 bg-[url('/patterns/carbon-fibre.png')] opacity-5" />
         <div className="shell relative z-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:items-center">
           {stats.map((stat, idx) => (

@@ -1,9 +1,11 @@
 import { MetadataRoute } from 'next';
 import { getAllGuidePosts } from '@/lib/guide';
+import { landingPagesData } from '@/lib/landing-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.cqwushi.com';
-  const buildDate = new Date('2026-06-22');
+  // Use current date for static and landing pages to reflect updates at build time
+  const buildDate = new Date();
 
   const staticPages = [
     { route: '', priority: 1.0, changeFrequency: 'daily' as const },
@@ -37,5 +39,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticEntries, ...dynamicEntries];
+  const landingEntries = Object.keys(landingPagesData).map(slug => ({
+    url: `${baseUrl}/landing/${slug}`,
+    lastModified: buildDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticEntries, ...dynamicEntries, ...landingEntries];
 }

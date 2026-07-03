@@ -41,7 +41,7 @@ export default function FaqPage() {
         }
       />
       
-      <section className="bg-surface-container-low py-32">
+      <section className="bg-surface-container-low section-space">
         <div className="shell grid gap-16 lg:grid-cols-[0.8fr_1.2fr]">
           <motion.aside 
             {...subtleFadeProps}

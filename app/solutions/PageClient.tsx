@@ -45,7 +45,7 @@ export default function SolutionsPage() {
         }
       />
       
-      <section className="bg-surface-container-low py-32">
+      <section className="bg-surface-container-low section-space">
         <div className="shell space-y-32">
           {solutionPlaybooks.map((playbook, index) => (
             <motion.article 

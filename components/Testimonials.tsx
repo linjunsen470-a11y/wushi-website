@@ -7,7 +7,7 @@ import { FadeIn } from '@/components/animations/FadeIn';
 
 export default function Testimonials() {
   return (
-    <section className="bg-surface-container-low py-32 overflow-hidden">
+    <section className="bg-surface-container-low section-space overflow-hidden">
       <div className="shell">
         <div className="max-w-3xl mb-16">
           <span className="section-eyebrow text-secondary">客户评价</span>
