@@ -26,3 +26,35 @@ Git history is not available in this checkout, so no repository-specific commit 
 
 ## Security & Configuration Tips
 Do not commit secrets. Keep runtime configuration in `.env.local`, using `.env.example` as the template. Review remote image or video sources carefully; prefer local assets in `assets/` when stability matters.
+
+## Local CMS & Content Maintenance
+The site uses a local file-based Markdown CMS for publishing articles in the "预订指南" (Booking Guide) section.
+
+### 1. File Location & Naming
+- Production articles live under `content/guide/[slug].md`.
+- Drafts, templates, and tone instructions are stored in `blog-template/` (ignored by Git). Once a draft is approved, move it to `content/guide/` as a production Markdown file.
+
+### 2. Frontmatter Schema
+Every Markdown article must include the following YAML Frontmatter fields:
+```yaml
+---
+title: "文章标题"
+slug: "url-slug"                   # must match the file basename
+date: "YYYY-MM-DD"                 # use the actual current date (e.g., 2026-07-03)
+updated: "YYYY-MM-DD"              # update date
+excerpt: "用于列表页和SEO的简短摘要"
+coverImage: "/images/guide/filename.webp" # select from public/images/guide/
+coverAlt: "图片描述文案，用作图片alt属性进行SEO优化"
+category: "开业指南"               # e.g., "开业指南", "场景方案", "价格指南"
+tags: ["标签1", "标签2"]
+keywords:
+  - "主关键词"
+  - "辅助关键词"
+ctaText: "联系咨询或报价按钮文案"
+---
+```
+
+### 3. Verification & SEO Automation
+- Next.js reads these files dynamically and performs SSG rendering for `/guide/[slug]` routes.
+- After a successful production deployment, the GitHub Actions workflow runs `scripts/seo-submit.mjs` to submit site routes to Baidu and IndexNow/Bing.
+- **Required check**: Always run `pnpm lint` and `pnpm build` locally before opening a pull request to ensure that metadata parses correctly and the build compiles successfully.

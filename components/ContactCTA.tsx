@@ -6,7 +6,7 @@ import { brand } from '@/lib/site-data';
 
 export default function ContactCTA() {
   return (
-    <section className="relative overflow-hidden bg-surface-container-low py-24 md:py-32">
+    <section className="relative overflow-hidden bg-surface-container-low section-space">
       {/* Decorative Background Element */}
       <div className="watermark absolute -right-20 -bottom-20 opacity-[0.03] select-none pointer-events-none">
         鑫龙堂

@@ -1,9 +1,11 @@
 name: Playwright E2E
+
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
+
 jobs:
   test:
     timeout-minutes: 60
@@ -23,14 +25,18 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps
+
       - name: Build site
         run: pnpm build
+
       - name: Run Playwright tests
         env:
           CI: true
         run: pnpm exec playwright test
+
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:

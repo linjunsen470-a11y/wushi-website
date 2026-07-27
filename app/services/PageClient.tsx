@@ -57,7 +57,7 @@ export default function ServicesPage() {
       
       <section>
         {serviceCards.map((service, index) => (
-          <section key={service.title} className={index % 2 === 0 ? 'bg-surface-container-low py-32' : 'bg-surface py-32'}>
+          <section key={service.title} className={index % 2 === 0 ? 'bg-surface-container-low section-space' : 'bg-surface section-space'}>
             <div className="shell grid gap-16 lg:grid-cols-2 lg:items-center">
               <motion.div 
                 {...subtleFadeProps}
@@ -93,7 +93,7 @@ export default function ServicesPage() {
         ))}
       </section>
 
-      <section className="bg-[#1a1714] py-32 text-white relative overflow-hidden">
+      <section className="bg-[#1a1714] section-space text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_20%_80%,rgba(163,0,17,0.08),transparent_50%)]" />
         <div className="shell relative z-10">
           <motion.div {...subtleFadeProps} className="max-w-3xl mb-20 section-stack">
@@ -121,7 +121,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-surface py-32">
+      <section className="bg-surface section-space">
         <div className="shell max-w-4xl">
           <motion.div {...subtleFadeProps} className="mb-20 text-center mx-auto">
             <span className="section-eyebrow text-secondary">常见问题</span>

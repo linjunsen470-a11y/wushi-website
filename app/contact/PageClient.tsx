@@ -87,7 +87,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-surface">
       <Navbar />
 
-      <section className="shell py-24 md:py-32">
+      <section className="shell section-space">
         <div className="grid gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

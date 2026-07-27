@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, Phone, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { brand, primaryNavLinks } from '@/lib/site-data';
+import { brand, contactPanel, primaryNavLinks } from '@/lib/site-data';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -86,6 +86,13 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href={`tel:${contactPanel.phone}`}
+            className="flex items-center gap-1.5 font-headline text-sm font-black text-primary transition-all hover:scale-[1.02] hover:text-primary-container mr-1"
+          >
+            <Phone size={14} className="text-secondary" />
+            <span>{contactPanel.phone}</span>
+          </a>
           <Link
             href="/contact"
             className="button-primary !rounded-[0.95rem] px-5 py-3 hover:scale-[1.02] hover:bg-primary-container"

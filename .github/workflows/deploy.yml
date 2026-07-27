@@ -139,3 +139,9 @@ jobs:
               | tail -n +6 \
               | cut -d' ' -f2- \
               | xargs -r rm -rf --
+
+      - name: Submit deployed URLs to search engines
+        env:
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: pnpm seo:submit

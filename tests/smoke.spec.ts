@@ -11,9 +11,18 @@ const routes = [
   '/contact',
   '/privacy',
   '/terms',
+  '/guide',
+  '/guide/shopping-mall-opening-lion-dance',
+  '/guide/street-store-opening-lion-dance',
+  '/landing/chongqing-wushidui-dianhua',
+  '/landing/chongqing-kaiye-wushi',
+  '/landing/chongqing-shangchang-wushi',
+  '/landing/chongqing-hunli-wushi',
+  '/landing/chongqing-wulongwushi',
+  '/landing/chongqing-wushi-baojia',
 ];
 
-const primaryRoutes = ['/about', '/services', '/solutions', '/cases', '/media', '/faq', '/contact'];
+const primaryRoutes = ['/about', '/services', '/solutions', '/cases', '/media', '/guide'];
 
 async function expectHealthyPage(path: string, page: Page) {
   const response = await page.goto(path, { waitUntil: 'domcontentloaded' });
