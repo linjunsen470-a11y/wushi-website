@@ -104,8 +104,10 @@ async function submitToIndexNow() {
       body: JSON.stringify(payload),
     });
 
-    if (response.status === 200 || response.status === 202) {
-      console.log(`[SEO-Submit] IndexNow submission successful! Status: ${response.status}`);
+    if (response.status === 200) {
+      console.log('[SEO-Submit] IndexNow submission successful.');
+    } else if (response.status === 202) {
+      console.log('[SEO-Submit] IndexNow submission accepted; key validation is pending.');
     } else {
       const text = await response.text();
       console.error(`[SEO-Submit] IndexNow error (Status ${response.status}): ${text}`);

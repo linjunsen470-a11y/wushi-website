@@ -4,8 +4,6 @@ import { landingPagesData } from '@/lib/landing-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.cqwushi.com';
-  // Use current date for static and landing pages to reflect updates at build time
-  const buildDate = new Date();
 
   const staticPages = [
     { route: '', priority: 1.0, changeFrequency: 'daily' as const },
@@ -23,7 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticEntries = staticPages.map(page => ({
     url: `${baseUrl}${page.route}`,
-    lastModified: buildDate,
     changeFrequency: page.changeFrequency,
     priority: page.priority,
   }));
@@ -33,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const postDate = post.updated ? new Date(post.updated) : new Date(post.date);
     return {
       url: `${baseUrl}/guide/${post.slug}`,
-      lastModified: isNaN(postDate.getTime()) ? buildDate : postDate,
+      ...(isNaN(postDate.getTime()) ? {} : { lastModified: postDate }),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     };
@@ -41,7 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const landingEntries = Object.keys(landingPagesData).map(slug => ({
     url: `${baseUrl}/landing/${slug}`,
-    lastModified: buildDate,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));

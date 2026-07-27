@@ -133,7 +133,7 @@ export const teamMembers = [
   {
     name: '张老师',
     role: '创始人 / 艺术指导',
-    bio: '深耕传统民俗舞狮十余年，具备深厚的艺术功底与丰富的商业执行经验，注重传统艺术与现代商业活动的融合。',
+    bio: '长期从事传统民俗舞狮与商业活动执行，注重传统艺术与现代活动流程的融合。',
     image: blueJongLanterns,
     altText: '重庆鑫龙堂舞狮队创始人指导高桩醒狮演出'
   },
@@ -423,8 +423,8 @@ export const legalLinks = [
 ];
 
 export const stats = [
-  { value: '10年+', label: '重庆本地深耕' },
-  { value: '1000+', label: '累计商演经验' },
+  { value: '重庆', label: '本地团队执行' },
+  { value: '实拍', label: '商业演出案例' },
   { value: '高桩', label: '梅花高桩实力' },
   { value: '提前1h', label: '标准提前备场' },
 ];

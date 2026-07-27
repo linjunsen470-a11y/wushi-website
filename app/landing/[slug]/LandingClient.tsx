@@ -155,7 +155,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                 <span className="section-eyebrow text-secondary">鑫龙堂服务优势</span>
                 <h2 className="section-title mt-4">专注重庆本地演出<br />以严谨纪律交付每一场精彩</h2>
                 <p className="body-copy mt-4 text-on-surface-variant">
-                  我们深知每场商业庆典与宴会对您的重要性，十余年品牌积累，坚持“道具整洁、提前到场、无隐形收费”的服务承诺。
+                  每场商业庆典与宴会的场地和流程都不同，我们会在确认需求后提供对应的配置建议。
                 </p>
               </div>
 
@@ -180,12 +180,12 @@ export default function LandingClient({ page }: LandingClientProps) {
                 {page.formTitle}
               </h3>
               <p className="mt-2 text-xs leading-5 text-on-surface-variant/80">
-                请填写以下简要需求，我们将于工作日10分钟内为您联系，并免费出具初步的演出配置清单及方案。
+                请填写以下简要需求，我们会在看到信息后尽快联系，并提供初步的演出配置建议。
               </p>
 
               <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
                 <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" />
-                
+
                 <div className="space-y-1.5">
                   <label htmlFor="project-type" className="text-xs font-black tracking-wider text-on-surface/60">活动类型</label>
                   <select

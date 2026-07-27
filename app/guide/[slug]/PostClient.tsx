@@ -130,7 +130,7 @@ export default function PostClient({ post, relatedPosts }: PostClientProps) {
               <div className="rounded-3xl bg-surface-container-high p-8 border border-outline-variant/30 shadow-sm">
                 <h4 className="font-headline text-lg font-black text-on-surface tracking-tight">需要专业建议？</h4>
                 <p className="mt-4 text-sm leading-relaxed text-on-surface-variant font-medium">
-                  重庆本地 15 年执行经验，服务过 1000+ 企业，我们懂流程，更懂您的预算焦虑。
+                  可先提供活动日期、地点与场地照片，我们会据此给出流程和配置建议。
                 </p>
                 <Link href="/contact" className="button-primary mt-8 w-full">
                   添加执行官微信

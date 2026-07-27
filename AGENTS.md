@@ -56,6 +56,5 @@ ctaText: "联系咨询或报价按钮文案"
 
 ### 3. Verification & SEO Automation
 - Next.js reads these files dynamically and performs SSG rendering for `/guide/[slug]` routes.
-- The `postbuild` hook automatically runs `scripts/seo-submit.mjs` to extract all guide routes and push them directly to search engines (Baidu & IndexNow/Bing).
+- After a successful production deployment, the GitHub Actions workflow runs `scripts/seo-submit.mjs` to submit site routes to Baidu and IndexNow/Bing.
 - **Required check**: Always run `pnpm lint` and `pnpm build` locally before opening a pull request to ensure that metadata parses correctly and the build compiles successfully.
-

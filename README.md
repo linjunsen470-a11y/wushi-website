@@ -82,7 +82,7 @@ pnpm clean    # 清理 .next
 - **基础静态数据**：页面核心文案、导航、案例列表、FAQ 及团队信息主要集中在 [`lib/site-data.ts`](./lib/site-data.ts)
 - **指南文章 CMS**：文章以 Markdown 格式保存在 `content/guide/` 下。发布新文章需要包含完整的 Frontmatter 属性（包含 `title`、`slug`、`date`、`updated`、`excerpt`、`coverImage`、`coverAlt`、`category`、`tags`、`keywords` 和 `ctaText`）。
 - **页面渲染**：Next.js App Router 动态扫描 `content/guide/*.md` 文件并执行 SSG 静态路由渲染（在 `/guide/[slug]` 下）。
-- **SEO 自动化**：构建后的 postbuild 阶段会运行 `scripts/seo-submit.mjs`，自动读取文章路径并将其提交至百度和 IndexNow（Bing 搜索引擎）。
+- **SEO 自动化**：生产部署成功后，GitHub Actions 会运行 `scripts/seo-submit.mjs`，读取站点路由并提交至百度和 IndexNow（Bing 搜索引擎）。
 - **全局视觉样式**：全局视觉基础位于 [`app/globals.css`](./app/globals.css)
 - **首页 Hero 模块**：首页 Hero 与排版布局位于 [`app/page.tsx`](./app/page.tsx)
 - **结构化数据**：SEO 的 JSON-LD 结构化数据输出位于 [`components/JsonLd.tsx`](./components/JsonLd.tsx)
