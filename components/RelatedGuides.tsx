@@ -31,7 +31,7 @@ export default function RelatedGuides({ currentSlug, category }: Props) {
           <Link
             key={post.slug}
             href={`/guide/${post.slug}`}
-            className="group flex flex-col rounded-2xl border border-outline-variant/20 bg-surface-container-low overflow-hidden hover:border-primary/50 hover:bg-surface-container transition-all duration-300 premium-shadow-sm"
+            className="group flex flex-col rounded-2xl border border-outline-variant/20 bg-surface-container-low overflow-hidden hover:border-primary/50 hover:bg-surface-container transition-[background-color,border-color,box-shadow] duration-300 premium-shadow-sm"
           >
             <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-container-low">
               <Image

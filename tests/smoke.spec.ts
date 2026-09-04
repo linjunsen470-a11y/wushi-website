@@ -30,6 +30,8 @@ async function expectHealthyPage(path: string, page: Page) {
   expect(response, `${path} should return an HTTP response`).not.toBeNull();
   expect(response!.status(), `${path} should not return an error status`).toBeLessThan(400);
   await expect(page.locator('main')).toBeVisible();
+  await expect(page.locator('main#main-content')).toHaveCount(1);
+  await expect(page.locator('a[href="#main-content"]')).toHaveCount(1);
   await expect(page).toHaveTitle(/.+/);
   await expect(page.locator('body')).not.toContainText(
     /Application error|Internal Server Error|This page could not be found|Unhandled Runtime Error/i
@@ -65,7 +67,7 @@ test.describe('site smoke', () => {
 
     await expectHealthyPage('/', page);
 
-    const contactShortcut = page.locator('body > div a[href="/contact"]').first();
+    const contactShortcut = page.getByRole('link', { name: '前往联系页' });
     await expect(contactShortcut).toBeVisible();
     await contactShortcut.click();
     await expect(page).toHaveURL(/\/contact$/);
@@ -85,6 +87,10 @@ test.describe('site smoke', () => {
     await expect(form.locator('#event-message')).toBeVisible();
     await expect(form.locator('button[type="submit"]')).toBeEnabled();
 
+    await form.locator('button[type="submit"]').click();
+    await expect(form.locator('#project-type-error')).toContainText('请选择活动类型');
+    await expect(form.locator('#project-type')).toBeFocused();
+
     await form.locator('#user-name').fill('Smoke Test');
     await form.locator('#user-contact').fill('18983662830');
     await form.locator('#event-message').fill('Playwright smoke test only. Do not submit.');
@@ -92,5 +98,24 @@ test.describe('site smoke', () => {
     await expect(form.locator('#user-name')).toHaveValue('Smoke Test');
     await expect(form.locator('#user-contact')).toHaveValue('18983662830');
     await expect(form.locator('#event-message')).toHaveValue('Playwright smoke test only. Do not submit.');
+  });
+
+  test('homepage service cards lead to intent-specific landing pages', async ({ page }) => {
+    await expectHealthyPage('/', page);
+
+    await expect(page.locator('a[href="/landing/chongqing-kaiye-wushi"]')).toContainText(
+      '开业醒狮'
+    );
+    await expect(page.locator('a[href="/landing/chongqing-kaiye-wushi"]')).toHaveAttribute(
+      'href',
+      '/landing/chongqing-kaiye-wushi'
+    );
+    await expect(page.locator('a[href="/landing/chongqing-hunli-wushi"]')).toContainText(
+      '宴会婚礼'
+    );
+    await expect(page.locator('a[href="/landing/chongqing-hunli-wushi"]')).toHaveAttribute(
+      'href',
+      '/landing/chongqing-hunli-wushi'
+    );
   });
 });

@@ -16,7 +16,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="max-w-md text-sm leading-7 text-white/65">
-            在北碚，主城常跑。开业、路演、喜宴都干。头天把事儿说清楚，当天不抓瞎。
+            团队立足北碚，长期服务重庆主城及周边区域。承接开业、路演、喜宴等演出，提前确认流程与场地安排。
           </p>
         </div>
 

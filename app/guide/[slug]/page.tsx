@@ -68,7 +68,7 @@ export default async function GuidePostPage({ params }: Props) {
   const nextPost = currentIndex >= 0 && currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 
   return (
-    <main className="min-h-screen bg-surface">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface">
       <Navbar />
       <ArticleJsonLd post={post} />
 
@@ -156,7 +156,7 @@ export default async function GuidePostPage({ params }: Props) {
               {/* 上一篇 */}
               <Link 
                 href={prevPost ? `/guide/${prevPost.slug}` : '/guide'}
-                className="flex-1 flex items-center gap-4 rounded-2xl border border-outline-variant/30 hover:border-primary/50 hover:bg-surface-container-low px-5 py-4 transition-all duration-300 group min-w-0"
+                className="flex-1 flex items-center gap-4 rounded-2xl border border-outline-variant/30 hover:border-primary/50 hover:bg-surface-container-low px-5 py-4 transition-[background-color,border-color] duration-300 group min-w-0"
               >
                 <ArrowLeft size={16} className="text-on-surface-variant group-hover:text-primary transition-colors shrink-0" />
                 <div className="text-left min-w-0">
@@ -172,7 +172,7 @@ export default async function GuidePostPage({ params }: Props) {
               {/* 下一篇 */}
               <Link 
                 href={nextPost ? `/guide/${nextPost.slug}` : '/guide'}
-                className="flex-1 flex items-center justify-between gap-4 rounded-2xl border border-outline-variant/30 hover:border-primary/50 hover:bg-surface-container-low px-5 py-4 transition-all duration-300 group min-w-0"
+                className="flex-1 flex items-center justify-between gap-4 rounded-2xl border border-outline-variant/30 hover:border-primary/50 hover:bg-surface-container-low px-5 py-4 transition-[background-color,border-color] duration-300 group min-w-0"
               >
                 <div className="text-left min-w-0">
                   <span className="block font-headline text-[0.68rem] font-bold tracking-[0.1em] text-on-surface-variant/60 uppercase">

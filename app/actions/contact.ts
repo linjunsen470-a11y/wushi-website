@@ -1,9 +1,8 @@
 'use server';
 
 import { Resend } from 'resend';
-import { z } from 'zod';
-
 import { headers } from 'next/headers';
+import { contactFormSchema, type ContactFormData } from '@/lib/contact-schema';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -14,24 +13,6 @@ const MAX_REQUESTS = 3;
 let lastCleanupTime = Date.now();
 const CLEANUP_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
-const contactFormSchema = z.object({
-  projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会/盛典', '婚礼/宴会/喜事', '其他定制项目']),
-  preferredContactMethod: z.enum(['wechat', 'phone']),
-  name: z.string().min(2, '请输入您的称呼').max(50),
-  contact: z.string()
-    .min(5, '请输入有效的联系方式')
-    .max(100)
-    .refine(val => {
-      // Basic regex for Chinese phone numbers or common WeChat ID patterns
-      const phoneRegex = /^1[3-9]\d{9}$/;
-      const wechatRegex = /^[a-zA-Z][-_a-zA-Z0-9]{5,19}$/;
-      return phoneRegex.test(val) || wechatRegex.test(val) || val.length > 5;
-    }, '请输入有效的手机号或微信号'),
-  message: z.string().max(1000, '留言内容过长，请精简').optional(),
-  // Honeypot field - should be empty
-  website: z.string().max(0).optional(),
-});
-
 function escapeHtml(str: string) {
   return str
     .replace(/&/g, '&amp;')
@@ -41,7 +22,7 @@ function escapeHtml(str: string) {
     .replace(/'/g, '&#039;');
 }
 
-export async function submitContactForm(data: z.infer<typeof contactFormSchema>) {
+export async function submitContactForm(data: ContactFormData) {
   // 0. Cleanup expired entries periodically to prevent memory leaks (H-3 fix)
   const now = Date.now();
   if (now - lastCleanupTime > CLEANUP_INTERVAL) {
@@ -55,7 +36,9 @@ export async function submitContactForm(data: z.infer<typeof contactFormSchema>)
 
   // 1. Rate Limiting Check
   const headerList = await headers();
-  const ip = headerList.get('x-forwarded-for') || 'anonymous';
+  const ip = headerList.get('x-forwarded-for')?.split(',')[0]?.trim()
+    || headerList.get('x-real-ip')
+    || 'anonymous';
   const rateLimit = rateLimitMap.get(ip);
 
   if (rateLimit && now - rateLimit.lastReset < RATE_LIMIT_WINDOW) {

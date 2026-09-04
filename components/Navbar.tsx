@@ -33,6 +33,17 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [isOpen]);
+
   const closeMenu = () => setIsOpen(false);
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
@@ -63,6 +74,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-5 md:flex xl:gap-7">
           <Link
             href="/"
+            aria-current={isActive('/') ? 'page' : undefined}
             className={cn(
               'nav-link',
               isActive('/')
@@ -76,6 +88,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
               className={cn(
                 'nav-link',
                 isActive(link.href)
@@ -88,9 +101,9 @@ export default function Navbar() {
           ))}
           <a
             href={`tel:${contactPanel.phone}`}
-            className="flex items-center gap-1.5 font-headline text-sm font-black text-primary transition-all hover:scale-[1.02] hover:text-primary-container mr-1"
+            className="mr-1 flex items-center gap-1.5 font-headline text-sm font-black text-primary transition-[color,transform] hover:scale-[1.02] hover:text-primary-container"
           >
-            <Phone size={14} className="text-secondary" />
+            <Phone aria-hidden="true" size={14} className="text-secondary" />
             <span>{contactPanel.phone}</span>
           </a>
           <Link
@@ -114,7 +127,7 @@ export default function Navbar() {
           )}
           onClick={() => setIsOpen((value) => !value)}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
         </button>
       </div>
 
@@ -127,6 +140,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
                     onClick={closeMenu}
                     className={cn(
                       'mobile-nav-link',

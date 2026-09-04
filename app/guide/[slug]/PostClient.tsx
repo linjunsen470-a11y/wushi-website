@@ -23,7 +23,7 @@ const subtleFadeProps = {
 
 export default function PostClient({ post, relatedPosts }: PostClientProps) {
   return (
-    <main className="min-h-screen bg-surface">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface">
       <Navbar />
       
       {/* Article Header */}

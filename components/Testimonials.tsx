@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import { testimonials } from '@/lib/site-data';
 import { Quote } from 'lucide-react';
@@ -25,10 +23,10 @@ export default function Testimonials() {
               delay={idx * 0.1}
               duration={0.6}
               direction="none"
-              className="editorial-card !p-10 flex flex-col justify-between group hover:border-primary/20 transition-all"
+              className="editorial-card !p-10 flex flex-col justify-between group hover:border-primary/20 transition-[border-color,box-shadow]"
             >
               <div>
-                <Quote className="text-primary/10 mb-8 group-hover:text-primary/20 transition-colors" size={48} />
+                <Quote aria-hidden="true" className="text-primary/10 mb-8 group-hover:text-primary/20 transition-colors" size={48} />
                 <p className="text-lg leading-relaxed text-on-surface-variant font-medium">
                   {item.content}
                 </p>

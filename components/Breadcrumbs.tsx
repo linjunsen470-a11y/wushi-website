@@ -34,7 +34,7 @@ export default function Breadcrumbs({ items }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
       />
       <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs text-on-surface-variant/70 font-medium">
         <Link

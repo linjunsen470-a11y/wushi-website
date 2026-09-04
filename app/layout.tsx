@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import FloatingContact from '@/components/FloatingContact';
 import JsonLd from '@/components/JsonLd';
@@ -11,7 +11,18 @@ export const metadata: Metadata = {
     template: '%s | 重庆鑫龙堂舞狮',
   },
   description:
-    '重庆鑫龙堂舞狮是面向重庆及西南地区的专业舞狮演出服务团队。提供开业庆典、商场活动、婚礼宴会、品牌发布等各类高标准舞狮演艺，以丰富的商业综合体执行经验与严谨的现场纪律为活动增色。',
+    '重庆鑫龙堂舞狮是面向重庆及西南地区的舞狮演出服务团队。提供开业庆典、商场活动、婚礼宴会和品牌发布等舞狮演艺，并根据场地要求配合活动流程。',
+  applicationName: '重庆鑫龙堂舞狮',
+  category: '舞狮演出服务',
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     type: 'website',
     locale: 'zh_CN',
@@ -28,10 +39,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '重庆鑫龙堂舞狮 | 专业舞狮演出服务团队',
-    description: '重庆及西南地区专业舞狮演艺服务商，提供开业庆典、商演路演、婚礼宴会舞狮表演，流程严谨，交付稳定。',
     images: ['https://www.cqwushi.com/og-image.webp'],
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#fffdfa',
+  colorScheme: 'light',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -44,6 +60,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-[#fff8ef] text-[#1e1b13] font-body selection:bg-[#b22222] selection:text-white overflow-x-hidden"
         suppressHydrationWarning
       >
+        <a href="#main-content" className="skip-link">
+          跳到主要内容
+        </a>
         <Script id="baidu-tongji-init" strategy="afterInteractive">
           {`
             window._hmt = window._hmt || [];

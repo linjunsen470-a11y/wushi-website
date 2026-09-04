@@ -17,7 +17,7 @@ const subtleFadeProps = {
 
 export default function SolutionsPage() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <SubpageHero
         eyebrow="演出场景方案 —— SOLUTIONS"

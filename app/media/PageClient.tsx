@@ -34,7 +34,7 @@ export default function MediaPage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <SubpageHero
         eyebrow="真实影像展示 / MEDIA"
@@ -134,9 +134,9 @@ export default function MediaPage() {
         <div className="shell">
           <motion.div {...subtleFadeProps} className="mb-12 max-w-3xl">
             <span className="section-eyebrow text-secondary">官方自媒体门户</span>
-            <h2 className="page-section-title mt-6">随时解锁海量现场最新素材</h2>
+            <h2 className="page-section-title mt-6">查看更多近期演出素材</h2>
             <p className="mt-5 text-lg font-medium leading-8 text-on-surface-variant">
-              欢迎访问我们的抖音与小红书官方主页。我们将持续更新未加修饰的高清图文及现场实拍，为您策划完美活动提供最具参考价值的创意与灵感。
+              欢迎访问我们的抖音与小红书主页。我们会持续更新现场图文与演出实拍，帮助您了解不同场地和活动流程的实际效果。
             </p>
           </motion.div>
 
@@ -177,7 +177,8 @@ export default function MediaPage() {
                       <p className="mt-2 text-sm leading-6 text-on-surface-variant/85">{channel.helperText}</p>
 
                       <div className="mt-4 flex flex-wrap gap-2">
-                        <button
+                      <button
+                        type="button"
                           onClick={() => handleCopy(channel.value, channel.id)}
                           className={cn(
                             'inline-flex items-center gap-2 rounded-[0.9rem] border px-4 py-2.5 text-[11px] font-black transition-colors',

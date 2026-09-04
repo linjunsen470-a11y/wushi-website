@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { serviceCards } from '@/lib/site-data';
 import { FadeIn } from '@/components/animations/FadeIn';
 
@@ -17,7 +18,7 @@ export default function ServiceGrid() {
           </div>
           <div className="max-w-xl">
             <p className="body-copy text-on-surface-variant">
-              开业、街上转悠、喜宴——这三样做得最多，套路也熟。
+              开业、商场巡游和喜宴，是团队常年执行的三类项目。
             </p>
             <p className="mt-4 text-xs font-black tracking-widest text-primary uppercase">
               基础演出服务 ¥1,500 元起，欢迎咨询定制方案
@@ -32,6 +33,7 @@ export default function ServiceGrid() {
               delay={idx * 0.15}
               className="hover-lift overflow-hidden rounded-[2rem] bg-surface-container-low h-full"
             >
+              <Link href={service.href} className="block h-full">
               <article className="h-full flex flex-col">
                 <div className="relative aspect-[5/4]">
                   <Image
@@ -61,6 +63,7 @@ export default function ServiceGrid() {
                   </div>
                 </div>
               </article>
+              </Link>
             </FadeIn>
           ))}
         </div>

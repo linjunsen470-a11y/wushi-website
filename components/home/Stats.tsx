@@ -17,7 +17,7 @@ export default function Stats() {
           <div className="mt-10">
             <Link
               href="/contact"
-              className="button-primary group relative inline-flex overflow-hidden px-8 py-3.5 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-all hover:-translate-y-1 hover:bg-primary-container"
+              className="button-primary group relative inline-flex overflow-hidden px-8 py-3.5 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-[color,background-color,box-shadow,transform] hover:-translate-y-1 hover:bg-primary-container"
             >
               <span className="relative z-10">免费定制专属演出方案</span>
               <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />

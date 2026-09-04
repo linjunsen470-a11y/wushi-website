@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: '2. 预订与支付政策',
-    content: `为保证演出档期，客户需在确认方案后支付约定的定金。余款应在演出当天现场执行完毕后即刻结清，或按双方约定的支付周期执行。如因客户原因单方面取消活动，定金将视情况作为违约金不予退还。`,
+    content: `客户在确认方案后，按双方约定支付定金以确认演出档期。余款在演出结束后结清，或按双方约定的支付周期执行。活动取消、改期及定金处理方式，以双方书面确认的方案或合同为准。`,
   },
   {
     title: '3. 现场执行与配合',
@@ -31,7 +31,7 @@ const sections = [
 
 export default function TermsClient() {
   return (
-    <main className="min-h-screen bg-surface">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface">
       <Navbar />
       <SubpageHero
         eyebrow="法律条款"
@@ -61,7 +61,7 @@ export default function TermsClient() {
                     </span>
                     {section.title}
                   </h2>
-                  <div className="mt-4 h-px w-12 bg-secondary/30 transition-all group-hover:w-20" />
+                  <div className="mt-4 h-px w-12 bg-secondary/30 transition-[width] group-hover:w-20" />
                   <p className="mt-6 text-lg leading-relaxed text-on-surface-variant font-medium">
                     {section.content}
                   </p>

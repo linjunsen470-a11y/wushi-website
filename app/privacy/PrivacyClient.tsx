@@ -31,7 +31,7 @@ const sections = [
 
 export default function PrivacyClient() {
   return (
-    <main className="min-h-screen bg-surface">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface">
       <Navbar />
       <SubpageHero
         eyebrow="隐私保障"
@@ -61,7 +61,7 @@ export default function PrivacyClient() {
                     </span>
                     {section.title}
                   </h2>
-                  <div className="mt-4 h-px w-12 bg-secondary/30 transition-all group-hover:w-20" />
+                  <div className="mt-4 h-px w-12 bg-secondary/30 transition-[width] group-hover:w-20" />
                   <p className="mt-6 text-lg leading-relaxed text-on-surface-variant font-medium">
                     {section.content}
                   </p>

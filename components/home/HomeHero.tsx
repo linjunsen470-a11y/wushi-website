@@ -1,8 +1,5 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'motion/react';
 import { brand, homeShowcase } from '@/lib/site-data';
 
 const heroPillars = ['商场开业', '品牌路演', '企业晚宴 / 婚礼喜宴', '重庆本地执行'];
@@ -26,22 +23,17 @@ export default function HomeHero() {
 
       <div className="shell relative flex min-h-[90vh] items-center pt-28 pb-14 md:pt-32 md:pb-20">
         <div className="w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-            className="relative z-10 max-w-[62rem]"
-          >
+          <div className="relative z-10 max-w-[62rem]">
             <span className="mb-6 inline-flex items-center border-l-2 border-[#caa66a] pl-3 text-[0.78rem] font-semibold tracking-[0.18em] text-[#efe3cf] drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
               重庆本地商业活动舞狮执行团队
             </span>
-            <h1 className="page-hero-title text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
+            <h1 className="page-hero-title !max-w-[60rem] text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
               西南地区专业舞狮团队
               <br />
               专注庆典、商演与婚礼宴会
             </h1>
             <p className="page-lead mt-10 text-white/94 md:text-[1.12rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              {brand.name} 专注重庆及西南地区的开业剪彩、商演路演和宴会舞狮。我们以规范的礼仪配合、精准的动作衔接与热烈的现场氛围，为您的活动带来专业精彩的舞狮演艺。
+              {brand.name} 专注重庆及西南地区的开业剪彩、商演路演和宴会舞狮。我们会根据礼仪流程、场地动线和活动时间安排演出，营造热烈有序的现场氛围。
             </p>
             <div className="mt-11 flex flex-wrap gap-3">
               {heroPillars.map((item) => (
@@ -56,22 +48,22 @@ export default function HomeHero() {
             <div className="mt-12 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="button-primary group relative overflow-hidden px-8 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-all hover:-translate-y-1 hover:bg-primary-container"
+                className="button-primary group relative overflow-hidden px-8 shadow-[0_18px_52px_rgba(163,0,17,0.32)] transition-[color,background-color,box-shadow,transform] hover:-translate-y-1 hover:bg-primary-container"
               >
                 <span className="relative z-10">免费获取演出方案</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/18 transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
               <Link
                 href="/cases"
-                className="button-secondary border-white/16 bg-white/6 px-8 text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-on-surface"
+                className="button-secondary border-white/16 bg-white/6 px-8 text-white backdrop-blur-md transition-[color,background-color,border-color,transform] hover:-translate-y-1 hover:bg-white hover:text-on-surface"
               >
                 看真实落地案例
               </Link>
             </div>
             <p className="mt-6 text-xs font-black tracking-[0.2em] text-[#caa66a] uppercase drop-shadow-sm">
-              📅 节假日与周末为预订高峰期，请提前预约档期以确保服务品质。
+              📅 节假日与周末档期较紧，建议提前咨询并确认安排。
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
     </header>

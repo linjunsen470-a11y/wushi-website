@@ -16,7 +16,7 @@ const subtleFadeProps = {
 
 export default function FaqPage() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <SubpageHero
         eyebrow="常见问题解答 / FAQ"
@@ -79,7 +79,7 @@ export default function FaqPage() {
                     <details 
                       key={item.question} 
                       open={itemIndex === 0} 
-                      className="group overflow-hidden rounded-[1rem] border border-outline-variant/30 transition-all duration-300 open:border-primary/20 open:bg-primary/[0.02]"
+                      className="group overflow-hidden rounded-[1rem] border border-outline-variant/30 transition-[background-color,border-color] duration-300 open:border-primary/20 open:bg-primary/[0.02]"
                     >
                       <summary className="flex cursor-pointer list-none items-center justify-between px-8 py-6 font-headline text-lg font-black text-on-surface hover:bg-surface-container-low group-open:hover:bg-transparent">
                         <span>{item.question}</span>

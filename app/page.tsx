@@ -10,13 +10,14 @@ import { getAllGuidePosts } from '@/lib/guide';
 import HomeHero from '@/components/home/HomeHero';
 import ServiceGrid from '@/components/home/ServiceGrid';
 import Stats from '@/components/home/Stats';
+import Gallery from '@/components/home/Gallery';
 import LatestGuides from '@/components/home/LatestGuides';
 
 export const metadata: Metadata = {
   title: {
     absolute: '重庆鑫龙堂舞狮 | 西南专业舞狮演出团队_开业醒狮_商演路演_婚礼宴会',
   },
-  description: '重庆鑫龙堂舞狮队，提供开业剪彩、商场路演、企业年会及喜宴舞狮。拥有千场商演执行经验，现场流程严谨，服装道具整洁，欢迎联系确认演出档期。',
+  description: '重庆鑫龙堂舞狮队，提供开业剪彩、商场路演、企业年会及喜宴舞狮。团队拥有多年商演执行经验，注重现场流程与服装道具状态，欢迎联系确认演出档期。',
   alternates: {
     canonical: 'https://www.cqwushi.com',
   },
@@ -32,12 +33,13 @@ export default function Page() {
   const latestGuides = getAllGuidePosts().slice(0, 3);
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <HomeHero />
       <Stats />
       <LogoWall />
       <ServiceGrid />
+      <Gallery />
       <LatestGuides posts={latestGuides} />
       <Testimonials />
       <ContactCTA />

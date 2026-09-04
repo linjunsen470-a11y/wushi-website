@@ -21,7 +21,7 @@ export default function CasesPage() {
   const restCases = caseStudies.slice(1);
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <SubpageHero
         eyebrow="真实案例名录 —— CASE STUDIES"
@@ -66,7 +66,7 @@ export default function CasesPage() {
               现场实例与执行细节
             </h2>
             <p className="body-copy text-xl text-on-surface-variant leading-relaxed font-medium">
-              根据中庭、宴会厅、户外广场等不同场地的空间特点，合理配置狮队规模与表演环节，确保现场动线流畅与演出效果。
+              根据中庭、宴会厅、户外广场等不同场地的空间特点，合理配置狮队规模与表演环节，兼顾现场动线与演出效果。
             </p>
           </motion.div>
           
@@ -82,9 +82,9 @@ export default function CasesPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + idx * 0.1, duration: 0.8 }}
-                className={`editorial-card hover-lift flex items-center gap-8 group transition-all duration-500 ${metric.offset} max-w-md w-full !p-8`}
+                className={`editorial-card hover-lift flex items-center gap-8 group ${metric.offset} max-w-md w-full !p-8`}
               >
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.25rem] bg-secondary/5 text-secondary ring-1 ring-secondary/20 transition-all duration-500 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white group-hover:ring-secondary shadow-sm">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.25rem] bg-secondary/5 text-secondary ring-1 ring-secondary/20 transition-[color,background-color,box-shadow,transform] duration-500 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white group-hover:ring-secondary shadow-sm">
                   <metric.icon size={28} strokeWidth={1.5} />
                 </div>
                 <p className="font-headline text-xl font-black tracking-tight text-on-surface">

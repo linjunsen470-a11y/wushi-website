@@ -17,7 +17,7 @@ const subtleFadeProps = {
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <SubpageHero
         eyebrow="服务项目 —— SERVICES"
@@ -48,7 +48,7 @@ export default function ServicesPage() {
             </div>
             <div className="rounded-[1.75rem] bg-secondary-container px-6 py-6 text-on-secondary-container">
               <p className="mt-1 text-sm leading-relaxed font-bold">
-                我们坚持定期更新道具并维持高强度日常排练，确保每一次现场演出动作平稳、节奏齐整、视觉质感优异。
+                我们会定期检查和更新道具，并保持日常排练，力求现场动作平稳、节奏齐整、道具状态良好。
               </p>
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function ServicesPage() {
                 open={index === 0} 
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: index * 0.1 }}
-                className="group overflow-hidden rounded-[1.6rem] bg-surface-container-low border border-transparent transition-all duration-300 open:bg-white open:border-outline-variant/30 open:premium-shadow"
+                className="group overflow-hidden rounded-[1.6rem] bg-surface-container-low border border-transparent transition-[background-color,border-color,box-shadow] duration-300 open:bg-white open:border-outline-variant/30 open:premium-shadow"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between px-10 py-8 font-headline text-xl font-black text-on-surface hover:text-primary transition-colors">
                   <span>{item.question}</span>

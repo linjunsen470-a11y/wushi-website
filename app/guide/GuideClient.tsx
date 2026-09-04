@@ -23,7 +23,7 @@ interface GuideClientProps {
 
 export default function GuideClient({ initialPosts }: GuideClientProps) {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <SubpageHero
         eyebrow="预订指南 —— GUIDE"
@@ -76,7 +76,7 @@ export default function GuideClient({ initialPosts }: GuideClientProps) {
                 key={post.slug}
                 {...subtleFadeProps}
                 transition={{ ...subtleFadeProps.transition, delay: index * 0.08 }}
-                className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_60px_-30px_rgba(30,27,19,0.35)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_60px_-30px_rgba(30,27,19,0.35)]"
               >
                 <Link href={`/guide/${post.slug}`} className="absolute inset-0 z-10">
                   <span className="sr-only">查看指南：{post.title}</span>

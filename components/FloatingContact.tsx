@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check, Copy, MessageCircle, Phone, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { contactPanel } from '@/lib/site-data';
 
 export default function FloatingContact() {
+  const pathname = usePathname();
   const [showPopup, setShowPopup] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -22,8 +24,15 @@ export default function FloatingContact() {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
+  if (pathname === '/contact' || pathname.startsWith('/landing/')) {
+    return null;
+  }
+
   return (
-    <div className="fixed bottom-8 right-5 z-[100] md:bottom-10 md:right-10">
+    <div className="fixed bottom-[max(2rem,env(safe-area-inset-bottom))] right-5 z-[100] md:bottom-10 md:right-10">
+      <p className="sr-only" role="status" aria-live="polite">
+        {copiedId ? '微信号已复制' : ''}
+      </p>
       <div className="flex flex-col items-end gap-3">
         <div className="flex flex-col gap-3 md:hidden">
           <Link
@@ -31,7 +40,7 @@ export default function FloatingContact() {
             className="flex h-14 w-14 items-center justify-center rounded-[1.05rem] bg-primary text-white shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-colors hover:bg-primary-container"
             aria-label="前往联系页"
           >
-            <MessageCircle size={22} />
+            <MessageCircle aria-hidden="true" size={22} />
           </Link>
         </div>
 
@@ -51,11 +60,12 @@ export default function FloatingContact() {
                     <p className="mt-2 text-sm leading-6 text-on-surface-variant">{contactPanel.responseTime}</p>
                   </div>
                   <button
+                    type="button"
                     onClick={() => setShowPopup(false)}
                     className="rounded-[0.8rem] p-2 text-on-surface-variant/60 transition-colors hover:bg-surface-container-low hover:text-primary"
                     aria-label="关闭咨询浮层"
                   >
-                    <X size={16} />
+                    <X aria-hidden="true" size={16} />
                   </button>
                 </div>
 
@@ -65,7 +75,7 @@ export default function FloatingContact() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-[0.85rem] bg-white/16">
-                      <Phone size={18} />
+                      <Phone aria-hidden="true" size={18} />
                     </div>
                     <div>
                       <p className="text-[11px] font-black tracking-[0.16em] text-white/65">{phoneChannel.label}</p>
@@ -88,6 +98,7 @@ export default function FloatingContact() {
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     <button
+                      type="button"
                       onClick={() => handleCopy(wechatChannel.value, wechatChannel.id)}
                       className={cn(
                         'inline-flex items-center gap-2 rounded-[0.85rem] border px-3 py-2 text-[11px] font-black transition-colors',
@@ -96,7 +107,7 @@ export default function FloatingContact() {
                           : 'border-outline-variant/30 bg-white text-on-surface hover:border-primary/30 hover:text-primary'
                       )}
                     >
-                      {copiedId === wechatChannel.id ? <Check size={12} /> : <Copy size={12} />}
+                      {copiedId === wechatChannel.id ? <Check aria-hidden="true" size={12} /> : <Copy aria-hidden="true" size={12} />}
                       <span>{copiedId === wechatChannel.id ? '已复制微信号' : '复制微信号'}</span>
                     </button>
                     <Link
@@ -112,18 +123,19 @@ export default function FloatingContact() {
           </AnimatePresence>
 
           <motion.button
+            type="button"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             onClick={() => setShowPopup((value) => !value)}
             className={cn(
-              'group relative flex h-14 w-14 items-center justify-center rounded-[1.05rem] shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-all duration-300',
+              'group relative flex h-14 w-14 items-center justify-center rounded-[1.05rem] shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-[color,background-color,box-shadow,transform] duration-300',
               showPopup
                 ? 'bg-primary-container text-white'
                 : 'bg-primary text-white hover:bg-primary-container'
             )}
             aria-label="联系我们"
           >
-            <MessageCircle size={22} />
+            <MessageCircle aria-hidden="true" size={22} />
             <span className="absolute right-full mr-4 hidden whitespace-nowrap rounded-lg border border-outline-variant/35 bg-surface-container-highest px-4 py-2 text-xs font-black tracking-widest text-on-surface shadow-xl opacity-0 transition-opacity group-hover:opacity-100 xl:block">
               联系我们
             </span>

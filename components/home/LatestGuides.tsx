@@ -40,7 +40,7 @@ export default function LatestGuides({ posts }: LatestGuidesProps) {
             <FadeIn
               key={post.slug}
               delay={index * 0.12}
-              className="group h-full overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_60px_-30px_rgba(30,27,19,0.35)]"
+              className="group h-full overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_60px_-30px_rgba(30,27,19,0.35)]"
             >
               <article className="flex h-full flex-col">
                 <Link href={`/guide/${post.slug}`} className="block">

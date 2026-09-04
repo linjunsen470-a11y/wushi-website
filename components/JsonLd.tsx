@@ -1,9 +1,10 @@
-import { brand, legalInfo } from '@/lib/site-data';
+import { brand, legalInfo, serviceCards } from '@/lib/site-data';
 
 export default function JsonLd() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': 'https://www.cqwushi.com/#business',
     'name': brand.name,
     'description': brand.tagline,
     'legalName': legalInfo.companyName,
@@ -25,42 +26,38 @@ export default function JsonLd() {
       'postalCode': '400000',
       'addressCountry': 'CN',
     },
-    'geo': {
-      '@type': 'GeoCoordinates',
-      'latitude': 29.5630,
-      'longitude': 106.5516,
-    },
-    'serviceArea': {
-      '@type': 'GeoCircle',
-      'geoMidpoint': {
-        'latitude': 29.56,
-        'longitude': 106.55,
-      },
-      'geoRadius': '100000',
-    },
-    'priceRange': '基础双狮约¥1500起，高桩与群狮按场地和流程报价',
-    'openingHoursSpecification': [
-      {
-        '@type': 'OpeningHoursSpecification',
-        'dayOfWeek': [
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-          'Sunday',
-        ],
-        'opens': '00:00',
-        'closes': '23:59',
-      },
+    'areaServed': [
+      { '@type': 'City', 'name': '重庆市' },
+      { '@type': 'AdministrativeArea', 'name': '中国西南地区' },
     ],
+    'priceRange': '¥¥',
+    'currenciesAccepted': 'CNY',
+    'contactPoint': {
+      '@type': 'ContactPoint',
+      'telephone': legalInfo.phone,
+      'contactType': 'sales',
+      'areaServed': 'CN',
+      'availableLanguage': ['zh-CN'],
+    },
+    'hasOfferCatalog': {
+      '@type': 'OfferCatalog',
+      'name': '舞狮演出服务',
+      'itemListElement': serviceCards.map((service) => ({
+        '@type': 'Offer',
+        'url': `https://www.cqwushi.com${service.href}`,
+        'itemOffered': {
+          '@type': 'Service',
+          'name': service.title,
+          'description': service.description,
+        },
+      })),
+    },
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   );
 }

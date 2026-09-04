@@ -40,7 +40,7 @@ export default function FeatureCards() {
             >
               <Link
                 href={item.href}
-                className="editorial-card group block h-full border border-transparent transition-all hover:border-primary/20"
+                className="editorial-card group block h-full border border-transparent transition-[border-color,box-shadow] hover:border-primary/20"
               >
                 <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-[1rem] bg-primary/5 text-primary transition-colors duration-500 group-hover:bg-primary group-hover:text-white">
                   <div className="h-6 w-6 rounded-full border-2 border-current" />

@@ -8,7 +8,7 @@ export default function LogoWall() {
         <div className="text-center mb-12">
           <span className="section-eyebrow text-secondary">合作伙伴</span>
           <h2 className="font-headline text-2xl font-black text-on-surface mt-2 tracking-tight">
-            深耕重庆及西南区域，服务众多头部商业项目
+            深耕重庆及西南区域，积累多类商业项目执行经验
           </h2>
         </div>
         
@@ -20,10 +20,10 @@ export default function LogoWall() {
               duration={0.5}
               direction="up"
               distance={10}
-              className="flex items-center justify-center p-8 rounded-[1.2rem] bg-surface-container-low border border-outline-variant/15 hover:border-primary/20 transition-all group relative overflow-hidden shadow-sm hover:shadow-md"
+              className="flex items-center justify-center p-8 rounded-[1.2rem] bg-surface-container-low border border-outline-variant/15 hover:border-primary/20 transition-[border-color,box-shadow] group relative overflow-hidden shadow-sm hover:shadow-md"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="font-headline text-lg font-black text-on-surface/40 group-hover:text-primary group-hover:scale-105 transition-all tracking-tighter text-center uppercase">
+              <span className="font-headline text-lg font-black text-on-surface/40 group-hover:text-primary group-hover:scale-105 transition-[color,transform] tracking-tighter text-center uppercase">
                 {partner}
               </span>
             </FadeIn>

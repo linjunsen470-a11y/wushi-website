@@ -16,7 +16,7 @@ const subtleFadeProps = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
       <header className="relative overflow-hidden bg-surface py-16 md:py-24">
         <div className="shell grid gap-16 lg:grid-cols-[1fr_1fr] lg:items-center">
@@ -38,14 +38,14 @@ export default function AboutPage() {
               <p className="page-lead text-on-surface-variant font-medium leading-relaxed">
                 融汇传统醒狮艺术与现代商业活动规范，我们致力于提供兼具民俗文化内涵与专业执行标准的演出服务。
                 <br className="hidden md:block" />
-                无论是地方传统庙会，还是地标级商业中心的开业庆典，我们均能精准把握活动节奏，确保演出圆满成功。
+                无论是地方传统庙会，还是地标级商业中心的开业庆典，我们都会提前核对活动流程，做好现场配合。
               </p>
             </div>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {[
                 ['经验丰富', '曾多次进入万象城、IFS、来福士、尼依格罗酒店等大型商业体及高档酒店执行，熟知进场报批与安全配合流程。'],
                 ['装备精良', '定期更新狮头与服饰道具，保障上镜及现场视觉质感。'],
-                ['真实案例', '官方网站展示的全部图片和视频均来自团队真实演出现场，无任何虚假素材。'],
+                ['真实案例', '官方网站展示的图片和视频均来自团队实际演出现场。'],
               ].map(([title, text], idx) => (
                 <motion.div
                   key={title}
@@ -86,7 +86,7 @@ export default function AboutPage() {
               全场景演出经验
             </h2>
             <p className="body-copy text-lg text-on-surface-variant leading-relaxed font-medium mt-6">
-              针对不同场合（如商场路演的聚客互动、开业庆典的庄重体面、商务晚宴的喜庆祥和），量身定制表演编排。前期对接清晰，确保现场执行无纰漏。
+              针对不同场合（如商场路演的聚客互动、开业庆典的庄重体面、商务晚宴的喜庆祥和），安排相应的表演编排。前期核对流程与场地要求，减少现场执行偏差。
             </p>
           </motion.div>
           <div className="grid gap-10 md:grid-cols-3">

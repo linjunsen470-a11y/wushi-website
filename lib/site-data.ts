@@ -156,16 +156,18 @@ export const teamMembers = [
 export const serviceCards = [
   {
     title: '开业醒狮',
+    href: '/landing/chongqing-kaiye-wushi',
     subtitle: '门店、商场、展馆',
     description:
       '服务适用于商场、门店和展馆开业。我们不仅提供精彩的舞狮表演，还会按照仪式流程协助剪彩、点睛和揭幕，让开业现场更有仪式感。',
     image: museumOpening,
     altText: '大型展馆开馆仪式上的剪彩与点睛舞狮表演环节',
-    points: ['标准礼仪配合', '流程精准卡点', '拉升现场人气'],
+    points: ['标准礼仪配合', '流程时间核对', '现场互动营造'],
   },
   {
     title: '商演路演',
-    subtitle: '街上、商场里转悠',
+    href: '/landing/chongqing-shangchang-wushi',
+    subtitle: '沿街、商场巡游',
     description:
       '适合品牌路演、快闪店或街区巡游。通过高频度的互动和视觉冲击，快速吸引路人围观，并为后续传播留下大量出彩的视频素材。',
     image: mallEntrance,
@@ -174,6 +176,7 @@ export const serviceCards = [
   },
   {
     title: '宴会婚礼',
+    href: '/landing/chongqing-hunli-wushi',
     subtitle: '婚嫁、寿酒、乔迁',
     description:
       '适合婚礼、寿宴、乔迁、答谢宴和企业庆功宴等以喜庆氛围为主的重要场合。',
@@ -231,7 +234,7 @@ export const caseStudies = [
     altText: '重庆舞狮演出团队参演万象城周年庆中庭舞狮聚客活动实录',
     description:
       '结合中庭的空间局限，量身制定了演出及采青动线，与现场安保协调好防护围挡，并在精彩环节做定格拍摄配合，视频素材深受客户好评。',
-    metrics: ['现场人气爆棚', '对联揭幕一次性成型', '拍摄素材当天可直接宣发'],
+    metrics: ['现场互动氛围热烈', '对联揭幕按流程完成', '拍摄素材便于后续宣传'],
   },
   {
     title: 'Haier 海尔年度盛典',
@@ -243,7 +246,7 @@ export const caseStudies = [
     altText: '重庆本地鑫龙堂舞狮服务海尔集团年度盛典舞台舞狮开场实景',
     description:
       '舞台空间紧凑，紧密配合现场灯光及音响系统。与主持人精准对表报幕与起鼓时间，在颁奖致辞前圆满完成开场，确保后续流程不耽误。',
-    metrics: ['与主持完美衔接', '灯光效果配合紧密', '舞台演出零失误'],
+    metrics: ['与主持流程顺畅衔接', '灯光效果配合紧密', '按既定流程完成演出'],
   },
   {
     title: '精品酒店中式婚礼',
@@ -274,7 +277,7 @@ export const caseStudies = [
 export const teamHighlights = [
   {
     title: '重庆本土执行经验',
-    text: '团队深耕重庆本地多年。对万象城、北城天街、来福士等各大商超的通道、货梯及物业报备流程了如指掌，无需客户在进出场细节上操心。',
+    text: '团队深耕重庆本地多年，熟悉万象城、北城天街、来福士等商超的通道、货梯及物业报备流程，可协助客户提前确认进出场细节。',
     image: teamFormation,
     altText: '舞狮团队室外演出合影',
   },
@@ -286,7 +289,7 @@ export const teamHighlights = [
   },
   {
     title: '坚持真实影像交付',
-    text: '网站及宣传册展示的图文、视频均来自本队过往演出的现场实拍，谢绝对接虚假样片与虚假承诺。',
+    text: '网站及宣传册展示的图文、视频均来自本队过往演出的现场实拍，可用于了解实际演出与执行情况。',
     image: sportsParty,
     altText: '舞狮演出现场抓拍',
   },
@@ -322,7 +325,7 @@ export const homepageSections = {
   media: {
     title: '现场吸睛，助力品牌传播',
     text:
-      '喜庆醒狮演出自带流量与人气，能够快速引发现场观众拍照并自发进行短视频社交传播，为品牌带来持久的二次营销素材。',
+      '喜庆醒狮演出具有鲜明的视觉和声音特点，容易吸引现场观众拍照或录制视频，也便于品牌整理后续宣传素材。',
     imageA: openingRow,
     imageAAlt: '重庆商业群舞狮同台列阵震撼大场面开场演出实况',
     imageB: stageAudience,
@@ -333,7 +336,7 @@ export const homepageSections = {
   training: {
     title: '班底稳定，默契配合',
     text:
-      '核心队员长期同台排练，现场配合默契度极高。狮头道具保持清洁美观，且所有演出前均经过流程细化排演，确保活动稳定交付。',
+      '核心队员长期同台排练，熟悉彼此的动作与节奏。狮头道具保持清洁美观，演出前会核对流程和场地安排，减少现场执行偏差。',
     images: [purpleCrouch, sportsGroup, sportsStack, dragonField],
     imagesAlt: [
       '重庆专业高水平舞狮特技动作定格影像',
@@ -348,7 +351,7 @@ export const contactPanel = {
   phone: '18983662830',
   email: 'service@cqwushi.com',
   wechatId: '18983662830',
-  responseTime: '工作时间内我们将于1小时内快速答复。复杂需求或异地执行可于当天为您出具档期排期与初步方案。',
+  responseTime: '我们会在工作时间内尽快回复。复杂需求或异地执行项目将在核对场地和档期后提供初步方案。',
   address: '团队立足重庆北碚，长期服务于重庆主城九区及周边各区县，涵盖商超开业、品牌路演及喜宴演艺。',
   image: charityBowing,
   altText: '重庆鑫龙堂专业舞狮团队致谢谢幕活动现场',
@@ -436,13 +439,13 @@ export const galleryItems = [
   { src: waterwayOutlet, alt: '重庆文旅小镇与主题乐园庆典定制舞狮文化展示' },
   { src: charityGroup, alt: '重庆社区公益团拜与节庆活动中的民俗舞狮演出' },
   { src: sportsParty, alt: '重庆运动潮牌年度派对特邀联名国风景观舞狮暖场' },
-  { src: dragonMall, alt: '重庆室内大型购物中心超长阵容非遗舞龙大巡游' },
+  { src: dragonMall, alt: '重庆室内大型购物中心舞龙队伍巡游现场' },
   { src: snowShow, alt: '极端雨雪天气下依旧稳定的重庆高水准户外国潮醒狮' },
 ];
 
 export const mediaVideos = [
   {
-    title: '来毕棚沟看非遗演出咯！',
+    title: '毕棚沟户外龙狮演出',
     category: '户外实景',
     bvid: 'BV1KYQcB3EJx',
     poster: snowShow,
@@ -450,20 +453,20 @@ export const mediaVideos = [
     description: '在低气温与复杂户外气候下依然稳定发挥，展示了队伍极佳的耐力与严谨的控场执行标准。',
   },
   {
-    title: '百团大战，一鼓作气！',
+    title: '百人鼓阵现场演出',
     category: '大型演艺',
     bvid: 'BV1J4QwBPENM',
     poster: teamFormation,
     posterAlt: '重庆商演项目大编制百人团队舞狮震撼起鼓开场',
-    description: '百人战鼓大编制震撼开场，鼓点齐整有力，将现场的磅礴气势与视觉张力展现到极致。',
+    description: '百人战鼓大编制开场，鼓点齐整有力，呈现大规模演出的现场气势与视觉效果。',
   },
   {
-    title: '这样的开业现场，不爱都难！',
+    title: '门店开业醒狮现场',
     category: '开业庆典',
     bvid: 'BV1ABDLB3Ej7',
     poster: redCarpet,
     posterAlt: '重庆实体品牌门店开业打造极高人气的红毯迎宾醒狮',
-    description: '紧扣实体门店开业迎宾流程，门口红毯互动聚气纳福，瞬时聚拢客流，营造开门红氛围。',
+    description: '配合实体门店开业迎宾流程，在门口红毯区域进行互动，营造热闹的开业氛围。',
   },
   {
     title: '爱一生，爱一人！',
@@ -480,7 +483,7 @@ export const mediaLogos = ['商场项目', '酒店宴会', '场馆开馆', '企�
 export const mediaHighlights = [
   {
     title: '实拍现场视频',
-    text: '所有视频及图像均为现场摄影机与手机的真实记录，绝无拼凑与过度美化。',
+    text: '所有视频及图像均为现场摄影机与手机记录，可直观了解实际演出情况。',
   },
   {
     title: '演出水准直观',
@@ -495,27 +498,27 @@ export const mediaHighlights = [
 export const solutionPlaybooks = [
   {
     title: '商场周年庆与开业',
-    summary: '专为中大型商超周年庆及开业典礼设计的盛大方案。支持双狮或多狮，可进行剪彩、点睛，并支持楼层巡游聚客。',
+    summary: '适用于中大型商超周年庆及开业典礼。支持双狮或多狮，可配合剪彩、点睛及楼层巡游。',
     image: ifcOpening,
     altText: '商场中庭周年庆舞狮表演',
-    fit: ['包含剪彩、点睛等核心仪式', '需要快速拉升商超现场客流量', '需要高质量短视频及自媒体素材'],
+    fit: ['包含剪彩、点睛等核心仪式', '需要营造商超现场互动氛围', '需要记录短视频及自媒体素材'],
     deliverables: ['协助优化现场执行流程表', '专业领队引导点睛仪式配合', '提供楼层巡游及店内互动'],
   },
   {
     title: '品牌路演与快闪店',
-    summary: '适用于核心商圈或街区快闪店，以灵活高频的近距离互动快速聚拢人群，成为瞩目焦点。',
+    summary: '适用于核心商圈或街区快闪店，通过近距离互动吸引现场人群关注和参与。',
     image: pepsiPromo,
     altText: '品牌快闪店舞狮路演',
     fit: ['场地空间动线灵活多变', '需与围观人群进行高频互动', '作为自媒体短视频拍摄核心内容'],
-    deliverables: ['提供高爆发力及喜感的舞蹈动作', '多频次合影互动配合', '配合固定拍摄机位进行定格表现'],
+    deliverables: ['提供节奏鲜明的舞狮动作', '多频次合影互动配合', '配合固定拍摄机位进行定格表现'],
   },
   {
     title: '企业年会与晚宴',
-    summary: '专为酒店室内宴会、公司年会设计的舞台方案，讲究仪式感、精准卡点及极高的秩序感。',
+    summary: '适用于酒店室内宴会和公司年会，重点核对仪式流程、演出时间与上下场秩序。',
     image: weddingBanquet,
     altText: '酒店年会舞台舞狮开场',
     fit: ['配合主舞台灯光及音响系统', '作为活动开场或压轴的重点节目', '与主持人口播、颁奖等环节紧密衔接'],
-    deliverables: ['提供舞台深度动线配合方案', '人员提前进场对接音响与灯光', '精准掌控起鼓与表演的时长'],
+    deliverables: ['提供舞台动线配合方案', '人员提前进场对接音响与灯光', '按流程控制起鼓与表演时长'],
   },
   {
     title: '中式婚礼与寿宴',
@@ -534,12 +537,12 @@ export const faqSections = [
       {
         question: '第一次咨询需要准备什么信息？',
         answer:
-          '哪天、几点、在哪儿、屋里还是屋外、要几只狮、点睛采青要不要——这几样讲明白，我们好琢磨咋排。',
+          '请提供活动日期、时间、地点、室内外场地、预计舞狮数量，以及是否包含点睛和采青。信息确认后，我们据此安排人员与流程。',
       },
       {
         question: '关于场地，有什么硬性要求吗？',
         answer:
-          '平地演出，地面别坑坑洼洼就行。要上桩的话，得有一块大概 5×5 米的平整地，层高最好 4.5 米以上，不然人站不直。',
+          '平地演出需要地面平整、动线清楚。高桩项目通常需要约 5×5 米的平整区域，层高建议在 4.5 米以上，具体以现场评估为准。',
       },
     ],
   },
@@ -549,12 +552,12 @@ export const faqSections = [
       {
         question: '你们会提前到场吗？',
         answer:
-          '正儿八经的活动，提前一小时左右到。换衣服、试鼓、跟主持最后对一遍。',
+          '正式演出一般提前约一小时到场，完成换装、试鼓，并与主持人再次核对流程。',
       },
       {
         question: '演出服装与道具的新旧程度如何？',
         answer:
-          '狮头狮皮用久了会换。上台前再瞅一眼，掉毛厉害、褪了色的不带——拍出来难看，砸自己招牌。',
+          '狮头、狮皮和服装会定期检查与更新。出发前再次确认外观和使用状态，明显脱毛、褪色或破损的道具不会用于演出。',
       },
     ],
   },

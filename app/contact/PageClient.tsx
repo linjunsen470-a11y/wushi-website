@@ -16,23 +16,12 @@ import {
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { contactPanel } from '@/lib/site-data';
 import { submitContactForm } from '@/app/actions/contact';
 import { cn } from '@/lib/utils';
-
-const formSchema = z.object({
-  projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会/盛典', '婚礼/宴会/喜事', '其他定制项目']),
-  preferredContactMethod: z.enum(['wechat', 'phone']),
-  name: z.string().min(2, '请输入您的称呼').max(50),
-  contact: z.string().min(5, '请输入手机号或微信号').max(100),
-  message: z.string().max(1000).optional(),
-  website: z.string().max(0).optional(),
-});
-
-type FormData = z.infer<typeof formSchema>;
+import { contactFormSchema, type ContactFormData } from '@/lib/contact-schema';
 
 const supportIconMap = {
   douyin: Tv2,
@@ -41,6 +30,7 @@ const supportIconMap = {
 
 export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const {
@@ -48,8 +38,9 @@ export default function ContactPage() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    shouldFocusError: true,
     defaultValues: {
       preferredContactMethod: 'wechat',
     },
@@ -59,8 +50,9 @@ export default function ContactPage() {
   const wechatChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'wechat');
   const wechatQrImage = wechatChannel?.qrFocusImage ?? wechatChannel?.qrImage;
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: ContactFormData) => {
     setSubmitStatus('submitting');
+    setSubmitError('');
 
     try {
       const result = await submitContactForm(data);
@@ -71,9 +63,11 @@ export default function ContactPage() {
         setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
         setSubmitStatus('error');
+        setSubmitError(result.error || '提交失败，请稍后重试，或直接电话联系。');
       }
     } catch {
       setSubmitStatus('error');
+      setSubmitError('网络连接异常，请稍后重试，或直接电话联系。');
     }
   };
 
@@ -84,24 +78,33 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-surface">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface">
       <Navbar />
+      <p className="sr-only" role="status" aria-live="polite">
+        {copiedId ? '已复制到剪贴板' : ''}
+      </p>
 
       <section className="shell section-space">
+        <div className="mb-12 max-w-4xl md:mb-16">
+          <span className="section-eyebrow text-secondary">即刻开启专业合作</span>
+          <h1 className="page-hero-title mt-4 !max-w-5xl !text-[clamp(2.5rem,4.3vw,4.5rem)] text-on-surface !leading-[1.12] tracking-tight">
+            联系电话
+            <br />
+            189-8366-2830
+          </h1>
+          <p className="page-lead mt-6 font-medium text-on-surface-variant">
+            团队立足重庆北碚，服务覆盖重庆及西南地区。承接商场开业、品牌路演、企业年会、婚礼等演艺活动。欢迎来电咨询，我们会根据活动信息核对档期并提供报价。
+          </p>
+        </div>
         <div className="grid gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="premium-shadow overflow-hidden rounded-[1.6rem] border border-outline-variant/10 bg-white"
-          >
+          <div className="premium-shadow overflow-hidden rounded-[1.6rem] border border-outline-variant/10 bg-white">
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
               <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线咨询</p>
-              <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
+              <p className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
                 在线预约与咨询
-              </h2>
+              </p>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                请填写您的活动日期、演出地点及基本需求（如狮队规模、是否需要点睛等），我们的项目经理将在工作日极速与您取得联系。
+                请填写您的活动日期、演出地点及基本需求（如狮队规模、是否需要点睛等），我们的项目经理会在工作时间内尽快与您联系。
               </p>
             </div>
 
@@ -114,15 +117,17 @@ export default function ContactPage() {
               </div>
             </noscript>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 p-8 md:p-10">
-              <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" />
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 p-8 md:p-10" noValidate>
+              <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
                   <label htmlFor="project-type" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
                   <select
                     id="project-type"
                     {...register('projectType')}
-                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    aria-invalid={Boolean(errors.projectType)}
+                    aria-describedby={errors.projectType ? 'project-type-error' : undefined}
+                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   >
                     <option value="">请选择...</option>
@@ -132,7 +137,7 @@ export default function ContactPage() {
                     <option value="婚礼/宴会/喜事">婚礼 / 宴会 / 喜事</option>
                     <option value="其他定制项目">其他定制项目</option>
                   </select>
-                  {errors.projectType ? <p className="ml-1 text-xs font-bold text-primary">{errors.projectType.message}</p> : null}
+                  {errors.projectType ? <p id="project-type-error" className="ml-1 text-xs font-bold text-primary">{errors.projectType.message}</p> : null}
                 </div>
 
                 <div className="space-y-2">
@@ -140,7 +145,7 @@ export default function ContactPage() {
                   <select
                     id="preferred-contact"
                     {...register('preferredContactMethod')}
-                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    className="w-full appearance-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   >
                     <option value="wechat">优先微信</option>
@@ -156,11 +161,14 @@ export default function ContactPage() {
                     id="user-name"
                     type="text"
                     {...register('name')}
+                    autoComplete="name"
                     placeholder="例如：陈先生"
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? 'user-name-error' : undefined}
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   />
-                  {errors.name ? <p className="ml-1 text-xs font-bold text-primary">{errors.name.message}</p> : null}
+                  {errors.name ? <p id="user-name-error" className="ml-1 text-xs font-bold text-primary">{errors.name.message}</p> : null}
                 </div>
 
                 <div className="space-y-2">
@@ -169,11 +177,15 @@ export default function ContactPage() {
                     id="user-contact"
                     type="text"
                     {...register('contact')}
+                    autoComplete="tel"
+                    spellCheck={false}
                     placeholder="方便我们及时联系您"
-                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                    aria-invalid={Boolean(errors.contact)}
+                    aria-describedby={errors.contact ? 'user-contact-error' : undefined}
+                    className="w-full rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   />
-                  {errors.contact ? <p className="ml-1 text-xs font-bold text-primary">{errors.contact.message}</p> : null}
+                  {errors.contact ? <p id="user-contact-error" className="ml-1 text-xs font-bold text-primary">{errors.contact.message}</p> : null}
                 </div>
               </div>
 
@@ -183,13 +195,17 @@ export default function ContactPage() {
                   id="event-message"
                   {...register('message')}
                   rows={5}
+                  autoComplete="off"
                   placeholder="如有日期要求、场地限制、流程要求或预算范围，请在这里说明。"
-                  className="w-full resize-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium transition-all focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? 'event-message-error' : undefined}
+                  className="w-full resize-none rounded-[1rem] border border-outline-variant bg-surface-container-low px-5 py-4 font-medium focus:border-primary focus:ring-4 focus:ring-primary/5 disabled:opacity-50"
                   disabled={submitStatus === 'submitting'}
                 />
+                {errors.message ? <p id="event-message-error" className="ml-1 text-xs font-bold text-primary">{errors.message.message}</p> : null}
               </div>
 
-              <div className="relative pt-2">
+              <div className="relative pt-2" aria-live="polite">
                 <AnimatePresence mode="wait">
                   {submitStatus === 'success' ? (
                     <motion.div
@@ -199,7 +215,7 @@ export default function ContactPage() {
                       exit={{ opacity: 0, y: -10 }}
                       className="flex items-center justify-center gap-3 rounded-[1rem] border border-green-100 bg-green-50 p-6 text-green-700"
                     >
-                      <CheckCircle2 size={24} />
+                      <CheckCircle2 aria-hidden="true" size={24} />
                       <p className="font-bold">需求提交成功，我们会按您选择的方式尽快联系。</p>
                     </motion.div>
                   ) : submitStatus === 'error' ? (
@@ -210,8 +226,8 @@ export default function ContactPage() {
                       exit={{ opacity: 0, y: -10 }}
                       className="flex items-center justify-center gap-3 rounded-[1rem] border border-red-100 bg-red-50 p-6 text-red-700"
                     >
-                      <AlertCircle size={24} />
-                      <p className="font-bold">提交失败，请稍后重试，或直接电话联系。</p>
+                      <AlertCircle aria-hidden="true" size={24} />
+                      <p className="font-bold">{submitError}</p>
                       <button
                         type="button"
                         onClick={() => setSubmitStatus('idle')}
@@ -229,7 +245,7 @@ export default function ContactPage() {
                     >
                       {submitStatus === 'submitting' ? (
                         <>
-                          <Loader2 className="animate-spin" size={20} />
+                          <Loader2 aria-hidden="true" className="animate-spin" size={20} />
                           <span>正在提交...</span>
                         </>
                       ) : (
@@ -239,30 +255,13 @@ export default function ContactPage() {
                   )}
                 </AnimatePresence>
                 <p className="mt-4 text-center text-[11px] font-bold text-on-surface/40">
-                  提交后我们将于工作日极速响应，免费为您出具初步演出配置方案。
+                  提交后我们会在工作时间内尽快回复，并提供初步演出配置建议。
                 </p>
               </div>
             </form>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-10"
-          >
-            <div className="max-w-3xl">
-              <span className="section-eyebrow text-secondary">即刻开启专业合作</span>
-              <h1 className="page-hero-title mt-6 text-on-surface !leading-[1.08] tracking-tight">
-                联系电话
-                <br />
-                189-8366-2830
-              </h1>
-              <p className="page-lead mt-8 font-medium leading-relaxed text-on-surface-variant">
-                团队立足重庆北碚，服务覆盖重庆及西南地区。专业承接商场开业、品牌路演、企业年会、高端婚礼等各类演艺活动。欢迎来电咨询，我们将快速为您核对档期与提供合理报价。
-              </p>
-            </div>
-
+          <div className="space-y-10">
             <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
               {phoneChannel ? (
                 <a
@@ -271,7 +270,7 @@ export default function ContactPage() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[0.95rem] bg-white/16">
-                      <Phone size={22} />
+                      <Phone aria-hidden="true" size={22} />
                     </div>
                     <div>
                       <p className="text-[11px] font-black tracking-[0.18em] text-white/68">快速咨询</p>
@@ -299,6 +298,7 @@ export default function ContactPage() {
                       </p>
                       <p className="mt-3 text-sm leading-7 text-on-surface-variant">{wechatChannel.description}</p>
                       <button
+                        type="button"
                         onClick={() => handleCopy(wechatChannel.value, wechatChannel.id)}
                         className={cn(
                           'mt-4 inline-flex items-center gap-2 rounded-[0.95rem] border px-4 py-2.5 text-[11px] font-black transition-colors',
@@ -307,7 +307,7 @@ export default function ContactPage() {
                             : 'border-outline-variant/30 bg-white text-on-surface hover:border-primary/30 hover:text-primary'
                         )}
                       >
-                        {copiedId === wechatChannel.id ? <Check size={13} /> : <Copy size={13} />}
+                        {copiedId === wechatChannel.id ? <Check aria-hidden="true" size={13} /> : <Copy aria-hidden="true" size={13} />}
                         <span>{copiedId === wechatChannel.id ? '已复制微信号' : '复制微信号'}</span>
                       </button>
                     </div>
@@ -324,12 +324,12 @@ export default function ContactPage() {
                     主流视频平台官方号
                   </h2>
                   <p className="mt-3 text-base leading-8 text-on-surface-variant">
-                    您也可以在抖音、小红书等平台搜索并关注我们，查看海量近期演出的真实实拍记录。
+                    您也可以在抖音、小红书等平台搜索并关注我们，查看近期演出的现场实拍记录。
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3 rounded-[1rem] bg-surface-container-low px-4 py-3 text-sm text-on-surface-variant">
-                  <MapPin size={16} className="text-primary" />
+                  <MapPin aria-hidden="true" size={16} className="text-primary" />
                   <span>{contactPanel.address}</span>
                 </div>
               </div>
@@ -356,13 +356,14 @@ export default function ContactPage() {
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
                             <div className="flex h-8 w-8 items-center justify-center rounded-[0.8rem] bg-white text-on-surface">
-                              <Icon size={15} />
+                              <Icon aria-hidden="true" size={15} />
                             </div>
                             <p className="font-headline text-lg font-black text-on-surface">{channel.label}</p>
                           </div>
                           <p className="mt-3 text-sm leading-6 text-on-surface-variant">{channel.description}</p>
                           <p className="mt-2 text-xs leading-6 text-on-surface-variant/80">{channel.helperText}</p>
                           <button
+                            type="button"
                             onClick={() => handleCopy(channel.value, channel.id)}
                             className={cn(
                               'mt-4 inline-flex items-center gap-2 rounded-[0.95rem] border px-4 py-2.5 text-[11px] font-black transition-colors',
@@ -371,7 +372,7 @@ export default function ContactPage() {
                                 : 'border-outline-variant/25 bg-white text-on-surface hover:border-primary/20 hover:text-primary'
                             )}
                           >
-                            {copiedId === channel.id ? <Check size={13} /> : <Copy size={13} />}
+                            {copiedId === channel.id ? <Check aria-hidden="true" size={13} /> : <Copy aria-hidden="true" size={13} />}
                             <span>{copiedId === channel.id ? '已复制平台 ID' : `复制${channel.label}号`}</span>
                           </button>
                         </div>
@@ -381,7 +382,7 @@ export default function ContactPage() {
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

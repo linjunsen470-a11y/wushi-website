@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import {
   AlertCircle,
   Check,
@@ -22,24 +21,15 @@ import { caseStudies, contactPanel } from '@/lib/site-data';
 import { submitContactForm } from '@/app/actions/contact';
 import { LandingPage } from '@/lib/landing-data';
 import { cn } from '@/lib/utils';
+import { contactFormSchema, type ContactFormData } from '@/lib/contact-schema';
 
 interface LandingClientProps {
   page: LandingPage;
 }
 
-const formSchema = z.object({
-  projectType: z.enum(['商场开业/庆典', '品牌商演/路演', '企业年会/盛典', '婚礼/宴会/喜事', '其他定制项目']),
-  preferredContactMethod: z.enum(['wechat', 'phone']),
-  name: z.string().min(2, '请输入您的称呼').max(50),
-  contact: z.string().min(5, '请输入手机号或微信号').max(100),
-  message: z.string().max(1000).optional(),
-  website: z.string().max(0).optional(), // Honeypot
-});
-
-type FormData = z.infer<typeof formSchema>;
-
 export default function LandingClient({ page }: LandingClientProps) {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
@@ -48,8 +38,9 @@ export default function LandingClient({ page }: LandingClientProps) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    shouldFocusError: true,
     defaultValues: {
       projectType: page.formProjectType,
       preferredContactMethod: 'wechat',
@@ -59,8 +50,9 @@ export default function LandingClient({ page }: LandingClientProps) {
   const phoneChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'phone');
   const wechatChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'wechat');
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: ContactFormData) => {
     setSubmitStatus('submitting');
+    setSubmitError('');
     try {
       const result = await submitContactForm(data);
       if (result.success) {
@@ -72,9 +64,11 @@ export default function LandingClient({ page }: LandingClientProps) {
         setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
         setSubmitStatus('error');
+        setSubmitError(result.error || '提交失败，请直接电话或微信联系。');
       }
     } catch {
       setSubmitStatus('error');
+      setSubmitError('网络连接异常，请直接电话或微信联系。');
     }
   };
 
@@ -88,8 +82,11 @@ export default function LandingClient({ page }: LandingClientProps) {
   const matchedCasesData = caseStudies.filter((c) => page.matchedCases.includes(c.title));
 
   return (
-    <main className="min-h-screen bg-surface">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface pb-20 md:pb-0">
       <Navbar />
+      <p className="sr-only" role="status" aria-live="polite">
+        {copiedId ? '微信号已复制' : ''}
+      </p>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#eadcc9]/20 to-surface pt-20 pb-16 md:pt-28 md:pb-24">
@@ -118,6 +115,7 @@ export default function LandingClient({ page }: LandingClientProps) {
               )}
               {wechatChannel && (
                 <button
+                  type="button"
                   onClick={() => handleCopy(wechatChannel.value, wechatChannel.id)}
                   className="button-secondary bg-white border border-outline-variant/30 flex items-center gap-2 px-8 py-4 shadow-sm transition-transform hover:-translate-y-0.5"
                 >
@@ -183,14 +181,16 @@ export default function LandingClient({ page }: LandingClientProps) {
                 请填写以下简要需求，我们会在看到信息后尽快联系，并提供初步的演出配置建议。
               </p>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
-                <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" />
+              <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5" noValidate>
+                <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
                 <div className="space-y-1.5">
                   <label htmlFor="project-type" className="text-xs font-black tracking-wider text-on-surface/60">活动类型</label>
                   <select
                     id="project-type"
                     {...register('projectType')}
+                    aria-invalid={Boolean(errors.projectType)}
+                    aria-describedby={errors.projectType ? 'project-type-error' : undefined}
                     className="w-full rounded-lg border border-outline-variant bg-surface px-4 py-3 text-sm font-medium focus:border-primary focus:ring-2 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   >
@@ -200,6 +200,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                     <option value="婚礼/宴会/喜事">婚礼 / 宴会 / 喜事</option>
                     <option value="其他定制项目">其他定制项目</option>
                   </select>
+                  {errors.projectType ? <p id="project-type-error" className="text-xs font-bold text-primary">{errors.projectType.message}</p> : null}
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -222,40 +223,51 @@ export default function LandingClient({ page }: LandingClientProps) {
                       id="user-name"
                       type="text"
                       {...register('name')}
+                      autoComplete="name"
                       placeholder="陈先生"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? 'user-name-error' : undefined}
                       className="w-full rounded-lg border border-outline-variant bg-surface px-4 py-3 text-sm font-medium focus:border-primary focus:ring-2 focus:ring-primary/5 disabled:opacity-50"
                       disabled={submitStatus === 'submitting'}
                     />
-                    {errors.name && <p className="text-xs font-bold text-primary">{errors.name.message}</p>}
+                    {errors.name && <p id="user-name-error" className="text-xs font-bold text-primary">{errors.name.message}</p>}
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
                   <label htmlFor="user-contact" className="text-xs font-black tracking-wider text-on-surface/60">联系电话 / 微信</label>
                   <input
-                    id="user-contact"
-                    type="text"
-                    {...register('contact')}
-                    placeholder="方便我们快速联系您"
+                  id="user-contact"
+                  type="text"
+                  {...register('contact')}
+                  autoComplete="tel"
+                  spellCheck={false}
+                  placeholder="方便我们快速联系您"
+                  aria-invalid={Boolean(errors.contact)}
+                  aria-describedby={errors.contact ? 'user-contact-error' : undefined}
                     className="w-full rounded-lg border border-outline-variant bg-surface px-4 py-3 text-sm font-medium focus:border-primary focus:ring-2 focus:ring-primary/5 disabled:opacity-50"
                     disabled={submitStatus === 'submitting'}
                   />
-                  {errors.contact && <p className="text-xs font-bold text-primary">{errors.contact.message}</p>}
+                  {errors.contact && <p id="user-contact-error" className="text-xs font-bold text-primary">{errors.contact.message}</p>}
                 </div>
 
                 <div className="space-y-1.5">
                   <label htmlFor="event-message" className="text-xs font-black tracking-wider text-on-surface/60">补充要求（可选）</label>
                   <textarea
                     id="event-message"
-                    {...register('message')}
-                    rows={3}
-                    placeholder="如具体的活动时间、场地层高限制或特殊风俗要求。"
+                  {...register('message')}
+                  rows={3}
+                  autoComplete="off"
+                  placeholder="如具体的活动时间、场地层高限制或特殊风俗要求。"
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? 'event-message-error' : undefined}
                     className="w-full resize-none rounded-lg border border-outline-variant bg-surface px-4 py-3 text-sm font-medium focus:border-primary focus:ring-2 focus:ring-primary/5 disabled:opacity-50"
-                    disabled={submitStatus === 'submitting'}
+                  disabled={submitStatus === 'submitting'}
                   />
+                  {errors.message ? <p id="event-message-error" className="text-xs font-bold text-primary">{errors.message.message}</p> : null}
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-2" aria-live="polite">
                   <AnimatePresence mode="wait">
                     {submitStatus === 'success' ? (
                       <motion.div
@@ -277,7 +289,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                         className="flex items-center gap-2 rounded-lg bg-red-50 p-4 text-red-700 text-sm"
                       >
                         <AlertCircle size={18} />
-                        <p className="font-bold">提交失败，请直接电话或微信联系。</p>
+                        <p className="font-bold">{submitError}</p>
                       </motion.div>
                     ) : (
                       <motion.button
@@ -312,13 +324,13 @@ export default function LandingClient({ page }: LandingClientProps) {
               <span className="section-eyebrow text-secondary">案例见证 • CLIENT PROOF</span>
               <h2 className="section-title mt-4">重庆本土商演案例实拍</h2>
               <p className="body-copy mt-3">
-                鑫龙堂坚持只使用真实的活动实拍作为案例，杜绝虚假样片，保障执行水准。
+                鑫龙堂展示的案例均采用实际活动现场素材，便于您了解团队的演出与执行情况。
               </p>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
               {matchedCasesData.map((c, i) => (
-                <div key={i} className="group overflow-hidden rounded-2xl border border-outline-variant/10 bg-white shadow-sm transition-all hover:shadow-md">
+                <div key={i} className="group overflow-hidden rounded-2xl border border-outline-variant/10 bg-white shadow-sm transition-shadow hover:shadow-md">
                   <div className="relative aspect-[16/10] overflow-hidden bg-surface-container-low">
                     <Image src={c.image} alt={c.altText || c.title} fill className="object-cover transition-transform duration-700 group-hover:scale-103" />
                   </div>
@@ -363,7 +375,10 @@ export default function LandingClient({ page }: LandingClientProps) {
                     className="overflow-hidden rounded-xl border border-outline-variant/15 bg-white shadow-sm"
                   >
                     <button
+                      type="button"
                       onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                      aria-expanded={isOpen}
+                      aria-controls={`landing-faq-${idx}`}
                       className="flex w-full items-center justify-between gap-4 p-5 text-left font-headline text-base font-black text-on-surface transition-colors hover:bg-primary/[0.01]"
                     >
                       <span>{faq.question}</span>
@@ -380,7 +395,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                           exit={{ height: 0 }}
                           transition={{ duration: 0.25, ease: 'easeInOut' }}
                         >
-                          <div className="border-t border-outline-variant/10 p-5 text-sm leading-relaxed text-on-surface-variant font-medium bg-surface/30">
+                          <div id={`landing-faq-${idx}`} className="border-t border-outline-variant/10 p-5 text-sm leading-relaxed text-on-surface-variant font-medium bg-surface/30">
                             {faq.answer}
                           </div>
                         </motion.div>
@@ -395,12 +410,12 @@ export default function LandingClient({ page }: LandingClientProps) {
       </section>
 
       {/* Sticky Bottom Bar for Mobile Only */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-outline-variant/15 bg-white/95 px-4 py-3 shadow-[0_-10px_30px_rgba(30,27,19,0.08)] backdrop-blur-md md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-outline-variant/15 bg-white/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-10px_30px_rgba(30,27,19,0.08)] backdrop-blur-md md:hidden">
         <div className="flex gap-3">
           {phoneChannel && (
             <a
               href={phoneChannel.href}
-              className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-white font-headline text-sm font-black shadow-md transition-all active:scale-98"
+              className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-white font-headline text-sm font-black shadow-md transition-[color,background-color,box-shadow,transform] active:scale-98"
             >
               <Phone size={16} />
               <span>电话沟通</span>
@@ -408,8 +423,9 @@ export default function LandingClient({ page }: LandingClientProps) {
           )}
           {wechatChannel && (
             <button
+              type="button"
               onClick={() => handleCopy(wechatChannel.value, wechatChannel.id)}
-              className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-outline-variant/30 bg-white py-3.5 text-on-surface font-headline text-sm font-black transition-all active:scale-98"
+              className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-outline-variant/30 bg-white py-3.5 text-on-surface font-headline text-sm font-black transition-[color,background-color,border-color,transform] active:scale-98"
             >
               <MessageCircle size={16} className="text-green-600" />
               <span>{copiedId === wechatChannel.id ? '微信号已复制' : '复制微信'}</span>
