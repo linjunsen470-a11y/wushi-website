@@ -1,3 +1,4 @@
+import { sharedOpenGraph } from '@/lib/seo';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getGuidePostBySlug(slug);
 
-  if (!post) return { title: '文章未找到' };
+  if (!post) notFound();
 
   return {
     title: `${post.title} - 舞狮预订指南`,
@@ -29,7 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `https://www.cqwushi.com/guide/${slug}`,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [{ url: post.coverImage, alt: post.coverAlt }],
+    },
     openGraph: {
+      ...sharedOpenGraph,
       title: `${post.title} - 舞狮预订指南 | 重庆鑫龙堂舞狮`,
       description: post.excerpt,
       url: `https://www.cqwushi.com/guide/${slug}`,
@@ -93,9 +101,10 @@ export default async function GuidePostPage({ params }: Props) {
               <span className="font-headline text-[0.72rem] font-black tracking-[0.18em] text-secondary">
                 {post.category}
               </span>
-              <time className="text-sm font-medium text-on-surface-variant/70">
-                {post.date}
+              <time dateTime={post.date} className="text-sm font-medium text-on-surface-variant/70">
+                发布于 {post.date}
               </time>
+              {post.updated !== post.date ? <time dateTime={post.updated} className="text-sm text-on-surface-variant">更新于 {post.updated}</time> : null}
             </div>
 
             <h1 className="page-hero-title max-w-4xl text-on-surface">
@@ -128,7 +137,13 @@ export default async function GuidePostPage({ params }: Props) {
         <div className="shell">
           <div className="mx-auto max-w-3xl">
             <div className="prose-guide prose-lg prose-p:text-on-surface-variant prose-p:font-medium prose-p:leading-relaxed prose-h2:mt-14 prose-h2:mb-6 prose-h2:text-3xl prose-h3:text-2xl prose-strong:text-on-surface prose-strong:font-black prose-table:border-collapse prose-th:bg-surface-container prose-th:p-4 prose-td:border-b prose-td:border-outline-variant/10 prose-td:p-4">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
+                table: ({ children }) => (
+                  <div role="region" aria-label="文章表格，可横向滚动" tabIndex={0} className="my-6 overflow-x-auto">
+                    <table className="min-w-[36rem]">{children}</table>
+                  </div>
+                ),
+              }}>{post.content}</ReactMarkdown>
             </div>
 
             {post.tags.length > 0 ? (
@@ -161,7 +176,7 @@ export default async function GuidePostPage({ params }: Props) {
                 <ArrowLeft size={16} className="text-on-surface-variant group-hover:text-primary transition-colors shrink-0" />
                 <div className="text-left min-w-0">
                   <span className="block font-headline text-[0.68rem] font-bold tracking-[0.1em] text-on-surface-variant/60 uppercase">
-                    {prevPost ? '上一篇' : '没有更新了'}
+                    {prevPost ? '上一篇' : '已是最新一篇'}
                   </span>
                   <span className="block mt-1 font-headline text-sm font-black text-on-surface group-hover:text-primary transition-colors truncate">
                     {prevPost ? prevPost.title : '返回指南目录'}
@@ -176,7 +191,7 @@ export default async function GuidePostPage({ params }: Props) {
               >
                 <div className="text-left min-w-0">
                   <span className="block font-headline text-[0.68rem] font-bold tracking-[0.1em] text-on-surface-variant/60 uppercase">
-                    {nextPost ? '下一篇' : '没有更旧了'}
+                    {nextPost ? '下一篇' : '已是最早一篇'}
                   </span>
                   <span className="block mt-1 font-headline text-sm font-black text-on-surface group-hover:text-primary transition-colors truncate">
                     {nextPost ? nextPost.title : '返回指南目录'}

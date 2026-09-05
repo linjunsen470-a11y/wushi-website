@@ -1,21 +1,11 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'motion/react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SubpageHero from '@/components/SubpageHero';
 import ContactCTA from '@/components/ContactCTA';
 import { GuidePost } from '@/lib/guide';
-
-const subtleFadeProps = {
-  initial: { opacity: 0, y: 15 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-};
 
 interface GuideClientProps {
   initialPosts: Omit<GuidePost, 'content'>[];
@@ -60,7 +50,7 @@ export default function GuideClient({ initialPosts }: GuideClientProps) {
 
       <section className="bg-surface py-24 md:py-32">
         <div className="shell">
-          <motion.div {...subtleFadeProps} className="mb-16 max-w-3xl">
+          <div className="mb-16 max-w-3xl">
             <span className="section-eyebrow text-secondary">实用预订指南</span>
             <h2 className="page-section-title mt-6 tracking-tight">
               预算、流程及执行，一页看懂
@@ -68,14 +58,13 @@ export default function GuideClient({ initialPosts }: GuideClientProps) {
             <p className="body-copy mt-6 text-on-surface-variant">
               内容按发布时间展示，适合结合场地条件、活动类型和档期安排进行对照。
             </p>
-          </motion.div>
+          </div>
 
+          {initialPosts.length === 0 ? <p className="body-copy">指南正在整理中，您可以先联系我们确认预算与流程。</p> : null}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {initialPosts.map((post, index) => (
-              <motion.article
+            {initialPosts.map((post) => (
+              <article
                 key={post.slug}
-                {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: index * 0.08 }}
                 className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_60px_-30px_rgba(30,27,19,0.35)]"
               >
                 <Link href={`/guide/${post.slug}`} className="absolute inset-0 z-10">
@@ -97,7 +86,7 @@ export default function GuideClient({ initialPosts }: GuideClientProps) {
                     <span className="font-headline text-[0.68rem] font-black tracking-[0.16em] text-secondary">
                       {post.category}
                     </span>
-                    <time className="text-sm font-medium text-on-surface-variant/70">
+                    <time dateTime={post.date} className="text-sm font-medium text-on-surface-variant/70">
                       {post.date}
                     </time>
                   </div>
@@ -114,7 +103,7 @@ export default function GuideClient({ initialPosts }: GuideClientProps) {
                     <ArrowRight aria-hidden="true" size={16} strokeWidth={2.4} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </div>

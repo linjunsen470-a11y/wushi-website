@@ -21,7 +21,7 @@ export default function ServiceGrid() {
               开业、商场巡游和喜宴，是团队常年执行的三类项目。
             </p>
             <p className="mt-4 text-xs font-black tracking-widest text-primary uppercase">
-              基础演出服务 ¥1,500 元起，欢迎咨询定制方案
+              基础演出预算参考 ¥2,000–2,500 元，具体配置与费用欢迎咨询
             </p>
           </div>
         </FadeIn>

@@ -1,3 +1,4 @@
+import { sharedOpenGraph } from '@/lib/seo';
 import { Metadata } from 'next';
 import VideoJsonLd from '@/components/VideoJsonLd';
 import PageClient from './PageClient';
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   description: '通过视频直观了解我们的演出效果。包含银行开业红毯、宴会舞台近景、品牌高桩节目及沉浸式夜场舞狮视频实录。',
   alternates: { canonical: 'https://www.cqwushi.com/media' },
   openGraph: {
+    ...sharedOpenGraph,
     title: '舞狮视频展示 - 演出实景 | 重庆鑫龙堂舞狮',
     description: '通过真实演出实录视频，直观感受我们的现场效果与技术功底。',
     url: 'https://www.cqwushi.com/media',

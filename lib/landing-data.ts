@@ -33,7 +33,7 @@ export const landingPagesData: Record<string, LandingPage> = {
   'chongqing-wushidui-dianhua': {
     slug: 'chongqing-wushidui-dianhua',
     metadata: {
-      title: '重庆舞狮队联系电话_专业醒狮团队电话18983662830_鑫龙堂舞狮',
+      title: '重庆舞狮队联系电话与预订方式',
       description: '需要预订重庆舞狮表演？请拨打重庆鑫龙堂舞狮队联系电话 18983662830（微信同号）。团队提供开业、路演、喜宴、年会舞狮服务，可根据活动信息核对档期并提供报价。',
       keywords: '重庆舞狮队联系电话, 重庆舞狮队电话, 重庆醒狮队电话, 重庆舞狮团队联系方式, 鑫龙堂舞狮',
     },
@@ -75,7 +75,7 @@ export const landingPagesData: Record<string, LandingPage> = {
   'chongqing-kaiye-wushi': {
     slug: 'chongqing-kaiye-wushi',
     metadata: {
-      title: '重庆开业舞狮表演_新店/公司开业醒狮点睛流程价格_鑫龙堂舞狮',
+      title: '重庆开业舞狮｜点睛流程与预算参考',
       description: '提供重庆开业舞狮策划执行服务，常见环节包括醒狮点睛、剪彩配合、采青与巡店。具体安排根据活动流程和场地条件确定，咨询电话：18983662830。',
       keywords: '重庆开业舞狮, 重庆醒狮开业, 公司开业舞狮, 新店开业醒狮, 重庆舞狮点睛采青',
     },
@@ -117,7 +117,7 @@ export const landingPagesData: Record<string, LandingPage> = {
   'chongqing-shangchang-wushi': {
     slug: 'chongqing-shangchang-wushi',
     metadata: {
-      title: '重庆商场开业醒狮方案_购物中心周年庆高桩舞狮表演_鑫龙堂舞狮',
+      title: '重庆商场舞狮｜开业与周年庆演出方案',
       description: '为重庆大型购物中心、商业体提供商场开业醒狮及周年庆巡游演艺。熟谙商场物业报备、安全防护及动线设计，配备高难度梅花高桩实力。服务热线: 18983662830。',
       keywords: '重庆商场开业醒狮, 购物中心舞狮表演, 商场周年庆醒狮, 梅花高桩舞狮, 商圈舞狮巡游',
     },
@@ -159,7 +159,7 @@ export const landingPagesData: Record<string, LandingPage> = {
   'chongqing-hunli-wushi': {
     slug: 'chongqing-hunli-wushi',
     metadata: {
-      title: '重庆婚礼舞狮流程_中式婚礼喜狮迎宾接亲现场报价_鑫龙堂舞狮',
+      title: '重庆婚礼舞狮｜迎宾接亲流程与报价咨询',
       description: '提供重庆婚礼舞狮与寿宴喜狮演出。包含特色喜狮迎宾、舞台开场祝福、新郎接亲互动、敬酒伴游等喜庆环节。为新婚喜宴增添国潮仪式感。电话: 18983662830。',
       keywords: '重庆婚礼舞狮, 中式婚礼喜狮, 重庆接亲舞狮, 婚礼醒狮迎宾, 喜宴舞狮报价',
     },
@@ -201,7 +201,7 @@ export const landingPagesData: Record<string, LandingPage> = {
   'chongqing-wulongwushi': {
     slug: 'chongqing-wulongwushi',
     metadata: {
-      title: '重庆舞龙舞狮团队_大型庆典民俗舞龙舞狮表演价格_鑫龙堂舞狮',
+      title: '重庆舞龙舞狮｜大型庆典演出方案',
       description: '重庆鑫龙堂舞龙舞狮团队，提供大编制舞龙舞狮表演、夜光龙展示、开业庆典和节庆巡游。具体阵容与报价根据场地、日期和执行需求确定。服务热线：18983662830。',
       keywords: '重庆舞龙舞狮团队, 重庆舞龙舞狮表演, 重庆舞狮队, 重庆龙狮团, 鑫龙堂龙狮队',
     },
@@ -243,7 +243,7 @@ export const landingPagesData: Record<string, LandingPage> = {
   'chongqing-wushi-baojia': {
     slug: 'chongqing-wushi-baojia',
     metadata: {
-      title: '重庆舞狮报价参考_开业舞狮收费标准明细清单_鑫龙堂舞狮',
+      title: '重庆舞狮报价｜配置与费用明细参考',
       description: '重庆舞狮报价参考，说明地面双狮、高桩、舞龙舞狮、交通和票据需求等常见价格影响因素。具体费用以活动信息和确认方案为准。',
       keywords: '重庆舞狮报价, 重庆舞狮收费标准, 舞狮表演多少钱一次, 开业舞狮价格, 鑫龙堂舞狮报价',
     },

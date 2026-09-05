@@ -4,12 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, Phone, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { brand, contactPanel, primaryNavLinks } from '@/lib/site-data';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const menuButton = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const mobileNavLinks = [
@@ -27,22 +28,25 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
     if (!isOpen) return;
 
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsOpen(false);
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        menuButton.current?.focus();
+      }
     };
 
     window.addEventListener('keydown', closeOnEscape);
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [isOpen]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const closeOnDesktop = () => { if (desktop.matches) setIsOpen(false); };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
 
   const closeMenu = () => setIsOpen(false);
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
@@ -51,8 +55,10 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="主导航"
       className={cn(
-        'sticky top-0 z-50 border-b border-transparent',
+        'sticky top-0 border-b border-transparent',
+        isOpen ? 'z-[150]' : 'z-50',
         scrolled
           ? 'bg-surface/85 backdrop-blur-xl shadow-[0_12px_30px_rgba(30,27,19,0.06)]'
           : 'bg-transparent'
@@ -71,7 +77,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden items-center gap-5 md:flex xl:gap-7">
+        <div className="hidden items-center gap-5 xl:flex xl:gap-7">
           <Link
             href="/"
             aria-current={isActive('/') ? 'page' : undefined}
@@ -115,12 +121,13 @@ export default function Navbar() {
         </div>
 
         <button
+          ref={menuButton}
           type="button"
           aria-expanded={isOpen ? "true" : "false"}
           aria-controls="mobile-navigation"
           aria-label={ariaLabel}
           className={cn(
-            'rounded-[1rem] border p-2.5 shadow-[0_10px_30px_rgba(30,27,19,0.08)] md:hidden',
+            'rounded-[1rem] border p-2.5 shadow-[0_10px_30px_rgba(30,27,19,0.08)] xl:hidden',
             isOpen
               ? 'border-primary bg-primary text-white'
               : 'border-outline-variant/30 bg-white/85 text-primary backdrop-blur-md'
@@ -132,7 +139,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div id="mobile-navigation" className="border-t border-outline-variant/15 bg-[rgba(255,248,239,0.94)] backdrop-blur-2xl md:hidden">
+        <div id="mobile-navigation" className="max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain border-t border-outline-variant/15 bg-[rgba(255,248,239,0.94)] backdrop-blur-2xl xl:hidden">
           <div className="shell pb-6 pt-4">
             <div className="rounded-[1.5rem] border border-[#eadcc9] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,241,230,0.96))] p-4 shadow-[0_28px_70px_rgba(30,27,19,0.12)]">
               <div className="grid gap-3">

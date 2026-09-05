@@ -1,3 +1,4 @@
+import { sharedOpenGraph } from '@/lib/seo';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import FloatingContact from '@/components/FloatingContact';
@@ -7,7 +8,7 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.cqwushi.com'),
   title: {
-    default: '重庆鑫龙堂舞狮 | 西南专业舞狮演出团队_开业醒狮_商演路演_婚礼宴会',
+    default: '重庆舞狮演出预订｜开业庆典与婚礼舞狮 - 鑫龙堂',
     template: '%s | 重庆鑫龙堂舞狮',
   },
   description:
@@ -24,18 +25,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
+    ...sharedOpenGraph,
     type: 'website',
-    locale: 'zh_CN',
     url: 'https://www.cqwushi.com',
-    siteName: '重庆鑫龙堂舞狮',
-    images: [
-      {
-        url: 'https://www.cqwushi.com/og-image.webp',
-        width: 1200,
-        height: 630,
-        alt: '重庆鑫龙堂舞狮队',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',

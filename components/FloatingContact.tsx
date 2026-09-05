@@ -1,38 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Check, Copy, MessageCircle, Phone, X } from 'lucide-react';
+import { useCopy } from '@/hooks/use-copy';
 import { cn } from '@/lib/utils';
 import { contactPanel } from '@/lib/site-data';
 
 export default function FloatingContact() {
   const pathname = usePathname();
+  const trigger = useRef<HTMLButtonElement>(null);
+  const reduceMotion = useReducedMotion();
   const [showPopup, setShowPopup] = useState(false);
-  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const { copiedId, copyError, handleCopy } = useCopy();
 
   const phoneChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'phone');
   const wechatChannel = contactPanel.primaryChannels.find((channel) => channel.id === 'wechat');
   const wechatQrImage = wechatChannel?.qrFocusImage ?? wechatChannel?.qrImage;
-
-  const handleCopy = (value: string, key: string) => {
-    navigator.clipboard.writeText(value);
-    setCopiedId(key);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
 
   if (pathname === '/contact' || pathname.startsWith('/landing/')) {
     return null;
   }
 
   return (
-    <div className="fixed bottom-[max(2rem,env(safe-area-inset-bottom))] right-5 z-[100] md:bottom-10 md:right-10">
+    <div onKeyDown={(event) => {
+      if (event.key === 'Escape' && showPopup) {
+        setShowPopup(false);
+        trigger.current?.focus();
+      }
+    }} className="fixed bottom-[max(2rem,env(safe-area-inset-bottom))] right-5 z-[100] md:bottom-10 md:right-10">
       <p className="sr-only" role="status" aria-live="polite">
         {copiedId ? '微信号已复制' : ''}
       </p>
+      {copyError ? <p role="alert" className="mb-3 max-w-72 rounded-xl bg-white p-4 text-sm text-primary shadow-lg">{copyError}</p> : null}
       <div className="flex flex-col items-end gap-3">
         <div className="flex flex-col gap-3 md:hidden">
           <Link
@@ -48,9 +51,12 @@ export default function FloatingContact() {
           <AnimatePresence>
             {showPopup && phoneChannel && wechatChannel && wechatQrImage ? (
               <motion.div
-                initial={{ opacity: 0, x: 18, y: 8 }}
+                id="quick-contact"
+                role="region"
+                aria-label="快速咨询"
+                initial={reduceMotion ? false : { opacity: 0, x: 18, y: 8 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, x: 18, y: 8 }}
+                exit={reduceMotion ? undefined : { opacity: 0, x: 18, y: 8 }}
                 className="mb-1 w-[18.5rem] overflow-hidden rounded-[1.35rem] border border-[#eadcc9] bg-white p-4 shadow-[0_26px_64px_rgba(30,27,19,0.22)]"
               >
                 <div className="mb-4 flex items-start justify-between gap-3">
@@ -61,7 +67,7 @@ export default function FloatingContact() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => setShowPopup(false)}
+                    onClick={() => { setShowPopup(false); trigger.current?.focus(); }}
                     className="rounded-[0.8rem] p-2 text-on-surface-variant/60 transition-colors hover:bg-surface-container-low hover:text-primary"
                     aria-label="关闭咨询浮层"
                   >
@@ -87,7 +93,7 @@ export default function FloatingContact() {
                 <div className="mt-3 rounded-[1rem] border border-outline-variant/20 bg-surface-container-low p-4">
                   <div className="flex items-start gap-3">
                     <div className="relative h-20 w-20 shrink-0 overflow-hidden border border-white bg-white p-1.5">
-                      <Image src={wechatQrImage} alt={contactPanel.primaryChannels[1].qrAlt || '微信二维码'} fill sizes="80px" className="object-cover" />
+                      <Image src={wechatQrImage} alt={wechatChannel.qrAlt || '微信二维码'} fill sizes="80px" className="object-cover" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-[11px] font-black tracking-[0.16em] text-on-surface/45">{wechatChannel.label}</p>
@@ -123,9 +129,12 @@ export default function FloatingContact() {
           </AnimatePresence>
 
           <motion.button
+            ref={trigger}
+            aria-expanded={showPopup}
+            aria-controls="quick-contact"
             type="button"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
+            whileHover={reduceMotion ? undefined : { scale: 1.04 }}
+            whileTap={reduceMotion ? undefined : { scale: 0.96 }}
             onClick={() => setShowPopup((value) => !value)}
             className={cn(
               'group relative flex h-14 w-14 items-center justify-center rounded-[1.05rem] shadow-[0_18px_36px_rgba(163,0,17,0.28)] transition-[color,background-color,box-shadow,transform] duration-300',

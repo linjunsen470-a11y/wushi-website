@@ -169,9 +169,9 @@ export const serviceCards = [
     href: '/landing/chongqing-shangchang-wushi',
     subtitle: '沿街、商场巡游',
     description:
-      '适合品牌路演、快闪店或街区巡游。通过高频度的互动和视觉冲击，快速吸引路人围观，并为后续传播留下大量出彩的视频素材。',
+      '适合品牌路演、快闪店或街区巡游。通过巡游、合影和近距离互动营造活动氛围，并配合现场拍摄。具体动线与互动频次按场地条件安排。',
     image: mallEntrance,
-    altText: '核心商业街区品牌路演带来的高频舞狮互动及人流量',
+    altText: '商业街区品牌路演舞狮互动现场',
     points: ['强互动感', '适合手机拍摄', '大场面调度'],
   },
   {
@@ -386,7 +386,7 @@ export const contactPanel = {
       qrImage: douyinQr,
       qrFocusImage: douyinQrFocus,
       qrAlt: '访问重庆鑫龙堂舞狮官方抖音浏览精彩演出实况视频',
-      description: '展示最真实的演出现场短视频实况。',
+      description: '展示演出现场短视频，方便了解节目与互动方式。',
       helperText: '抖音搜索关注，直观了解演出质量。',
     },
     {
@@ -440,7 +440,7 @@ export const galleryItems = [
   { src: charityGroup, alt: '重庆社区公益团拜与节庆活动中的民俗舞狮演出' },
   { src: sportsParty, alt: '重庆运动潮牌年度派对特邀联名国风景观舞狮暖场' },
   { src: dragonMall, alt: '重庆室内大型购物中心舞龙队伍巡游现场' },
-  { src: snowShow, alt: '极端雨雪天气下依旧稳定的重庆高水准户外国潮醒狮' },
+  { src: snowShow, alt: '雪地户外龙狮演出现场' },
 ];
 
 export const mediaVideos = [
@@ -449,8 +449,8 @@ export const mediaVideos = [
     category: '户外实景',
     bvid: 'BV1KYQcB3EJx',
     poster: snowShow,
-    posterAlt: '雪地户外严寒环境挑战高难度特技的重庆醒狮实录',
-    description: '在低气温与复杂户外气候下依然稳定发挥，展示了队伍极佳的耐力与严谨的控场执行标准。',
+    posterAlt: '毕棚沟雪地龙狮演出现场',
+    description: '记录毕棚沟户外龙狮演出。雨雪天气下是否演出及节目调整，需根据地面、天气和现场评估确认。',
   },
   {
     title: '百人鼓阵现场演出',
@@ -465,7 +465,7 @@ export const mediaVideos = [
     category: '开业庆典',
     bvid: 'BV1ABDLB3Ej7',
     poster: redCarpet,
-    posterAlt: '重庆实体品牌门店开业打造极高人气的红毯迎宾醒狮',
+    posterAlt: '门店开业红毯区域的迎宾醒狮',
     description: '配合实体门店开业迎宾流程，在门口红毯区域进行互动，营造热闹的开业氛围。',
   },
   {
@@ -523,7 +523,7 @@ export const solutionPlaybooks = [
   {
     title: '中式婚礼与寿宴',
     summary: '专为中式婚礼、长辈寿酒等喜宴量身打造的暖场及互动方案，温馨喜庆，其乐融融。',
-    image: snowShow,
+    image: weddingBanquet,
     altText: '中式喜宴舞狮表演',
     fit: ['长辈及宾客较多的喜庆场合', '需要高亲和力及高互动的喜庆节目', '需与迎宾、典礼主流程深度融合'],
     deliverables: ['标准喜庆双狮组合', '为留影留念预留充足时间', '配合说吉祥话及送礼等喜庆环节'],

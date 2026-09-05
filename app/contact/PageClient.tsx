@@ -20,6 +20,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { contactPanel } from '@/lib/site-data';
 import { submitContactForm } from '@/app/actions/contact';
+import { useCopy } from '@/hooks/use-copy';
 import { cn } from '@/lib/utils';
 import { contactFormSchema, type ContactFormData } from '@/lib/contact-schema';
 
@@ -31,7 +32,7 @@ const supportIconMap = {
 export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [submitError, setSubmitError] = useState('');
-  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const { copiedId, copyError, handleCopy } = useCopy();
 
   const {
     register,
@@ -71,12 +72,6 @@ export default function ContactPage() {
     }
   };
 
-  const handleCopy = (value: string, key: string) => {
-    navigator.clipboard.writeText(value);
-    setCopiedId(key);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
-
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface">
       <Navbar />
@@ -84,6 +79,7 @@ export default function ContactPage() {
         {copiedId ? '已复制到剪贴板' : ''}
       </p>
 
+      {copyError ? <p role="alert" className="shell pt-4 text-sm text-primary">{copyError}</p> : null}
       <section className="shell section-space">
         <div className="mb-12 max-w-4xl md:mb-16">
           <span className="section-eyebrow text-secondary">即刻开启专业合作</span>

@@ -1,3 +1,4 @@
+import { sharedOpenGraph } from '@/lib/seo';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { landingPagesData } from '@/lib/landing-data';
@@ -10,10 +11,10 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   // eslint-disable-next-line security/detect-object-injection
-  const page = landingPagesData[slug];
+  const page = Object.hasOwn(landingPagesData, slug) ? landingPagesData[slug] : undefined;
 
   if (!page) {
-    return { title: '页面未找到 - 重庆鑫龙堂舞狮' };
+    notFound();
   }
 
   return {
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `https://www.cqwushi.com/landing/${slug}`,
     },
     openGraph: {
+      ...sharedOpenGraph,
       title: page.metadata.title,
       description: page.metadata.description,
       url: `https://www.cqwushi.com/landing/${slug}`,
@@ -41,7 +43,7 @@ export async function generateStaticParams() {
 export default async function LandingPage({ params }: Props) {
   const { slug } = await params;
   // eslint-disable-next-line security/detect-object-injection
-  const page = landingPagesData[slug];
+  const page = Object.hasOwn(landingPagesData, slug) ? landingPagesData[slug] : undefined;
 
   if (!page) {
     notFound();

@@ -1,3 +1,4 @@
+import { sharedOpenGraph } from '@/lib/seo';
 import { Metadata } from 'next';
 import { getAllGuidePosts } from '@/lib/guide';
 import GuideClient from './GuideClient';
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   description: '整理重庆本地舞狮报价、点睛流程、采青习俗及团队选择要点，为开业庆典、商务演艺和宴会活动提供预订参考。',
   alternates: { canonical: 'https://www.cqwushi.com/guide' },
   openGraph: {
+    ...sharedOpenGraph,
     title: '舞狮预订指南 - 策划与执行指南 | 重庆鑫龙堂舞狮',
     description: '重庆本地开业舞狮、商演、婚礼等活动的报价范围、仪式流程与避坑指南。',
     url: 'https://www.cqwushi.com/guide',
