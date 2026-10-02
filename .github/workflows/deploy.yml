@@ -58,13 +58,28 @@ jobs:
           for (const key of ['RESEND_API_KEY', 'LEAD_TO_EMAIL', 'LEAD_FROM_EMAIL']) {
             config = config.replace(`'TOKEN_${key}'`, () => JSON.stringify(process.env[key] || ''));
           }
+          // Restrict access before writing any secret values.
+          fs.chmodSync('ecosystem.config.js', 0o600);
           fs.writeFileSync('ecosystem.config.js', config);
-          // scp-action runs as UID 1000 and must read this runner-owned file.
-          // Restrict the uploaded file again before PM2 reads it on the VPS.
-          fs.chmodSync('ecosystem.config.js', 0o644);
           NODE
 
+          # scp-action's container runs as UID 1000; keep the file private.
+          sudo chown 1000:1000 ecosystem.config.js
+          test "$(stat -c '%u:%g:%a' ecosystem.config.js)" = '1000:1000:600'
+
           tar -czf release.tar.gz -C .next/standalone .
+
+      - name: Prepare private transfer directory
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -eu
+            # SCP temporarily stores an archive containing the private config.
+            install -d -m 700 "${{ secrets.REMOTE_TARGET }}/.transfer"
+            test "$(stat -c '%a' "${{ secrets.REMOTE_TARGET }}/.transfer")" = '700'
 
       - name: Upload to VPS
         uses: appleboy/scp-action@v0.1.7
@@ -74,6 +89,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "release.tar.gz,ecosystem.config.js,docs/nginx-redirect.conf"
           target: ${{ secrets.REMOTE_TARGET }}
+          tar_tmp_path: ${{ secrets.REMOTE_TARGET }}/.transfer/
 
       - name: Deploy and restart
         uses: appleboy/ssh-action@v1.0.3
@@ -87,7 +103,9 @@ jobs:
             # Ensure the target directory exists (for "nuke and rebuild" support)
             mkdir -p ${{ secrets.REMOTE_TARGET }}
             cd ${{ secrets.REMOTE_TARGET }}
-            chmod 600 ecosystem.config.js
+            # Verify privacy immediately after extraction, before any restart.
+            test "$(stat -c '%a' ecosystem.config.js)" = '600'
+            echo "Verified uploaded config permissions: 600"
 
             DEPLOY_ID="${{ github.run_id }}-${{ github.run_attempt }}"
             DEPLOY_DIR="releases/$DEPLOY_ID"
