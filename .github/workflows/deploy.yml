@@ -59,7 +59,9 @@ jobs:
             config = config.replace(`'TOKEN_${key}'`, () => JSON.stringify(process.env[key] || ''));
           }
           fs.writeFileSync('ecosystem.config.js', config);
-          fs.chmodSync('ecosystem.config.js', 0o600);
+          // scp-action runs as UID 1000 and must read this runner-owned file.
+          // Restrict the uploaded file again before PM2 reads it on the VPS.
+          fs.chmodSync('ecosystem.config.js', 0o644);
           NODE
 
           tar -czf release.tar.gz -C .next/standalone .
@@ -85,6 +87,7 @@ jobs:
             # Ensure the target directory exists (for "nuke and rebuild" support)
             mkdir -p ${{ secrets.REMOTE_TARGET }}
             cd ${{ secrets.REMOTE_TARGET }}
+            chmod 600 ecosystem.config.js
 
             DEPLOY_ID="${{ github.run_id }}-${{ github.run_attempt }}"
             DEPLOY_DIR="releases/$DEPLOY_ID"

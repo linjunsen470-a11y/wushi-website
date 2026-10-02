@@ -56,13 +56,22 @@ test('clipboard denial shows a usable fallback and never claims success', async 
 test('guide links stay visible without JavaScript', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto(`${baseURL}/guide`);
-  const article = page.locator('article').first();
-  await expect(article).toBeVisible();
-  await expect(article).toHaveCSS('opacity', '1');
-  await article.locator('a').click();
-  await expect(page.locator('h1')).toBeVisible();
-  await context.close();
+  try {
+    await page.goto(`${baseURL}/guide`, { waitUntil: 'domcontentloaded' });
+    const article = page.locator('article').first();
+    await expect(article).toBeVisible();
+    await expect(article).toHaveCSS('opacity', '1');
+    const link = article.locator('a');
+    await expect(link).toHaveAttribute('href', /^\/guide\/[a-z0-9-]+$/);
+    const targetURL = new URL((await link.getAttribute('href'))!, baseURL).href;
+    await Promise.all([
+      page.waitForURL(targetURL, { waitUntil: 'domcontentloaded' }),
+      link.click({ noWaitAfter: true }),
+    ]);
+    await expect(page.locator('h1')).toBeVisible();
+  } finally {
+    await context.close();
+  }
 });
 
 test('unknown landing keys return 404', async ({ request }) => {
