@@ -6,11 +6,11 @@ import { brand, contactPanel, filingInfo, footerLinks, legalInfo, legalLinks } f
 export default function Footer() {
   return (
     <footer className="bg-[#17120f] text-white">
-      <div className="shell grid gap-10 py-12 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:items-start">
+      <div className="shell grid grid-cols-1 gap-10 py-12 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:items-start">
         <div className="space-y-5">
           <div className="flex items-center gap-3">
-            <Image src={brand.logoYellow} alt={brand.logoAlt} width={64} height={64} sizes="64px" className="h-16 w-16 object-contain" />
-            <div>
+            <Image src={brand.logoYellow} alt={brand.logoAlt} width={64} height={64} sizes="64px" className="h-16 w-16 shrink-0 object-contain" />
+            <div className="min-w-0">
               <div className="font-headline text-2xl font-black tracking-tight">{brand.name}</div>
               <p className="text-sm text-white/70">{brand.tagline}</p>
             </div>
