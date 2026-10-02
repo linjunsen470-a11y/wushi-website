@@ -77,9 +77,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -eu
+            # Limit traversal to the deployment account, even if tar restores UID 1000.
+            install -d -m 700 -o "$(id -u)" -g "$(id -g)" "${{ secrets.REMOTE_TARGET }}"
             # SCP temporarily stores an archive containing the private config.
-            install -d -m 700 "${{ secrets.REMOTE_TARGET }}/.transfer"
-            test "$(stat -c '%a' "${{ secrets.REMOTE_TARGET }}/.transfer")" = '700'
+            install -d -m 700 -o "$(id -u)" -g "$(id -g)" "${{ secrets.REMOTE_TARGET }}/.transfer"
+            test "$(stat -c '%u:%a' "${{ secrets.REMOTE_TARGET }}")" = "$(id -u):700"
+            test "$(stat -c '%u:%a' "${{ secrets.REMOTE_TARGET }}/.transfer")" = "$(id -u):700"
 
       - name: Upload to VPS
         uses: appleboy/scp-action@v0.1.7
