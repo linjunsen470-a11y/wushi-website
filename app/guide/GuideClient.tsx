@@ -86,7 +86,7 @@ export default function GuideClient({ initialPosts }: GuideClientProps) {
                     <span className="font-headline text-[0.68rem] font-black tracking-[0.16em] text-secondary">
                       {post.category}
                     </span>
-                    <time dateTime={post.date} className="text-sm font-medium text-on-surface-variant/70">
+                    <time dateTime={post.date} className="text-sm font-medium text-on-surface-variant">
                       {post.date}
                     </time>
                   </div>

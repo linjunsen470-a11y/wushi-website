@@ -4,8 +4,8 @@ import VideoJsonLd from '@/components/VideoJsonLd';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: '视频展示 - 演出实景/高桩竞技/环节演示',
-  description: '通过视频直观了解我们的演出效果。包含银行开业红毯、宴会舞台近景、品牌高桩节目及沉浸式夜场舞狮视频实录。',
+  title: '视频展示 - 雪地舞狮/鼓乐/开业/婚礼实录',
+  description: '通过真实现场视频了解我们的演出效果，包含雪地舞狮、鼓乐演奏、门店开业与婚礼舞狮实录。',
   alternates: { canonical: 'https://www.cqwushi.com/media' },
   openGraph: {
     ...sharedOpenGraph,

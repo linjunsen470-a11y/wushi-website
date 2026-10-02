@@ -1,7 +1,6 @@
 'use client';
 import type { ReactNode } from 'react';
 import Image, { type StaticImageData } from 'next/image';
-import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
 type SubpageHeroProps = {
@@ -13,12 +12,6 @@ type SubpageHeroProps = {
   panel?: ReactNode;
   variant?: 'light' | 'dark' | 'media' | 'full';
   bgImage?: StaticImageData | string;
-};
-
-const subtleFadeProps = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 };
 
 export default function SubpageHero({
@@ -44,7 +37,7 @@ export default function SubpageHero({
     >
       {isFull && bgImage && (
         <div className="absolute inset-0 z-0">
-          <Image src={bgImage} alt="" fill priority placeholder="blur" sizes="100vw" className="object-cover" />
+          <Image src={bgImage} alt="" fill priority fetchPriority="high" placeholder="blur" sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-black/50" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
         </div>
@@ -73,7 +66,7 @@ export default function SubpageHero({
           isFull ? 'lg:grid-cols-1' : 'lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]'
         )}
       >
-        <motion.div {...subtleFadeProps} className="max-w-4xl">
+        <div  className="max-w-4xl">
           <span className={cn('section-eyebrow', isDark ? 'text-secondary-fixed' : 'text-secondary')}>
             {eyebrow}
           </span>
@@ -106,13 +99,10 @@ export default function SubpageHero({
           ) : null}
 
           {actions ? <div className="mt-10 flex flex-wrap gap-5 md:mt-12">{actions}</div> : null}
-        </motion.div>
+        </div>
         
         {!isFull && panel && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <div
             className={cn(
               'hero-panel !rounded-[2rem]',
               isDark
@@ -121,7 +111,7 @@ export default function SubpageHero({
             )}
           >
             {panel}
-          </motion.div>
+          </div>
         )}
       </div>
     </header>

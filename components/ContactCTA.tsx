@@ -38,7 +38,7 @@ export default function ContactCTA() {
               </Link>
             </div>
 
-            <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-black tracking-widest text-on-surface/40 uppercase">
+            <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-black tracking-widest text-on-surface-variant uppercase">
               <div className="flex items-center gap-2">
                 <div aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary/40" />
                 <span>免费出具初步方案</span>

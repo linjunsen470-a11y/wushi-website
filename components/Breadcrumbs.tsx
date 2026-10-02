@@ -36,10 +36,10 @@ export default function Breadcrumbs({ items }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
       />
-      <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs text-on-surface-variant/70 font-medium">
+      <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs text-on-surface-variant font-medium">
         <Link
           href="/"
-          className="flex items-center gap-1 text-on-surface-variant/70 hover:text-primary transition-colors duration-200"
+          className="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors duration-200"
         >
           <Home size={13} className="shrink-0" />
           <span>首页</span>

@@ -1,31 +1,29 @@
-'use client';
-
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SubpageHero from '@/components/SubpageHero';
-import { motion } from 'motion/react';
+import AnalyticsPreference from '@/components/AnalyticsPreference';
 import { legalInfo } from '@/lib/site-data';
 
 const sections = [
   {
-    title: '1. 信息收集范围',
-    content: `当您通过本网站、电话或微信咨询舞狮服务时，我们可能会收集您的姓名、联系电话、微信账号、所属公司名称以及活动具体需求（如时间、地点、类型等）。我们不收集您的银行卡密码、指纹等生物识别敏感信息。`,
+    title: '信息收集范围',
+    content: '当您通过在线表单、电话或微信咨询时，我们会收到您主动提供的称呼、手机号或微信号、活动类型和备注。请勿在备注中填写身份证号、银行卡信息等与咨询无关的敏感资料。',
   },
   {
-    title: '2. 信息使用目的',
-    content: `您提供的信息仅用于以下用途：与您沟通演出方案、提供档期查询、发送项目报价、以及在确认合作后进行现场执行对接。我们不会将您的信息用于任何与舞狮演艺服务无关的商业推销。`,
+    title: '信息使用与保存',
+    content: '咨询信息用于回复需求、确认档期、提供报价和演出对接，不用于无关推销，不出售您的联系方式。咨询记录由服务人员管理；您可联系我们查询、更正或请求删除不再需要的咨询记录。涉及已确认订单及依法需要保留的记录，会按相应服务和法律要求处理。',
   },
   {
-    title: '3. 信息安全保护',
-    content: `本公司采取严格的内部管理措施保护您的个人信息安全。所有咨询记录均由专人管理，严禁私自外泄。我们不会向任何第三方公司或个人出售或转让您的联系方式，除非获得您的明确授权或法律法规要求。`,
+    title: '邮件与第三方服务',
+    content: '在线表单通过 Resend 邮件服务发送咨询通知，因此您填写的内容会交由该服务商处理。电话、微信和第三方平台上的沟通也受对应平台规则约束。视频展示页嵌入哔哩哔哩播放器，加载时会向该平台发送网络请求，平台可能获得 IP 地址、浏览器信息并使用 Cookie。仅浏览普通页面不会发送在线表单中的信息。',
   },
   {
-    title: '4. Cookie 与技术追踪',
-    content: `本网站可能使用基础的 Cookie 技术来优化您的访问体验（如记住您的语言偏好）。我们不会利用技术手段追踪您的个人行踪或进行跨站数据抓取。`,
+    title: '访问统计与本地偏好',
+    content: '百度访问统计默认关闭，仅在您主动开启后加载。开启后，百度可能处理页面访问、来源、设备和网络信息，并使用统计 Cookie；相关数据由其服务系统处理。我们用浏览器本地存储记住您的统计选择，不将此偏好用于咨询表单。您可在下方关闭统计，或清除浏览器网站数据重置偏好。第三方服务的处理地点及规则由各服务商说明，不承诺所有数据仅在本地保存。',
   },
   {
-    title: '5. 用户权利',
-    content: `如您希望修改或删除在我们系统中留存的咨询信息，可随时拨打本公司官方电话 ${legalInfo.phone} 联系我们处理。`,
+    title: '联系与用户权利',
+    content: `如需查询、更正或删除咨询信息，或对本政策有疑问，请拨打 ${legalInfo.phone} 联系我们。我们会核实与请求相关的信息后处理。`,
   },
 ];
 
@@ -46,10 +44,7 @@ export default function PrivacyClient() {
 
       <section className="py-20">
         <div className="shell max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <div
             className="rounded-[2.5rem] border border-outline-variant/30 bg-white p-8 md:p-16 shadow-premium"
           >
             <div className="space-y-12">
@@ -69,14 +64,16 @@ export default function PrivacyClient() {
               ))}
             </div>
 
+            <AnalyticsPreference />
+
             <div className="mt-20 border-t border-outline-variant/20 pt-10">
               <p className="text-sm text-on-surface-variant font-medium">
                 本政策自发布之日起生效。如有重大更新，我们将在本页面进行公示。
                 <br />
-                最后更新日期：2026年4月25日
+                最后更新日期：2026年10月2日
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

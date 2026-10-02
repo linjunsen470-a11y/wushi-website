@@ -101,7 +101,7 @@ export default async function GuidePostPage({ params }: Props) {
               <span className="font-headline text-[0.72rem] font-black tracking-[0.18em] text-secondary">
                 {post.category}
               </span>
-              <time dateTime={post.date} className="text-sm font-medium text-on-surface-variant/70">
+              <time dateTime={post.date} className="text-sm font-medium text-on-surface-variant">
                 发布于 {post.date}
               </time>
               {post.updated !== post.date ? <time dateTime={post.updated} className="text-sm text-on-surface-variant">更新于 {post.updated}</time> : null}
@@ -138,6 +138,12 @@ export default async function GuidePostPage({ params }: Props) {
           <div className="mx-auto max-w-3xl">
             <div className="prose-guide prose-lg prose-p:text-on-surface-variant prose-p:font-medium prose-p:leading-relaxed prose-h2:mt-14 prose-h2:mb-6 prose-h2:text-3xl prose-h3:text-2xl prose-strong:text-on-surface prose-strong:font-black prose-table:border-collapse prose-th:bg-surface-container prose-th:p-4 prose-td:border-b prose-td:border-outline-variant/10 prose-td:p-4">
               <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
+                input: ({ checked }) => (
+                  <>
+                    <span aria-hidden="true">{checked ? '☑' : '☐'}</span>
+                    <span className="sr-only">{checked ? '已完成：' : '待确认：'}</span>
+                  </>
+                ),
                 table: ({ children }) => (
                   <div role="region" aria-label="文章表格，可横向滚动" tabIndex={0} className="my-6 overflow-x-auto">
                     <table className="min-w-[36rem]">{children}</table>
@@ -175,7 +181,7 @@ export default async function GuidePostPage({ params }: Props) {
               >
                 <ArrowLeft size={16} className="text-on-surface-variant group-hover:text-primary transition-colors shrink-0" />
                 <div className="text-left min-w-0">
-                  <span className="block font-headline text-[0.68rem] font-bold tracking-[0.1em] text-on-surface-variant/60 uppercase">
+                  <span className="block font-headline text-[0.68rem] font-bold tracking-[0.1em] text-on-surface-variant uppercase">
                     {prevPost ? '上一篇' : '已是最新一篇'}
                   </span>
                   <span className="block mt-1 font-headline text-sm font-black text-on-surface group-hover:text-primary transition-colors truncate">
@@ -190,7 +196,7 @@ export default async function GuidePostPage({ params }: Props) {
                 className="flex-1 flex items-center justify-between gap-4 rounded-2xl border border-outline-variant/30 hover:border-primary/50 hover:bg-surface-container-low px-5 py-4 transition-[background-color,border-color] duration-300 group min-w-0"
               >
                 <div className="text-left min-w-0">
-                  <span className="block font-headline text-[0.68rem] font-bold tracking-[0.1em] text-on-surface-variant/60 uppercase">
+                  <span className="block font-headline text-[0.68rem] font-bold tracking-[0.1em] text-on-surface-variant uppercase">
                     {nextPost ? '下一篇' : '已是最早一篇'}
                   </span>
                   <span className="block mt-1 font-headline text-sm font-black text-on-surface group-hover:text-primary transition-colors truncate">

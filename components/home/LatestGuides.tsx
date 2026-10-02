@@ -60,7 +60,7 @@ export default function LatestGuides({ posts }: LatestGuidesProps) {
                     <span className="font-headline text-[0.68rem] font-black tracking-[0.16em] text-secondary">
                       {post.category}
                     </span>
-                    <time className="text-sm font-medium text-on-surface-variant/70">
+                    <time className="text-sm font-medium text-on-surface-variant">
                       {post.updated || post.date}
                     </time>
                   </div>

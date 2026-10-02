@@ -68,7 +68,7 @@ export default function FloatingContact() {
                   <button
                     type="button"
                     onClick={() => { setShowPopup(false); trigger.current?.focus(); }}
-                    className="rounded-[0.8rem] p-2 text-on-surface-variant/60 transition-colors hover:bg-surface-container-low hover:text-primary"
+                    className="rounded-[0.8rem] p-2 text-on-surface-variant transition-colors hover:bg-surface-container-low hover:text-primary"
                     aria-label="关闭咨询浮层"
                   >
                     <X aria-hidden="true" size={16} />
@@ -96,7 +96,7 @@ export default function FloatingContact() {
                       <Image src={wechatQrImage} alt={wechatChannel.qrAlt || '微信二维码'} fill sizes="80px" className="object-cover" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[11px] font-black tracking-[0.16em] text-on-surface/45">{wechatChannel.label}</p>
+                      <p className="text-[11px] font-black tracking-[0.16em] text-on-surface-variant">{wechatChannel.label}</p>
                       <p className="mt-1 font-headline text-lg font-black text-on-surface">{wechatChannel.value}</p>
                       <p className="mt-2 text-sm leading-6 text-on-surface-variant">{wechatChannel.description}</p>
                     </div>

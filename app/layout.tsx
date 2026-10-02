@@ -1,6 +1,7 @@
 import { sharedOpenGraph } from '@/lib/seo';
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
+import { BaiduAnalytics } from '@/components/AnalyticsPreference';
+import InteractionMotion from '@/components/InteractionMotion';
 import FloatingContact from '@/components/FloatingContact';
 import JsonLd from '@/components/JsonLd';
 import './globals.css';
@@ -55,18 +56,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main-content" className="skip-link">
           跳到主要内容
         </a>
-        <Script id="baidu-tongji-init" strategy="afterInteractive">
-          {`
-            window._hmt = window._hmt || [];
-          `}
-        </Script>
-        <Script
-          id="baidu-tongji"
-          src="https://hm.baidu.com/hm.js?5993a407a0f1e813d26b91081adc46c8"
-          strategy="afterInteractive"
-        />
-        {children}
-        <FloatingContact />
+        <BaiduAnalytics />
+        <InteractionMotion>
+          {children}
+          <FloatingContact />
+        </InteractionMotion>
       </body>
     </html>
   );

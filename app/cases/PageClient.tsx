@@ -1,20 +1,10 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'motion/react';
 import { Sparkles, Maximize, Video } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SubpageHero from '@/components/SubpageHero';
 import ContactCTA from '@/components/ContactCTA';
 import { caseStudies, stats } from '@/lib/site-data';
-
-const subtleFadeProps = {
-  initial: { opacity: 0, y: 15 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-};
 
 export default function CasesPage() {
   const featured = caseStudies[0];
@@ -60,7 +50,7 @@ export default function CasesPage() {
 
       <section className="bg-surface section-space overflow-hidden">
         <div className="shell grid gap-20 lg:grid-cols-[1fr_1fr] items-center">
-          <motion.div {...subtleFadeProps} className="max-w-xl space-y-8">
+          <div className="max-w-xl space-y-8">
             <span className="section-eyebrow text-secondary">精品案例</span>
             <h2 className="page-section-title !text-5xl tracking-tight !leading-tight">
               现场实例与执行细节
@@ -68,20 +58,16 @@ export default function CasesPage() {
             <p className="body-copy text-xl text-on-surface-variant leading-relaxed font-medium">
               根据中庭、宴会厅、户外广场等不同场地的空间特点，合理配置狮队规模与表演环节，兼顾现场动线与演出效果。
             </p>
-          </motion.div>
+          </div>
           
           <div className="relative flex flex-col gap-8 lg:pl-16">
             {[
               { text: featured.metrics[0], icon: Sparkles, offset: 'lg:translate-x-0' },
               { text: featured.metrics[1], icon: Maximize, offset: 'lg:translate-x-12' },
               { text: featured.metrics[2], icon: Video, offset: 'lg:translate-x-6' },
-            ].map((metric, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + idx * 0.1, duration: 0.8 }}
+            ].map((metric) => (
+              <div
+                key={metric.text}
                 className={`editorial-card hover-lift flex items-center gap-8 group ${metric.offset} max-w-md w-full !p-8`}
               >
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.25rem] bg-secondary/5 text-secondary ring-1 ring-secondary/20 transition-[color,background-color,box-shadow,transform] duration-500 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white group-hover:ring-secondary shadow-sm">
@@ -90,7 +76,7 @@ export default function CasesPage() {
                 <p className="font-headline text-xl font-black tracking-tight text-on-surface">
                   {metric.text}
                 </p>
-              </motion.div>
+              </div>
             ))}
             <div className="absolute -left-10 top-12 bottom-12 hidden w-px bg-gradient-to-b from-transparent via-outline-variant to-transparent lg:block" />
           </div>
@@ -99,16 +85,14 @@ export default function CasesPage() {
 
       <section className="bg-surface-container-low section-space">
         <div className="shell">
-          <motion.div {...subtleFadeProps} className="mb-20 max-w-3xl">
+          <div className="mb-20 max-w-3xl">
             <span className="section-eyebrow text-secondary">更多项目</span>
             <h2 className="page-section-title mt-6 tracking-tight !leading-tight">商场、年会、婚礼、户外</h2>
-          </motion.div>
+          </div>
           <div className="grid gap-12 lg:grid-cols-2 lg:mx-auto">
-            {restCases.map((item, idx) => (
-              <motion.article 
+            {restCases.map((item) => (
+              <article
                 key={item.title} 
-                {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: idx * 0.1 }}
                 className="hover-lift overflow-hidden rounded-[2.25rem] bg-white premium-shadow border border-outline-variant/10"
               >
                 <div className="relative aspect-[16/9] group overflow-hidden">
@@ -132,7 +116,7 @@ export default function CasesPage() {
                     ))}
                   </div>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </div>
@@ -141,17 +125,15 @@ export default function CasesPage() {
       <section className="bg-[#1a1714] section-space text-white relative">
         <div className="absolute inset-0 bg-[url('/patterns/carbon-fibre.png')] opacity-5" />
         <div className="shell relative z-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:items-center">
-          {stats.map((stat, idx) => (
-            <motion.div 
+          {stats.map((stat) => (
+            <div
               key={stat.label} 
-              {...subtleFadeProps}
-              transition={{ delay: idx * 0.1 }}
               className="glass-panel rounded-[2rem] p-10 text-center relative overflow-hidden group border border-white/5"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
               <div className="font-headline text-6xl font-black text-secondary-fixed tracking-tighter">{stat.value}</div>
               <div className="mt-4 text-[10px] font-black tracking-[0.3em] text-white/50 uppercase">{stat.label}</div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

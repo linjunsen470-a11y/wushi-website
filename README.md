@@ -38,8 +38,8 @@ stich-assets/  设计参考与风格文档
 
 ### 运行要求
 
-- Node.js `>=20.9.0`
-- `pnpm`
+- Node.js `>=24`
+- `pnpm 10.33.2`
 
 ### 安装与启动
 
@@ -57,14 +57,16 @@ pnpm dev
 
 | 变量名 | 是否必需 | 说明 |
 | --- | --- | --- |
-| `LEAD_TO_EMAIL` | 是 | 接收线索邮件的邮箱 |
-| `RESEND_API_KEY` | 是 | Resend API Key |
+| `LEAD_TO_EMAIL` | 在线表单需要 | 接收线索邮件的邮箱 |
+| `RESEND_API_KEY` | 在线表单需要 | Resend API Key |
 | `LEAD_FROM_EMAIL` | 否 | 发件人邮箱，需与 Resend 已验证域名一致 |
 | `APP_URL` | 否 | 站点部署地址，部分场景可用于生成绝对链接 |
 
 说明：
 
-- `.env.example` 中仍保留了 `GEMINI_API_KEY` 注释，但当前仓库代码中未发现实际调用，可视为历史模板遗留项。
+- 不配置邮件服务也可构建、浏览网站；在线表单会提示使用电话或微信。正式启用表单时，请配置 Resend，并使用已验证的发件域名。
+- 百度访问统计默认关闭，访客可在 `/privacy` 主动开启或关闭。
+- VPS 发布所用的 GitHub Secrets 包括 `RESEND_API_KEY`、`LEAD_TO_EMAIL`，以及可选的 `LEAD_FROM_EMAIL`。
 - 生产环境请通过托管平台的密钥管理能力注入，不要提交 `.env.local`。
 
 ## 常用命令

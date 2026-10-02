@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useCopy } from '@/hooks/use-copy';
 import Image from 'next/image';
-import { motion } from 'motion/react';
 import { Check, Copy, MessageCircle, Tv2 } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -11,31 +10,20 @@ import ContactCTA from '@/components/ContactCTA';
 import { contactPanel, mediaHighlights, mediaLogos, mediaVideos } from '@/lib/site-data';
 import { cn } from '@/lib/utils';
 
-const subtleFadeProps = {
-  initial: { opacity: 0, y: 15 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-};
-
 const supportIconMap = {
   douyin: Tv2,
   xhs: MessageCircle,
 } as const;
 
 export default function MediaPage() {
-  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const { copiedId, copyError, handleCopy } = useCopy();
   const featured = mediaVideos[0];
-
-  const handleCopy = (value: string, key: string) => {
-    navigator.clipboard.writeText(value);
-    setCopiedId(key);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
 
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen">
       <Navbar />
+      <p role="status" className="sr-only">{copiedId ? '已复制平台 ID' : ''}</p>
+      {copyError && <p role="alert" className="fixed inset-x-4 bottom-24 z-50 mx-auto max-w-xl rounded-xl border border-primary/20 bg-white p-4 text-sm text-primary shadow-lg">{copyError}</p>}
       <SubpageHero
         eyebrow="真实影像展示 / MEDIA"
         variant="media"
@@ -71,7 +59,7 @@ export default function MediaPage() {
 
       <section className="bg-surface py-28">
         <div className="shell">
-          <motion.div {...subtleFadeProps} className="mb-20 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <div className="mb-20 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <span className="section-eyebrow text-secondary">视频案例</span>
               <h2 className="page-section-title mt-6">
@@ -90,14 +78,12 @@ export default function MediaPage() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           <div className="grid gap-12 lg:grid-cols-2">
-            {mediaVideos.map((video, idx) => (
-              <motion.article
+            {mediaVideos.map((video) => (
+              <article
                 key={video.bvid}
-                {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: idx * 0.1 }}
                 className="group overflow-hidden rounded-[2rem] bg-surface-container-low premium-shadow"
               >
                 <div className="relative aspect-video overflow-hidden bg-black">
@@ -124,7 +110,7 @@ export default function MediaPage() {
                     {video.description}
                   </p>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </div>
@@ -132,23 +118,21 @@ export default function MediaPage() {
 
       <section className="bg-[#fbf7f0] py-24">
         <div className="shell">
-          <motion.div {...subtleFadeProps} className="mb-12 max-w-3xl">
+          <div className="mb-12 max-w-3xl">
             <span className="section-eyebrow text-secondary">官方自媒体门户</span>
             <h2 className="page-section-title mt-6">查看更多近期演出素材</h2>
             <p className="mt-5 text-lg font-medium leading-8 text-on-surface-variant">
               欢迎访问我们的抖音与小红书主页。我们会持续更新现场图文与演出实拍，帮助您了解不同场地和活动流程的实际效果。
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid gap-5 lg:grid-cols-2">
-            {contactPanel.supportChannels.map((channel, idx) => {
+            {contactPanel.supportChannels.map((channel) => {
               const Icon = supportIconMap[channel.id as keyof typeof supportIconMap];
 
               return (
-                <motion.article
+                <article
                   key={channel.id}
-                  {...subtleFadeProps}
-                  transition={{ ...subtleFadeProps.transition, delay: idx * 0.08 }}
                   className="rounded-[1.45rem] border border-[#eadcc9] bg-white px-6 py-6 shadow-[0_18px_50px_rgba(30,27,19,0.08)]"
                 >
                   <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
@@ -193,7 +177,7 @@ export default function MediaPage() {
                       </div>
                     </div>
                   </div>
-                </motion.article>
+                </article>
               );
             })}
           </div>

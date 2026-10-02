@@ -53,10 +53,10 @@ test('clipboard denial shows a usable fallback and never claims success', async 
   await expect(page.getByRole('button', { name: '联系我们', exact: true })).toBeFocused();
 });
 
-test('guide links stay visible without JavaScript', async ({ browser }) => {
+test('guide links stay visible without JavaScript', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto('http://127.0.0.1:3000/guide');
+  await page.goto(`${baseURL}/guide`);
   const article = page.locator('article').first();
   await expect(article).toBeVisible();
   await expect(article).toHaveCSS('opacity', '1');

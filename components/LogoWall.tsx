@@ -23,7 +23,7 @@ export default function LogoWall() {
               className="flex items-center justify-center p-8 rounded-[1.2rem] bg-surface-container-low border border-outline-variant/15 hover:border-primary/20 transition-[border-color,box-shadow] group relative overflow-hidden shadow-sm hover:shadow-md"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="font-headline text-lg font-black text-on-surface/40 group-hover:text-primary group-hover:scale-105 transition-[color,transform] tracking-tighter text-center uppercase">
+              <span className="font-headline text-lg font-black text-on-surface-variant group-hover:text-primary group-hover:scale-105 transition-[color,transform] tracking-tighter text-center uppercase">
                 {partner}
               </span>
             </FadeIn>
@@ -35,7 +35,7 @@ export default function LogoWall() {
             distance={10}
             className="flex items-center justify-center p-8 rounded-[1.1rem] bg-primary/5 border border-dashed border-primary/20"
           >
-            <span className="font-headline text-sm font-black text-primary/60 tracking-tight">等众多商业地产及品牌</span>
+            <span className="font-headline text-sm font-black text-primary tracking-tight">等众多商业地产及品牌</span>
           </FadeIn>
         </div>
       </div>

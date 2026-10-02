@@ -10,6 +10,8 @@
   --color-primary: #a30011; /* Slightly brighter, more vibrant red */
   --color-primary-container: #7d000d;
   --color-secondary: #806700; /* Darkened for accessibility contrast (4.5:1+) */
+  --color-secondary-container: #ffefbd;
+  --color-on-secondary-container: #3b2f00;
   --color-secondary-fixed: #ffdb70;
   --color-surface: #fffdfa;
   --color-surface-container-low: #f9f4eb;
@@ -211,27 +213,23 @@
     @apply gap-6 md:gap-8 lg:gap-10;
   }
 
-  /* Reveal Animations */
-  .reveal {
-    opacity: 0;
-    transform: translate(var(--reveal-x, 0), var(--reveal-y, 30px));
-    transition: 
-      opacity var(--reveal-duration, 0.8s) cubic-bezier(0.22, 1, 0.36, 1), 
-      transform var(--reveal-duration, 0.8s) cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: var(--reveal-delay, 0s);
-    will-change: opacity, transform;
+  /* Content stays visible before hydration and when JavaScript is unavailable. */
+  .reveal-visible {
+    animation: reveal-enter var(--reveal-duration, 0.8s) cubic-bezier(0.22, 1, 0.36, 1);
+    animation-delay: var(--reveal-delay, 0s);
   }
 
-  .reveal-visible {
-    opacity: 1;
-    transform: translate(0, 0);
+  @keyframes reveal-enter {
+    from { transform: translate(var(--reveal-x, 0), var(--reveal-y, 30px)); }
+    to { transform: translate(0, 0); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal {
+    .reveal, .reveal-visible {
       opacity: 1;
       transform: none;
       transition: none;
+      animation: none !important;
     }
     
     *, ::before, ::after {
@@ -243,6 +241,6 @@
   }
 
   .prose-guide {
-    @apply prose prose-neutral max-w-none prose-headings:font-headline prose-headings:font-black prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-primary prose-blockquote:bg-surface-container-low prose-blockquote:px-6 prose-blockquote:py-1 prose-blockquote:rounded-r-xl prose-img:rounded-2xl prose-img:shadow-xl prose-table:text-[0.95rem];
+    @apply prose prose-neutral max-w-none prose-headings:font-headline prose-headings:font-black prose-headings:tracking-tight prose-a:text-primary prose-a:underline prose-a:underline-offset-4 prose-blockquote:border-l-primary prose-blockquote:bg-surface-container-low prose-blockquote:px-6 prose-blockquote:py-1 prose-blockquote:rounded-r-xl prose-img:rounded-2xl prose-img:shadow-xl prose-table:text-[0.95rem];
   }
 }

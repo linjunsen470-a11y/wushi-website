@@ -9,10 +9,10 @@ export default function Footer() {
       <div className="shell grid gap-10 py-12 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:items-start">
         <div className="space-y-5">
           <div className="flex items-center gap-3">
-            <Image src={brand.logoYellow} alt={brand.logoAlt} className="h-16 w-16 object-contain" />
+            <Image src={brand.logoYellow} alt={brand.logoAlt} width={64} height={64} sizes="64px" className="h-16 w-16 object-contain" />
             <div>
               <div className="font-headline text-2xl font-black tracking-tight">{brand.name}</div>
-              <p className="text-sm text-white/45">{brand.tagline}</p>
+              <p className="text-sm text-white/70">{brand.tagline}</p>
             </div>
           </div>
           <p className="max-w-md text-sm leading-7 text-white/65">
@@ -42,7 +42,7 @@ export default function Footer() {
                 <Phone size={16} />
               </div>
               <div>
-                <p className="text-[11px] font-black tracking-[0.16em] text-white/45">电话 / 微信 (同号)</p>
+                <p className="text-[11px] font-black tracking-[0.16em] text-white/70">电话 / 微信 (同号)</p>
                 <p className="font-headline text-lg font-black">{contactPanel.phone}</p>
               </div>
             </a>
@@ -55,7 +55,7 @@ export default function Footer() {
                 <Mail size={16} />
               </div>
               <div className="min-w-0">
-                <p className="text-[11px] font-black tracking-[0.16em] text-white/45">邮箱</p>
+                <p className="text-[11px] font-black tracking-[0.16em] text-white/70">邮箱</p>
                 <p className="truncate font-headline text-lg font-black">{contactPanel.email}</p>
               </div>
             </a>
@@ -65,7 +65,7 @@ export default function Footer() {
                 <MapPin size={16} />
               </div>
               <div>
-                <p className="text-[11px] font-black tracking-[0.16em] text-white/45">地址</p>
+                <p className="text-[11px] font-black tracking-[0.16em] text-white/70">地址</p>
                 <p className="text-sm font-medium leading-6 text-white/75">{legalInfo.address}</p>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/8">
-        <div className="shell flex flex-col gap-4 py-6 text-sm text-white/38 md:flex-row md:items-center md:justify-between">
+        <div className="shell flex flex-col gap-4 py-6 text-sm text-white/70 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6">
             <p>© 2026 {brand.name}. All rights reserved.</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -83,7 +83,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-white/25 transition-colors hover:text-white/45"
+                  className="text-white/70 transition-colors hover:text-white/70"
                 >
                   {link.label}
                 </Link>
@@ -92,14 +92,14 @@ export default function Footer() {
                 href={filingInfo.icpUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="text-white/25 transition-colors hover:text-white/45"
+                className="text-white/70 transition-colors hover:text-white/70"
               >
                 {filingInfo.icp}
               </a>
             </div>
           </div>
           <div className="flex flex-col items-center gap-2 md:flex-row md:items-end md:gap-6">
-            <p className="text-white/25">{legalInfo.companyName}</p>
+            <p className="text-white/70">{legalInfo.companyName}</p>
           </div>
         </div>
       </div>

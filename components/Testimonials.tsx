@@ -44,7 +44,7 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <p className="font-headline text-base font-black text-on-surface tracking-tight">{item.author}</p>
-                  <p className="text-[11px] font-bold text-on-surface-variant/60 uppercase tracking-widest mt-0.5">{item.role}</p>
+                  <p className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest mt-0.5">{item.role}</p>
                 </div>
               </div>
             </FadeIn>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   AlertCircle,
@@ -92,7 +93,7 @@ export default function ContactPage() {
             团队立足重庆北碚，服务覆盖重庆及西南地区。承接商场开业、品牌路演、企业年会、婚礼等演艺活动。欢迎来电咨询，我们会根据活动信息核对档期并提供报价。
           </p>
         </div>
-        <div className="grid gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div className="grid gap-16 [&>div]:min-w-0 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="premium-shadow overflow-hidden rounded-[1.6rem] border border-outline-variant/10 bg-white">
             <div className="border-b border-primary/10 bg-primary/5 px-8 py-7">
               <p className="text-[11px] font-black tracking-[0.18em] text-primary">在线咨询</p>
@@ -117,7 +118,7 @@ export default function ContactPage() {
               <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                  <label htmlFor="project-type" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">活动类型</label>
+                  <label htmlFor="project-type" className="ml-1 text-xs font-black tracking-widest text-on-surface-variant">活动类型</label>
                   <select
                     id="project-type"
                     {...register('projectType')}
@@ -137,7 +138,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="preferred-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">希望怎么联系</label>
+                  <label htmlFor="preferred-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface-variant">希望怎么联系</label>
                   <select
                     id="preferred-contact"
                     {...register('preferredContactMethod')}
@@ -152,7 +153,7 @@ export default function ContactPage() {
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                  <label htmlFor="user-name" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">您的称呼</label>
+                  <label htmlFor="user-name" className="ml-1 text-xs font-black tracking-widest text-on-surface-variant">您的称呼</label>
                   <input
                     id="user-name"
                     type="text"
@@ -168,7 +169,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="user-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">联系电话 / 微信</label>
+                  <label htmlFor="user-contact" className="ml-1 text-xs font-black tracking-widest text-on-surface-variant">联系电话 / 微信</label>
                   <input
                     id="user-contact"
                     type="text"
@@ -186,7 +187,7 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-2 mt-6">
-                <label htmlFor="event-message" className="ml-1 text-xs font-black tracking-widest text-on-surface/60">备注说明（可选）</label>
+                <label htmlFor="event-message" className="ml-1 text-xs font-black tracking-widest text-on-surface-variant">备注说明（可选）</label>
                 <textarea
                   id="event-message"
                   {...register('message')}
@@ -250,28 +251,29 @@ export default function ContactPage() {
                     </motion.button>
                   )}
                 </AnimatePresence>
-                <p className="mt-4 text-center text-[11px] font-bold text-on-surface/40">
+                <p className="mt-4 text-center text-[11px] font-bold text-on-surface-variant">
                   提交后我们会在工作时间内尽快回复，并提供初步演出配置建议。
                 </p>
               </div>
+              <p className="mt-4 text-sm leading-6 text-on-surface-variant">提交的信息用于回复您的咨询，并通过 Resend 发送邮件通知。<Link href="/privacy" className="text-primary underline underline-offset-4">隐私政策</Link></p>
             </form>
           </div>
 
-          <div className="space-y-10">
-            <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
+          <div className="min-w-0 space-y-10">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-1">
               {phoneChannel ? (
                 <a
                   href={phoneChannel.href}
                   className="rounded-[1.45rem] bg-primary px-6 py-6 text-white shadow-[0_24px_60px_rgba(163,0,17,0.22)] transition-transform hover:-translate-y-1"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col items-start gap-4 sm:flex-row">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[0.95rem] bg-white/16">
                       <Phone aria-hidden="true" size={22} />
                     </div>
                     <div>
-                      <p className="text-[11px] font-black tracking-[0.18em] text-white/68">快速咨询</p>
+                      <p className="text-[11px] font-black tracking-[0.18em] text-white/80">快速咨询</p>
                       <h2 className="mt-2 font-headline text-2xl font-black tracking-tight">{phoneChannel.label}</h2>
-                      <p className="mt-2 font-headline text-3xl font-black tracking-tight">{phoneChannel.value}</p>
+                      <p className="mt-2 font-headline text-2xl sm:text-3xl font-black tracking-tight">{phoneChannel.value}</p>
                       <p className="mt-3 max-w-md text-sm leading-7 text-white/80">{phoneChannel.description}</p>
                     </div>
                   </div>
@@ -280,12 +282,12 @@ export default function ContactPage() {
 
               {wechatChannel && wechatQrImage ? (
                 <div className="rounded-[1.45rem] border border-outline-variant/20 bg-surface-container-low px-6 py-6">
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col items-start gap-4 sm:flex-row">
                     <div className="relative h-28 w-28 shrink-0 overflow-hidden border border-white bg-white p-2 shadow-sm">
                       <Image src={wechatQrImage} alt={wechatChannel.qrAlt || '微信二维码'} fill sizes="112px" className="object-contain p-1" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">微信沟通</p>
+                      <p className="text-[11px] font-black tracking-[0.18em] text-on-surface-variant">微信沟通</p>
                       <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
                         {wechatChannel.label}
                       </h2>
@@ -315,7 +317,7 @@ export default function ContactPage() {
             <div className="rounded-[1.45rem] border border-outline-variant/15 bg-white px-6 py-6 shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-6">
                 <div className="max-w-2xl">
-                  <p className="text-[11px] font-black tracking-[0.18em] text-on-surface/45">关注各大平台</p>
+                  <p className="text-[11px] font-black tracking-[0.18em] text-on-surface-variant">关注各大平台</p>
                   <h2 className="mt-2 font-headline text-2xl font-black tracking-tight text-on-surface">
                     主流视频平台官方号
                   </h2>
@@ -330,7 +332,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
+              <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-1">
                 {contactPanel.supportChannels.map((channel) => {
                   const Icon = supportIconMap[channel.id as keyof typeof supportIconMap];
 

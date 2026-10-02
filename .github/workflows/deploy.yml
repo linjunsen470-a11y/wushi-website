@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -30,10 +34,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Lint project
+        run: pnpm lint
+
       - name: Build project
         run: pnpm build
 
       - name: Prepare deployment package
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          LEAD_TO_EMAIL: ${{ secrets.LEAD_TO_EMAIL }}
+          LEAD_FROM_EMAIL: ${{ secrets.LEAD_FROM_EMAIL }}
         run: |
           set -euo pipefail
 
@@ -41,10 +52,15 @@ jobs:
           cp -r public .next/standalone/
           cp -r .next/static .next/standalone/.next/
 
-          # Inject secrets into ecosystem.config.js placeholders
-          # Using | as delimiter for sed to avoid issues with / in keys
-          sed -i "s|TOKEN_RESEND_API_KEY|${{ secrets.RESEND_API_KEY }}|g" ecosystem.config.js
-          sed -i "s|TOKEN_LEAD_TO_EMAIL|${{ secrets.LEAD_TO_EMAIL }}|g" ecosystem.config.js
+          node <<'NODE'
+          const fs = require('node:fs');
+          let config = fs.readFileSync('ecosystem.config.js', 'utf8');
+          for (const key of ['RESEND_API_KEY', 'LEAD_TO_EMAIL', 'LEAD_FROM_EMAIL']) {
+            config = config.replace(`'TOKEN_${key}'`, () => JSON.stringify(process.env[key] || ''));
+          }
+          fs.writeFileSync('ecosystem.config.js', config);
+          fs.chmodSync('ecosystem.config.js', 0o600);
+          NODE
 
           tar -czf release.tar.gz -C .next/standalone .
 
@@ -70,7 +86,7 @@ jobs:
             mkdir -p ${{ secrets.REMOTE_TARGET }}
             cd ${{ secrets.REMOTE_TARGET }}
 
-            DEPLOY_ID=$(date +%s)
+            DEPLOY_ID="${{ github.run_id }}-${{ github.run_attempt }}"
             DEPLOY_DIR="releases/$DEPLOY_ID"
             mkdir -p "$DEPLOY_DIR"
 
@@ -80,12 +96,6 @@ jobs:
             if [ -f ".env.local" ]; then
               cp .env.local "$DEPLOY_DIR/"
             fi
-
-            ln -sfn "$DEPLOY_DIR" current
-
-            # Force Alignment: Clean up any redundant files in the root directory
-            # Keep only the essential deployment structure
-            rm -rf server.js package.json public node_modules release.tar.gz
 
             echo "Deployed release: $DEPLOY_ID"
 
@@ -126,6 +136,8 @@ jobs:
             fi
             # ====================================================================
 
+            ln -sfn "$DEPLOY_DIR" current
+
             if pm2 describe wushi-website > /dev/null 2>&1; then
               echo "Reloading existing PM2 process..."
               pm2 reload ecosystem.config.js --update-env
@@ -133,6 +145,9 @@ jobs:
               echo "Starting new PM2 process..."
               pm2 start ecosystem.config.js
             fi
+
+            # A failed local HTTP check stops cleanup and search-engine submission.
+            curl --fail --silent --show-error --retry 6 --retry-connrefused --retry-delay 2 --max-time 10 http://127.0.0.1:3000/ > /dev/null
 
             find releases -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' \
               | sort -rn \

@@ -1,18 +1,8 @@
-'use client';
-
-import { motion } from 'motion/react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SubpageHero from '@/components/SubpageHero';
 import ContactCTA from '@/components/ContactCTA';
 import { faqSections, prepChecklist } from '@/lib/site-data';
-
-const subtleFadeProps = {
-  initial: { opacity: 0, y: 15 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-};
 
 export default function FaqPage() {
   return (
@@ -43,8 +33,8 @@ export default function FaqPage() {
       
       <section className="bg-surface-container-low section-space">
         <div className="shell grid gap-16 lg:grid-cols-[0.8fr_1.2fr]">
-          <motion.aside 
-            {...subtleFadeProps}
+          <aside
+
             className="editorial-card h-fit !p-12 sticky top-32"
           >
             <span className="section-eyebrow text-secondary">沟通准备清单</span>
@@ -60,18 +50,16 @@ export default function FaqPage() {
                 </li>
               ))}
             </ul>
-          </motion.aside>
+          </aside>
 
           <div className="space-y-12">
             {faqSections.map((section, index) => (
-              <motion.section 
+              <section
                 key={section.title} 
-                {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: index * 0.1 }}
                 className="rounded-[2.25rem] bg-white p-10 md:p-14 premium-shadow border border-outline-variant/10"
               >
                 <div className="mb-10 flex items-center gap-6">
-                  <span className="font-headline text-5xl font-black text-primary/10 tracking-tighter">0{index + 1}</span>
+                  <span aria-hidden="true" className="font-headline text-5xl font-black text-primary/60 tracking-tighter">0{index + 1}</span>
                   <h2 className="font-headline text-3xl font-black text-on-surface tracking-tight">{section.title}</h2>
                 </div>
                 <div className="space-y-5">
@@ -83,7 +71,7 @@ export default function FaqPage() {
                     >
                       <summary className="flex cursor-pointer list-none items-center justify-between px-8 py-6 font-headline text-lg font-black text-on-surface hover:bg-surface-container-low group-open:hover:bg-transparent">
                         <span>{item.question}</span>
-                        <span className="text-2xl font-light text-primary transition-transform group-open:rotate-45">+</span>
+                        <span aria-hidden="true" className="text-2xl font-light text-primary transition-transform group-open:rotate-45">+</span>
                       </summary>
                       <div className="px-8 pb-8">
                         <div className="h-px w-full bg-outline-variant/20 mb-6" />
@@ -92,7 +80,7 @@ export default function FaqPage() {
                     </details>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             ))}
           </div>
         </div>

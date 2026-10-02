@@ -1,19 +1,9 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'motion/react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SubpageHero from '@/components/SubpageHero';
 import ContactCTA from '@/components/ContactCTA';
 import { faqItems, serviceCards, workflowSteps } from '@/lib/site-data';
-
-const subtleFadeProps = {
-  initial: { opacity: 0, y: 15 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-};
 
 export default function ServicesPage() {
   return (
@@ -59,18 +49,16 @@ export default function ServicesPage() {
         {serviceCards.map((service, index) => (
           <section key={service.title} className={index % 2 === 0 ? 'bg-surface-container-low section-space' : 'bg-surface section-space'}>
             <div className="shell grid gap-16 lg:grid-cols-2 lg:items-center">
-              <motion.div 
-                {...subtleFadeProps}
+              <div
+
                 className={index % 2 === 1 ? 'lg:order-2' : ''}
               >
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] premium-shadow border border-outline-variant/10 group">
                   <Image src={service.image} alt={service.altText || service.title} fill placeholder="blur" sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/5" />
                 </div>
-              </motion.div>
-              <motion.div 
-                {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: 0.2 }}
+              </div>
+              <div
                 className={index % 2 === 1 ? 'lg:order-1' : ''}
               >
                 <span className="section-eyebrow text-secondary">{service.subtitle}</span>
@@ -87,7 +75,7 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             </div>
           </section>
         ))}
@@ -96,26 +84,24 @@ export default function ServicesPage() {
       <section className="bg-[#1a1714] section-space text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_20%_80%,rgba(163,0,17,0.08),transparent_50%)]" />
         <div className="shell relative z-10">
-          <motion.div {...subtleFadeProps} className="max-w-3xl mb-20 section-stack">
+          <div className="max-w-3xl mb-20 section-stack">
             <span className="section-eyebrow text-secondary-fixed">服务流程</span>
             <h2 className="page-section-title mt-6 text-white !leading-tight">
               规范化演艺合作流程，
               <br />
               省心高效
             </h2>
-          </motion.div>
+          </div>
           <div className="grid gap-8 md:grid-cols-4">
             {workflowSteps.map((step, index) => (
-              <motion.article 
+              <article
                 key={step.title} 
-                {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: index * 0.15 }}
                 className="rounded-[2rem] border border-white/5 bg-white/5 p-10 hover:bg-white/10 transition-colors group"
               >
                 <div className="font-headline text-5xl font-black text-secondary-fixed/30 group-hover:text-secondary-fixed/50 transition-colors tracking-tighter">0{index + 1}</div>
                 <h3 className="mt-6 font-headline text-2xl font-black text-white tracking-tight">{step.title}</h3>
                 <p className="mt-5 text-[15px] leading-relaxed text-white/60 font-medium">{step.text}</p>
-              </motion.article>
+              </article>
             ))}
           </div>
         </div>
@@ -123,21 +109,19 @@ export default function ServicesPage() {
 
       <section className="bg-surface section-space">
         <div className="shell max-w-4xl">
-          <motion.div {...subtleFadeProps} className="mb-20 text-center mx-auto">
+          <div className="mb-20 text-center mx-auto">
             <span className="section-eyebrow text-secondary">常见问题</span>
             <h2 className="page-section-title mt-6 tracking-tight !leading-tight">
               常见问题
               <br className="sm:hidden" />
               为您解答前期顾虑
             </h2>
-          </motion.div>
+          </div>
           <div className="space-y-6">
             {faqItems.map((item, index) => (
-              <motion.details 
+              <details
                 key={item.question} 
                 open={index === 0} 
-                {...subtleFadeProps}
-                transition={{ ...subtleFadeProps.transition, delay: index * 0.1 }}
                 className="group overflow-hidden rounded-[1.6rem] bg-surface-container-low border border-transparent transition-[background-color,border-color,box-shadow] duration-300 open:bg-white open:border-outline-variant/30 open:premium-shadow"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between px-10 py-8 font-headline text-xl font-black text-on-surface hover:text-primary transition-colors">
@@ -148,7 +132,7 @@ export default function ServicesPage() {
                   <div className="h-px w-full bg-outline-variant/20 mb-6" />
                   <p className="text-[17px] leading-relaxed text-on-surface-variant font-medium">{item.answer}</p>
                 </div>
-              </motion.details>
+              </details>
             ))}
           </div>
         </div>

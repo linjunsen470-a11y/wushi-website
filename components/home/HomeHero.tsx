@@ -13,6 +13,7 @@ export default function HomeHero() {
           alt={homeShowcase.heroAlt || "舞狮开业演出现场"}
           fill
           priority
+          fetchPriority="high"
           placeholder="blur"
           sizes="100vw"
           className="object-cover object-center"

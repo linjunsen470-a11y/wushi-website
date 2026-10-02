@@ -16,14 +16,19 @@ export const contactFormSchema = z.object({
     .string()
     .trim()
     .min(5, '请输入有效的手机号或微信号')
-    .max(100, '联系方式请控制在 100 个字符以内')
-    .refine((value) => {
-      const phoneRegex = /^1[3-9]\d{9}$/;
-      const wechatRegex = /^[a-zA-Z][-_a-zA-Z0-9]{5,19}$/;
-      return phoneRegex.test(value) || wechatRegex.test(value) || value.length > 5;
-    }, '请输入有效的手机号或微信号'),
+    .max(100, '联系方式请控制在 100 个字符以内'),
   message: z.string().trim().max(1000, '备注请控制在 1000 个字以内').optional(),
   website: z.string().max(0).optional(),
+}).superRefine(({ preferredContactMethod, contact }, ctx) => {
+  const isPhone = /^1[3-9]\d{9}$/.test(contact);
+  const isWechat = /^[a-zA-Z][-_a-zA-Z0-9]{5,19}$/.test(contact);
+  if (preferredContactMethod === 'phone' ? !isPhone : !isPhone && !isWechat) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['contact'],
+      message: preferredContactMethod === 'phone' ? '请输入有效的 11 位手机号' : '请输入有效的微信号或同号手机号',
+    });
+  }
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;

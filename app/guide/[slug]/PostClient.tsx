@@ -36,7 +36,7 @@ export default function PostClient({ post, relatedPosts }: PostClientProps) {
                 预订指南
               </Link>
               <span className="text-on-surface-variant/30 text-xs">/</span>
-              <span className="font-headline text-[0.72rem] font-bold tracking-widest text-on-surface-variant/60">
+              <span className="font-headline text-[0.72rem] font-bold tracking-widest text-on-surface-variant">
                 {post.category}
               </span>
             </nav>
@@ -56,13 +56,13 @@ export default function PostClient({ post, relatedPosts }: PostClientProps) {
                 </div>
                 <div>
                   <p className="text-[0.72rem] font-black text-on-surface leading-none">重庆舞狮网执行团队</p>
-                  <p className="mt-1 text-[0.65rem] font-bold text-on-surface-variant/60">发布于 {post.date}</p>
+                  <p className="mt-1 text-[0.65rem] font-bold text-on-surface-variant">发布于 {post.date}</p>
                 </div>
               </div>
               <div className="h-4 w-px bg-outline-variant/30 hidden sm:block" />
               <div className="flex flex-wrap gap-2">
                 {post.keywords.slice(0, 3).map((keyword) => (
-                  <span key={keyword} className="text-[0.65rem] font-bold text-on-surface-variant/60 bg-white px-3 py-1 rounded-full border border-outline-variant/10 shadow-sm">
+                  <span key={keyword} className="text-[0.65rem] font-bold text-on-surface-variant bg-white px-3 py-1 rounded-full border border-outline-variant/10 shadow-sm">
                     #{keyword}
                   </span>
                 ))}

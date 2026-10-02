@@ -1,11 +1,7 @@
-import { faqItems, faqSections } from '@/lib/site-data';
+import { faqSections } from '@/lib/site-data';
 
 export default function FaqJsonLd() {
-  // Combine all FAQ items from all sections into a flat list for schema
-  const allFaqs = [
-    ...faqItems,
-    ...faqSections.flatMap(section => section.items)
-  ];
+  const allFaqs = faqSections.flatMap(section => section.items);
 
   const schema = {
     '@context': 'https://schema.org',

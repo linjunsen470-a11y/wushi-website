@@ -1,19 +1,9 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'motion/react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SubpageHero from '@/components/SubpageHero';
 import ContactCTA from '@/components/ContactCTA';
 import { solutionPlaybooks } from '@/lib/site-data';
-
-const subtleFadeProps = {
-  initial: { opacity: 0, y: 15 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-};
 
 export default function SolutionsPage() {
   return (
@@ -48,10 +38,8 @@ export default function SolutionsPage() {
       <section className="bg-surface-container-low section-space">
         <div className="shell space-y-32">
           {solutionPlaybooks.map((playbook, index) => (
-            <motion.article 
+            <article
               key={playbook.title} 
-              {...subtleFadeProps}
-              transition={{ ...subtleFadeProps.transition, delay: 0.1 }}
               className="grid gap-16 lg:grid-cols-2 lg:items-center"
             >
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
@@ -92,7 +80,7 @@ export default function SolutionsPage() {
                   </div>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </section>

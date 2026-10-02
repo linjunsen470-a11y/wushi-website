@@ -4,8 +4,6 @@ import { Resend } from 'resend';
 import { headers } from 'next/headers';
 import { contactFormSchema, type ContactFormData } from '@/lib/contact-schema';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Simple in-memory rate limiting
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
@@ -36,8 +34,8 @@ export async function submitContactForm(data: ContactFormData) {
 
   // 1. Rate Limiting Check
   const headerList = await headers();
-  const ip = headerList.get('x-forwarded-for')?.split(',')[0]?.trim()
-    || headerList.get('x-real-ip')
+  const ip = headerList.get('x-real-ip')
+    || headerList.get('x-forwarded-for')?.split(',')[0]?.trim()
     || 'anonymous';
   const rateLimit = rateLimitMap.get(ip);
 
@@ -74,6 +72,10 @@ export async function submitContactForm(data: ContactFormData) {
   const preferredContactLabel = preferredContactMethod === 'wechat' ? '优先微信' : '优先电话';
 
   try {
+    if (!process.env.RESEND_API_KEY) {
+      return { success: false, error: '在线咨询暂时不可用，请直接电话或微信联系。' };
+    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: process.env.LEAD_FROM_EMAIL || 'Wushi Leads <onboarding@resend.dev>',
       to: [process.env.LEAD_TO_EMAIL || 'service@cqwushi.com'],

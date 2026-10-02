@@ -1,7 +1,9 @@
 'use client';
 
+import { useCopy } from '@/hooks/use-copy';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,7 +32,7 @@ interface LandingClientProps {
 export default function LandingClient({ page }: LandingClientProps) {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [submitError, setSubmitError] = useState('');
-  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const { copiedId, copyError, handleCopy } = useCopy();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const {
@@ -72,18 +74,13 @@ export default function LandingClient({ page }: LandingClientProps) {
     }
   };
 
-  const handleCopy = (value: string, key: string) => {
-    navigator.clipboard.writeText(value);
-    setCopiedId(key);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
-
   // Find cases that match the landing page configs
   const matchedCasesData = caseStudies.filter((c) => page.matchedCases.includes(c.title));
 
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen bg-surface pb-20 md:pb-0">
       <Navbar />
+      {copyError && <p role="alert" className="fixed inset-x-4 bottom-24 z-50 mx-auto max-w-xl rounded-xl border border-primary/20 bg-white p-4 text-sm text-primary shadow-lg">{copyError}</p>}
       <p className="sr-only" role="status" aria-live="polite">
         {copiedId ? '微信号已复制' : ''}
       </p>
@@ -185,7 +182,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                 <input type="text" {...register('website')} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
                 <div className="space-y-1.5">
-                  <label htmlFor="project-type" className="text-xs font-black tracking-wider text-on-surface/60">活动类型</label>
+                  <label htmlFor="project-type" className="text-xs font-black tracking-wider text-on-surface-variant">活动类型</label>
                   <select
                     id="project-type"
                     {...register('projectType')}
@@ -205,7 +202,7 @@ export default function LandingClient({ page }: LandingClientProps) {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-1.5">
-                    <label htmlFor="preferred-contact" className="text-xs font-black tracking-wider text-on-surface/60">首选联系方式</label>
+                    <label htmlFor="preferred-contact" className="text-xs font-black tracking-wider text-on-surface-variant">首选联系方式</label>
                     <select
                       id="preferred-contact"
                       {...register('preferredContactMethod')}
@@ -218,7 +215,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label htmlFor="user-name" className="text-xs font-black tracking-wider text-on-surface/60">您的称呼</label>
+                    <label htmlFor="user-name" className="text-xs font-black tracking-wider text-on-surface-variant">您的称呼</label>
                     <input
                       id="user-name"
                       type="text"
@@ -235,7 +232,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="user-contact" className="text-xs font-black tracking-wider text-on-surface/60">联系电话 / 微信</label>
+                  <label htmlFor="user-contact" className="text-xs font-black tracking-wider text-on-surface-variant">联系电话 / 微信</label>
                   <input
                   id="user-contact"
                   type="text"
@@ -252,7 +249,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="event-message" className="text-xs font-black tracking-wider text-on-surface/60">补充要求（可选）</label>
+                  <label htmlFor="event-message" className="text-xs font-black tracking-wider text-on-surface-variant">补充要求（可选）</label>
                   <textarea
                     id="event-message"
                   {...register('message')}
@@ -310,6 +307,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                     )}
                   </AnimatePresence>
                 </div>
+                <p className="mt-4 text-sm leading-6 text-on-surface-variant">提交的信息用于回复您的咨询，并通过 Resend 发送邮件通知。<Link href="/privacy" className="text-primary underline underline-offset-4">隐私政策</Link></p>
               </form>
             </div>
           </div>
@@ -335,7 +333,7 @@ export default function LandingClient({ page }: LandingClientProps) {
                     <Image src={c.image} alt={c.altText || c.title} fill className="object-cover transition-transform duration-700 group-hover:scale-103" />
                   </div>
                   <div className="p-6 md:p-8">
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-bold text-on-surface-variant/70">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-bold text-on-surface-variant">
                       <span>{c.client}</span>
                       <span>•</span>
                       <span>{c.location}</span>

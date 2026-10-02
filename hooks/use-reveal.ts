@@ -18,7 +18,7 @@ export function useReveal({
   once = true,
 }: UseRevealOptions = {}) {
   const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef<HTMLElement | null>(null);
+  const elementRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const element = elementRef.current;
@@ -26,7 +26,7 @@ export function useReveal({
 
     // Check for prefers-reduced-motion
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mediaQuery.matches) {
+    if (mediaQuery.matches || !('IntersectionObserver' in window)) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsVisible(true);
       return;
@@ -49,11 +49,9 @@ export function useReveal({
     observer.observe(element);
 
     return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
+      observer.disconnect();
     };
   }, [threshold, rootMargin, once]);
 
-  return { ref: elementRef as any, isVisible };
+  return { ref: elementRef, isVisible };
 }

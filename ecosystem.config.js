@@ -10,9 +10,11 @@ module.exports = {
       node_args: '--max-old-space-size=1024',
       env: {
         NODE_ENV: 'production',
+        HOSTNAME: '127.0.0.1',
         PORT: 3000,
         RESEND_API_KEY: 'TOKEN_RESEND_API_KEY',
-        LEAD_TO_EMAIL: 'TOKEN_LEAD_TO_EMAIL'
+        LEAD_TO_EMAIL: 'TOKEN_LEAD_TO_EMAIL',
+        LEAD_FROM_EMAIL: 'TOKEN_LEAD_FROM_EMAIL'
       }
     }
   ]

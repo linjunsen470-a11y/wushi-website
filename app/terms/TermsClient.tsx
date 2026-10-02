@@ -1,9 +1,6 @@
-'use client';
-
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SubpageHero from '@/components/SubpageHero';
-import { motion } from 'motion/react';
 import { legalInfo } from '@/lib/site-data';
 
 const sections = [
@@ -46,10 +43,7 @@ export default function TermsClient() {
 
       <section className="py-20">
         <div className="shell max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <div
             className="rounded-[2.5rem] border border-outline-variant/30 bg-white p-8 md:p-16 shadow-premium"
           >
             <div className="space-y-12">
@@ -86,7 +80,7 @@ export default function TermsClient() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
