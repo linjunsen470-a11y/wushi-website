@@ -1,6 +1,7 @@
 name: Deploy Next.js Standalone to VPS
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -14,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      DEPLOY_HOST: '134.175.44.80'
+      DEPLOY_USER: ubuntu
+      DEPLOY_TARGET: /home/ubuntu/wushi
+      DEPLOY_FINGERPRINT: 'SHA256:WkL5M3HLTgR7W4YbR7rigUMFCZj+524Xg9tLroABo2M'
 
     steps:
       - name: Checkout code
@@ -72,40 +77,43 @@ jobs:
       - name: Prepare private transfer directory
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
+          host: ${{ env.DEPLOY_HOST }}
+          username: ${{ env.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          fingerprint: ${{ env.DEPLOY_FINGERPRINT }}
           script: |
             set -eu
             # Limit traversal to the deployment account, even if tar restores UID 1000.
-            install -d -m 700 -o "$(id -u)" -g "$(id -g)" "${{ secrets.REMOTE_TARGET }}"
+            install -d -m 700 -o "$(id -u)" -g "$(id -g)" "${{ env.DEPLOY_TARGET }}"
             # SCP temporarily stores an archive containing the private config.
-            install -d -m 700 -o "$(id -u)" -g "$(id -g)" "${{ secrets.REMOTE_TARGET }}/.transfer"
-            test "$(stat -c '%u:%a' "${{ secrets.REMOTE_TARGET }}")" = "$(id -u):700"
-            test "$(stat -c '%u:%a' "${{ secrets.REMOTE_TARGET }}/.transfer")" = "$(id -u):700"
+            install -d -m 700 -o "$(id -u)" -g "$(id -g)" "${{ env.DEPLOY_TARGET }}/.transfer"
+            test "$(stat -c '%u:%a' "${{ env.DEPLOY_TARGET }}")" = "$(id -u):700"
+            test "$(stat -c '%u:%a' "${{ env.DEPLOY_TARGET }}/.transfer")" = "$(id -u):700"
 
       - name: Upload to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
+          host: ${{ env.DEPLOY_HOST }}
+          username: ${{ env.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          fingerprint: ${{ env.DEPLOY_FINGERPRINT }}
           source: "release.tar.gz,ecosystem.config.js,docs/nginx-redirect.conf"
-          target: ${{ secrets.REMOTE_TARGET }}
-          tar_tmp_path: ${{ secrets.REMOTE_TARGET }}/.transfer/
+          target: ${{ env.DEPLOY_TARGET }}
+          tar_tmp_path: ${{ env.DEPLOY_TARGET }}/.transfer/
 
       - name: Deploy and restart
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
+          host: ${{ env.DEPLOY_HOST }}
+          username: ${{ env.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          fingerprint: ${{ env.DEPLOY_FINGERPRINT }}
           script: |
             set -euo pipefail
 
             # Ensure the target directory exists (for "nuke and rebuild" support)
-            mkdir -p ${{ secrets.REMOTE_TARGET }}
-            cd ${{ secrets.REMOTE_TARGET }}
+            mkdir -p ${{ env.DEPLOY_TARGET }}
+            cd ${{ env.DEPLOY_TARGET }}
             # Verify privacy immediately after extraction, before any restart.
             test "$(stat -c '%a' ecosystem.config.js)" = '600'
             echo "Verified uploaded config permissions: 600"
@@ -172,6 +180,8 @@ jobs:
 
             # A failed local HTTP check stops cleanup and search-engine submission.
             curl --fail --silent --show-error --retry 6 --retry-connrefused --retry-delay 2 --max-time 10 http://127.0.0.1:3000/ > /dev/null
+            curl --fail --silent --show-error --max-time 15 --resolve www.cqwushi.com:443:127.0.0.1 https://www.cqwushi.com/ > /dev/null
+            pm2 save
 
             find releases -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' \
               | sort -rn \
